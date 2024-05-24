@@ -17,24 +17,28 @@ import { AbpOAuthModule } from '@abp/ng.oauth';
 import { ThemeLeptonXModule } from '@abp/ng.theme.lepton-x';
 import { SideMenuLayoutModule } from '@abp/ng.theme.lepton-x/layouts';
 import { AccountLayoutModule } from '@abp/ng.theme.lepton-x/account';
+import { NgApexchartsModule } from 'ng-apexcharts';
+import { CustomCoreModule } from './custom-core/custom-core.module';
+
 @NgModule({
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
     AppRoutingModule,
+    NgApexchartsModule,
     CoreModule.forRoot({
       environment,
       registerLocaleFn: registerLocale(),
     }),
     AbpOAuthModule.forRoot(),
     ThemeSharedModule.forRoot(),
-    
+    CustomCoreModule,
     AccountConfigModule.forRoot(),
     IdentityConfigModule.forRoot(),
     TenantManagementConfigModule.forRoot(),
     SettingManagementConfigModule.forRoot(),
-    
-    
+
+
     FeatureManagementModule.forRoot(),
     InternetConnectionStatusComponent,
     ThemeLeptonXModule.forRoot(),

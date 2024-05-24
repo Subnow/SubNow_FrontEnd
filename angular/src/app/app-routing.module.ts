@@ -5,25 +5,27 @@ const routes: Routes = [
   {
     path: '',
     pathMatch: 'full',
-    loadChildren: () => import('./home/home.module').then(m => m.HomeModule),
+    loadChildren: () => import('./features/dashboard/dashboard.module').then(m => m.DashboardModule)
   },
+
   {
-    path: 'account',
-    loadChildren: () => import('@abp/ng.account').then(m => m.AccountModule.forLazy()),
+    path: 'dashboard',
+    loadChildren: () => import('./features/dashboard/dashboard.module').then(m => m.DashboardModule)
   },
+
   {
-    path: 'identity',
-    loadChildren: () => import('@abp/ng.identity').then(m => m.IdentityModule.forLazy()),
+    path: 'plans',
+    loadChildren: () => import('./features/plans/plans.module').then(m => m.PlansModule)
   },
+
   {
-    path: 'tenant-management',
-    loadChildren: () =>
-      import('@abp/ng.tenant-management').then(m => m.TenantManagementModule.forLazy()),
+    path: 'invoices',
+    loadChildren: () => import('./features/invoices/invoices.module').then(m => m.InvoicesModule)
   },
+
   {
-    path: 'setting-management',
-    loadChildren: () =>
-      import('@abp/ng.setting-management').then(m => m.SettingManagementModule.forLazy()),
+    path: 'customers',
+    loadChildren: () => import('./features/customers/customers.module').then(m => m.CustomersModule)
   },
 ];
 
