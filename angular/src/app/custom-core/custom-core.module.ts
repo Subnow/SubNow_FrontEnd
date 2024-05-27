@@ -1,11 +1,11 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { HeaderComponent } from './header/header.component';
-import { FooterComponent } from './footer/footer.component';
-import { SideMenuComponent } from './side-menu/side-menu.component';
-import { MainLayoutComponent } from './layout/main-layout/main-layout.component';
 import { SharedModule } from '../shared/shared.module';
-import { LanguageComponent } from './language/language.component';
+import { FooterComponent } from './components/footer/footer.component';
+import { HeaderComponent } from './components/header/header.component';
+import { SideMenuComponent } from './components/side-menu/side-menu.component';
+import { MainLayoutComponent } from './components/layout/main-layout/main-layout.component';
+import { LanguageComponent } from './components/language/language.component';
 
 
 const componentList =[

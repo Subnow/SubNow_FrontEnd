@@ -1,0 +1,74 @@
+<a class='toggle-menu' (click)='openSideMenu($event)' [class.active]='isSideMenuActive'><i class="fa-solid icon-toggle fa-bars"></i></a>
+
+<aside class='side-menu' (clickOutside)='onClickedOutside($event)'>
+  <a class='close-menu' (click)='closeSideMenu()'><i class='fa-solid fa-times'></i></a>
+  <div class='side-menu-top'>
+    <a (click)='closeSideMenu()' class='logo' routerLink='/dashboard'>
+      <img src='assets/images/logo/subnow-logo.svg'>
+    </a>
+    <div class='side-menu-list-container'>
+      <ul class='side-menu-list'>
+        <li class='side-menu-item'>
+          <a (click)='closeSideMenu()' class='side-menu-link' routerLink='/dashboard' routerLinkActive="active" routerLinkActiveOptions="{ exact: true }">
+            <img src='assets/images/icons/home-line.svg'>
+            <span class='side-menu-text'>{{"General::dashboard"|abpLocalization}}</span>
+          </a>
+        </li>
+        <li class='side-menu-item'>
+          <a (click)='closeSideMenu()' class='side-menu-link' routerLink='/invoices' routerLinkActive="active" routerLinkActiveOptions="{ exact: true }">
+            <img src='assets/images/icons/layers-three-01.svg'>
+            <span class='side-menu-text'>{{"General::invoices"|abpLocalization}}</span>
+          </a>
+        </li>
+        <li class='side-menu-item'>
+          <a (click)='closeSideMenu()' class='side-menu-link' routerLink='/customers' routerLinkActive="active" routerLinkActiveOptions="{ exact: true }">
+            <img src='assets/images/icons/home-line.svg'>
+            <span class='side-menu-text'>{{"General::customers"|abpLocalization}}</span>
+          </a>
+        </li>
+        <li class='side-menu-item'>
+          <a (click)='closeSideMenu()' class='side-menu-link' routerLink='/plans' routerLinkActive="active" routerLinkActiveOptions="{ exact: true }">
+            <img src='assets/images/icons/check-done-01.svg'>
+            <span class='side-menu-text'>{{"General::plans"|abpLocalization}}</span>
+          </a>
+        </li>
+        <li class='side-menu-item'>
+          <a (click)='closeSideMenu()' class='side-menu-link' routerLink='/integrations' routerLinkActive="active" routerLinkActiveOptions="{ exact: true }">
+            <img src='assets/images/icons/stars-02.svg'>
+            <span class='side-menu-text'>{{"General::integrations"|abpLocalization}}</span>
+          </a>
+        </li>
+        <li class='side-menu-item'>
+          <a (click)='closeSideMenu()' class='side-menu-link' routerLink='/setup' routerLinkActive="active" routerLinkActiveOptions="{ exact: true }">
+            <img src='assets/images/icons/settings-01.svg'>
+            <span class='side-menu-text'>{{"General::setup"|abpLocalization}}</span>
+          </a>
+        </li>
+      </ul>
+
+    </div>
+
+  </div>
+  <div class='side-menu-bottom'>
+    <a (click)='closeSideMenu()' class='support' routerLink='/support' routerLinkActive="active" routerLinkActiveOptions="{ exact: true }">
+      <img src='assets/images/icons/support.svg'>
+      <span class='side-menu-text'>{{"General::support"|abpLocalization}}</span>
+    </a>
+    <div class='user'>
+      <div class='user-data'>
+        <img src='assets/images/icons/avatar-2.png' class='user-img' width='40' height='40'>
+        <div class='user-info'>
+          <span class='name'>{{currentUser?.name | truncate:15}}</span>
+          <span class='email'>{{currentUser?.email | truncate:22}}</span>
+        </div>
+      </div>
+      <a (click)="logout()" class='logout'><i class="fa-solid fa-arrow-right-from-bracket"></i></a>
+    </div>
+
+    <div class=''>
+      <app-language></app-language>
+    </div>
+
+  </div>
+
+</aside>

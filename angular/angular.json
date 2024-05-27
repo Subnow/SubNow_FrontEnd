@@ -110,6 +110,17 @@
                 "inject": true,
                 "bundleName": "ngx-datatable-material"
               },
+              "node_modules/@fortawesome/fontawesome-free/css/all.css",
+              {
+                "input": "src/assets/scss/dist/rtl.scss",
+                "inject": false,
+                "bundleName": "styles-rtl"
+              },
+              {
+                "input": "src/assets/scss/dist/ltr.scss",
+                "inject": false,
+                "bundleName": "styles-ltr"
+              },
               "src/styles.scss"
             ],
             "scripts": [

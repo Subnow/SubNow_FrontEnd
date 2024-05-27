@@ -1,0 +1,13 @@
+
+<header class='header'>
+  <div class="header-container">
+    <a class='toggle-menu' (click)='openSideMenu($event)' [class.active]='isSideMenuActive'><i class="fa-solid icon-toggle fa-bars"></i></a>
+    <div class="main-menu">
+      <ul class="main-menu-list">
+        <li class="main-menu-item">
+          <app-language></app-language>
+        </li>
+      </ul>
+    </div>
+  </div>
+</header>

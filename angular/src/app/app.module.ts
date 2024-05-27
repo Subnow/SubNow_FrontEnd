@@ -19,6 +19,9 @@ import { SideMenuLayoutModule } from '@abp/ng.theme.lepton-x/layouts';
 import { AccountLayoutModule } from '@abp/ng.theme.lepton-x/account';
 import { NgApexchartsModule } from 'ng-apexcharts';
 import { CustomCoreModule } from './custom-core/custom-core.module';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { EnglishLocalizationExtend } from '../localizations/en/en';
+import { ArabicLocalizationExtend } from '../localizations/ar/ar';
 
 @NgModule({
   imports: [
@@ -28,7 +31,25 @@ import { CustomCoreModule } from './custom-core/custom-core.module';
     NgApexchartsModule,
     CoreModule.forRoot({
       environment,
-      registerLocaleFn: registerLocale(),
+      registerLocaleFn: registerLocale({
+        cultureNameLocaleFileMap: {
+          en: 'en',
+          ar: 'ar',
+        },
+        errorHandlerFn: data => {
+          console.warn(data);
+        },
+      }),
+      localizations: [
+        {
+          culture: 'en',
+          resources: EnglishLocalizationExtend,
+        },
+        {
+          culture: 'ar',
+          resources: ArabicLocalizationExtend,
+        },
+      ],
     }),
     AbpOAuthModule.forRoot(),
     ThemeSharedModule.forRoot(),
@@ -37,13 +58,12 @@ import { CustomCoreModule } from './custom-core/custom-core.module';
     IdentityConfigModule.forRoot(),
     TenantManagementConfigModule.forRoot(),
     SettingManagementConfigModule.forRoot(),
-
-
     FeatureManagementModule.forRoot(),
     InternetConnectionStatusComponent,
     ThemeLeptonXModule.forRoot(),
     SideMenuLayoutModule.forRoot(),
-    AccountLayoutModule.forRoot()
+    AccountLayoutModule.forRoot(),
+    NgbModule
   ],
   declarations: [AppComponent],
   providers: [APP_ROUTE_PROVIDER],

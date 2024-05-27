@@ -1,8 +1,8 @@
 import { Component, inject } from '@angular/core';
 import { ReplaceableComponentsService } from '@abp/ng.core';
-import { MainLayoutComponent } from './custom-core/layout/main-layout/main-layout.component';
 import { eThemeLeptonXComponents } from '@abp/ng.theme.lepton-x';
-import { LanguageComponent } from './custom-core/language/language.component';
+import { MainLayoutComponent } from './custom-core/components/layout/main-layout/main-layout.component';
+import { LanguageComponent } from './custom-core/components/language/language.component';
 
 @Component({
   selector: 'app-root',

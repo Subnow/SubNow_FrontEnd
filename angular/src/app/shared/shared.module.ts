@@ -5,6 +5,9 @@ import { ThemeSharedModule } from '@abp/ng.theme.shared';
 import { NgxValidateCoreModule } from '@ngx-validate/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NgApexchartsModule } from 'ng-apexcharts';
+import { NgbPopoverModule } from '@ng-bootstrap/ng-bootstrap';
+import { TruncatePipe } from './pipes/truncate.pipe';
+import { ClickOutsideModule } from 'ng-click-outside';
 
 
 const moduleList = [
@@ -14,16 +17,24 @@ const moduleList = [
   NgxValidateCoreModule,
   FormsModule,
   ReactiveFormsModule,
-  NgApexchartsModule
+  NgApexchartsModule,
+  NgbPopoverModule,
+  ClickOutsideModule
 ]
 
+const declarationList = [
+  TruncatePipe
+]
 @NgModule({
-  declarations: [],
+  declarations: [
+    ...declarationList
+  ],
   imports: [
     ...moduleList
   ],
   exports: [
-    ...moduleList
+    ...moduleList,
+    TruncatePipe
   ],
   providers: []
 })
