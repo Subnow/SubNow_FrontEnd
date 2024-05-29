@@ -118,6 +118,19 @@
       }
     }
   }
+  .avatar{
+    display: flex;
+    width: 40px;
+    height: 40px;
+    padding: 8px 0px;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    background: #F2F4F7;
+    text-transform: uppercase;
+    color: #475467;
+    font-size: 16px;
+  }
 }
 .toggle-menu,
 .close-menu{

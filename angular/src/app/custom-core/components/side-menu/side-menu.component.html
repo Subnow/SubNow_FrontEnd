@@ -56,7 +56,9 @@
     </a>
     <div class='user'>
       <div class='user-data'>
-        <img src='assets/images/icons/avatar-2.png' class='user-img' width='40' height='40'>
+<!--        <img src='assets/images/icons/avatar-2.png' class='user-img' width='40' height='40'>-->
+        <span class='avatar'>{{currentUser?.name.substring(0, 2)}}</span>
+
         <div class='user-info'>
           <span class='name'>{{currentUser?.name | truncate:15}}</span>
           <span class='email'>{{currentUser?.email | truncate:22}}</span>
