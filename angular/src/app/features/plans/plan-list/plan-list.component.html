@@ -52,8 +52,8 @@
                   </div>
                 </td>
                 <td class='rounded-table-body-cell'>
-                  <span class='' *ngIf='plan?.planStatus === 0'>{{"General::Active"|abpLocalization}}</span>
-                  <span class='' *ngIf='plan?.planStatus === 1'>{{"General::Disabled"|abpLocalization}}</span>
+                  <span class='badge badge-sucess' *ngIf='plan?.planStatus === 0'>{{"General::Active"|abpLocalization}}</span>
+                  <span class='badge badge-danger' *ngIf='plan?.planStatus === 1'>{{"General::Disabled"|abpLocalization}}</span>
                   <span class='' *ngIf='plan?.planStatus === 2'>{{"General::Paused"|abpLocalization}}</span>
 
                 </td>
