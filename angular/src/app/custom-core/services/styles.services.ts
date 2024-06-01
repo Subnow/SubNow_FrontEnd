@@ -10,28 +10,24 @@ export class StyleService {
     this.document = document;
   }
 
-  public setStyleByDir(isDefaultLTR = true, bundleName = 'styles'): Promise<string> {
+  public setStyleByDir(isDefaultLTR = true): Promise<string> {
     const direction = isDefaultLTR ? 'ltr' : 'rtl';
     const lang = isDefaultLTR ? 'en' : 'ar';
 
-    return this.setDirectionAndLoadBundle(direction, lang, bundleName);
+    return this.setDirectionAndLoadBundle(direction, lang);
   }
 
   private setDirectionAndLoadBundle(
     direction: string,
     lang: string,
-    bundleName: string
   ): Promise<string> {
     const htmlTag = this.document.getElementsByTagName('html')[0];
     const bodyTag = this.document.getElementsByTagName('body')[0];
-
     htmlTag.classList.remove('ltr', 'rtl');
     htmlTag.classList.add(direction);
     htmlTag.setAttribute('lang', lang);
     bodyTag.setAttribute('dir', direction);
-
-    const bundleFileName = `${bundleName}-${direction}.css`;
-    return this.loadBundle(bundleFileName).then(() => direction);
+    return;
   }
 
   private loadBundle(name: string): Promise<void> {
