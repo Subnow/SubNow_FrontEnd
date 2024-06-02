@@ -5,10 +5,11 @@ import { ThemeSharedModule } from '@abp/ng.theme.shared';
 import { NgxValidateCoreModule } from '@ngx-validate/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NgApexchartsModule } from 'ng-apexcharts';
-import { NgbPopoverModule } from '@ng-bootstrap/ng-bootstrap';
+import { NgbPopoverModule , NgbModalModule} from '@ng-bootstrap/ng-bootstrap';
 import { TruncatePipe } from './pipes/truncate.pipe';
 import { ClickOutsideModule } from 'ng-click-outside';
 import { CommonModule } from '@angular/common';
+import { ToastrModule } from 'ngx-toastr';
 
 
 const moduleList = [
@@ -21,7 +22,9 @@ const moduleList = [
   NgApexchartsModule,
   NgbPopoverModule,
   ClickOutsideModule,
-  CommonModule
+  CommonModule,
+  NgbModalModule,
+  ToastrModule
 ]
 
 const declarationList = [

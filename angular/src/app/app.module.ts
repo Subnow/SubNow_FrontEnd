@@ -22,6 +22,7 @@ import { CustomCoreModule } from './custom-core/custom-core.module';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { EnglishLocalizationExtend } from '../localizations/en/en';
 import { ArabicLocalizationExtend } from '../localizations/ar/ar';
+import { ToastrModule } from 'ngx-toastr';
 
 @NgModule({
   imports: [
@@ -29,6 +30,7 @@ import { ArabicLocalizationExtend } from '../localizations/ar/ar';
     BrowserAnimationsModule,
     AppRoutingModule,
     NgApexchartsModule,
+    ToastrModule.forRoot(),
     CoreModule.forRoot({
       environment,
       registerLocaleFn: registerLocale({

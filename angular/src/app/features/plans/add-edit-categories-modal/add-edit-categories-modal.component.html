@@ -1,0 +1,50 @@
+
+<div class="modal-header">
+  <div class='container'>
+    <div class='modal-header-wrapper'>
+      <a class='modal-close' (click)="activeModal.dismiss('Cross click')">
+        <i class='fa fa-xmark'></i>
+      </a>
+      <h2 class='title'>{{"General::planCategory"|abpLocalization}}</h2>
+      <button  class='btn btn-save' type="submit"  (click)="createEditCategory()">
+        <span>{{"General::save"|abpLocalization}}</span>
+      </button>
+    </div>
+  </div>
+
+</div>
+<div class="modal-body">
+  <div class='container'>
+      <div class='modal-body-wrapper'>
+          <div class='row'>
+            <div class='col-lg-3 col-md-4'>
+              {{category?.name}}
+              {{category?.description}}
+            </div>
+            <div class='col-lg-9 col-md-8'>
+               <form class='row' [formGroup]='form'>
+                 <div class='col-lg-8 col-md-6'>
+                   <div class='form-group'>
+                     <label>{{"General::categoryName"|abpLocalization}}</label>
+                     <input class='form-control' formControlName='name' id='name' placeholder='{{"General::exB2CCustomers"|abpLocalization}}' type='text'>
+                   </div>
+                 </div>
+
+                 <div class='col-lg-8 col-md-6'>
+                   <div class='form-group'>
+                     <label>{{"General::categoryDescription"|abpLocalization}}</label>
+                     <textarea formControlName='description' id='description' rows='3' placeholder='{{"General::categoryDescriptionPlaceholder"|abpLocalization}}' class='form-control'></textarea>
+                   </div>
+                 </div>
+                 <div class='col-12'>
+                   <div class="form-check form-switch">
+                     <input class="form-check-input" type="checkbox" id="flexSwitchCheckChecked" checked>
+                     <label class="form-check-label" for="flexSwitchCheckChecked">{{"General::categoryStatus"|abpLocalization}}</label>
+                   </div>
+                 </div>
+               </form>
+            </div>
+          </div>
+      </div>
+    </div>
+</div>

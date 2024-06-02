@@ -52,6 +52,7 @@ export const General = {
   redirectUrlHint:'redirect Url Hint',
   planCategory:'Plan Category',
   categoryDescription:'Category Description',
+  categoryName:'اسم الفئة',
   exB2CCustomers:'ex. B2C Customers',
   categoryDescriptionPlaceholder:'This Plan is made for B2C customers',
   categoryStatus:'Category Status',
