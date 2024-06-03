@@ -23,6 +23,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { EnglishLocalizationExtend } from '../localizations/en/en';
 import { ArabicLocalizationExtend } from '../localizations/ar/ar';
 import { ToastrModule } from 'ngx-toastr';
+import { NgxValidateCoreModule } from '@ngx-validate/core';
 
 @NgModule({
   imports: [
@@ -31,6 +32,7 @@ import { ToastrModule } from 'ngx-toastr';
     AppRoutingModule,
     NgApexchartsModule,
     ToastrModule.forRoot(),
+    NgxValidateCoreModule.forRoot(),
     CoreModule.forRoot({
       environment,
       registerLocaleFn: registerLocale({

@@ -56,6 +56,8 @@ export const General = {
   exB2CCustomers:'ex. B2C Customers',
   categoryDescriptionPlaceholder:'This Plan is made for B2C customers',
   categoryStatus:'Category Status',
-  editCategory:'تعديل الفئه'
+  editCategory:'تعديل الفئه',
+  categoryAddMsg:'',
+  categoryEditMsg:''
 
 };
