@@ -12,6 +12,7 @@ export interface CategoryPlansDto {
   categoryId?: string;
   categoryName?: string;
   categoryDescription?: string;
+  status: boolean;
   plans: PlanDto[];
 }
 

@@ -15,6 +15,7 @@ export class AddEditCategoriesModalComponent  implements OnInit{
   form: FormGroup;
   activeModal = inject(NgbActiveModal);
   isLoading = false;
+  updateStatus;
 
   constructor(
     public _fb: FormBuilder,
@@ -25,13 +26,17 @@ export class AddEditCategoriesModalComponent  implements OnInit{
     this.initForm()
   }
   ngOnInit(): void {
-    this.initForm()
+    this.initForm();
+    this.form.get('status').valueChanges.subscribe(toggleValue => {
+      this.updateStatus = toggleValue;
+    });
   }
 
   initForm(){
     this.form = this._fb.group({
       name: [this.category?.name, Validators.required],
       description: [this.category?.description, Validators.required],
+      status:[this?.category?.status]
     })
   }
 
@@ -40,13 +45,13 @@ export class AddEditCategoriesModalComponent  implements OnInit{
     if (!this.form) {
       return;
     }
-
-    console.log(this.form?.value);
     // this.isLoading = true;
     const { id } = this.category || {};
+    console.log('this.updateStatus' , this.updateStatus)
     const updateCategory = {
       name: this.form.controls.name?.value,
       description: this.form.controls.description?.value,
+      status:this.updateStatus
     };
     (!id
         ? this._categoryService.create(updateCategory)
@@ -54,8 +59,6 @@ export class AddEditCategoriesModalComponent  implements OnInit{
     )
       .pipe(finalize(() => (this.isLoading = false)))
       .subscribe((value) => {
-        console.log(value);
-        console.log(updateCategory);
         if (id) {
           this.toastr.success('Category Edit successfully', '', {
             timeOut: 1000,
@@ -67,5 +70,8 @@ export class AddEditCategoriesModalComponent  implements OnInit{
         }
         this.activeModal.close(value);
       });
+  }
+  closeModal(){
+    this.activeModal.close();
   }
 }

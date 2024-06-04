@@ -10,6 +10,7 @@ import { TruncatePipe } from './pipes/truncate.pipe';
 import { ClickOutsideModule } from 'ng-click-outside';
 import { CommonModule } from '@angular/common';
 import { ToastrModule } from 'ngx-toastr';
+import { NgSelectModule } from '@ng-select/ng-select';
 
 
 const moduleList = [
@@ -24,7 +25,8 @@ const moduleList = [
   NgbModalModule,
   ToastrModule,
   NgxValidateCoreModule,
-  NgbTooltipModule
+  NgbTooltipModule,
+  NgSelectModule
 ]
 
 const declarationList = [

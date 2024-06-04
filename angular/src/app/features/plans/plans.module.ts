@@ -6,6 +6,7 @@ import { PageTitleStandaloneComponent } from '../../standalone/page-title-standa
 import { SharedModule } from '../../shared/shared.module';
 import { StatusBadgeComponent } from '../../standalone/status-badge/status-badge.component';
 import { AddEditCategoriesModalComponent } from './add-edit-categories-modal/add-edit-categories-modal.component';
+import { AddEditPlanComponent } from './add-edit-plan/add-edit-plan.component';
 
 
 @NgModule({
@@ -13,6 +14,7 @@ import { AddEditCategoriesModalComponent } from './add-edit-categories-modal/add
     PlansComponent,
     PlanListComponent,
     AddEditCategoriesModalComponent,
+    AddEditPlanComponent,
   ],
   imports: [
     PlansRoutingModule,

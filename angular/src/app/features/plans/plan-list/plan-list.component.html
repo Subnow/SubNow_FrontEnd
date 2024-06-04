@@ -6,7 +6,7 @@
           <i class='fa-regular fa-plus'></i>
           <span>{{"General::createPlanCategory"|abpLocalization}}</span>
         </button>
-        <button class='btn btn-light'>
+        <button class='btn btn-light' (click)='addEditPlan()'>
           <i class='fa-regular fa-plus'></i>
           <span>{{"General::createPlan"|abpLocalization}}</span>
         </button>
@@ -27,7 +27,7 @@
 
           </div>
           <div class='col-lg-9 col-md-8'>
-            <div class=''>
+            <div class='table-responsive'>
               <table class='rounded-table'>
                 <thead class='rounded-table-head'>
                 <tr class='rounded-table-head-row'>
@@ -40,7 +40,7 @@
                 </tr>
                 </thead>
                 <tbody class='rounded-table-body'>
-                <tr class='rounded-table-body-row' *ngFor='let plan of planByCategory?.plans'>
+                <tr class='rounded-table-body-row' *ngFor='let plan of planByCategory?.plans; let i = index'>
                   <td class='rounded-table-body-cell'>
                     <div class='cell-name'>
                       <div class='avatar'>{{plan?.name.substring(0, 2)}}</div>
@@ -67,7 +67,7 @@
                     {{plan?.creationTime | date: 'MMM dd, yyyy'}}
                   </td>
                   <td class='rounded-table-body-cell'>
-                    <a><i class="fa-solid fa-pen"></i></a>
+                    <a (click)='addEditPlan(plan,i,"edit")'><i class="fa-solid fa-pen"></i></a>
                   </td>
                 </tr>
                 </tbody>

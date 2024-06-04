@@ -4,6 +4,7 @@ export interface CategoryDto {
   id?: string;
   name?: string;
   description?: string;
+  status: boolean;
 }
 
 export interface CategoryListDto extends EntityDto<string> {
@@ -16,9 +17,11 @@ export interface CategoryListDto extends EntityDto<string> {
 export interface CreateCategoryDto {
   name: string;
   description?: string;
+  status: boolean;
 }
 
 export interface UpdateCategoryDto {
   name: string;
   description?: string;
+  status: boolean;
 }
