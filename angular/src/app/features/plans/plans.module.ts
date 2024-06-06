@@ -7,6 +7,7 @@ import { SharedModule } from '../../shared/shared.module';
 import { StatusBadgeComponent } from '../../standalone/status-badge/status-badge.component';
 import { AddEditCategoriesModalComponent } from './add-edit-categories-modal/add-edit-categories-modal.component';
 import { AddEditPlanComponent } from './add-edit-plan/add-edit-plan.component';
+import { NotFoundDataStandaloneComponent } from '../../standalone/not-found-data-standalone/not-found-data-standalone.component';
 
 
 @NgModule({
@@ -20,6 +21,7 @@ import { AddEditPlanComponent } from './add-edit-plan/add-edit-plan.component';
     PlansRoutingModule,
     PageTitleStandaloneComponent,
     StatusBadgeComponent,
+    NotFoundDataStandaloneComponent,
     SharedModule
   ]
 })

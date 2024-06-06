@@ -43,11 +43,38 @@
         color:#98A2B3 ;
         cursor: pointer;
         position: absolute;
-        top: 14px;
+        top: 12px;
         right: 14px;
       }
       .form-control{
         padding-right: 38px;
+      }
+    }
+    &-icon-text{
+      .form-control{
+        padding-right: 90px;
+      }
+      position: relative;
+      .icon-text{
+        position: absolute;
+        top: 0;
+        right: 14px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 12px;
+        height: 100%;
+        .text{
+          color: #101828;
+          font-size: 14px;
+          font-weight: 400;
+          line-height: 24px;
+        }
+        .icon{
+          font-size: 16px;
+          color: #667085;
+          cursor: pointer;
+        }
       }
     }
   }
@@ -60,7 +87,7 @@
   input[type='tel'],
   input[type='password'],
   input[type='text']{
-    height: 44px;
+    height: 40px;
   }
   &-group{
     margin-bottom: 20px;
@@ -106,6 +133,30 @@
     font-size: 14px;
     font-weight: 500;
     line-height: 20px;
+  }
+
+  .input-group{
+    &-text{
+      height: 40px;
+      border-color:#D0D5DD ;
+      padding: 8px 12px;
+      color:  #475467;
+      font-family: "IBM Plex Sans Arabic";
+      font-size: 16px;
+      font-weight: 400;
+      line-height: 24px;
+    }
+    &.input-group-icon{
+      position: relative;
+      .icon{
+        font-size: 16px;
+        color: #98A2B3;
+        cursor: pointer;
+        position: absolute;
+        top: 12px;
+        right: 14px;
+      }
+    }
   }
 
 }

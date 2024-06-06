@@ -59,10 +59,13 @@ export const General = {
   editCategory:'Edit Category',
   categoryAddMsg:'The category add successfully',
   categoryEditMsg:'The category edit successfully',
+  planAddMsg:'The plan add successfully',
+  planEditMsg:'The plan edit successfully',
   model:"Model",
   fixedPrice:"Fixed Price",
   dynamicPrice:"Dynamic Price",
-  SAR:"SAR"
+  SAR:"SAR",
+  notFound:'No Data to show'
 
 
 

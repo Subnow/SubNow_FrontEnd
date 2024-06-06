@@ -55,13 +55,14 @@ export const General = {
   categoryName:'اسم الفئة',
   exB2CCustomers:'ex. B2C Customers',
   categoryDescriptionPlaceholder:'تم إعداد هذه الخطة لعملاء B2C',
-  categoryStatus:'Category Status',
+  categoryStatus:'حالة الفئة',
   editCategory:'تعديل الفئه',
   categoryAddMsg:'تم أضافة التصنيف بنجاح ',
   categoryEditMsg:'تم تعديل التصنيف بنجاح ',
   model:"نموذج",
   fixedPrice:"سعر ثابت",
   dynamicPrice:"سعر متغير",
-  SAR:"ريال"
+  SAR:"ريال",
+  notFound: 'لا توجد بيانات لإظهارها.',
 
 };

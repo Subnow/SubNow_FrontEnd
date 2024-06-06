@@ -1,5 +1,5 @@
 import { Component, inject } from '@angular/core';
-import { BillingCyclePlanDto, CreatePlanDto, PlanDto, PlanService } from '@proxy/plans';
+import { BillingCyclePlanDto, CreatePlanDto, PlanDto, PlanService, UpdatePlanDto } from '@proxy/plans';
 import {mapEnumToOptions} from '../../../shared/utils/mapEnumToOptions'
 import { PlanStatusType, PricingModelType, RenewalsPlan } from '@proxy/enums';
 import { NgbModal,NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
@@ -53,11 +53,11 @@ export class PlanListComponent {
     closeSubscription.unsubscribe();
   }
 
-  addEditPlan(plan?:CreatePlanDto,index?:number,type?:string){
+  addEditPlan(plan?:PlanDto,index?:number,type?:string){
 
-    console.log(plan)
     const modal = this.modalService.open(AddEditPlanComponent, { fullscreen: true, windowClass: 'custom-modal' });
     const planObj = {
+      id:plan?.id,
       name:plan?.name,
       code: plan?.code,
       description: plan?.description,
@@ -73,21 +73,19 @@ export class PlanListComponent {
     } as PlanDto;
 
     (modal.componentInstance as AddEditPlanComponent).plan = planObj;
-    (modal.componentInstance as AddEditPlanComponent).type = type;
-    // const reloadPlanList = modal.result.then((result =>{
-    //   this.getPlanList();
-    // }))
-    // const closeSubscription = modal.closed.subscribe((updateCategory:UpdateCategoryDto)=>{
-    //   if (updateCategory){
-    //     if (typeof index === 'number') {
-    //       console.log('edit');
-    //       this.categoryList?.splice(index, 1, updateCategory);
-    //     } else {
-    //       //this.categoryList?.push(updateCategory);
-    //     }
-    //   }
-    // })
-    // closeSubscription.unsubscribe();
+    const reloadPlanList = modal.result.then((result =>{
+      this.getPlanList();
+    }))
+    const closeSubscription = modal.closed.subscribe((updatePlan:UpdatePlanDto)=>{
+      if (updatePlan){
+        if (typeof index === 'number') {
+          this.planList?.splice(index, 1, updatePlan);
+        } else {
+          this.planList?.push(this.planList);
+        }
+      }
+    })
+    closeSubscription.unsubscribe();
   }
 }
 

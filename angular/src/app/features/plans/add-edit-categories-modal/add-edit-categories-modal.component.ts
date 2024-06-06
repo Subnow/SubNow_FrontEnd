@@ -4,6 +4,7 @@ import { CategoryDto, CategoryService } from '@proxy/categories';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { finalize } from 'rxjs';
 import { ToastrService } from 'ngx-toastr';
+import { LocalizationService } from '@abp/ng.core';
 
 @Component({
   selector: 'app-add-edit-categories-modal',
@@ -16,11 +17,14 @@ export class AddEditCategoriesModalComponent  implements OnInit{
   activeModal = inject(NgbActiveModal);
   isLoading = false;
   updateStatus;
+  addCategory;
+  editCategory;
 
   constructor(
     public _fb: FormBuilder,
     private _categoryService:CategoryService,
-    private toastr: ToastrService
+    private toastr: ToastrService,
+    private _localizationService: LocalizationService
 
   ) {
     this.initForm()
@@ -30,6 +34,12 @@ export class AddEditCategoriesModalComponent  implements OnInit{
     this.form.get('status').valueChanges.subscribe(toggleValue => {
       this.updateStatus = toggleValue;
     });
+
+    this.addCategory = this._localizationService.get('General:categoryAddMsg')
+    this.editCategory = this._localizationService.get('General:categoryEditMsg')
+
+    console.log(this.addCategory)
+
   }
 
   initForm(){
@@ -42,11 +52,13 @@ export class AddEditCategoriesModalComponent  implements OnInit{
 
 
   createEditCategory(): void {
+    debugger
     if (!this.form) {
       return;
     }
     // this.isLoading = true;
     const { id } = this.category || {};
+    console.log('id cat ===>' , id)
     console.log('this.updateStatus' , this.updateStatus)
     const updateCategory = {
       name: this.form.controls.name?.value,
@@ -60,11 +72,11 @@ export class AddEditCategoriesModalComponent  implements OnInit{
       .pipe(finalize(() => (this.isLoading = false)))
       .subscribe((value) => {
         if (id) {
-          this.toastr.success('Category Edit successfully', '', {
+          this.toastr.success('::General:categoryAddMsg', '', {
             timeOut: 1000,
           });
         } else {
-          this.toastr.success('Category Add successfully', '', {
+          this.toastr.success('::General:categoryEditMsg', '', {
             timeOut: 1000,
           });
         }

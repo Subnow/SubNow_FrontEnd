@@ -1,4 +1,4 @@
-<section>
+<section >
   <div class='section-header'>
         <app-page-title-standalone title='{{"General::plans"|abpLocalization}}' description='{{"General::plansDes"|abpLocalization}}'></app-page-title-standalone>
       <div class='section-header-actions'>
@@ -54,7 +54,7 @@
                   <td class='rounded-table-body-cell'>
                     <span class='badge badge-sucess' *ngIf='plan?.planStatus === 0'>{{"General::Active"|abpLocalization}}</span>
                     <span class='badge badge-danger' *ngIf='plan?.planStatus === 1'>{{"General::Disabled"|abpLocalization}}</span>
-                    <span class='' *ngIf='plan?.planStatus === 2'>{{"General::Paused"|abpLocalization}}</span>
+                    <span class='badge badge-warring' *ngIf='plan?.planStatus === 2'>{{"General::Paused"|abpLocalization}}</span>
 
                   </td>
                   <td class='rounded-table-body-cell'>
@@ -81,3 +81,7 @@
 
   </div>
 </section>
+
+<!--<ng-container *ngIf='planList?.plans.length === 0'>-->
+<!--  <app-not-found-data-standalone></app-not-found-data-standalone>-->
+<!--</ng-container>-->

@@ -1,3 +1,12 @@
+# prequest
+1- Node.js (^18.13.0 || ^20.9.0	)
+  https://nodejs.org/en
+
+2-npm or yarn 
+
+3-Angular CLI (Command Line Interface):
+  npm install -g @angular/cli
+
 # SubNow
 
 This is a startup project based on the ABP framework. For more information, visit <a href="https://abp.io/" target="_blank">abp.io</a>
