@@ -16,6 +16,7 @@ export class PlanListComponent {
   categoryList:CategoryDto[];
   planList;
   planStatus = mapEnumToOptions(PlanStatusType);
+  isEdit:boolean = false;
   constructor(private _planService:PlanService) {
     this.getPlanList()
   }
@@ -55,6 +56,11 @@ export class PlanListComponent {
 
   addEditPlan(plan?:PlanDto,index?:number,type?:string){
 
+    if (type === 'edit'){
+      this.isEdit = true
+    }else {
+      this.isEdit = false;
+    }
     const modal = this.modalService.open(AddEditPlanComponent, { fullscreen: true, windowClass: 'custom-modal' });
     const planObj = {
       id:plan?.id,
@@ -73,6 +79,8 @@ export class PlanListComponent {
     } as PlanDto;
 
     (modal.componentInstance as AddEditPlanComponent).plan = planObj;
+    (modal.componentInstance as AddEditPlanComponent).isEdit = this.isEdit;
+
     const reloadPlanList = modal.result.then((result =>{
       this.getPlanList();
     }))
@@ -80,6 +88,7 @@ export class PlanListComponent {
       if (updatePlan){
         if (typeof index === 'number') {
           this.planList?.splice(index, 1, updatePlan);
+          this.isEdit = true;
         } else {
           this.planList?.push(this.planList);
         }

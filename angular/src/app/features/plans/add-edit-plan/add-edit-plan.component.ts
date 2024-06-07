@@ -20,15 +20,15 @@ interface CycleData {
 })
 export class AddEditPlanComponent  implements OnInit{
   @Input() plan?: PlanDto;
-  @Input() type?: string;
+  @Input() isEdit?: boolean;
    form: FormGroup;
    activeModal = inject(NgbActiveModal);
    isLoading = false;
    categoryList:CategoryDto[] = [];
    billingCycleList:BillingCycleDto[] =[];
-   planBillingCycleList =[]
+   planBillingCycleList:CycleData[];
    billingCycles: CycleData[];
-   selectedCycles = [];
+   selectedCycles:BillingCyclePlanDto[] = [];
    planId;
 
 
@@ -46,6 +46,8 @@ export class AddEditPlanComponent  implements OnInit{
       this.initForm();
       this.getCategoryList();
       this.getBillingCycles();
+      this.selectedCycles = this?.plan?.billingCyclePlans;
+      console.log('selectedCycles ===>', this.selectedCycles)
     }
 
    enhanceBillingCycles(arr1, arr2) {
@@ -77,12 +79,23 @@ export class AddEditPlanComponent  implements OnInit{
   }
 
   toggleActiveStatus(cycle: CycleData[]): void {
-    console.log('cycle===>' , cycle)
-    console.log('planBillingCycleList', this?.planBillingCycleList)
-
+    debugger
     this.selectedCycles = this?.planBillingCycleList.filter(x =>x.active === true);
-    console.log(this?.planBillingCycleList.filter(x =>x.active === true))
+
+     this?.planBillingCycleLis.forEach(obj => {
+       debugger
+       if (obj.active === true ){
+         const objSelectedCycle = {} as CycleData;
+
+       }
+       const partialObj = {} as BillingCyclePlanDto;
+       partialObj.billingCycleId = obj.id;
+       partialObj.price = Number(obj.price)
+       partialObj.planId = id
+     });
   }
+
+
 
   getBillingCycles(){
         this._billingCycleService.getAll().subscribe((data=>{
@@ -95,25 +108,30 @@ export class AddEditPlanComponent  implements OnInit{
 
     initForm(){
     this.form = this._fb.group({
-      name: [this.plan?.name, Validators.required],
+      name: [{value: this.plan?.name, disabled: this.isEdit}, Validators.required],
       code: [this.plan?.code, Validators.required],
       description: [this.plan?.description, Validators.required],
       freeTrailDays: [this.plan?.freeTrailDays, Validators.required],
-      pricingModel: [this.plan?.pricingModel, Validators.required],
-      setUpFees: [this.plan?.setUpFees, Validators.required],
+      pricingModel: [{value: 0, disabled: true}, Validators.required],
+      setUpFees: [{value: this.plan?.setUpFees, disabled: this.isEdit}, Validators.required],
       categoryId: [this.plan?.categoryId, Validators.required],
       companyId: [this.plan?.companyId, Validators.required],
-      renewals: [this.plan?.renewals, Validators.required],
+      renewals: [0, Validators.required],
       accountingCode: [this.plan?.accountingCode, Validators.required],
-      planStatus: [this.plan?.planStatus, Validators.required],
+      planStatus: [0, Validators.required],
       redirectUrl: [this.plan?.redirectUrl, Validators.required],
       creationTime: [this.plan?.creationTime, Validators.required],
-      billingCyclePlans: [this.plan?.billingCyclePlans, Validators.required],
-
+      //billingCyclePlans: [this.plan?.billingCyclePlans, Validators.required],
+      billingCyclePlans:[{
+        planId:[''],
+        billingCycleId:[''],
+        price:['', Validators.required]
+      }
+      ]
     })
   }
   createEditPlan(): void {
-    debugger
+    console.log('selected cycle test -===>' , this?.selectedCycles)
     if (!this.form) {
       return;
     }
@@ -121,13 +139,16 @@ export class AddEditPlanComponent  implements OnInit{
 // Using forEach() to create partial objects
     const { id } = this.plan || {};
     let list = [];
+    console.log('selectedCycles ==>  before' , this?.selectedCycles)
     this.selectedCycles.forEach(obj => {
+      debugger
       const partialObj = {} as BillingCyclePlanDto;
       partialObj.billingCycleId = obj.id;
       partialObj.price = Number(obj.price)
       partialObj.planId = id
       list.push(partialObj);
     });
+    console.log('list ==?' , list)
 
     const createPlan = {
       name: this.form.controls.name?.value,
@@ -150,7 +171,6 @@ export class AddEditPlanComponent  implements OnInit{
     )
       .pipe(finalize(() => (this.isLoading = false)))
       .subscribe((value) => {
-        console.log(value);
         if (id) {
           this.toastr.success('Plan Edit successfully', '', {
             timeOut: 1000,
@@ -166,13 +186,5 @@ export class AddEditPlanComponent  implements OnInit{
 
   closeModal(){
     this.activeModal.close();
-  }
-  test($event){
-    const target = event.target as HTMLInputElement;
-    console.log(target?.value)
-    $event.target.checked;
-    this.form.controls.renewals.setValue(target?.value);
-
-
   }
 }

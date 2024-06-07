@@ -39,7 +39,7 @@
               <div class='col-lg-8 col-md-12'>
                 <div class='form-group'>
                   <label class="form-label">{{"General::planCode"|abpLocalization}}</label>
-                  <input class='form-control' formControlName='code' id='code' placeholder='{{"General::starterP"|abpLocalization}}' type='text' required>
+                  <input  (keydown.space)="$event.preventDefault()" class='form-control' formControlName='code' id='code' placeholder='{{"General::starterP"|abpLocalization}}' type='text' required>
                 </div>
               </div>
               <div class='col-lg-8 col-md-12'>
@@ -53,7 +53,6 @@
                   <label class="form-label">{{"General::category"|abpLocalization}}</label>
                   <ng-select [items]="categoryList"
                              bindLabel="name"
-                             autofocus
                              bindValue="id"
                              placeholder='{{"General::category"|abpLocalization}}'
                              [clearable]="false"
@@ -79,13 +78,10 @@
                 <div class='form-group mb-0'>
                   <label class="form-label">{{"General::freeTrial"|abpLocalization}}</label>
                   <div class='control-icon-text'>
-                    <input class='form-control' formControlName='freeTrailDays' id='freeTrailDays' placeholder='0' type='text' required>
+                    <input class='form-control' formControlName='freeTrailDays' id='freeTrailDays' placeholder='0' type='number' required value='0' >
                     <div class='icon-text'>
-<!--                      <i class="icon fa-regular fa-circle-question" placement="top" ngbTooltip="Days before starting the cycle"></i>-->
-                      <i class="icon fa-regular fa-circle-question" ></i>
-
+                      <i class="icon fa-regular fa-circle-question" placement="top" ngbTooltip="Days before starting the cycle" container="body"></i>
                       <span class='text'>Days</span>
-
                     </div>
                   </div>
                 </div>
@@ -128,7 +124,7 @@
           <div class='col-lg-9 col-md-12'>
             <div class='row'>
               <div class='col-lg-8 col-md-12'>
-                <div class='table-responsive'>
+                <div class='table-responsive' formGroupName="billingCyclePlans">
                   <table class='rounded-table'>
                     <thead class='rounded-table-head'>
                     <tr class='rounded-table-head-row'>
@@ -139,20 +135,20 @@
                     </thead>
                     <tbody class='rounded-table-body'>
                     <tr class='rounded-table-body-row' *ngFor='let bullingCycle of planBillingCycleList; let i = index'>
-                      <td class='rounded-table-body-cell'>
+                      <td class='rounded-table-body-cell' width='84'>
                         <div class="form-check form-switch">
                           <input [ngModelOptions]="{standalone: true}" [(ngModel)]="bullingCycle.active" (change)="toggleActiveStatus(bullingCycle)" class="form-check-input" type="checkbox" id="" [checked]="bullingCycle?.active">
                         </div>
                       </td>
-                      <td class='rounded-table-body-cell'>
-                        <div>
-                          <span>{{bullingCycle?.name}}</span>
-                          <span>Billed {{bullingCycle?.durationInDays}} Days, Each {{bullingCycle?.durationInDays}} days</span>
+                      <td class='rounded-table-body-cell' width='273'>
+                        <div class='bullingCycle-cell'>
+                          <span class='name'>{{bullingCycle?.name}}</span>
+                          <span class='info'>Billed {{bullingCycle?.durationInDays}} Days, Each {{bullingCycle?.durationInDays}} days</span>
                         </div>
                       </td>
-                      <td class='rounded-table-body-cell'>
+                      <td class='rounded-table-body-cell' width='155'>
                         <div class='control-icon'>
-                          <input [ngModelOptions]="{standalone: true}"  type='text' class='form-control' placeholder='{{"General::Price"|abpLocalization}}'  [(ngModel)]="bullingCycle.price" [value]='bullingCycle?.price' id='price-{{bullingCycle?.id}}'>
+                          <input [ngModelOptions]="{standalone: true}"  type='number' class='form-control' placeholder='{{"General::Price"|abpLocalization}}'  [(ngModel)]="bullingCycle.price" [value]='bullingCycle?.price' id='price-{{bullingCycle?.id}}'>
                           <span class='icon'>{{"General::SAR"|abpLocalization}}</span>
                         </div>
                       </td>
@@ -175,24 +171,28 @@
           <div class='col-lg-9 col-md-12'>
             <div class='row'>
               <div class='col-lg-8 col-md-12'>
-                <div class='form-group mb-0'>
-                  <div class="radio-box">
-                    <input type='radio' name='renewals' formControlName='renewals' id='renewalsTypeIdRadio1'
-                           [checked]='plan?.renewals == 0' [value]='0'/>
-                    <label class="form-check-label" for="renewalsTypeIdRadio1">
-                      <span class="title">{{"renewals::autoRenewal"|abpLocalization}}</span>
-                      <span class="desc">{{"renewals::autoRenewalDesc"|abpLocalization}}</span>
-                    </label>
+                <div class='row radio-box'>
+                  <div class='col-lg-6 col-md-12'>
+                    <div class="radio-box-wrapper">
+                      <input type='radio' name='renewals' formControlName='renewals' id='renewalsTypeIdRadio1'
+                             [checked]='plan?.renewals == 0' [value]='0'/>
+                      <label class="radio-box-label" for="renewalsTypeIdRadio1">
+                        <span class="title">{{"General::autoRenewal"|abpLocalization}}</span>
+                        <span class="desc">{{"General::autoRenewalDesc"|abpLocalization}}</span>
+                      </label>
+                    </div>
                   </div>
-                  <div class="radio-box">
-                    <input type='radio' name='renewals' formControlName='renewals' id='renewalsTypeIdRadio2'
-                           [checked]='plan?.renewals == 1' [value]='1' />
-                    <label class="form-check-label" for="renewalsTypeIdRadio2">
-                      <span class="title">{{"renewals::expireSubscription"|abpLocalization}}</span>
-                      <span class="desc">{{"renewals::expireSubscriptionDesc"|abpLocalization}}</span>
-                    </label>
+                  <div class='col-lg-6 col-md-12'>
+                    <div class="radio-box-wrapper">
+                      <input type='radio' name='renewals' formControlName='renewals' id='renewalsTypeIdRadio2'
+                             [checked]='plan?.renewals == 1' [value]='1' />
+                      <label class="radio-box-label" for="renewalsTypeIdRadio2">
+                        <span class="title">{{"General::expireSubscription"|abpLocalization}}</span>
+                        <span class="desc">{{"General::expireSubscriptionDesc"|abpLocalization}}</span>
+                      </label>
+                    </div>
                   </div>
-                </div>
+                  </div>
               </div>
             </div>
           </div>
@@ -210,7 +210,7 @@
                 <div class='form-group'>
                   <label class="form-label">{{"General::setupFee"|abpLocalization}}</label>
                   <div class='control-icon-text'>
-                    <input class='form-control' formControlName='setUpFees' id='setUpFees' placeholder='300' type='text' required>
+                    <input class='form-control' formControlName='setUpFees' id='setUpFees' placeholder='300' type='number' required value='0'>
                     <div class='icon-text'>
                       <span class='text'>{{"General::SAR"|abpLocalization}}</span>
                     </div>
@@ -239,8 +239,8 @@
               <div class='col-lg-8 col-md-12'>
                 <div class='form-group'>
                   <label class="form-label">{{"General::redirectTo"|abpLocalization}}</label>
-                  <div class="input-group input-group-icon">
-                    <span class="input-group-text" id="link">link</span>
+                  <div class="custom-input-group control-icon">
+                    <span class='text'>Link</span>
                     <input class='form-control' formControlName='redirectUrl' id='redirectUrl' placeholder='www.yoursite.com/directory' type='text' required>
                     <i class="icon fa-regular fa-circle-question" placement="top" ngbTooltip="Redirect to your Preferred URL Your customer will be redirected to this url after successful purchases."></i>
                   </div>
@@ -253,16 +253,15 @@
 
 
         <!--Srart Plan status  Sec-->
-        <div class='row g-0  pb-32'>
+        <div class='row g-0'>
           <div class='col-lg-3 col-md-12'>
-            <p class='form-name'>{{"General::pricingAndBilling"|abpLocalization}}</p>
+            <p class='form-name'>{{"General::planStatus"|abpLocalization}}</p>
           </div>
           <div class='col-lg-9 col-md-12'>
             <div class='row'>
               <div class='col-lg-8 col-md-12'>
-                <div class='form-group'>
+                <div class='form-group mb-0'>
                   <label class="form-label">{{"General::status"|abpLocalization}}</label>
-
                   <ng-select  placeholder='{{"General::planStatus"|abpLocalization}}' [clearable]="false"
                               formControlName='planStatus'>
                     <ng-option [value]="0">{{"General::Active"|abpLocalization}}</ng-option>

@@ -22,14 +22,14 @@
     font-weight: 400;
     line-height: 24px;
     transition: all ease-in-out 0.3s;
-    padding: 12px 14px;
+    padding: 10px 14px;
     &::placeholder{
       color: #667085;
       font-size: 14px;
       font-weight: 400;
       line-height: 24px;
     }
-    &:focus,&:hover{
+    &:focus{
       background: $light-color;
       border-color: #155EEF;
       color: #667085;
@@ -47,7 +47,7 @@
         right: 14px;
       }
       .form-control{
-        padding-right: 38px;
+        padding-right: 52px;
       }
     }
     &-icon-text{
@@ -57,13 +57,8 @@
       position: relative;
       .icon-text{
         position: absolute;
-        top: 0;
         right: 14px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        gap: 12px;
-        height: 100%;
+        top: 9px;
         .text{
           color: #101828;
           font-size: 14px;
@@ -74,6 +69,9 @@
           font-size: 16px;
           color: #667085;
           cursor: pointer;
+          margin-right: 12px;
+          position: relative;
+          top: 1px;
         }
       }
     }
@@ -86,7 +84,7 @@
   input[type='email'],
   input[type='tel'],
   input[type='password'],
-  input[type='text']{
+  input[type='number']{
     height: 40px;
   }
   &-group{
@@ -160,6 +158,92 @@
   }
 
 }
+
+.radio-box{
+  //display: flex;
+  //gap: 32px;
+  &-wrapper{
+    position: relative;
+
+    //position: relative;
+    //display: flex;
+    //padding: 16px;
+    //align-items: flex-start;
+    //gap: 4px;
+    //align-self: stretch;
+    //width: 236px;
+    //border-radius: 12px;
+    ////border: 2px solid #5673D9;
+    //border: 1px solid #EAECF0;
+    //background: #FFF;
+  }
+  &-label{
+    position: relative;
+    display: flex;
+    padding: 16px;
+    align-items: flex-start;
+    gap: 4px;
+    align-self: stretch;
+    border-radius: 12px;
+    border: 1px solid #EAECF0;
+    background: #FFF;
+    flex-direction: column;
+    cursor: pointer;
+    transition: all ease-in-out 0.3s;
+    .title{
+      color: #1E1E1E;
+      font-size: 16px;
+      font-weight: 500;
+      line-height: 24px;
+    }
+    .desc{
+      color: rgba(52, 64, 84, 0.70);
+      font-size: 13px;
+      font-weight: 400;
+      line-height: 20px;
+    }
+  }
+  input[type='radio']{
+    position: absolute;
+    right: 16px;
+    top: 16px;
+    z-index: 9;
+  }
+
+}
+
+input[type="radio"] {
+  -webkit-appearance: none;
+  cursor: pointer;
+  width: 16px;
+  height: 16px;
+  border-radius: 8px;
+  border: 1px solid  #D0D5DD;
+  background: #ffffff;
+  position: absolute;
+  right: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+input[type="radio"]:checked::before {
+  content: "";
+  position: absolute;
+  border: solid #5673D9;
+  border-radius: 50%;
+  width: 8px;
+  height: 8px;
+  background: #5673D9;
+}
+
+input[type="radio"]:checked {
+  border-color: #5673D9;
+}
+input[type="radio"]:checked ~ label{
+  border-color: #5673D9;
+
+}
 input:-webkit-autofill,
 input:-webkit-autofill:hover,
 input:-webkit-autofill:focus,
@@ -174,4 +258,32 @@ select:-webkit-autofill:focus{
   -webkit-box-shadow: 0 0 0px 1000px #ffffff inset;
   -webkit-transition: background-color 5000s ease-in-out 0s;
   transition: background-color 5000s ease-in-out 0s;
+}
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+input[type=number] {
+  -moz-appearance: textfield;
+  /* Firefox */
+}
+
+//.form .input-group > .form-control{
+//  border-top-right-radius: 8px !important;
+//  border-bottom-right-radius:8px !important ;
+//}
+.custom-input-group{
+  position: relative;
+  .form-control{
+    padding-left: 64px;
+  }
+  .text{
+    display: flex;
+    padding: 8px 12px;
+    align-items: center;
+    position: absolute;
+    height: 40px;
+    border-right: 1px solid #D0D5DD;
+  }
 }
