@@ -31,8 +31,6 @@ export class AddEditPlanComponent  implements OnInit{
    selectedCycles:BillingCyclePlanDto[] = [];
    planId;
 
-
-
   constructor(
     public _fb: FormBuilder,
     private _categoryService:CategoryService,
