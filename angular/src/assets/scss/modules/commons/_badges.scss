@@ -7,7 +7,7 @@
   font-weight: 500;
   line-height: 18px;
   &.badge{
-    &-sucess{
+    &-success{
       background-color: $success-opacity;
       color:$success;
     }
@@ -15,9 +15,9 @@
       background-color: $danger-opacity;
       color:$danger;
     }
-    &-warring{
-      background: $warring-opacity;
-      color: $warring;
+    &-default{
+      background: $default;
+      color: $main-text;
     }
   }
 

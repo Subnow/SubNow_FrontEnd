@@ -1,0 +1,16 @@
+<section >
+  <div class='section-header'>
+    <app-page-title-standalone title='{{"General::plans"|abpLocalization}}' description='{{"General::plansDes"|abpLocalization}}'></app-page-title-standalone>
+    <div class='section-header-actions'>
+      <button class='btn btn-primary' (click)='addEditCustomer()'>
+        <i class='fa-regular fa-plus'></i>
+        <span>{{"General::createPlanCategory"|abpLocalization}}</span>
+      </button>
+    </div>
+  </div>
+</section>
+<form>
+  <label for="datetime">Select date and time:</label>
+  <input class='form-control' type="datetime-local" id="datetime" >
+  <button type="submit" class='btn btn-primary'>Submit</button>
+</form>

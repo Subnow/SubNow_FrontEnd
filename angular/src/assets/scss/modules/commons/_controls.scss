@@ -329,4 +329,7 @@ html[dir='rtl']{
   .form .control-icon-text .icon-text .text{
     line-height: 14px;
   }
+  .is-invalid .form-control{
+    padding-right: 14px;
+  }
 }

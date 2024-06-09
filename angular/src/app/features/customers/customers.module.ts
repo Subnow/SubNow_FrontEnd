@@ -3,15 +3,23 @@ import { CommonModule } from '@angular/common';
 
 import { CustomersRoutingModule } from './customers-routing.module';
 import { CustomersComponent } from './customers.component';
+import { CustomerListComponent } from './customer-list/customer-list.component';
+import { AddEditCustomerComponent } from './add-edit-customer/add-edit-customer.component';
+import { PageTitleStandaloneComponent } from '../../standalone/page-title-standalone/page-title-standalone.component';
+import { SharedModule } from '../../shared/shared.module';
 
 
 @NgModule({
   declarations: [
-    CustomersComponent
+    CustomersComponent,
+    CustomerListComponent,
+    AddEditCustomerComponent
   ],
   imports: [
     CommonModule,
-    CustomersRoutingModule
+    CustomersRoutingModule,
+    PageTitleStandaloneComponent,
+    SharedModule
   ]
 })
 export class CustomersModule { }

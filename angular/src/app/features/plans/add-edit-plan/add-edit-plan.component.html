@@ -142,12 +142,12 @@
                       <td class='rounded-table-body-cell' width='273' [attr.data-label]="'General::bullingCycles' | abpLocalization">
                         <div class='bullingCycle-cell'>
                           <span class='name'>{{bullingCycle?.name}}</span>
-                          <span class='info'>{{"General::billed"|abpLocalization}} {{bullingCycle?.durationInDays}} {{"General::days"|abpLocalization}}, {{"General::each"|abpLocalization}} {{bullingCycle?.durationInDays}} {{"General::days"|abpLocalization}}</span>
+                          <span class='info'>{{"General::billed"|abpLocalization}} {{bullingCycle?.durationInDays}} {{"General::days"|abpLocalization}}, {{"General::each"|abpLocalization}} {{bullingCycle?.durationInDays}} <span class='text-lowercase'>{{"General::days"|abpLocalization}}</span></span>
                         </div>
                       </td>
                       <td class='rounded-table-body-cell' width='155' [attr.data-label]="'General::Price' | abpLocalization">
                         <div class='control-icon'>
-                          <input [ngModelOptions]="{standalone: true}"  type='number' class='form-control' placeholder='{{"General::Price"|abpLocalization}}'  [(ngModel)]="bullingCycle.price" [value]='bullingCycle?.price' id='price-{{bullingCycle?.id}}'>
+                          <input [ngModelOptions]="{standalone: true}"  type='number' class='form-control' placeholder='{{"General::Price"|abpLocalization}}'  [(ngModel)]="bullingCycle.price" value=''  id='price-{{bullingCycle?.id}}'>
                           <span class='icon'>{{"General::SAR"|abpLocalization}}</span>
                         </div>
                       </td>

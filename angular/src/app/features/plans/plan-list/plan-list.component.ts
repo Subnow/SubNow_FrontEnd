@@ -49,7 +49,7 @@ export class PlanListComponent implements OnInit{
           console.log('edit');
           this.categoryList?.splice(index, 1, updateCategory);
         } else {
-          //this.categoryList?.push(updateCategory);
+          this.categoryList?.push(updateCategory);
         }
       }
     })
