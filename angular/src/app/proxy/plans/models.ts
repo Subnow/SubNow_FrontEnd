@@ -6,6 +6,9 @@ export interface BillingCyclePlanDto {
   planId: string;
   billingCycleId: string;
   price: number;
+  active: boolean;
+  billingCycleName?: string;
+  durationInDays: number;
 }
 
 export interface CategoryPlansDto {

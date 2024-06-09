@@ -14,8 +14,7 @@
   </div>
   <div class='section-body'>
     <div class='section-row'>
-      <div class='row g-0' [class.sperator]='planByCategory?.plans.length > 0' *ngFor='let planByCategory of planList;let i = index'>
-        <ng-container *ngIf='planByCategory?.plans.length'>
+      <div class='row g-0' [class.sperator]='planByCategory?.plans.length > 0' *ngFor='let planByCategory of categoryPlanList;let i = index'>
           <div class='col-lg-3 col-md-4'>
             <div class='category'>
               <div class='category-info'>
@@ -26,22 +25,22 @@
             </div>
 
           </div>
-          <div class='col-lg-9 col-md-8'>
+          <div class='col-lg-9 col-md-8' *ngIf='planByCategory?.plans.length'>
             <div class='table-responsive'>
               <table class='rounded-table'>
                 <thead class='rounded-table-head'>
                 <tr class='rounded-table-head-row'>
-                  <th width='296' class='rounded-table-head-cell'>{{"General::name"|abpLocalization}}</th>
-                  <th class='rounded-table-head-cell'>{{"General::status"|abpLocalization}}</th>
-                  <th class='rounded-table-head-cell'>{{"General::SETUPFEE"|abpLocalization}}</th>
-                  <th class='rounded-table-head-cell'>{{"General::trial"|abpLocalization}}</th>
-                  <th class='rounded-table-head-cell'> {{"General::dateCreated"|abpLocalization}}</th>
+                  <th  class='rounded-table-head-cell'>{{"General::name"|abpLocalization}}</th>
+                  <th width='110' class='rounded-table-head-cell'>{{"General::status"|abpLocalization}}</th>
+                  <th width='120' class='rounded-table-head-cell'>{{"General::SETUPFEE"|abpLocalization}}</th>
+                  <th width='100' class='rounded-table-head-cell'>{{"General::trial"|abpLocalization}}</th>
+                  <th width='140' class='rounded-table-head-cell'> {{"General::dateCreated"|abpLocalization}}</th>
                   <th width='16' class='rounded-table-head-cell'></th>
                 </tr>
                 </thead>
                 <tbody class='rounded-table-body'>
                 <tr class='rounded-table-body-row' *ngFor='let plan of planByCategory?.plans; let i = index'>
-                  <td class='rounded-table-body-cell'>
+                  <td class='rounded-table-body-cell' [attr.data-label]="'General::name' | abpLocalization">
                     <div class='cell-name'>
                       <div class='avatar'>{{plan?.name.substring(0, 2)}}</div>
                       <div class='info'>
@@ -51,22 +50,22 @@
 
                     </div>
                   </td>
-                  <td class='rounded-table-body-cell'>
+                  <td class='rounded-table-body-cell' [attr.data-label]="'General::status' | abpLocalization">
                     <span class='badge badge-sucess' *ngIf='plan?.planStatus === 0'>{{"General::Active"|abpLocalization}}</span>
                     <span class='badge badge-danger' *ngIf='plan?.planStatus === 1'>{{"General::Disabled"|abpLocalization}}</span>
                     <span class='badge badge-warring' *ngIf='plan?.planStatus === 2'>{{"General::Paused"|abpLocalization}}</span>
 
                   </td>
-                  <td class='rounded-table-body-cell'>
+                  <td class='rounded-table-body-cell' [attr.data-label]="'General::SETUPFEE' | abpLocalization">
                     {{plan?.setUpFees}}
                   </td>
-                  <td class='rounded-table-body-cell'>
+                  <td class='rounded-table-body-cell' [attr.data-label]="'General::trial' | abpLocalization">
                     {{plan?.freeTrailDays}}
                   </td>
-                  <td class='rounded-table-body-cell'>
+                  <td class='rounded-table-body-cell' [attr.data-label]="'General::dateCreated' | abpLocalization">
                     {{plan?.creationTime | date: 'MMM dd, yyyy'}}
                   </td>
-                  <td class='rounded-table-body-cell'>
+                  <td class='rounded-table-body-cell cell-action'>
                     <a (click)='addEditPlan(plan,i,"edit")'><i class="fa-solid fa-pen"></i></a>
                   </td>
                 </tr>
@@ -74,14 +73,12 @@
               </table>
             </div>
           </div>
-        </ng-container>
-
       </div>
     </div>
 
   </div>
 </section>
 
-<!--<ng-container *ngIf='planList?.plans.length === 0'>-->
-<!--  <app-not-found-data-standalone></app-not-found-data-standalone>-->
-<!--</ng-container>-->
+<div *ngIf='!categoryPlanList.length'>
+  <app-not-found-data-standalone></app-not-found-data-standalone>
+</div>

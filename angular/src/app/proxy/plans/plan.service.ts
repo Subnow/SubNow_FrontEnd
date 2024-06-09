@@ -1,4 +1,4 @@
-import type { CategoryPlansDto, CreatePlanDto, PlanDto, UpdatePlanDto } from './models';
+import type { BillingCyclePlanDto, CategoryPlansDto, CreatePlanDto, PlanDto, UpdatePlanDto } from './models';
 import { RestService, Rest } from '@abp/ng.core';
 import type { ListResultDto, PagedAndSortedResultRequestDto, PagedResultDto } from '@abp/ng.core';
 import { Injectable } from '@angular/core';
@@ -39,6 +39,14 @@ export class PlanService {
     this.restService.request<any, ListResultDto<CategoryPlansDto>>({
       method: 'GET',
       url: '/api/app/plan/plans-for-company',
+    },
+    { apiName: this.apiName,...config });
+  
+
+  getBillingCyclePlan = (planId: string, config?: Partial<Rest.Config>) =>
+    this.restService.request<any, BillingCyclePlanDto[]>({
+      method: 'GET',
+      url: `/api/app/plan/billing-cycle-plan/${planId}`,
     },
     { apiName: this.apiName,...config });
   

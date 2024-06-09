@@ -44,10 +44,10 @@ export class CustomerService {
     { apiName: this.apiName,...config });
   
 
-  update = (id: string, input: UpdateCustomerDto, config?: Partial<Rest.Config>) =>
+  update = (input: UpdateCustomerDto, config?: Partial<Rest.Config>) =>
     this.restService.request<any, CustomerDto>({
       method: 'PUT',
-      url: `/api/app/customer/${id}`,
+      url: '/api/app/customer',
       body: input,
     },
     { apiName: this.apiName,...config });

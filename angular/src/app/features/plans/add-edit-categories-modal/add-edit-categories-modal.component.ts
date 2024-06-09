@@ -17,8 +17,6 @@ export class AddEditCategoriesModalComponent  implements OnInit{
   activeModal = inject(NgbActiveModal);
   isLoading = false;
   updateStatus;
-  addCategory;
-  editCategory;
 
   constructor(
     public _fb: FormBuilder,
@@ -34,12 +32,6 @@ export class AddEditCategoriesModalComponent  implements OnInit{
     this.form.get('status').valueChanges.subscribe(toggleValue => {
       this.updateStatus = toggleValue;
     });
-
-    this.addCategory = this._localizationService.get('General:categoryAddMsg')
-    this.editCategory = this._localizationService.get('General:categoryEditMsg')
-
-    console.log(this.addCategory)
-
   }
 
   initForm(){
@@ -52,14 +44,11 @@ export class AddEditCategoriesModalComponent  implements OnInit{
 
 
   createEditCategory(): void {
-    debugger
     if (!this.form) {
       return;
     }
     // this.isLoading = true;
     const { id } = this.category || {};
-    console.log('id cat ===>' , id)
-    console.log('this.updateStatus' , this.updateStatus)
     const updateCategory = {
       name: this.form.controls.name?.value,
       description: this.form.controls.description?.value,
@@ -72,11 +61,11 @@ export class AddEditCategoriesModalComponent  implements OnInit{
       .pipe(finalize(() => (this.isLoading = false)))
       .subscribe((value) => {
         if (id) {
-          this.toastr.success('::General:categoryAddMsg', '', {
+          this.toastr.success(this._localizationService.instant('General::categoryEditMsg'), '', {
             timeOut: 1000,
           });
         } else {
-          this.toastr.success('::General:categoryEditMsg', '', {
+          this.toastr.success(this._localizationService.instant('General::categoryAddMsg'), '', {
             timeOut: 1000,
           });
         }

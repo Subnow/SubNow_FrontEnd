@@ -140,3 +140,9 @@
   color: $success;
   background-color: unset;
 }
+html[dir='rtl']{
+  .ng-select .ng-arrow-wrapper .ng-arrow {
+    left: 25px;
+    right: auto;
+  }
+}

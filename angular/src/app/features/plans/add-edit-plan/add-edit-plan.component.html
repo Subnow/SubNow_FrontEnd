@@ -6,7 +6,7 @@
         <i class='fa fa-xmark'></i>
       </a>
       <h2 class='title'>{{"General::planCategory"|abpLocalization}}</h2>
-      <button  class='btn btn-save' type="submit"  (click)="createEditPlan()"  >
+      <button  class='btn btn-save' type="submit"  (click)="createEditPlan()" [disabled]="!form.valid">
         <span>{{"General::save"|abpLocalization}}</span>
       </button>
     </div>
@@ -19,7 +19,6 @@
     <div class='modal-body-wrapper'>
 
       <form class='form section-form' [formGroup]='form'>
-
         <!--Start General Sec-->
         <div class='row g-0  pb-32 border-bottom'>
           <div class='col-lg-3 col-md-12'>
@@ -32,7 +31,7 @@
                   <label class="form-label">{{"General::planName"|abpLocalization}}</label>
                   <div class='control-icon'>
                     <input class='form-control' formControlName='name' id='name' placeholder='{{"General::exStarterPlan"|abpLocalization}}' type='text' required>
-                    <i class="icon fa-regular fa-circle-question" placement="top" container="body"  ngbTooltip="The Plan Name in English"></i>
+                    <i class="icon fa-regular fa-circle-question" placement="top" container="body"  ngbTooltip='{{"General::planNameHint"|abpLocalization}}'></i>
                   </div>
                 </div>
               </div>
@@ -80,8 +79,8 @@
                   <div class='control-icon-text'>
                     <input class='form-control' formControlName='freeTrailDays' id='freeTrailDays' placeholder='0' type='number' required value='0' >
                     <div class='icon-text'>
-                      <i class="icon fa-regular fa-circle-question" placement="top" ngbTooltip="Days before starting the cycle" container="body"></i>
-                      <span class='text'>Days</span>
+                      <i class="icon fa-regular fa-circle-question" placement="top" ngbTooltip='{{"General::freeTrialHint"|abpLocalization}}' container="body"></i>
+                      <span class='text'>{{"General::days"|abpLocalization}}</span>
                     </div>
                   </div>
                 </div>
@@ -124,7 +123,7 @@
           <div class='col-lg-9 col-md-12'>
             <div class='row'>
               <div class='col-lg-8 col-md-12'>
-                <div class='table-responsive' formGroupName="billingCyclePlans">
+                <div class='table-responsive'>
                   <table class='rounded-table'>
                     <thead class='rounded-table-head'>
                     <tr class='rounded-table-head-row'>
@@ -135,18 +134,18 @@
                     </thead>
                     <tbody class='rounded-table-body'>
                     <tr class='rounded-table-body-row' *ngFor='let bullingCycle of planBillingCycleList; let i = index'>
-                      <td class='rounded-table-body-cell' width='84'>
+                      <td class='rounded-table-body-cell' width='84' [attr.data-label]="'General::action' | abpLocalization">
                         <div class="form-check form-switch">
                           <input [ngModelOptions]="{standalone: true}" [(ngModel)]="bullingCycle.active" (change)="toggleActiveStatus(bullingCycle)" class="form-check-input" type="checkbox" id="" [checked]="bullingCycle?.active">
                         </div>
                       </td>
-                      <td class='rounded-table-body-cell' width='273'>
+                      <td class='rounded-table-body-cell' width='273' [attr.data-label]="'General::bullingCycles' | abpLocalization">
                         <div class='bullingCycle-cell'>
                           <span class='name'>{{bullingCycle?.name}}</span>
-                          <span class='info'>Billed {{bullingCycle?.durationInDays}} Days, Each {{bullingCycle?.durationInDays}} days</span>
+                          <span class='info'>{{"General::billed"|abpLocalization}} {{bullingCycle?.durationInDays}} {{"General::days"|abpLocalization}}, {{"General::each"|abpLocalization}} {{bullingCycle?.durationInDays}} {{"General::days"|abpLocalization}}</span>
                         </div>
                       </td>
-                      <td class='rounded-table-body-cell' width='155'>
+                      <td class='rounded-table-body-cell' width='155' [attr.data-label]="'General::Price' | abpLocalization">
                         <div class='control-icon'>
                           <input [ngModelOptions]="{standalone: true}"  type='number' class='form-control' placeholder='{{"General::Price"|abpLocalization}}'  [(ngModel)]="bullingCycle.price" [value]='bullingCycle?.price' id='price-{{bullingCycle?.id}}'>
                           <span class='icon'>{{"General::SAR"|abpLocalization}}</span>
@@ -210,7 +209,7 @@
                 <div class='form-group'>
                   <label class="form-label">{{"General::setupFee"|abpLocalization}}</label>
                   <div class='control-icon-text'>
-                    <input class='form-control' formControlName='setUpFees' id='setUpFees' placeholder='300' type='number' required value='0'>
+                    <input class='form-control' formControlName='setUpFees' id='setUpFees' type='number' required>
                     <div class='icon-text'>
                       <span class='text'>{{"General::SAR"|abpLocalization}}</span>
                     </div>
@@ -220,7 +219,7 @@
               <div class='col-lg-4 col-md-12'>
                 <div class='form-group'>
                   <label class="form-label">{{"General::accountingCode"|abpLocalization}}</label>
-                  <input class='form-control' formControlName='accountingCode' id='accountingCode' placeholder='SKU-1234' type='text' required>
+                  <input (keydown.space)="$event.preventDefault()" class='form-control' formControlName='accountingCode' id='accountingCode' placeholder='SKU-1234' type='text' required>
                 </div>
               </div>
             </div>
@@ -240,9 +239,9 @@
                 <div class='form-group'>
                   <label class="form-label">{{"General::redirectTo"|abpLocalization}}</label>
                   <div class="custom-input-group control-icon">
-                    <span class='text'>Link</span>
+                    <span class='text'>{{"General::link"|abpLocalization}}</span>
                     <input class='form-control' formControlName='redirectUrl' id='redirectUrl' placeholder='www.yoursite.com/directory' type='text' required>
-                    <i class="icon fa-regular fa-circle-question" placement="top" ngbTooltip="Redirect to your Preferred URL Your customer will be redirected to this url after successful purchases."></i>
+                    <i class="icon fa-regular fa-circle-question" placement="top" ngbTooltip='{{"General::redirectHint"|abpLocalization}}'></i>
                   </div>
                 </div>
               </div>

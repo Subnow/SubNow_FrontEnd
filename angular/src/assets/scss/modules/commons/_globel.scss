@@ -19,6 +19,9 @@ a{
 .wrapper{
   padding: 32px 32px 48px 312px;
   height: 100%;
+  @media (max-width: 992px) {
+    padding: 32px 32px 48px 98px;
+  }
 }
 .section{
   &-header{
@@ -45,7 +48,12 @@ a{
     .sperator{
       padding-bottom: 20px;
       border-bottom: 1px solid #EAECF0;
+      &:last-child{
+        border-bottom: none;
+        padding: 0;
+      }
     }
+
   }
   &-form{
     display: flex;
@@ -101,5 +109,9 @@ a{
 html[dir='rtl']{
   .wrapper{
     padding: 32px 312px 48px 32px;
+    @media (max-width: 992px) {
+      padding: 32px 98px 48px 32px;
+    }
   }
+
 }

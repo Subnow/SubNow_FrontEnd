@@ -3,6 +3,9 @@
   flex-direction: column;
   align-items: flex-start;
   gap: 32px;
+  @media (max-width: 992px) {
+    margin-bottom: 32px;
+  }
   &-name{
     color:#344054;
     font-size: 14px;

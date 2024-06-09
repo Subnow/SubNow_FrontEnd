@@ -1,5 +1,5 @@
-import { Component, inject } from '@angular/core';
-import { BillingCyclePlanDto, CreatePlanDto, PlanDto, PlanService, UpdatePlanDto } from '@proxy/plans';
+import { Component, inject, OnInit } from '@angular/core';
+import { BillingCyclePlanDto, CategoryPlansDto, CreatePlanDto, PlanDto, PlanService, UpdatePlanDto } from '@proxy/plans';
 import {mapEnumToOptions} from '../../../shared/utils/mapEnumToOptions'
 import { PlanStatusType, PricingModelType, RenewalsPlan } from '@proxy/enums';
 import { NgbModal,NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
@@ -11,20 +11,22 @@ import { AddEditPlanComponent } from '../add-edit-plan/add-edit-plan.component';
   templateUrl: './plan-list.component.html',
   styleUrl: './plan-list.component.scss'
 })
-export class PlanListComponent {
+export class PlanListComponent implements OnInit{
   private modalService = inject(NgbModal);
   categoryList:CategoryDto[];
-  planList;
+  categoryPlanList:CategoryPlansDto[] = [];
   planStatus = mapEnumToOptions(PlanStatusType);
   isEdit:boolean = false;
   constructor(private _planService:PlanService) {
-    this.getPlanList()
+    this.getCategoryPlanList()
   }
+  ngOnInit(): void {
+    this.getCategoryPlanList()
 
-  getPlanList(){
+  }
+  getCategoryPlanList(){
     this._planService.getAllPlansForCompany().subscribe((res=>{
-      this.planList = res?.items;
-      console.log(this?.planList)
+      this.categoryPlanList = res?.items;
     }))
   }
 
@@ -39,7 +41,7 @@ export class PlanListComponent {
 
     (modal.componentInstance as AddEditCategoriesModalComponent).category = categoryObj;
      const reloadPlanList = modal.result.then((result =>{
-      this.getPlanList();
+      this.getCategoryPlanList();
     }))
     const closeSubscription = modal.closed.subscribe((updateCategory:UpdateCategoryDto)=>{
       if (updateCategory){
@@ -82,15 +84,15 @@ export class PlanListComponent {
     (modal.componentInstance as AddEditPlanComponent).isEdit = this.isEdit;
 
     const reloadPlanList = modal.result.then((result =>{
-      this.getPlanList();
+      this.getCategoryPlanList();
     }))
-    const closeSubscription = modal.closed.subscribe((updatePlan:UpdatePlanDto)=>{
+    const closeSubscription = modal.closed.subscribe((updatePlan:CategoryPlansDto)=>{
       if (updatePlan){
         if (typeof index === 'number') {
-          this.planList?.splice(index, 1, updatePlan);
+          this.categoryPlanList?.splice(index, 1, updatePlan);
           this.isEdit = true;
         } else {
-          this.planList?.push(this.planList);
+          this.categoryPlanList?.push(this.categoryPlanList as any);
         }
       }
     })

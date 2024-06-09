@@ -47,7 +47,8 @@ export const General = {
   starterP:'StarterP',
   planForBeginning:'خطط للبداية الكبيرة',
   freeTrialHint:'قبل أيام من بدء الدورة',
-  planNameHint:'plan Name Hint',
+  redirectHint:'إعادة التوجيه إلى الرابط المفضل لديك سيتم توجيه عميلك إلى هذا الرابط بعد إتمام الشراء بنجاح.',
+  planNameHint:'اسم الخطة باللغة الإنجليزية',
   planNameHintAr:'plan Name Hint Ar',
   redirectUrlHint:'إعادة توجيه URL',
   planCategory:'فئة الخطة',
@@ -59,10 +60,15 @@ export const General = {
   editCategory:'تعديل الفئه',
   categoryAddMsg:'تم أضافة التصنيف بنجاح ',
   categoryEditMsg:'تم تعديل التصنيف بنجاح ',
+  planAddMsg:'تم أضافة الخطه بنجاح',
+  planEditMsg:'تم تعديل الخطه بنجاح',
   model:"نموذج",
   fixedPrice:"سعر ثابت",
   dynamicPrice:"سعر متغير",
   SAR:"ريال",
   notFound: 'لا توجد بيانات لإظهارها.',
-
+  days:'يوم',
+  billed:'دفع',
+  each:'كل',
+  link:'الرابط'
 };

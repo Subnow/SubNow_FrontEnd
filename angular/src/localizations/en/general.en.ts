@@ -47,7 +47,8 @@ export const General = {
   starterP:'StarterP',
   planForBeginning:'Plan for the big beginning',
   freeTrialHint:'Days before starting the cycle',
-  planNameHint:'plan Name Hint',
+  redirectHint:'Redirect to your Preferred URL Your customer will be redirected to this url after successful purchases.',
+  planNameHint:'The Plan Name in English',
   planNameHintAr:'plan Name Hint Ar',
   redirectUrlHint:'redirect Url Hint',
   planCategory:'Plan Category',
@@ -65,8 +66,9 @@ export const General = {
   fixedPrice:"Fixed Price",
   dynamicPrice:"Dynamic Price",
   SAR:"SAR",
-  notFound:'No Data to show'
-
-
-
+  notFound:'No Data to show',
+  days:'Days',
+  billed:'Billed',
+  each:'Each',
+  link:"Link"
 };

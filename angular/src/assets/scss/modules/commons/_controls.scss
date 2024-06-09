@@ -4,6 +4,10 @@
     font-size: 14px;
     font-weight: 500;
     line-height: 20px;
+    @media (max-width: 992px) {
+      margin-bottom: 20px;
+      font-size: 20px;
+    }
   }
   &-label{
   color:#344054;
@@ -40,6 +44,7 @@
       position: relative;
       .icon{
         font-size: 16px;
+        line-height: 16px;
         color:#98A2B3 ;
         cursor: pointer;
         position: absolute;
@@ -148,6 +153,7 @@
       position: relative;
       .icon{
         font-size: 16px;
+        line-height: 16px;
         color: #98A2B3;
         cursor: pointer;
         position: absolute;
@@ -268,11 +274,6 @@ input[type=number] {
   -moz-appearance: textfield;
   /* Firefox */
 }
-
-//.form .input-group > .form-control{
-//  border-top-right-radius: 8px !important;
-//  border-bottom-right-radius:8px !important ;
-//}
 .custom-input-group{
   position: relative;
   .form-control{
@@ -285,5 +286,47 @@ input[type=number] {
     position: absolute;
     height: 40px;
     border-right: 1px solid #D0D5DD;
+  }
+}
+html[dir='rtl']{
+  .form .control-icon .form-control {
+    padding-right: 14px;
+    padding-left: 52px;
+  }
+  .form .control-icon .icon {
+    right: auto;
+    left: 14px;
+  }
+  .custom-input-group .form-control {
+    padding-right: 64px !important;
+  }
+  .custom-input-group .text{
+    border-right: none;
+    border-left: 1px solid #D0D5DD;
+  }
+  .form .control-icon-text .icon-text {
+    right: auto;
+    left: 14px;
+  }
+  .form .control-icon-text .form-control {
+    padding-right: 14px;
+    padding-left: 90px;
+  }
+  input[type='number']{
+    direction: rtl;
+  }
+  .form .control-icon-text .icon-text .icon {
+    margin-right: 0;
+    margin-left: 12px;
+  }
+  .radio-box input[type=radio] {
+    right: auto;
+    left: 16px;
+  }
+  .form .control-icon-text .icon-text .icon{
+    top: 4px;
+  }
+  .form .control-icon-text .icon-text .text{
+    line-height: 14px;
   }
 }
