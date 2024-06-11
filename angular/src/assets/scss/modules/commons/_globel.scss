@@ -106,6 +106,12 @@ a{
   border-bottom: 1px solid  #F9FAFB;
 }
 
+@media (min-width: 992px) {
+  .tooltip-inner {
+    max-width: none !important; /* Removes the default max-width */
+    white-space: nowrap !important; /* Prevents text from wrapping */
+  }
+}
 html[dir='rtl']{
   .wrapper{
     padding: 32px 312px 48px 32px;
