@@ -111,6 +111,7 @@
                 "bundleName": "ngx-datatable-material"
               },
               "node_modules/@fortawesome/fontawesome-free/css/all.css",
+              "node_modules/intl-tel-input/build/css/intlTelInput.css",
               "src/styles.scss"
             ],
             "scripts": [

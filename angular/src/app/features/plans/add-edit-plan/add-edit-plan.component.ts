@@ -39,11 +39,14 @@ export class AddEditPlanComponent  implements OnInit{
     if (this?.isEdit === true){
       this._planService.getBillingCyclePlan(this.plan?.id).subscribe(res=>{
         this.planBillingCycleList = res;
+        console.log('this.planBillingCycleList edit',this.planBillingCycleList)
       })
     }
     else {
       this._planService.getBillingCyclePlan('00000000-0000-0000-0000-000000000000').subscribe(res=>{
         this.planBillingCycleList = res;
+        console.log('this.planBillingCycleList ',this.planBillingCycleList)
+
       })
     }
     }
@@ -59,20 +62,38 @@ export class AddEditPlanComponent  implements OnInit{
 
   }
     initForm(){
-    this.form = this._fb.group({
-      name: [this.plan?.name, Validators.required],
-      code: [{value: this.plan?.code, disabled: this.isEdit}, Validators.required],
-      description: [this.plan?.description, Validators.required],
-      freeTrailDays: [0, Validators.required],
-      pricingModel: [{value: 0, disabled: true}, Validators.required],
-      setUpFees: [{value: 0, disabled: this.isEdit}, Validators.required],
-      categoryId: [this.plan?.categoryId, Validators.required],
-      renewals: [0, Validators.required],
-      accountingCode: [this.plan?.accountingCode, Validators.required],
-      planStatus: [0, Validators.required],
-      redirectUrl: [this.plan?.redirectUrl, Validators.required],
-      billingCyclePlans:[this.plan?.billingCyclePlans]
-    })
+    if (this.isEdit === true){
+      this.form = this._fb.group({
+        name: [{value: this.plan?.name, disabled: this.isEdit}, Validators.required],
+        code: [this.plan?.code, Validators.required],
+        description: [this.plan?.description, Validators.required],
+        freeTrailDays: [this.plan?.freeTrailDays, Validators.required],
+        pricingModel: [{value: this?.plan?.pricingModel, disabled: true}, Validators.required],
+        setUpFees: [this?.plan?.setUpFees, Validators.required],
+        categoryId: [this.plan?.categoryId, Validators.required],
+        renewals: [this.plan?.renewals, Validators.required],
+        accountingCode: [this.plan?.accountingCode, Validators.required],
+        planStatus: [this.plan?.planStatus, Validators.required],
+        redirectUrl: [this.plan?.redirectUrl, Validators.required],
+        billingCyclePlans:[this.plan?.billingCyclePlans]
+      })
+    }else{
+      this.form = this._fb.group({
+        name: [this.plan?.name, Validators.required],
+        code: [this.plan?.code, Validators.required],
+        description: [this.plan?.description, Validators.required],
+        freeTrailDays: [0, Validators.required],
+        pricingModel: [{ value:0,disabled: true }, Validators.required],
+        setUpFees: [0, Validators.required],
+        categoryId: [this.plan?.categoryId, Validators.required],
+        renewals: [0, Validators.required],
+        accountingCode: [this.plan?.accountingCode, Validators.required],
+        planStatus: [0, Validators.required],
+        redirectUrl: [this.plan?.redirectUrl, Validators.required],
+        billingCyclePlans:[this.plan?.billingCyclePlans]
+      })
+
+    }
   }
   createEditPlan(): void {
     if (!this.form) {

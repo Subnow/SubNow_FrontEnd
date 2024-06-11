@@ -5,12 +5,13 @@ import { ThemeSharedModule } from '@abp/ng.theme.shared';
 import { NgxValidateCoreModule } from '@ngx-validate/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NgApexchartsModule } from 'ng-apexcharts';
-import { NgbTooltipModule , NgbModalModule} from '@ng-bootstrap/ng-bootstrap';
+import { NgbTooltipModule , NgbModalModule,NgbNavModule,NgbDatepickerModule } from '@ng-bootstrap/ng-bootstrap';
 import { TruncatePipe } from './pipes/truncate.pipe';
 import { ClickOutsideModule } from 'ng-click-outside';
 import { CommonModule } from '@angular/common';
 import { ToastrModule } from 'ngx-toastr';
 import { NgSelectModule } from '@ng-select/ng-select';
+import { NgxIntlTelInputModule } from 'ngx-intl-tel-input';
 
 
 const moduleList = [
@@ -26,7 +27,10 @@ const moduleList = [
   ToastrModule,
   NgxValidateCoreModule,
   NgbTooltipModule,
-  NgSelectModule
+  NgSelectModule,
+  NgbNavModule,
+  NgbDatepickerModule,
+  NgxIntlTelInputModule
 ]
 
 const declarationList = [

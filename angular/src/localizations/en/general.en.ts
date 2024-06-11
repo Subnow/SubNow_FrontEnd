@@ -112,9 +112,5 @@ export const General = {
   customerEmailTooltip:"We will send Subscription related emails to this Email Address",
   customerPhoneTooltip:"We will send Subscription related messages to this Phone Number",
   companyRegistrationNumberTooltip:"Government’s Company registration Number",
-  taxIDTooltip:"Government’s Tax Identification Number"
-
-
-
-
+  taxIDTooltip:"Government’s Tax Identification Number",
 };

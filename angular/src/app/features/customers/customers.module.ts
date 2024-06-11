@@ -7,19 +7,21 @@ import { CustomerListComponent } from './customer-list/customer-list.component';
 import { AddEditCustomerComponent } from './add-edit-customer/add-edit-customer.component';
 import { PageTitleStandaloneComponent } from '../../standalone/page-title-standalone/page-title-standalone.component';
 import { SharedModule } from '../../shared/shared.module';
+import { InfoComponent } from './info/info.component';
 
 
 @NgModule({
   declarations: [
     CustomersComponent,
     CustomerListComponent,
-    AddEditCustomerComponent
+    AddEditCustomerComponent,
+    InfoComponent
   ],
   imports: [
     CommonModule,
     CustomersRoutingModule,
     PageTitleStandaloneComponent,
-    SharedModule
+    SharedModule,
   ]
 })
 export class CustomersModule { }

@@ -17,7 +17,6 @@
 <div class='modal-body'>
   <div class='container'>
     <div class='modal-body-wrapper'>
-
       <form class='form section-form' [formGroup]='form'>
         <!--Start General Sec-->
         <div class='row g-0  pb-32 border-bottom'>
@@ -141,7 +140,7 @@
                       </td>
                       <td class='rounded-table-body-cell' width='273' [attr.data-label]="'General::bullingCycles' | abpLocalization">
                         <div class='bullingCycle-cell'>
-                          <span class='name'>{{bullingCycle?.name}}</span>
+                          <span class='name'>{{bullingCycle?.billingCycleName}}</span>
                           <span class='info'>{{"General::billed"|abpLocalization}} {{bullingCycle?.durationInDays}} {{"General::days"|abpLocalization}}, {{"General::each"|abpLocalization}} {{bullingCycle?.durationInDays}} <span class='text-lowercase'>{{"General::days"|abpLocalization}}</span></span>
                         </div>
                       </td>
@@ -276,8 +275,6 @@
         <!--Srart Plan status Sec-->
 
       </form>
-
     </div>
-
   </div>
 </div>

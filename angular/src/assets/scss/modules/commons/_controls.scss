@@ -80,6 +80,14 @@
         }
       }
     }
+    &-hint{
+      color: #475467;
+      font-size: 14px;
+      font-weight: 400;
+      line-height: 20px;
+      margin-top: 6px;
+      display: block;
+    }
   }
   &-divider{
     border-top: 1px solid #EAECF0;
@@ -89,7 +97,8 @@
   input[type='email'],
   input[type='tel'],
   input[type='password'],
-  input[type='number']{
+  input[type='number'],
+  input.input-date{
     height: 40px;
   }
   &-group{
