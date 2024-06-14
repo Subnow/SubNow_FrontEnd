@@ -1,6 +1,6 @@
 import { Environment } from '@abp/ng.core';
 
-const baseUrl = 'http://localhost:4200';
+const baseUrl = 'http://134.209.111.164';
 
 export const environment = {
   production: true,
@@ -10,7 +10,7 @@ export const environment = {
     logoUrl: '',
   },
   oAuthConfig: {
-    issuer: 'http://134.209.111.164/',
+    issuer: 'http://localhost:5000/',
     redirectUri: baseUrl,
     clientId: 'SubNow_App',
     responseType: 'code',
@@ -19,7 +19,7 @@ export const environment = {
   },
   apis: {
     default: {
-      url: 'http://134.209.111.164',
+      url: 'http://localhost:5000',
       rootNamespace: 'SubNow',
     },
   },
