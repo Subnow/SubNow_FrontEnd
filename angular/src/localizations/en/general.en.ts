@@ -47,7 +47,8 @@ export const General = {
   starterP:'StarterP',
   planForBeginning:'Plan for the big beginning',
   freeTrialHint:'Days before starting the cycle',
-  redirectHint:'Redirect to your Preferred URL Your customer will be redirected to this url after successful purchases.',
+  redirectHintOne:"Redirect to your Preferred URL",
+  redirectHintTwo:'Your customer will be redirected to this url after successful purchases.',
   planNameHint:'The Plan Name in English',
   planNameHintAr:'plan Name Hint Ar',
   redirectUrlHint:'redirect Url Hint',
@@ -74,6 +75,7 @@ export const General = {
   addCustomer:"Add customer",
   totalCustomerAccounts:"Total Customer Accounts",
   searchForOrder:"Search for order",
+  search:"Search",
   plan:"Plan",
   dateJoined:"Date Joined",
   subscriptionExpiry:"Subscription Expiry",
@@ -113,4 +115,15 @@ export const General = {
   customerPhoneTooltip:"We will send Subscription related messages to this Phone Number",
   companyRegistrationNumberTooltip:"Government’s Company registration Number",
   taxIDTooltip:"Government’s Tax Identification Number",
+  RequiredInput: 'This field is required',
+  InvalidEmail: 'Enter a valid email',
+  InvalidPattern: 'Enter the data correctly',
+  invalid : 'Invalid data',
+  invalidContactUsName: 'The field must be in English and without symbols',
+  ThisFieldMustBeLessOrEqual: 'The value of this field must be less than or equal to {0}.',
+  ThisFieldMustBeAStringOrArrayTypeWithAMaximumLengthOf: 'The maximum number of characters is {0}',
+  customerAddMsg:'The customer add successfully',
+  customerEditMsg:'The customer add successfully',
+  customer:"Customer"
+
 };

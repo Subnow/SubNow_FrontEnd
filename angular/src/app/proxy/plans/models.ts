@@ -5,7 +5,7 @@ import type { PlanStatusType } from '../enums/plan-status-type.enum';
 export interface BillingCyclePlanDto {
   planId: string;
   billingCycleId: string;
-  price: number;
+  price?: number;
   active: boolean;
   billingCycleName?: string;
   durationInDays: number;
@@ -50,6 +50,10 @@ export interface PlanDto {
   redirectUrl?: string;
   creationTime?: string;
   billingCyclePlans: BillingCyclePlanDto[];
+}
+
+export interface PlanNameDto {
+  name?: string;
 }
 
 export interface UpdatePlanDto extends CreatePlanDto {

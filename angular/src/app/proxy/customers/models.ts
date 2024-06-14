@@ -29,6 +29,9 @@ export interface CustomerDto {
   email?: string;
   phone?: string;
   description?: string;
+  planName?: string;
+  planCode?: string;
+  subscribtionExpiryDate?: string;
   customerStatus: CustomerStatus;
   photo?: string;
   customerSince?: string;
@@ -43,6 +46,12 @@ export interface CustomerDto {
   countryId?: string;
   tags?: string;
   customerSource: number;
+}
+
+export interface GetCustomersFilterDto {
+  status?: CustomerStatus;
+  plan?: string;
+  searchTerm?: string;
 }
 
 export interface UpdateCustomerDto {

@@ -18,9 +18,6 @@
 <div class='modal-body'>
   <div class='container'>
       <div class='modal-body-wrapper'>
-        <div>
-
-        </div>
         <ul ngbNav #nav="ngbNav" class="custom-nav-tabs nav-tabs custom-width">
           <li ngbNavItem>
             <button ngbNavLink>
@@ -43,7 +40,7 @@
                           <label class="form-label">{{"General::customerName"|abpLocalization}}</label>
                           <div class='control-icon'>
                             <input class='form-control' formControlName='name' id='name' placeholder='Mike Johnson' type='text' required>
-                            <i class="icon fa-regular fa-circle-question" placement="top" container="body"  ngbTooltip='{{"General::customerName"|abpLocalization}}'></i>
+                            <i class="icon fa-regular fa-circle-question" tooltipClass="custom-tooltip" placement="top" container="body"  ngbTooltip='{{"General::customerName"|abpLocalization}}'></i>
                           </div>
                         </div>
                       </div>
@@ -57,7 +54,7 @@
                       <div class='col-lg-8 col-md-12'>
                         <div class='form-group'>
                           <label class="form-label">{{"General::customerDescription"|abpLocalization}}</label>
-                          <textarea formControlName='description' id='description' rows='2' placeholder='{{"General::customerDescriptionPlaceholder"|abpLocalization}}' class='form-control' required></textarea>
+                          <textarea formControlName='description' id='description' rows='2' placeholder='{{"General::customerDescriptionPlaceholder"|abpLocalization}}' class='form-control' required ></textarea>
                         </div>
                       </div>
                       <div class='col-lg-8 col-md-12'>
@@ -90,6 +87,7 @@
                                   ngbDatepicker
                                   #d="ngbDatepicker"
                                   formControlName='joinedSubnow'
+
                                 />
                                 <i class='icon'><i class="fa-regular fa-calendar"></i></i>
                               </div>
@@ -117,7 +115,7 @@
                           <label class="form-label">{{"General::customerEmail"|abpLocalization}}</label>
                           <div class='control-icon'>
                             <input class='form-control' formControlName='email' id='email' placeholder='MikeJohnson@gmail.com' type='email' required>
-                            <i class="icon fa-regular fa-circle-question" placement="top" container="body"  ngbTooltip='{{"General::customerEmailTooltip"|abpLocalization}}'></i>
+                            <i class="icon fa-regular fa-circle-question" tooltipClass="custom-tooltip" placement="top" container="body"  ngbTooltip='{{"General::customerEmailTooltip"|abpLocalization}}'></i>
                           </div>
                           <span class='control-hint'>{{"General::customerEmailHint"|abpLocalization}}</span>
                         </div>
@@ -139,7 +137,7 @@
                               id="phone"
                             >
                             </ngx-intl-tel-input>
-                            <i class="icon fa-regular fa-circle-question" placement="top" container="body"  ngbTooltip='{{"General::customerPhoneTooltip"|abpLocalization}}'></i>
+                            <i class="icon fa-regular fa-circle-question" tooltipClass="custom-tooltip" placement="top" container="body"  ngbTooltip='{{"General::customerPhoneTooltip"|abpLocalization}}'></i>
                           </div>
 
                           <span class='control-hint'>{{"General::customerPhoneHint"|abpLocalization}}</span>
@@ -189,7 +187,7 @@
                           <label class="form-label">{{"General::companyRegistrationNumber"|abpLocalization}}</label>
                           <div class='control-icon'>
                             <input class='form-control' formControlName='companyRegistryNumber' id='companyRegistryNumber'  type='text' required>
-                            <i class="icon fa-regular fa-circle-question" placement="top" container="body"  ngbTooltip='{{"General::companyRegistrationNumberTooltip"|abpLocalization}}'></i>
+                            <i class="icon fa-regular fa-circle-question" tooltipClass="custom-tooltip" placement="top" container="body"  ngbTooltip='{{"General::companyRegistrationNumberTooltip"|abpLocalization}}'></i>
                           </div>
                         </div>
                       </div>
@@ -198,7 +196,7 @@
                           <label class="form-label">{{"General::taxID"|abpLocalization}}</label>
                           <div class='control-icon'>
                             <input class='form-control' formControlName='vatid' id='vatid'  type='text' required>
-                            <i class="icon fa-regular fa-circle-question" placement="top" container="body"  ngbTooltip='{{"General::taxIDTooltip"|abpLocalization}}'></i>
+                            <i class="icon fa-regular fa-circle-question" tooltipClass="custom-tooltip" placement="top" container="body"  ngbTooltip='{{"General::taxIDTooltip"|abpLocalization}}'></i>
                           </div>
                         </div>
                       </div>
@@ -238,7 +236,7 @@
                       <div class='col-lg-8 col-md-12'>
                         <div class='form-group mb-0'>
                           <label class="form-label">{{"General::country"|abpLocalization}}</label>
-                          <ng-select class='select-country' [ngModelOptions]="{standalone: true}" [(ngModel)]="selectedCity" [items]="countryList" formControlName="countryId" bindLabel="name" bindValue="id"  placeholder='{{"General::preferredLanguage"|abpLocalization}}' [clearable]="false">
+                          <ng-select class='select-country' [ngModelOptions]="{standalone: true}" [(ngModel)]="selectedCity" [items]="countryList" formControlName="countryId" bindLabel="name" bindValue="id"  placeholder='{{"General::country"|abpLocalization}}' [clearable]="false">
                             <ng-template ng-label-tmp let-item="item">
                               <div class='country'>
                                 <img [src]='item?.flagUrl' class='img-fluid'>

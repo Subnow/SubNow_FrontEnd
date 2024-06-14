@@ -30,7 +30,7 @@
                   <label class="form-label">{{"General::planName"|abpLocalization}}</label>
                   <div class='control-icon'>
                     <input class='form-control' formControlName='name' id='name' placeholder='{{"General::exStarterPlan"|abpLocalization}}' type='text' required>
-                    <i class="icon fa-regular fa-circle-question" placement="top" container="body"  ngbTooltip='{{"General::planNameHint"|abpLocalization}}'></i>
+                    <i class="icon fa-regular fa-circle-question" tooltipClass="custom-tooltip" placement="top" container="body"  ngbTooltip='{{"General::planNameHint"|abpLocalization}}'></i>
                   </div>
                 </div>
               </div>
@@ -78,7 +78,7 @@
                   <div class='control-icon-text'>
                     <input class='form-control' formControlName='freeTrailDays' id='freeTrailDays' placeholder='0' type='number' required value='0' >
                     <div class='icon-text'>
-                      <i class="icon fa-regular fa-circle-question" placement="top" ngbTooltip='{{"General::freeTrialHint"|abpLocalization}}' container="body"></i>
+                      <i class="icon fa-regular fa-circle-question" tooltipClass="custom-tooltip" placement="top" ngbTooltip='{{"General::freeTrialHint"|abpLocalization}}' container="body"></i>
                       <span class='text'>{{"General::days"|abpLocalization}}</span>
                     </div>
                   </div>
@@ -235,12 +235,19 @@
           <div class='col-lg-9 col-md-12'>
             <div class='row'>
               <div class='col-lg-8 col-md-12'>
+                <ng-template #myTooltipTemplate>
+                  <div class='redirect-tooltip'>
+                    <span class='title'>{{"General::redirectHintOne"|abpLocalization}}</span>
+                    <p class='desc'>{{"General::redirectHintTwo"|abpLocalization}}</p>
+                  </div>
+                </ng-template>
+
                 <div class='form-group'>
                   <label class="form-label">{{"General::redirectTo"|abpLocalization}}</label>
                   <div class="custom-input-group control-icon">
                     <span class='text'>{{"General::link"|abpLocalization}}</span>
                     <input class='form-control' formControlName='redirectUrl' id='redirectUrl' placeholder='www.yoursite.com/directory' type='text' required>
-                    <i class="icon fa-regular fa-circle-question" placement="top" ngbTooltip='{{"General::redirectHint"|abpLocalization}}'></i>
+                    <i class="icon fa-regular fa-circle-question" tooltipClass="custom-tooltip-lg" placement="top" [ngbTooltip]="myTooltipTemplate"></i>
                   </div>
                 </div>
               </div>

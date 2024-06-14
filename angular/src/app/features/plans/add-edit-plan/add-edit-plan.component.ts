@@ -66,7 +66,7 @@ export class AddEditPlanComponent  implements OnInit{
       this.form = this._fb.group({
         name: [{value: this.plan?.name, disabled: this.isEdit}, Validators.required],
         code: [this.plan?.code, Validators.required],
-        description: [this.plan?.description, Validators.required],
+        description: [this.plan?.description, [Validators.required,Validators.maxLength(250)]],
         freeTrailDays: [this.plan?.freeTrailDays, Validators.required],
         pricingModel: [{value: this?.plan?.pricingModel, disabled: true}, Validators.required],
         setUpFees: [this?.plan?.setUpFees, Validators.required],
@@ -81,7 +81,7 @@ export class AddEditPlanComponent  implements OnInit{
       this.form = this._fb.group({
         name: [this.plan?.name, Validators.required],
         code: [this.plan?.code, Validators.required],
-        description: [this.plan?.description, Validators.required],
+        description: [this.plan?.description, [Validators.required,Validators.maxLength(250)]],
         freeTrailDays: [0, Validators.required],
         pricingModel: [{ value:0,disabled: true }, Validators.required],
         setUpFees: [0, Validators.required],

@@ -4,7 +4,7 @@ import { registerLocale } from '@abp/ng.core/locale';
 import { IdentityConfigModule } from '@abp/ng.identity/config';
 import { SettingManagementConfigModule } from '@abp/ng.setting-management/config';
 import { TenantManagementConfigModule } from '@abp/ng.tenant-management/config';
-import { InternetConnectionStatusComponent, ThemeSharedModule } from '@abp/ng.theme.shared';
+import { DEFAULT_VALIDATION_BLUEPRINTS, InternetConnectionStatusComponent, ThemeSharedModule } from '@abp/ng.theme.shared';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -56,7 +56,20 @@ import { NgxValidateCoreModule } from '@ngx-validate/core';
       ],
     }),
     AbpOAuthModule.forRoot(),
-    ThemeSharedModule.forRoot(),
+    ThemeSharedModule.forRoot({
+      validation: {
+        blueprints: {
+          ...DEFAULT_VALIDATION_BLUEPRINTS,
+          required: 'General::RequiredInput',
+          email: 'General::InvalidEmail',
+          pattern: 'General::InvalidPattern',
+          invalidContactUsName: 'General::InvalidContactUsName',
+          max: 'General::ThisFieldMustBeLessOrEqual[{{ max }}]',
+          maxLength: 'General::ThisFieldMustBeAStringOrArrayTypeWithAMaximumLengthOf[{{ maxLength }}]'
+        },
+      },
+    }),
+
     CustomCoreModule,
     AccountConfigModule.forRoot(),
     IdentityConfigModule.forRoot(),

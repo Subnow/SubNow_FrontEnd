@@ -7,7 +7,7 @@ import { CustomerListComponent } from './customer-list/customer-list.component';
 import { AddEditCustomerComponent } from './add-edit-customer/add-edit-customer.component';
 import { PageTitleStandaloneComponent } from '../../standalone/page-title-standalone/page-title-standalone.component';
 import { SharedModule } from '../../shared/shared.module';
-import { InfoComponent } from './info/info.component';
+import { NotFoundDataStandaloneComponent } from '../../standalone/not-found-data-standalone/not-found-data-standalone.component';
 
 
 @NgModule({
@@ -15,12 +15,12 @@ import { InfoComponent } from './info/info.component';
     CustomersComponent,
     CustomerListComponent,
     AddEditCustomerComponent,
-    InfoComponent
   ],
   imports: [
     CommonModule,
     CustomersRoutingModule,
     PageTitleStandaloneComponent,
+    NotFoundDataStandaloneComponent,
     SharedModule,
   ]
 })

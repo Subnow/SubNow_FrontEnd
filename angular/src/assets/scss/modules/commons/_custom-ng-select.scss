@@ -140,6 +140,25 @@
   color: $success;
   background-color: unset;
 }
+.ng-select.ng-select-single .ng-select-container .ng-value-container .ng-input,
+.ng-select .ng-select-container .ng-value-container .ng-input>input{
+  height: 100%;
+}
+.select-dot{
+  .ng-select-container{
+    .name{
+      color: #101828;
+    }
+  }
+  .info{
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .dot{
+    font-size: 10px;
+  }
+}
 html[dir='rtl']{
   .ng-select .ng-arrow-wrapper .ng-arrow {
     left: 25px;

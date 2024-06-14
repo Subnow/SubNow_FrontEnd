@@ -1,5 +1,5 @@
-<section >
-  <div class='section-header'>
+<section class='customer'>
+  <div class='section-header border-0 pb-0'>
     <app-page-title-standalone title='{{"General::customers"|abpLocalization}}' ></app-page-title-standalone>
     <div class='section-header-actions'>
       <button class='btn btn-primary' (click)='addEditCustomer()'>
@@ -8,4 +8,110 @@
       </button>
     </div>
   </div>
+  <div class='section-body'>
+    <div class='total-customer'>
+      <p class='name'>{{"General::totalCustomerAccounts"|abpLocalization}}</p>
+      <span class='info'>{{this.totalCustomer}}</span>
+    </div>
+    <div class='table-filter-wrapper'>
+      <div class='filter'>
+        <form class='form row g-0' [formGroup]='form'>
+          <div class='col-lg-4 col-md-6'>
+              <label class='form-label'>{{"General::searchForOrder"|abpLocalization}}</label>
+              <div class='input-search'>
+                <i class='icon fa-search fa-solid'></i>
+                <input (input)='onChangeFilter($event)' class='form-control' type='text' placeholder='{{"General::search"|abpLocalization}}' formControlName='searchTerm'>
+            </div>
+          </div>
+          <div class='col-lg-2 col-md-6'>
+              <label class='form-label'>{{"General::plan"|abpLocalization}}</label>
+              <ng-select class='select-dot' formControlName='plan' [items]="planList"  bindLabel="name" bindValue="name"  placeholder='{{"General::plan"|abpLocalization}}' [clearable]="false">
+                <ng-template ng-label-tmp let-item="item">
+                  <div class='info'>
+                    <span class='dot text-primary'><i class="fa-solid fa-circle"></i></span>
+                    <span class='name'>{{item?.name}}</span>
+                  </div>
+                </ng-template>
+              </ng-select>
+          </div>
+
+
+        </form>
+
+      </div>
+      <div *ngIf='!customerList.length'>
+        <app-not-found-data-standalone></app-not-found-data-standalone>
+      </div>
+
+      <div class='table-responsive' *ngIf='customerList.length'>
+        <table class='rounded-table'>
+          <thead class='rounded-table-head'>
+          <tr class='rounded-table-head-row'>
+            <th width='386' class='rounded-table-head-cell'>
+              <div class='sort-cell'>
+                <span>{{"General::customer"|abpLocalization}}</span>
+                <a (click)='sortData()' class="sort fa-solid fa-arrow-down" *ngIf='!isSort'></a>
+                <a (click)='unSortdata()' class="sort fa-solid fa-arrow-up" *ngIf='isSort'></a>
+
+              </div>
+              </th>
+            <th width='210' class='rounded-table-head-cell'>{{"General::plan"|abpLocalization}}</th>
+            <th width='140' class='rounded-table-head-cell'>{{"General::dateJoined"|abpLocalization}}</th>
+            <th width='160' class='rounded-table-head-cell'> {{"General::subscriptionExpiry"|abpLocalization}}</th>
+            <th width='70' class='rounded-table-head-cell'></th>
+          </tr>
+          </thead>
+          <tbody class='rounded-table-body'>
+          <tr class='rounded-table-body-row' *ngFor='let customer of customerList; let i = index'>
+            <td class='rounded-table-body-cell' [attr.data-label]="'General::customer' | abpLocalization">
+              <div class='cell-name'>
+                <div class='avatar'>{{customer?.name.substring(0, 2)}}</div>
+                <div class='info'>
+                  <span class='name'>{{customer?.name}}</span>
+                  <span class='code'>{{customer?.customerKey}}</span>
+                </div>
+
+              </div>
+            </td>
+            <td class='rounded-table-body-cell' [attr.data-label]="'General::plan' | abpLocalization">
+              <div class='cell-name'>
+                <div class='info'>
+                  <span class='name'>{{customer?.planName}}</span>
+                  <span class='code'>{{customer?.planCode}}</span>
+                </div>
+
+              </div>
+            </td>
+            <td class='rounded-table-body-cell' [attr.data-label]="'General::dateJoined' | abpLocalization">
+              {{customer?.joinedSubnow | date: 'MMM dd, yyyy'}}
+            </td>
+            <td class='rounded-table-body-cell' [attr.data-label]="'General::subscriptionExpiry' | abpLocalization">
+              {{customer?.subscribtionExpiryDate | date: 'MMM dd, yyyy'}}
+            </td>
+<!--            <td class='rounded-table-body-cell cell-action'>-->
+<!--              <div ngbDropdown class="d-inline-block">-->
+<!--                <a type="button" class="btn btn-outline-primary" id="actions" ngbDropdownToggle>-->
+<!--                  <i class="fa-solid fa-ellipsis-vertical"></i>-->
+<!--                </a>-->
+<!--                <div ngbDropdownMenu aria-labelledby="actions">-->
+<!--                  <a ngbDropdownItem (click)='addEditCustomer(customer,i,"edit")'>-->
+<!--                    <i class="fa-solid fa-pen"></i>-->
+<!--                    <span>{{"General::edit"|abpLocalization}}</span>-->
+<!--                  </a>-->
+<!--                </div>-->
+<!--              </div>-->
+<!--            </td>-->
+            <td class='rounded-table-body-cell cell-action'>
+              <a (click)='addEditCustomer(customer,i,"edit")'><i class="fa-solid fa-pen"></i></a>
+            </td>
+          </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+  </div>
 </section>
+
+
+

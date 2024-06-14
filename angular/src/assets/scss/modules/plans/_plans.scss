@@ -38,3 +38,11 @@
     line-height: 20px;
   }
 }
+.redirect-tooltip{
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  .title{
+    font-weight: 600;
+  }
+}

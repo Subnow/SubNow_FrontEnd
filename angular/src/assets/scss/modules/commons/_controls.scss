@@ -172,6 +172,12 @@
     }
   }
 
+  @media (max-width: 992px) {
+    .mb-0{
+      margin-bottom: 25px !important;
+    }
+  }
+
 }
 
 .radio-box{
@@ -295,6 +301,18 @@ input[type=number] {
     position: absolute;
     height: 40px;
     border-right: 1px solid #D0D5DD;
+  }
+}
+.input-search{
+  position: relative;
+  .form-control{
+    padding-left: 48px;
+  }
+  .icon{
+    position: absolute;
+    font-size: 20px;
+    left: 14px;
+    top: 10px;
   }
 }
 html[dir='rtl']{

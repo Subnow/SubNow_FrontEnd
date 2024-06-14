@@ -1349,6 +1349,23 @@
                     "type": "System.Void",
                     "typeSimple": "System.Void"
                   }
+                },
+                {
+                  "name": "GetFilteredCustomersAsync",
+                  "parametersOnMethod": [
+                    {
+                      "name": "input",
+                      "typeAsString": "SubNow.Customers.GetCustomersFilterDto, SubNow.Application.Contracts",
+                      "type": "SubNow.Customers.GetCustomersFilterDto",
+                      "typeSimple": "SubNow.Customers.GetCustomersFilterDto",
+                      "isOptional": false,
+                      "defaultValue": null
+                    }
+                  ],
+                  "returnValue": {
+                    "type": "System.Collections.Generic.List<SubNow.Customers.CustomerDto>",
+                    "typeSimple": "[SubNow.Customers.CustomerDto]"
+                  }
                 }
               ]
             }
@@ -1448,6 +1465,67 @@
               "returnValue": {
                 "type": "Volo.Abp.Application.Dtos.PagedResultDto<SubNow.Customers.CustomerDto>",
                 "typeSimple": "Volo.Abp.Application.Dtos.PagedResultDto<SubNow.Customers.CustomerDto>"
+              },
+              "allowAnonymous": false,
+              "implementFrom": "SubNow.Customers.ICustomerAppService"
+            },
+            "GetFilteredCustomersAsyncByInput": {
+              "uniqueName": "GetFilteredCustomersAsyncByInput",
+              "name": "GetFilteredCustomersAsync",
+              "httpMethod": "GET",
+              "url": "api/app/customer/filtered-customers",
+              "supportedVersions": [],
+              "parametersOnMethod": [
+                {
+                  "name": "input",
+                  "typeAsString": "SubNow.Customers.GetCustomersFilterDto, SubNow.Application.Contracts",
+                  "type": "SubNow.Customers.GetCustomersFilterDto",
+                  "typeSimple": "SubNow.Customers.GetCustomersFilterDto",
+                  "isOptional": false,
+                  "defaultValue": null
+                }
+              ],
+              "parameters": [
+                {
+                  "nameOnMethod": "input",
+                  "name": "Status",
+                  "jsonName": null,
+                  "type": "System.String",
+                  "typeSimple": "string",
+                  "isOptional": false,
+                  "defaultValue": null,
+                  "constraintTypes": null,
+                  "bindingSourceId": "ModelBinding",
+                  "descriptorName": "input"
+                },
+                {
+                  "nameOnMethod": "input",
+                  "name": "Plan",
+                  "jsonName": null,
+                  "type": "System.String",
+                  "typeSimple": "string",
+                  "isOptional": false,
+                  "defaultValue": null,
+                  "constraintTypes": null,
+                  "bindingSourceId": "ModelBinding",
+                  "descriptorName": "input"
+                },
+                {
+                  "nameOnMethod": "input",
+                  "name": "SearchTerm",
+                  "jsonName": null,
+                  "type": "System.String",
+                  "typeSimple": "string",
+                  "isOptional": false,
+                  "defaultValue": null,
+                  "constraintTypes": null,
+                  "bindingSourceId": "ModelBinding",
+                  "descriptorName": "input"
+                }
+              ],
+              "returnValue": {
+                "type": "System.Collections.Generic.List<SubNow.Customers.CustomerDto>",
+                "typeSimple": "[SubNow.Customers.CustomerDto]"
               },
               "allowAnonymous": false,
               "implementFrom": "SubNow.Customers.ICustomerAppService"
@@ -1650,6 +1728,14 @@
                   "returnValue": {
                     "type": "System.Collections.Generic.List<SubNow.Plans.BillingCyclePlanDto>",
                     "typeSimple": "[SubNow.Plans.BillingCyclePlanDto]"
+                  }
+                },
+                {
+                  "name": "GetPlanNameAsync",
+                  "parametersOnMethod": [],
+                  "returnValue": {
+                    "type": "System.Collections.Generic.List<SubNow.Plans.PlanNameDto>",
+                    "typeSimple": "[SubNow.Plans.PlanNameDto]"
                   }
                 },
                 {
@@ -2037,6 +2123,21 @@
               "returnValue": {
                 "type": "System.Collections.Generic.List<SubNow.Plans.BillingCyclePlanDto>",
                 "typeSimple": "[SubNow.Plans.BillingCyclePlanDto]"
+              },
+              "allowAnonymous": false,
+              "implementFrom": "SubNow.Plans.IPlanAppService"
+            },
+            "GetPlanNameAsync": {
+              "uniqueName": "GetPlanNameAsync",
+              "name": "GetPlanNameAsync",
+              "httpMethod": "GET",
+              "url": "api/app/plan/plan-name",
+              "supportedVersions": [],
+              "parametersOnMethod": [],
+              "parameters": [],
+              "returnValue": {
+                "type": "System.Collections.Generic.List<SubNow.Plans.PlanNameDto>",
+                "typeSimple": "[SubNow.Plans.PlanNameDto]"
               },
               "allowAnonymous": false,
               "implementFrom": "SubNow.Plans.IPlanAppService"
@@ -5218,6 +5319,42 @@
           "regex": null
         },
         {
+          "name": "PlanName",
+          "jsonName": null,
+          "type": "System.String",
+          "typeSimple": "string",
+          "isRequired": false,
+          "minLength": null,
+          "maxLength": null,
+          "minimum": null,
+          "maximum": null,
+          "regex": null
+        },
+        {
+          "name": "PlanCode",
+          "jsonName": null,
+          "type": "System.String",
+          "typeSimple": "string",
+          "isRequired": false,
+          "minLength": null,
+          "maxLength": null,
+          "minimum": null,
+          "maximum": null,
+          "regex": null
+        },
+        {
+          "name": "SubscribtionExpiryDate",
+          "jsonName": null,
+          "type": "System.DateTime?",
+          "typeSimple": "string?",
+          "isRequired": false,
+          "minLength": null,
+          "maxLength": null,
+          "minimum": null,
+          "maximum": null,
+          "regex": null
+        },
+        {
           "name": "CustomerStatus",
           "jsonName": null,
           "type": "SubNow.Enums.CustomerStatus",
@@ -5378,6 +5515,51 @@
           "jsonName": null,
           "type": "System.Int32",
           "typeSimple": "number",
+          "isRequired": false,
+          "minLength": null,
+          "maxLength": null,
+          "minimum": null,
+          "maximum": null,
+          "regex": null
+        }
+      ]
+    },
+    "SubNow.Customers.GetCustomersFilterDto": {
+      "baseType": null,
+      "isEnum": false,
+      "enumNames": null,
+      "enumValues": null,
+      "genericArguments": null,
+      "properties": [
+        {
+          "name": "Status",
+          "jsonName": null,
+          "type": "SubNow.Enums.CustomerStatus?",
+          "typeSimple": "SubNow.Enums.CustomerStatus?",
+          "isRequired": false,
+          "minLength": null,
+          "maxLength": null,
+          "minimum": null,
+          "maximum": null,
+          "regex": null
+        },
+        {
+          "name": "Plan",
+          "jsonName": null,
+          "type": "System.String",
+          "typeSimple": "string",
+          "isRequired": false,
+          "minLength": null,
+          "maxLength": null,
+          "minimum": null,
+          "maximum": null,
+          "regex": null
+        },
+        {
+          "name": "SearchTerm",
+          "jsonName": null,
+          "type": "System.String",
+          "typeSimple": "string",
           "isRequired": false,
           "minLength": null,
           "maxLength": null,
@@ -5712,7 +5894,7 @@
           "regex": null
         },
         {
-          "name": "ArabicName",
+          "name": "FlagUrl",
           "jsonName": null,
           "type": "System.String",
           "typeSimple": "string",
@@ -5759,8 +5941,8 @@
         {
           "name": "Price",
           "jsonName": null,
-          "type": "System.Decimal",
-          "typeSimple": "number",
+          "type": "System.Decimal?",
+          "typeSimple": "number?",
           "isRequired": true,
           "minLength": null,
           "maxLength": null,
@@ -6217,6 +6399,27 @@
         }
       ]
     },
+    "SubNow.Plans.PlanNameDto": {
+      "baseType": null,
+      "isEnum": false,
+      "enumNames": null,
+      "enumValues": null,
+      "genericArguments": null,
+      "properties": [
+        {
+          "name": "Name",
+          "jsonName": null,
+          "type": "System.String",
+          "typeSimple": "string",
+          "isRequired": false,
+          "minLength": null,
+          "maxLength": null,
+          "minimum": null,
+          "maximum": null,
+          "regex": null
+        }
+      ]
+    },
     "SubNow.Plans.UpdatePlanDto": {
       "baseType": "SubNow.Plans.CreatePlanDto",
       "isEnum": false,
@@ -6230,6 +6433,41 @@
           "type": "System.Guid",
           "typeSimple": "string",
           "isRequired": true,
+          "minLength": null,
+          "maxLength": null,
+          "minimum": null,
+          "maximum": null,
+          "regex": null
+        }
+      ]
+    },
+    "System.Nullable<T0>": {
+      "baseType": "System.ValueType",
+      "isEnum": false,
+      "enumNames": null,
+      "enumValues": null,
+      "genericArguments": [
+        "T"
+      ],
+      "properties": [
+        {
+          "name": "HasValue",
+          "jsonName": null,
+          "type": "System.Boolean",
+          "typeSimple": "boolean",
+          "isRequired": false,
+          "minLength": null,
+          "maxLength": null,
+          "minimum": null,
+          "maximum": null,
+          "regex": null
+        },
+        {
+          "name": "Value",
+          "jsonName": null,
+          "type": "T",
+          "typeSimple": "T",
+          "isRequired": false,
           "minLength": null,
           "maxLength": null,
           "minimum": null,

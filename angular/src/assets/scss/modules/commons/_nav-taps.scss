@@ -15,6 +15,10 @@
     &-item{
       margin: 0 !important;
       bottom: 0;
+      outline: none !important;
+      &:focus-visible{
+        outline: none !important;
+      }
     }
     &-link{
       display: flex;
@@ -63,4 +67,9 @@
 .tab-content{
   padding:0;
   padding-top: 32px !important;
+}
+html[dir='rtl']{
+  .custom-nav-tabs .nav-link.active{
+      border-right: 0 !important;
+  }
 }

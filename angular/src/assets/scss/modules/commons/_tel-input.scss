@@ -44,3 +44,29 @@ ngx-intl-tel-input{
     padding-left: 70px !important;
   }
 }
+.search-container{
+  outline: none !important;
+}
+.iti--allow-dropdown .search-container input{
+  border-width: 0;
+  border-radius: 0;
+  padding: 9px 12px !important;
+  padding-left: 12px !important;
+  border-bottom: 1px solid #D0D5DD;
+}
+.iti__country-list{
+  box-shadow: none !important;
+}
+html[dir='rtl']{
+  .iti__country-list,
+  .iti--allow-dropdown .search-container input{
+    direction: ltr;
+  }
+  ngx-intl-tel-input .iti__arrow:before{
+    left: 30px;
+  }
+  ngx-intl-tel-input ~ .icon{
+    right: 14px !important;
+    left: auto !important;
+  }
+}
