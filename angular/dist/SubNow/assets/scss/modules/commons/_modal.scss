@@ -1,0 +1,65 @@
+.custom-modal{
+  background-color: #F9FAFB;
+}
+.modal{
+  &-fullscreen{
+    .modal{
+      &-header{
+        background: #FFF;
+        height: 64px;
+        border-bottom: 1px solid #E5E7EB ;
+        margin-bottom: 26px;
+        &-wrapper{
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+        }
+        .btn-save{
+          display: flex;
+          padding: 10px 16px;
+          justify-content: center;
+          align-items: center;
+          gap: 8px;
+          background-color: $save-btn;
+          box-shadow: 0px 1px 2px 0px rgba(16, 24, 40, 0.05);
+          color: $light-color;
+          font-size: 14px;
+          font-weight: 600;
+          line-height: 20px;
+        }
+        .title{
+          color:  #101828;
+          font-family: "IBM Plex Sans Arabic";
+          font-size: 18px;
+          font-weight: 600;
+          line-height: 28px;
+        }
+
+      }
+      &-close{
+        font-family: "IBM Plex Sans Arabic";
+        width: 32px;
+        height: 32px;
+        padding: 6px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 8px;
+        border: 1px solid #E5E7EB;
+        color: #111827;
+        font-size: 20px;
+
+      }
+      &-content{
+        background-color: #F9FAFB;
+      }
+      &-body{
+        padding: 0;
+        &-wrapper{
+          padding: 32px 32px 48px 32px;
+        }
+
+      }
+    }
+  }
+}

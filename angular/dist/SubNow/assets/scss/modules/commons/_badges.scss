@@ -1,0 +1,24 @@
+.badge{
+  display: inline-flex;
+  padding: 2px 8px;
+  align-items: center;
+  border-radius: 16px;
+  font-size: 12px;
+  font-weight: 500;
+  line-height: 18px;
+  &.badge{
+    &-success{
+      background-color: $success-opacity;
+      color:$success;
+    }
+    &-danger{
+      background-color: $danger-opacity;
+      color:$danger;
+    }
+    &-default{
+      background: $default;
+      color: $main-text;
+    }
+  }
+
+}
