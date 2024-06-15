@@ -11,7 +11,7 @@ export class SideMenuComponent {
   isSideMenuActive: boolean = false;
 
 
-currentUser;
+currentUser?;
  constructor(
    private authService: AuthService,
    private config: ConfigStateService
