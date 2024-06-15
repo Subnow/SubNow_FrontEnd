@@ -3,23 +3,23 @@ import { Environment } from '@abp/ng.core';
 const baseUrl = 'http://localhost:4200';
 
 export const environment = {
-  production: false,
+  production: true,
   application: {
     baseUrl,
     name: 'SubNow',
     logoUrl: '',
   },
   oAuthConfig: {
-    issuer: 'https://localhost:44329/',
+    issuer: 'http://134.209.111.164',
     redirectUri: baseUrl,
     clientId: 'SubNow_App',
     responseType: 'code',
     scope: 'offline_access SubNow',
-    requireHttps: true,
+    requireHttps: false
   },
   apis: {
     default: {
-      url: 'https://localhost:44329',
+      url: 'http://134.209.111.164',
       rootNamespace: 'SubNow',
     },
   },

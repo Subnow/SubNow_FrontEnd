@@ -10,16 +10,16 @@ export const environment = {
     logoUrl: '',
   },
   oAuthConfig: {
-    issuer: 'http://localhost:5000/',
+    issuer: 'http://134.209.111.164',
     redirectUri: baseUrl,
     clientId: 'SubNow_App',
     responseType: 'code',
     scope: 'offline_access SubNow',
-    requireHttps: true
+    requireHttps: false
   },
   apis: {
     default: {
-      url: 'http://localhost:5000',
+      url: 'http://134.209.111.164',
       rootNamespace: 'SubNow',
     },
   },

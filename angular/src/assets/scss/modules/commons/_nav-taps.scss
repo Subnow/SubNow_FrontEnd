@@ -64,6 +64,9 @@
    }
 
 }
+.nav-tabs .nav-item .nav-link.active{
+  outline: none !important;
+}
 .tab-content{
   padding:0;
   padding-top: 32px !important;
