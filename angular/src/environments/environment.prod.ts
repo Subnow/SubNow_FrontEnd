@@ -1,6 +1,6 @@
 import { Environment } from '@abp/ng.core';
 
-const baseUrl = 'subnow.netlify.app';
+const baseUrl = 'https://134.209.111.164';
 
 export const environment = {
   production: true,
@@ -10,16 +10,16 @@ export const environment = {
     logoUrl: '',
   },
   oAuthConfig: {
-    issuer: 'http://134.209.111.164/',
+    issuer: baseUrl,
     redirectUri: baseUrl,
     clientId: 'SubNow_App',
     responseType: 'code',
     scope: 'offline_access SubNow',
-    requireHttps: false
+    requireHttps: true,
   },
   apis: {
     default: {
-      url: 'http://134.209.111.164',
+      url: baseUrl,
       rootNamespace: 'SubNow',
     },
   },
