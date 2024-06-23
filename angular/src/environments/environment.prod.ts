@@ -3,14 +3,14 @@ import { Environment } from '@abp/ng.core';
 const baseUrl = 'https://134.209.111.164';
 
 export const environment = {
-  production: true,
+  production: false,
   application: {
     baseUrl,
     name: 'SubNow',
     logoUrl: '',
   },
   oAuthConfig: {
-    issuer: baseUrl,
+    issuer: 'https://134.209.111.164/',
     redirectUri: baseUrl,
     clientId: 'SubNow_App',
     responseType: 'code',
@@ -19,7 +19,7 @@ export const environment = {
   },
   apis: {
     default: {
-      url: baseUrl,
+      url: 'https://134.209.111.164',
       rootNamespace: 'SubNow',
     },
   },
