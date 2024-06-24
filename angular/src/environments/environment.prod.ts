@@ -1,6 +1,6 @@
 import { Environment } from '@abp/ng.core';
 
-const baseUrl = 'https://134.209.111.164';
+const baseUrl = 'https://subnow.netlify.app';
 
 export const environment = {
   production: false,
