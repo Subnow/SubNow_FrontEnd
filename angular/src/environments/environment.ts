@@ -10,7 +10,7 @@ export const environment = {
     logoUrl: '',
   },
   oAuthConfig: {
-    issuer: 'https://localhost:44329/',
+    issuer: 'https://134.209.111.164/',
     redirectUri: baseUrl,
     clientId: 'SubNow_App',
     responseType: 'code',
@@ -19,7 +19,7 @@ export const environment = {
   },
   apis: {
     default: {
-      url: 'https://localhost:44329',
+      url: 'https://134.209.111.164',
       rootNamespace: 'SubNow',
     },
   },
