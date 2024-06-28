@@ -1,0 +1,21 @@
+.page{
+  &-title{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 4px;
+    flex: 1 0 0;
+    .title{
+      color:  #101828;
+      font-size: 30px;
+      font-weight: 600;
+      line-height: 38px;
+    }
+    .des{
+      color:  #475467;
+      font-size: 16px;
+      font-weight: 400;
+      line-height: 24px;
+    }
+  }
+}
