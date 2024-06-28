@@ -1,0 +1,28 @@
+.ngb-dp-day
+{
+  .btn-light {
+    border: none;
+    background: #ffffff;
+    box-shadow: none;
+  }
+}
+
+.ngb-dp-weekday{
+  color: #344054 !important;
+  font-style: normal !important;
+}
+.bg-primary{
+  background-color: $primary !important;
+}
+.ngb-dp-navigation-select{
+  gap: 8px;
+}
+[ngbDatepickerDayView]:hover:not(.bg-primary),
+[ngbDatepickerDayView].active:not(.bg-primary) {
+  background-color: unset !important;
+  outline: unset !important;
+}
+
+html[dir='rtl'] .ngb-dp-arrow {
+  transform: rotate(180deg);
+}
