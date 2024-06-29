@@ -1,0 +1,147 @@
+body{
+  position: relative;
+}
+body,html{
+  background: #F9FAFB;
+}
+ul,li{
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+h1,h2,h3,h4,h5,h6,p{
+  margin: 0;
+}
+a{
+  text-decoration: none;
+  cursor: pointer;
+}
+.wrapper{
+  padding: 32px 32px 48px 312px;
+  height: 100%;
+  @media (max-width: 992px) {
+    padding: 92px 28px 32px 28px !important;
+  }
+}
+.section{
+  &-header{
+    display: flex;
+    align-items: flex-start;
+    gap: 16px;
+    align-self: stretch;
+    justify-content: space-between;
+    padding-bottom:20px;
+    border-bottom: 1px solid #EAECF0;
+    margin-bottom: 32px;
+    flex-wrap: wrap;
+    .section-header-actions{
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+  }
+  &-row{
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+    flex: 1 0 0;
+    .sperator{
+      padding-bottom: 20px;
+      border-bottom: 1px solid #EAECF0;
+      &:last-child{
+        border-bottom: none;
+        padding: 0;
+      }
+    }
+
+  }
+  &-form{
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+  }
+}
+.btn{
+  font-family: "IBM Plex Sans Arabic";
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 20px;
+  display: flex;
+  padding: 10px 16px;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  border-radius: 8px;
+    &-sm{
+    padding: 8px 14px;
+  }
+}
+.btn-primary{
+  background: $primary-opacity;
+  color:$primary;
+  border: 1px solid $primary-opacity;
+}
+.btn-light{
+  border: 1px solid $gray;
+  background: $light-color;
+  box-shadow: 0px 1px 2px 0px rgba(16, 24, 40, 0.05);
+}
+
+.text-primary{
+  color: $save-btn !important;
+}
+.text-success{
+color: $success;
+}
+
+.text-danger{
+  color: $danger;
+
+}
+.mt-16{
+  margin-top: 16px !important;
+}
+.pt-16{
+  padding-top: 16px !important;
+}
+.my-32{
+  margin-top: 32px !important;
+  margin-bottom: 32px !important;
+
+}
+.pb-32{
+  padding-bottom: 32px !important;
+}
+.border-bottom{
+  border-bottom: 1px solid  #F9FAFB;
+}
+
+@media (min-width: 992px) {
+  .tooltip-inner{
+    padding: 12px;
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 18px;
+  }
+  .custom-tooltip .tooltip-inner {
+    max-width: none !important;
+    white-space: nowrap !important;
+  }
+  .custom-tooltip-lg .tooltip-inner{
+    max-width: 320px !important;
+    white-space:pre-wrap !important;
+    text-align: start !important;
+  }
+
+}
+html[dir='rtl']{
+  .wrapper{
+    padding: 32px 312px 48px 32px;
+    @media (max-width: 992px) {
+
+    }
+  }
+
+}
