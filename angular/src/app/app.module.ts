@@ -63,9 +63,9 @@ import { NgxValidateCoreModule } from '@ngx-validate/core';
           required: 'General::RequiredInput',
           email: 'General::InvalidEmail',
           pattern: 'General::InvalidPattern',
-          invalidContactUsName: 'General::InvalidContactUsName',
           max: 'General::ThisFieldMustBeLessOrEqual[{{ max }}]',
-          maxLength: 'General::ThisFieldMustBeAStringOrArrayTypeWithAMaximumLengthOf[{{ maxLength }}]'
+          maxLength: 'General::ThisFieldMustBeAStringOrArrayTypeWithAMaximumLengthOf[{{ maxLength }}]',
+          invalidUrl: 'General::urlNotValid'
         },
       },
     }),
@@ -83,7 +83,9 @@ import { NgxValidateCoreModule } from '@ngx-validate/core';
     NgbModule
   ],
   declarations: [AppComponent],
-  providers: [APP_ROUTE_PROVIDER],
+  providers: [APP_ROUTE_PROVIDER,
+
+  ],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

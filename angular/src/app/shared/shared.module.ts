@@ -11,6 +11,7 @@ import { CommonModule } from '@angular/common';
 import { ToastrModule } from 'ngx-toastr';
 import { NgSelectModule } from '@ng-select/ng-select';
 import { NgxIntlTelInputModule } from 'ngx-intl-tel-input';
+import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
 
 
 const moduleList = [
@@ -29,7 +30,8 @@ const moduleList = [
   NgSelectModule,
   NgbNavModule,
   NgbDatepickerModule,
-  NgxIntlTelInputModule
+  NgxIntlTelInputModule,
+  BsDatepickerModule
 ]
 
 const declarationList = [

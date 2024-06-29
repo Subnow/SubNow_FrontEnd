@@ -7,6 +7,7 @@ import { BillingCyclePlanDto, PlanDto, PlanService } from '@proxy/plans';
 import { finalize } from 'rxjs';
 import { BillingCycleService } from '@proxy/billing-cycles';
 import { LocalizationService } from '@abp/ng.core';
+import { RegularExpression } from '../../../shared/constants/regular-expressions';
 @Component({
   selector: 'app-add-edit-plan',
   templateUrl: './add-edit-plan.component.html',
@@ -20,6 +21,7 @@ export class AddEditPlanComponent  implements OnInit{
   isLoading = false;
   categoryList:CategoryDto[] = [];
   planBillingCycleList:BillingCyclePlanDto [] = [];
+  isSelectedBillingCycle = false;
   constructor(
     public _fb: FormBuilder,
     private _categoryService:CategoryService,
@@ -41,6 +43,7 @@ export class AddEditPlanComponent  implements OnInit{
         this.planBillingCycleList = res;
         console.log('this.planBillingCycleList edit',this.planBillingCycleList)
       })
+      this.isSelectedBillingCycle = true;
     }
     else {
       this._planService.getBillingCyclePlan('00000000-0000-0000-0000-000000000000').subscribe(res=>{
@@ -58,38 +61,42 @@ export class AddEditPlanComponent  implements OnInit{
     }
 
   toggleActiveStatus(cycle:[]): void {
-    console.log(this?.planBillingCycleList)
-
+    const hasActivePlan = this?.planBillingCycleList.some(plan => plan.active === true);
+    if (hasActivePlan){
+     this.isSelectedBillingCycle = true;
+    }else {
+      this.isSelectedBillingCycle = false;
+    }
   }
     initForm(){
     if (this.isEdit === true){
       this.form = this._fb.group({
-        name: [{value: this.plan?.name, disabled: this.isEdit}, Validators.required],
-        code: [this.plan?.code, Validators.required],
-        description: [this.plan?.description, [Validators.required,Validators.maxLength(250)]],
-        freeTrailDays: [this.plan?.freeTrailDays, Validators.required],
-        pricingModel: [{value: this?.plan?.pricingModel, disabled: true}, Validators.required],
-        setUpFees: [this?.plan?.setUpFees, Validators.required],
-        categoryId: [this.plan?.categoryId, Validators.required],
-        renewals: [this.plan?.renewals, Validators.required],
-        accountingCode: [this.plan?.accountingCode, Validators.required],
-        planStatus: [this.plan?.planStatus, Validators.required],
-        redirectUrl: [this.plan?.redirectUrl, Validators.required],
+        name: [this.plan?.name, Validators.required],
+        code: [{value: this.plan?.code, disabled: this.isEdit}, Validators.required],
+        description: [this.plan?.description, Validators.maxLength(250)],
+        freeTrailDays: [this.plan?.freeTrailDays],
+        pricingModel: [{value: this?.plan?.pricingModel, disabled: true}],
+        setUpFees: [this?.plan?.setUpFees],
+        categoryId: [this.plan?.categoryId,Validators.required],
+        renewals: [this.plan?.renewals],
+        accountingCode: [this.plan?.accountingCode, ],
+        planStatus: [this.plan?.planStatus],
+        redirectUrl: [this.plan?.redirectUrl,Validators.pattern(RegularExpression.url)],
         billingCyclePlans:[this.plan?.billingCyclePlans]
       })
     }else{
       this.form = this._fb.group({
         name: [this.plan?.name, Validators.required],
         code: [this.plan?.code, Validators.required],
-        description: [this.plan?.description, [Validators.required,Validators.maxLength(250)]],
-        freeTrailDays: [0, Validators.required],
-        pricingModel: [{ value:0,disabled: true }, Validators.required],
-        setUpFees: [0, Validators.required],
-        categoryId: [this.plan?.categoryId, Validators.required],
+        description: [this.plan?.description, Validators.maxLength(250)],
+        freeTrailDays: [0],
+        pricingModel: [{ value:0,disabled: true }],
+        setUpFees: [0],
+        categoryId: [this.plan?.categoryId,Validators.required],
         renewals: [0, Validators.required],
-        accountingCode: [this.plan?.accountingCode, Validators.required],
-        planStatus: [0, Validators.required],
-        redirectUrl: [this.plan?.redirectUrl, Validators.required],
+        accountingCode: [this.plan?.accountingCode],
+        planStatus: [0],
+        redirectUrl: [this.plan?.redirectUrl,Validators.pattern(RegularExpression.url)],
         billingCyclePlans:[this.plan?.billingCyclePlans]
       })
 

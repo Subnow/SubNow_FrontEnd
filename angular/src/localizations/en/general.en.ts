@@ -123,7 +123,8 @@ export const General = {
   ThisFieldMustBeLessOrEqual: 'The value of this field must be less than or equal to {0}.',
   ThisFieldMustBeAStringOrArrayTypeWithAMaximumLengthOf: 'The maximum number of characters is {0}',
   customerAddMsg:'The customer add successfully',
-  customerEditMsg:'The customer add successfully',
-  customer:"Customer"
+  customerEditMsg:'The customer edit successfully',
+  customer:"Customer",
+  urlNotValid:"This link not valid"
 
 };

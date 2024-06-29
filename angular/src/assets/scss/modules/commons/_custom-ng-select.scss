@@ -159,6 +159,14 @@
     font-size: 10px;
   }
 }
+.ng-select .ng-select-container .ng-value-container{
+  .ng-value-label{
+    color: #101828;
+  }
+  .ng-placeholder{
+    color: #667085;
+  }
+}
 html[dir='rtl']{
   .ng-select .ng-arrow-wrapper .ng-arrow {
     left: 25px;

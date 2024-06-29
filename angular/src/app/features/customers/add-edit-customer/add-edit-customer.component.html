@@ -37,7 +37,7 @@
                     <div class='row'>
                       <div class='col-lg-8 col-md-12'>
                         <div class='form-group'>
-                          <label class="form-label">{{"General::customerName"|abpLocalization}}</label>
+                          <label class="form-label">{{"General::customerName"|abpLocalization}}<sup>*</sup></label>
                           <div class='control-icon'>
                             <input class='form-control' formControlName='name' id='name' placeholder='Mike Johnson' type='text' required>
                             <i class="icon fa-regular fa-circle-question" tooltipClass="custom-tooltip" placement="top" container="body"  ngbTooltip='{{"General::customerName"|abpLocalization}}'></i>
@@ -46,7 +46,7 @@
                       </div>
                       <div class='col-lg-8 col-md-12'>
                         <div class='form-group'>
-                          <label class="form-label">{{"General::customerKey"|abpLocalization}}</label>
+                          <label class="form-label">{{"General::customerKey"|abpLocalization}}<sup>*</sup></label>
                           <input  (keydown.space)="$event.preventDefault()" class='form-control' formControlName='customerKey' id='customerKey' placeholder='MikeJohnson@gmail.com' type='text' required>
                           <span class='control-hint'>{{"General::customerKeyHint"|abpLocalization}}</span>
                         </div>
@@ -54,7 +54,7 @@
                       <div class='col-lg-8 col-md-12'>
                         <div class='form-group'>
                           <label class="form-label">{{"General::customerDescription"|abpLocalization}}</label>
-                          <textarea formControlName='description' id='description' rows='2' placeholder='{{"General::customerDescriptionPlaceholder"|abpLocalization}}' class='form-control' required ></textarea>
+                          <textarea formControlName='description' id='description' rows='2' placeholder='{{"General::customerDescriptionPlaceholder"|abpLocalization}}' class='form-control'></textarea>
                         </div>
                       </div>
                       <div class='col-lg-8 col-md-12'>
@@ -114,7 +114,7 @@
                         <div class='form-group'>
                           <label class="form-label">{{"General::customerEmail"|abpLocalization}}</label>
                           <div class='control-icon'>
-                            <input class='form-control' formControlName='email' id='email' placeholder='MikeJohnson@gmail.com' type='email' required>
+                            <input class='form-control' formControlName='email' id='email' placeholder='MikeJohnson@gmail.com' type='email'>
                             <i class="icon fa-regular fa-circle-question" tooltipClass="custom-tooltip" placement="top" container="body"  ngbTooltip='{{"General::customerEmailTooltip"|abpLocalization}}'></i>
                           </div>
                           <span class='control-hint'>{{"General::customerEmailHint"|abpLocalization}}</span>
@@ -186,7 +186,7 @@
                         <div class='form-group'>
                           <label class="form-label">{{"General::companyRegistrationNumber"|abpLocalization}}</label>
                           <div class='control-icon'>
-                            <input class='form-control' formControlName='companyRegistryNumber' id='companyRegistryNumber'  type='text' required>
+                            <input class='form-control' formControlName='companyRegistryNumber' id='companyRegistryNumber'  type='text'>
                             <i class="icon fa-regular fa-circle-question" tooltipClass="custom-tooltip" placement="top" container="body"  ngbTooltip='{{"General::companyRegistrationNumberTooltip"|abpLocalization}}'></i>
                           </div>
                         </div>
@@ -195,7 +195,7 @@
                         <div class='form-group'>
                           <label class="form-label">{{"General::taxID"|abpLocalization}}</label>
                           <div class='control-icon'>
-                            <input class='form-control' formControlName='vatid' id='vatid'  type='text' required>
+                            <input class='form-control' formControlName='vatid' id='vatid'  type='text'>
                             <i class="icon fa-regular fa-circle-question" tooltipClass="custom-tooltip" placement="top" container="body"  ngbTooltip='{{"General::taxIDTooltip"|abpLocalization}}'></i>
                           </div>
                         </div>
@@ -216,21 +216,21 @@
                       <div class='col-lg-8 col-md-12'>
                         <div class='form-group'>
                              <label class="form-label">{{"General::address"|abpLocalization}}</label>
-                            <input class='form-control' formControlName='address' id='address' placeholder='100 Smith Street' type='text' required>
+                            <input class='form-control' formControlName='address' id='address' placeholder='100 Smith Street' type='text'>
                         </div>
                       </div>
 
                       <div class='col-lg-8 col-md-12'>
                         <div class='form-group'>
                           <label class="form-label">{{"General::city"|abpLocalization}}</label>
-                          <input class='form-control' formControlName='city' id='city' placeholder='{{"General::city"|abpLocalization}}' type='text' required>
+                          <input class='form-control' formControlName='city' id='city' placeholder='{{"General::city"|abpLocalization}}' type='text'>
                         </div>
                       </div>
 
                       <div class='col-lg-8 col-md-12'>
                         <div class='form-group'>
                           <label class="form-label">{{"General::stateProvince"|abpLocalization}}</label>
-                          <input class='form-control' formControlName='stateProvince' id='stateProvince' placeholder='{{"General::state"|abpLocalization}}' type='text' required>
+                          <input class='form-control' formControlName='stateProvince' id='stateProvince' placeholder='{{"General::state"|abpLocalization}}' type='text'>
                         </div>
                       </div>
                       <div class='col-lg-8 col-md-12'>

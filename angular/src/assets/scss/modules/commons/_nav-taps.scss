@@ -9,6 +9,10 @@
     margin-left: auto;
     width: 433px;
     justify-content: space-around;
+    @media (max-width: 550px) {
+      flex-direction: column;
+      width: 100%;
+    }
   }
     margin-bottom: 0;
   .nav{
@@ -19,7 +23,14 @@
       &:focus-visible{
         outline: none !important;
       }
-    }
+
+      @media (max-width: 550px) {
+        border-bottom: 1px solid  #D0D5DD;
+      }
+      &:last-child{
+        border-bottom: 0;
+      }
+      }
     &-link{
       display: flex;
       padding: 10px 16px;
@@ -33,7 +44,12 @@
       font-size: 14px;
       font-weight: 600;
       line-height: 20px; /* 142.857% */
-      &:last-child{
+      @media (max-width: 550px) {
+        border-right: 0 !important;
+        width: 100%;
+        justify-content: flex-start;
+      }
+        &:last-child{
         border-right: 0;
       }
       .icon{

@@ -20,7 +20,7 @@ a{
   padding: 32px 32px 48px 312px;
   height: 100%;
   @media (max-width: 992px) {
-    padding: 32px 32px 48px 98px;
+    padding: 92px 28px 32px 28px !important;
   }
 }
 .section{
@@ -140,7 +140,7 @@ html[dir='rtl']{
   .wrapper{
     padding: 32px 312px 48px 32px;
     @media (max-width: 992px) {
-      padding: 32px 98px 48px 32px;
+
     }
   }
 

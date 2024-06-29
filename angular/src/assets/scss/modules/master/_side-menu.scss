@@ -160,9 +160,9 @@
 
 @media (max-width: 992px){
   .toggle-menu{
-    position: fixed;
+    position: absolute;
     top: 32px;
-    left: 32px;
+    left: 28px;
     width: 34px;
     height: 34px;
     background: white;
@@ -215,7 +215,7 @@ html[dir=rtl]{
   @media (max-width: 992px) {
     .toggle-menu{
       left: auto;
-      right: 32px;
+      right: 28px;
     }
     .is-open-menu .side-menu {
       left: auto;

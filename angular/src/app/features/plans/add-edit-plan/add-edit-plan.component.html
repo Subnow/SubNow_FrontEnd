@@ -5,13 +5,12 @@
       <a class='modal-close' (click)="closeModal()">
         <i class='fa fa-xmark'></i>
       </a>
-      <h2 class='title'>{{"General::planCategory"|abpLocalization}}</h2>
-      <button  class='btn btn-save' type="submit"  (click)="createEditPlan()" [disabled]="!form.valid">
+      <h2 class='title'>{{"General::plan"|abpLocalization}}</h2>
+      <button  class='btn btn-save' type="submit"  (click)="createEditPlan()" [disabled]="!form.valid || !isSelectedBillingCycle">
         <span>{{"General::save"|abpLocalization}}</span>
       </button>
     </div>
   </div>
-
 </div>
 
 <div class='modal-body'>
@@ -27,7 +26,7 @@
             <div class='row'>
               <div class='col-lg-8 col-md-12'>
                 <div class='form-group'>
-                  <label class="form-label">{{"General::planName"|abpLocalization}}</label>
+                  <label class="form-label">{{"General::planName"|abpLocalization}}<sup>*</sup></label>
                   <div class='control-icon'>
                     <input class='form-control' formControlName='name' id='name' placeholder='{{"General::exStarterPlan"|abpLocalization}}' type='text' required>
                     <i class="icon fa-regular fa-circle-question" tooltipClass="custom-tooltip" placement="top" container="body"  ngbTooltip='{{"General::planNameHint"|abpLocalization}}'></i>
@@ -36,25 +35,26 @@
               </div>
               <div class='col-lg-8 col-md-12'>
                 <div class='form-group'>
-                  <label class="form-label">{{"General::planCode"|abpLocalization}}</label>
+                  <label class="form-label">{{"General::planCode"|abpLocalization}}<sup>*</sup></label>
                   <input  (keydown.space)="$event.preventDefault()" class='form-control' formControlName='code' id='code' placeholder='{{"General::starterP"|abpLocalization}}' type='text' required>
                 </div>
               </div>
               <div class='col-lg-8 col-md-12'>
                 <div class='form-group'>
                   <label class="form-label">{{"General::planDescription"|abpLocalization}}</label>
-                  <textarea formControlName='description' id='description' rows='2' placeholder='{{"General::planForBeginning"|abpLocalization}}' class='form-control' required></textarea>
+                  <textarea formControlName='description' id='description' rows='2' placeholder='{{"General::planForBeginning"|abpLocalization}}' class='form-control'></textarea>
                 </div>
               </div>
               <div class='col-lg-8 col-md-12'>
                 <div class='form-group mb-0'>
-                  <label class="form-label">{{"General::category"|abpLocalization}}</label>
+                  <label class="form-label">{{"General::category"|abpLocalization}}<sup>*</sup></label>
                   <ng-select [items]="categoryList"
                              bindLabel="name"
                              bindValue="id"
                              placeholder='{{"General::category"|abpLocalization}}'
                              [clearable]="false"
                              formControlName='categoryId'
+                             required
                   >
                   </ng-select>
                 </div>
@@ -76,7 +76,7 @@
                 <div class='form-group mb-0'>
                   <label class="form-label">{{"General::freeTrial"|abpLocalization}}</label>
                   <div class='control-icon-text'>
-                    <input class='form-control' formControlName='freeTrailDays' id='freeTrailDays' placeholder='0' type='number' required value='0' >
+                    <input class='form-control' formControlName='freeTrailDays' id='freeTrailDays' placeholder='0' type='number' value='0' >
                     <div class='icon-text'>
                       <i class="icon fa-regular fa-circle-question" tooltipClass="custom-tooltip" placement="top" ngbTooltip='{{"General::freeTrialHint"|abpLocalization}}' container="body"></i>
                       <span class='text'>{{"General::days"|abpLocalization}}</span>
@@ -208,7 +208,7 @@
                 <div class='form-group'>
                   <label class="form-label">{{"General::setupFee"|abpLocalization}}</label>
                   <div class='control-icon-text'>
-                    <input class='form-control' formControlName='setUpFees' id='setUpFees' type='number' required>
+                    <input class='form-control' formControlName='setUpFees' id='setUpFees' type='number'>
                     <div class='icon-text'>
                       <span class='text'>{{"General::SAR"|abpLocalization}}</span>
                     </div>
@@ -218,7 +218,7 @@
               <div class='col-lg-4 col-md-12'>
                 <div class='form-group'>
                   <label class="form-label">{{"General::accountingCode"|abpLocalization}}</label>
-                  <input (keydown.space)="$event.preventDefault()" class='form-control' formControlName='accountingCode' id='accountingCode' placeholder='SKU-1234' type='text' required>
+                  <input (keydown.space)="$event.preventDefault()" class='form-control' formControlName='accountingCode' id='accountingCode' placeholder='SKU-1234' type='text' >
                 </div>
               </div>
             </div>
@@ -246,7 +246,7 @@
                   <label class="form-label">{{"General::redirectTo"|abpLocalization}}</label>
                   <div class="custom-input-group control-icon">
                     <span class='text'>{{"General::link"|abpLocalization}}</span>
-                    <input class='form-control' formControlName='redirectUrl' id='redirectUrl' placeholder='www.yoursite.com/directory' type='text' required>
+                    <input class='form-control' formControlName='redirectUrl' id='redirectUrl' placeholder='www.yoursite.com/directory' type='text'>
                     <i class="icon fa-regular fa-circle-question" tooltipClass="custom-tooltip-lg" placement="top" [ngbTooltip]="myTooltipTemplate"></i>
                   </div>
                 </div>

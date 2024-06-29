@@ -124,5 +124,6 @@ export const General = {
   ThisFieldMustBeAStringOrArrayTypeWithAMaximumLengthOf: 'الحد الاقصى للحروف هو {0}',
   customerAddMsg:'تم أضافة العميل بنجاح',
   customerEditMsg:'تم تعديل العميل بنجاح',
-  customer:"عميل"
+  customer:"عميل",
+  urlNotValid:"هذا الرابط غير صحيح"
 };
