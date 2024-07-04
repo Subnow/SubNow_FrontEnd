@@ -51,6 +51,14 @@ export class PlanService {
     { apiName: this.apiName,...config });
   
 
+  getBillingCyclePlanByPlanId = (planId: string, config?: Partial<Rest.Config>) =>
+    this.restService.request<any, BillingCyclePlanDto[]>({
+      method: 'GET',
+      url: `/api/app/plan/billing-cycle-plan-by-plan-id/${planId}`,
+    },
+    { apiName: this.apiName,...config });
+  
+
   getPlanName = (config?: Partial<Rest.Config>) =>
     this.restService.request<any, PlanNameDto[]>({
       method: 'GET',
