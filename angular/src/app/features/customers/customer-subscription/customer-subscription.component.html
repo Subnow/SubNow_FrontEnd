@@ -1,0 +1,96 @@
+<div class='row g-0 customer-subscription'>
+  <div class='col-lg-3 col-md-12'>
+    <p class='form-name'>{{"General::subscription"|abpLocalization}}</p>
+  </div>
+  <div class='col-lg-6 col-md-12'>
+    <div class='row' *ngIf='false'>
+      <div class='col-12'>
+        <div class='form-group'>
+          <label class="form-label mb-16">{{"General::subscriptionPlan"|abpLocalization}}</label>
+          <button class='btn btn-light' (click)='openCreateSubscriptionModal()'>
+            <i class="fa-regular fa-plus"></i>
+            <span>{{"General::createSubscription"|abpLocalization}}</span>
+          </button>
+        </div>
+      </div>
+    </div>
+    <div class='row g-0'>
+      <div class='col-md-12 pb-16'>
+        <form class='form'>
+          <div class='row'>
+            <div class='col-l2'>
+              <span class='badge badge-success'>Active</span>
+            </div>
+          </div>
+          <div class='row g-0 py-16 border-bottom'>
+            <div class='col-l2'>
+              <div class='total-amount'>
+                <div class='block-one'>
+                  <label>{{"General::chargeTotalAmount"|abpLocalization}}</label>
+                  <span>{{"General::chargeTotalAmountHint"|abpLocalization}}</span>
+                </div>
+                <div class='block-two'>
+                  <span class='price'>100 {{"General::SAR"|abpLocalization}}</span>
+                  <button class='btn btn-light disabled'>{{"General::createSubscription"|abpLocalization}}</button>
+                </div>
+
+              </div>
+            </div>
+          </div>
+          <div class='row g-0 py-16 border-bottom'>
+            <div class='col-l2'>
+              <label class="form-label">{{"General::activationInvoice"|abpLocalization}}</label>
+              <div class='custom-input-group2'>
+                <input disabled  class='form-control' type='text' #copy value='test copy'>
+                <div class='custom-input-group2-text'>
+                  <i class="icon fa-regular fa-circle-question" tooltipClass="custom-tooltip" placement="top" container="body"  ngbTooltip='{{"General::activationInvoiceHint"|abpLocalization}}'></i>
+                  <a class='btn-text' (click)='copyActivationInvoice(copy?.value)'><i class="icon fa-solid fa-link"></i><span>{{"General::copy"|abpLocalization}}</span></a>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class='row g-0 py-16 border-bottom'>
+            <div class='col-l2'>
+              <label class="form-label">{{"General::expiryDate"|abpLocalization}}</label>
+              <div class='custom-input-group2'>
+                <input  disabled class='form-control' type='text'>
+                <div class='custom-input-group2-text'>
+                  <i class="icon fa-regular fa-circle-question" tooltipClass="custom-tooltip" placement="top" container="body"  ngbTooltip='{{"General::expiryDateHint"|abpLocalization}}'></i>
+                  <a class='btn-text' (click)='updateSubscriptionExpiryDate()'><i class="icon fa-solid fa-gear"></i><span>{{"General::update"|abpLocalization}}</span></a>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class='row g-0 py-16 border-bottom'>
+            <div class='col-l2 mb-16'>
+              <label class="form-label">{{"General::subscriptionPlan"|abpLocalization}}</label>
+              <div class='control-icon'>
+                <input disabled class='form-control' type='text' >
+                <i class="icon fa-regular fa-circle-question" tooltipClass="custom-tooltip" placement="top" container="body"  ngbTooltip='{{"General::subscriptionPlanTooltip"|abpLocalization}}'></i>
+              </div>
+            </div>
+            <div class='col-l2'>
+              <label class="form-label">{{"General::subscriptionBillingCycle"|abpLocalization}}</label>
+              <div class='control-icon'>
+                <input disabled class='form-control' type='text'>
+                <i class="icon fa-regular fa-circle-question" tooltipClass="custom-tooltip" placement="top" container="body"  ngbTooltip='{{"General::subscriptionBillingCycleTooltip"|abpLocalization}}'></i>
+              </div>
+              <span class='control-hint'>{{"General::subscriptionBillingCycleHint"|abpLocalization}}</span>
+            </div>
+          </div>
+
+          <div class='row py-16'>
+            <div class='col-12'>
+              <button class="btn btn-light"><i class="fa-solid fa-rotate"></i><span>{{"General::changeSubscription"|abpLocalization}}</span></button>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+
+
+
+  </div>
+</div>
+

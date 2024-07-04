@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, inject, Input, OnInit, AfterViewInit, ChangeDetectorRef } from '@angular/core';
+import { Component, inject, Input, OnInit, AfterViewInit, ChangeDetectorRef, Output, EventEmitter, ViewChild } from '@angular/core';
 import { CreateCustomerDto, CustomerDto, CustomerService, UpdateCustomerDto } from '@proxy/customers';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
@@ -11,6 +11,7 @@ import { CountryDto, CountryService } from '@proxy/look-ups';
 import { formatDate } from '../../../shared/utils/date';
 import { finalize } from 'rxjs';
 import { convertIsoToDateStruct, phoneWithoutCode } from '../../../shared/utils/functions';
+import { DatePipe } from '@angular/common';
 
 @Component({
   selector: 'app-add-edit-customer',
@@ -20,7 +21,10 @@ import { convertIsoToDateStruct, phoneWithoutCode } from '../../../shared/utils/
 export class AddEditCustomerComponent implements OnInit,AfterViewInit {
   @Input() customer?: CustomerDto;
   @Input() isEdit?: boolean;
-  form: FormGroup;
+  @Output() formValid = new EventEmitter<boolean>();
+
+  type?:string = 'customer';
+  form?: FormGroup;
   activeModal = inject(NgbActiveModal);
   isLoading = false;
   active = 1;
@@ -34,6 +38,7 @@ export class AddEditCustomerComponent implements OnInit,AfterViewInit {
   countryList: CountryDto[] = [];
   selectedCity;
   disabledButton: boolean = false;
+  isDisabled:boolean = false;
 
   constructor(
     public _fb: FormBuilder,
@@ -43,11 +48,10 @@ export class AddEditCustomerComponent implements OnInit,AfterViewInit {
     private _localizationService: LocalizationService,
     private toastr: ToastrService,
     private calendar: NgbCalendar,
-    private cd: ChangeDetectorRef
+    private cd: ChangeDetectorRef,
+
   ) {
-
   }
-
   ngOnInit(): void {
     this.initForm();
     this.languageList = [
@@ -64,6 +68,16 @@ export class AddEditCustomerComponent implements OnInit,AfterViewInit {
     ]
     this.getOnlyCountries();
     this.getCountryList();
+
+    this.form.statusChanges.subscribe(() => {
+      this.formValid.emit(this.form.valid);
+    });
+
+    if (this.customer?.customerSince === undefined){
+      this.form?.controls['customerSince'].setValue('')
+    }else {
+      this.form?.controls['customerSince'].setValue(new Date(this.customer?.customerSince))
+    }
   }
 
   getOnlyCountries() {
@@ -95,8 +109,8 @@ export class AddEditCustomerComponent implements OnInit,AfterViewInit {
         description: [this.customer?.description, Validators.maxLength(250)],
         customerStatus: [this.customer?.customerStatus],
         photo: [this.customer?.photo],
-        customerSince: [convertIsoToDateStruct(this.customer?.customerSince)],
-        joinedSubnow: [{ value: convertIsoToDateStruct(this.customer?.joinedSubnow), disabled: true }],
+        customerSince: [{ value:this.customer?.customerSince, disabled: true }],
+        joinedSubnow: [{ value:this.customer?.joinedSubnow, disabled: true }],
         preferredLanguage: [this.customer?.preferredLanguage],
         vatid: [this.customer?.vatid],
         companyRegistryNumber: [this.customer?.companyRegistryNumber],
@@ -117,8 +131,8 @@ export class AddEditCustomerComponent implements OnInit,AfterViewInit {
         description: [this.customer?.description,Validators.maxLength(250)],
         customerStatus: [0],
         photo: [""],
-        customerSince: [this.customer?.customerSince],
-        joinedSubnow: [{ value: this.calendar.getToday(), disabled: true }],
+        customerSince: [null],
+        joinedSubnow: [{ value: new Date(), disabled: true }],
         preferredLanguage: ['English'],
         vatid: ['0'],
         companyRegistryNumber: ['0'],
@@ -151,8 +165,8 @@ export class AddEditCustomerComponent implements OnInit,AfterViewInit {
       description: this.form.get('description').value,
       customerStatus: this.form.get('customerStatus').value,
       photo: this.form.get('photo').value,
-      customerSince: formatDate(this.form.get('customerSince').value),
-      joinedSubnow: formatDate(this.form.get('joinedSubnow').value),
+      customerSince: this.form.get('customerSince').value,
+      joinedSubnow: this.form.get('joinedSubnow').value,
       preferredLanguage: this.form.get('preferredLanguage').value,
       vatid: this.form.get('vatid').value,
       companyRegistryNumber: this.form.get('companyRegistryNumber').value,
@@ -216,4 +230,5 @@ export class AddEditCustomerComponent implements OnInit,AfterViewInit {
       }
     }
   }
+
 }

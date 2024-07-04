@@ -26,11 +26,27 @@
 html[dir='rtl'] .ngb-dp-arrow {
   transform: rotate(180deg);
 }
+.bs-datepicker{
+  box-shadow: none;
+  border-radius: 0 0 8px 8px;
+
+}
+.bs-datepicker-body{
+  border-radius: 0;
+  border: 1px solid #D0D5DD;
+  border-top: 0;
+}
+.bs-datepicker-head button{
+  color: #101828;
+}
 .bs-datepicker-container{
   padding: 0;
 }
 .theme-green .bs-datepicker-head{
-  background-color: $primary;
+  background-color: transparent;
+  border-radius: 8px 8px 0 0;
+  margin-top: 3px;
+  border: 1px solid #D0D5DD;
 }
 .theme-green .bs-datepicker-body table td.week span,
 .custom-today-class{

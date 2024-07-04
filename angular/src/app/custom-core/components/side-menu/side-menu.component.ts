@@ -7,11 +7,8 @@ import { AuthService, ConfigStateService } from '@abp/ng.core';
   styleUrl: './side-menu.component.scss'
 })
 export class SideMenuComponent {
-
   isSideMenuActive: boolean = false;
-
-
-currentUser?;
+  currentUser?;
  constructor(
    private authService: AuthService,
    private config: ConfigStateService
