@@ -17,9 +17,12 @@ export interface SubscriptionDto {
   id?: string;
   customerId?: string;
   planId?: string;
+  planName?: string;
   billingCyclePlanId?: string;
+  billingCycleName?: string;
   startDate?: string;
   expiryDate?: string;
   totalAmount?: number;
   nextInvoiceLink?: string;
+  subscriptionStatusId?: string;
 }

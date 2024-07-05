@@ -16,22 +16,25 @@ export class CustomerModalComponent implements OnInit{
   isChildFormValid: boolean;
   @ViewChild(AddEditCustomerComponent) addEditCustomerComponentChild: AddEditCustomerComponent;
 constructor(private cd: ChangeDetectorRef) {
+
 }
   public handleFormValidity(isValid: boolean) {
     this.isChildFormValid = isValid
-    this.cd.detectChanges();  }
+    this.cd.detectChanges();
+}
   closeModal() {
     this.activeModal.close();
   }
 
   ngOnInit(): void {
     console.log(this.isChildFormValid)
-
+    console.log('this.addEditCustomerComponentChild.isEdit', this.isEdit)
   }
 
   createEdit(): void {
       this.addEditCustomerComponentChild.createEditCustomer();
-  }
+
+}
 
   public checkFormValidation(data:boolean): void {
     console.log('Picked data: ', data);

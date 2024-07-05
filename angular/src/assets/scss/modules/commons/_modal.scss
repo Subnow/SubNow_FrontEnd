@@ -89,7 +89,7 @@
     border-radius: 12px;
   }
   &-body{
-    padding: 0 24px 32px 24px;
+    padding: 0 24px 32px 24px !important;
     border-bottom: none;
   }
   &-footer{
@@ -100,5 +100,10 @@
       margin: 0;
     }
   }
-
+.icon-header{
+  border-radius: 28px;
+  border: 8px solid #ECFDF3;
+  background: #D1FADF;
+  color: #039855;
+}
 }

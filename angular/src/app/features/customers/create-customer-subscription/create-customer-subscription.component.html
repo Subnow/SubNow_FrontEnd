@@ -6,31 +6,36 @@
     <i class='fa fa-xmark'></i>
   </a>
 </div>
-<form class='form'>
+<form class='form' [formGroup]='form'>
 <div class='modal-body'>
   <div class='modal-body-wrapper'>
       <div class='row'>
         <div class='col-12'>
           <div class='form-group'>
-            <label>{{"General::selectPlan"|abpLocalization}}<sup>*</sup></label>
+            <label class='form-label'>{{"General::selectPlan"|abpLocalization}}<sup>*</sup></label>
             <ng-select [items]="planList"
                        bindLabel="name"
-                       bindValue="id"
+                       bindValue="planId"
                        placeholder='{{"General::selectPlan"|abpLocalization}}'
                        [clearable]="false"
+                       formControlName='planId'
+                       id='planId'
+                       required
+                       (change)="onChange($event)"
             >
             </ng-select>
           </div>
         </div>
         <div class='col-12'>
           <div class='form-group'>
-            <label>{{"General::chooseTheBillingCycle"|abpLocalization}}</label>
-            <ng-select [items]="billingCycle"
-                       bindLabel="name"
+            <label class='form-label'>{{"General::chooseTheBillingCycle"|abpLocalization}}<sup>*</sup></label>
+            <ng-select [items]="billingCycleList"
+                       bindLabel="billingCycleName"
                        bindValue="id"
                        placeholder='{{"General::selectPlan"|abpLocalization}}'
                        [clearable]="false"
-
+                       formControlName='billingCyclePlanId'
+                       required
             >
             </ng-select>
           </div>
@@ -39,28 +44,39 @@
       <div class='row'>
         <div class='col-12'>
           <div class='form-group'>
-            <label>{{"General::startDay"|abpLocalization}}<sup>*</sup></label>
+            <label class='form-label'>{{"General::startDate"|abpLocalization}}<sup>*</sup></label>
             <div class='control-icon'>
-              <input type="text" class="form-control" placeholder="Datepicker" bsDatepicker />
-              <i class="icon fa-regular fa-circle-question" tooltipClass="custom-tooltip" placement="top" container="body"  ngbTooltip='{{"General::planNameHint"|abpLocalization}}'></i>
+              <input type="text" class="form-control"  placeholder="dd/mm/yyyy" bsDatepicker formControlName='startDate' [bsConfig]="{ dateInputFormat: 'DD/MM/YYYY' }" />
+              <i class="icon fa-regular fa-calendar"></i>
+<!--              <i class="icon fa-regular fa-circle-question" tooltipClass="custom-tooltip" placement="top" container="body"  ngbTooltip='{{"General::planNameHint"|abpLocalization}}'></i>-->
+            </div>
+            <div *ngIf="form.get('startDate')?.invalid && form.get('startDate')?.touched">
+              <span *ngIf="form.get('startDate')?.errors?.startDateInvalid" class='invalid'>
+                {{"General::startDateValid"|abpLocalization}}
+              </span>
             </div>
           </div>
         </div>
         <div class='col-12'>
-          <div class='form-group'>
-            <label>{{"General::expiryDay"|abpLocalization}}<sup>*</sup></label>
+          <div class='form-group mb-0'>
+            <label class='form-label'>{{"General::expiryDay"|abpLocalization}}<sup>*</sup></label>
             <div class='control-icon'>
-              <input type="text" class="form-control" placeholder="Datepicker" bsDatepicker />
-              <i class="icon fa-regular fa-circle-question" tooltipClass="custom-tooltip" placement="top" container="body"  ngbTooltip='{{"General::planNameHint"|abpLocalization}}'></i>
+              <input type="text" class="form-control"  placeholder="dd/mm/yyyy" bsDatepicker formControlName='expiryDate' [bsConfig]="{ dateInputFormat: 'DD/MM/YYYY' }" />
+              <i class="icon fa-regular fa-calendar"></i>
+<!--              <i class="icon fa-regular fa-circle-question" tooltipClass="custom-tooltip" placement="top" container="body"  ngbTooltip='{{"General::planNameHint"|abpLocalization}}'></i>-->
             </div>
-
+            <div *ngIf="form.get('expiryDate')?.invalid && form.get('expiryDate')?.touched">
+              <span *ngIf="form.get('expiryDate')?.errors?.expiryDateInvalid" class='invalid' >
+                {{"General::expiryDateValid"|abpLocalization}}
+              </span>
+            </div>
           </div>
+
         </div>
       </div>
   </div>
 </div>
   <div class='modal-footer'>
-    <button class='btn btn-save'>{{"General::createSubscription"|abpLocalization}}</button>
-
+    <button class='btn btn-save' (click)='createSubscription()' [disabled]='form?.invalid'>{{"General::createSubscription"|abpLocalization}}</button>
   </div>
 </form>

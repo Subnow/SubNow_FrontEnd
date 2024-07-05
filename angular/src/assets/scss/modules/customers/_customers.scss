@@ -76,9 +76,14 @@ align-items: end;
     border-radius: 50px;
   }
   .total-amount{
+    @media (max-width: 992px) {
+      flex-direction: column;
+    }
     display: flex;
     justify-content: space-between;
     align-items: flex-start;
+    gap: 16px;
+    flex-wrap: wrap;
     .block-one{
       display: flex;
       flex-direction: column;

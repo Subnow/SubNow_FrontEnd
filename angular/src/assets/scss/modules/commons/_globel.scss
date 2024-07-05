@@ -126,6 +126,9 @@ color: $success;
 .border-bottom{
   border-bottom: 1px solid  #F9FAFB;
 }
+.mb-32{
+  margin-bottom: 32px !important;
+}
 
 @media (min-width: 992px) {
   .tooltip-inner{

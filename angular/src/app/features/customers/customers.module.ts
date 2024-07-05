@@ -11,6 +11,8 @@ import { NotFoundDataStandaloneComponent } from '../../standalone/not-found-data
 import { CustomerModalComponent } from './customer-modal/customer-modal.component';
 import { CustomerSubscriptionComponent } from './customer-subscription/customer-subscription.component';
 import { CreateCustomerSubscriptionComponent } from './create-customer-subscription/create-customer-subscription.component';
+import { ChangeExpiryDateModalComponent } from './change-expiry-date-modal/change-expiry-date-modal.component';
+import { UpdateCustomerSubscriptionComponent } from './update-customer-subscription/update-customer-subscription.component';
 
 
 @NgModule({
@@ -21,6 +23,8 @@ import { CreateCustomerSubscriptionComponent } from './create-customer-subscript
     CustomerModalComponent,
     CustomerSubscriptionComponent,
     CreateCustomerSubscriptionComponent,
+    ChangeExpiryDateModalComponent,
+    UpdateCustomerSubscriptionComponent,
   ],
   imports: [
     CommonModule,

@@ -2584,6 +2584,23 @@
                     "type": "System.Void",
                     "typeSimple": "System.Void"
                   }
+                },
+                {
+                  "name": "GetSubscriptionsByCustomerAsync",
+                  "parametersOnMethod": [
+                    {
+                      "name": "customerId",
+                      "typeAsString": "System.Guid, System.Private.CoreLib",
+                      "type": "System.Guid",
+                      "typeSimple": "string",
+                      "isOptional": false,
+                      "defaultValue": null
+                    }
+                  ],
+                  "returnValue": {
+                    "type": "SubNow.Subscriptions.SubscriptionDto",
+                    "typeSimple": "SubNow.Subscriptions.SubscriptionDto"
+                  }
                 }
               ]
             }
@@ -2753,6 +2770,43 @@
               "returnValue": {
                 "type": "System.Void",
                 "typeSimple": "System.Void"
+              },
+              "allowAnonymous": null,
+              "implementFrom": "SubNow.Subscriptions.ISubscriptionAppService"
+            },
+            "GetSubscriptionsByCustomerAsyncByCustomerId": {
+              "uniqueName": "GetSubscriptionsByCustomerAsyncByCustomerId",
+              "name": "GetSubscriptionsByCustomerAsync",
+              "httpMethod": "GET",
+              "url": "api/app/subscription/subscriptions-by-customer/{customerId}",
+              "supportedVersions": [],
+              "parametersOnMethod": [
+                {
+                  "name": "customerId",
+                  "typeAsString": "System.Guid, System.Private.CoreLib",
+                  "type": "System.Guid",
+                  "typeSimple": "string",
+                  "isOptional": false,
+                  "defaultValue": null
+                }
+              ],
+              "parameters": [
+                {
+                  "nameOnMethod": "customerId",
+                  "name": "customerId",
+                  "jsonName": null,
+                  "type": "System.Guid",
+                  "typeSimple": "string",
+                  "isOptional": false,
+                  "defaultValue": null,
+                  "constraintTypes": [],
+                  "bindingSourceId": "Path",
+                  "descriptorName": ""
+                }
+              ],
+              "returnValue": {
+                "type": "SubNow.Subscriptions.SubscriptionDto",
+                "typeSimple": "SubNow.Subscriptions.SubscriptionDto"
               },
               "allowAnonymous": null,
               "implementFrom": "SubNow.Subscriptions.ISubscriptionAppService"
@@ -7661,9 +7715,33 @@
           "regex": null
         },
         {
+          "name": "PlanName",
+          "jsonName": null,
+          "type": "System.String",
+          "typeSimple": "string",
+          "isRequired": false,
+          "minLength": null,
+          "maxLength": null,
+          "minimum": null,
+          "maximum": null,
+          "regex": null
+        },
+        {
           "name": "BillingCyclePlanId",
           "jsonName": null,
           "type": "System.Guid",
+          "typeSimple": "string",
+          "isRequired": false,
+          "minLength": null,
+          "maxLength": null,
+          "minimum": null,
+          "maximum": null,
+          "regex": null
+        },
+        {
+          "name": "BillingCycleName",
+          "jsonName": null,
+          "type": "System.String",
           "typeSimple": "string",
           "isRequired": false,
           "minLength": null,
@@ -7710,6 +7788,18 @@
         },
         {
           "name": "NextInvoiceLink",
+          "jsonName": null,
+          "type": "System.String",
+          "typeSimple": "string",
+          "isRequired": false,
+          "minLength": null,
+          "maxLength": null,
+          "minimum": null,
+          "maximum": null,
+          "regex": null
+        },
+        {
+          "name": "SubscriptionStatusId",
           "jsonName": null,
           "type": "System.String",
           "typeSimple": "string",

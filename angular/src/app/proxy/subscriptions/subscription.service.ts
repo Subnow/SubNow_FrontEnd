@@ -35,6 +35,14 @@ export class SubscriptionService {
     { apiName: this.apiName,...config });
   
 
+  getSubscriptionsByCustomer = (customerId: string, config?: Partial<Rest.Config>) =>
+    this.restService.request<any, SubscriptionDto>({
+      method: 'GET',
+      url: `/api/app/subscription/subscriptions-by-customer/${customerId}`,
+    },
+    { apiName: this.apiName,...config });
+  
+
   updateExpiryDate = (subscriptionId: string, newExpiryDate: string, config?: Partial<Rest.Config>) =>
     this.restService.request<any, void>({
       method: 'PUT',

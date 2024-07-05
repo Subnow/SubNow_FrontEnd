@@ -12,6 +12,7 @@ import { ToastrModule } from 'ngx-toastr';
 import { NgSelectModule } from '@ng-select/ng-select';
 import { NgxIntlTelInputModule } from 'ngx-intl-tel-input';
 import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
+import { CustomDatePipe } from './pipes/date.pipe';
 
 
 const moduleList = [
@@ -35,7 +36,8 @@ const moduleList = [
 ]
 
 const declarationList = [
-  TruncatePipe
+  TruncatePipe,
+  CustomDatePipe
 ]
 @NgModule({
   declarations: [

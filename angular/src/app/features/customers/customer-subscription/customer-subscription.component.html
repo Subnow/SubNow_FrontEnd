@@ -3,7 +3,7 @@
     <p class='form-name'>{{"General::subscription"|abpLocalization}}</p>
   </div>
   <div class='col-lg-6 col-md-12'>
-    <div class='row' *ngIf='false'>
+    <div class='row' *ngIf='!subscriptionObj'>
       <div class='col-12'>
         <div class='form-group'>
           <label class="form-label mb-16">{{"General::subscriptionPlan"|abpLocalization}}</label>
@@ -14,12 +14,26 @@
         </div>
       </div>
     </div>
-    <div class='row g-0'>
+    <div class='row g-0' *ngIf='subscriptionObj'>
       <div class='col-md-12 pb-16'>
-        <form class='form'>
-          <div class='row'>
+        <form class='form' >
+          <div class='row g-0 py-16 border-bottom'>
             <div class='col-l2'>
-              <span class='badge badge-success'>Active</span>
+              <span *ngIf='subscriptionObj?.subscriptionStatusId === "ACTIVE"' class='badge badge-success'>
+                {{"General::active"|abpLocalization}}
+              </span>
+              <span *ngIf='subscriptionObj?.subscriptionStatusId === "TRIAL"' class='badge badge-trial'>
+                {{"General::trial"|abpLocalization}}
+              </span>
+              <span *ngIf='subscriptionObj?.subscriptionStatusId === "CANCELLED"' class='badge badge-default'>
+                {{"General::cancelled"|abpLocalization}}
+              </span>
+              <span *ngIf='subscriptionObj?.subscriptionStatusId === "EXPIRED"' class='badge badge-default'>
+                {{"General::expired"|abpLocalization}}
+              </span>
+              <span *ngIf='subscriptionObj?.subscriptionStatusId === "FUTURE"' class='badge badge-success'>
+                {{"General::future"|abpLocalization}}
+              </span>
             </div>
           </div>
           <div class='row g-0 py-16 border-bottom'>
@@ -30,7 +44,7 @@
                   <span>{{"General::chargeTotalAmountHint"|abpLocalization}}</span>
                 </div>
                 <div class='block-two'>
-                  <span class='price'>100 {{"General::SAR"|abpLocalization}}</span>
+                  <span class='price'>{{subscriptionObj.totalAmount}} {{"General::SAR"|abpLocalization}}</span>
                   <button class='btn btn-light disabled'>{{"General::createSubscription"|abpLocalization}}</button>
                 </div>
 
@@ -39,12 +53,13 @@
           </div>
           <div class='row g-0 py-16 border-bottom'>
             <div class='col-l2'>
-              <label class="form-label">{{"General::activationInvoice"|abpLocalization}}</label>
+              <label class="form-label">{{"General::nextInvoice"|abpLocalization}}</label>
               <div class='custom-input-group2'>
-                <input disabled  class='form-control' type='text' #copy value='test copy'>
+                <input disabled  class='form-control' type='text' #copy [(ngModel)]="subscriptionObj.nextInvoiceLink" name='nextInvoiceLink'>
                 <div class='custom-input-group2-text'>
-                  <i class="icon fa-regular fa-circle-question" tooltipClass="custom-tooltip" placement="top" container="body"  ngbTooltip='{{"General::activationInvoiceHint"|abpLocalization}}'></i>
-                  <a class='btn-text' (click)='copyActivationInvoice(copy?.value)'><i class="icon fa-solid fa-link"></i><span>{{"General::copy"|abpLocalization}}</span></a>
+                  <i class="icon fa-regular fa-circle-question"></i>
+<!--                  <i class="icon fa-regular fa-circle-question" tooltipClass="custom-tooltip" placement="top" container="body"  ngbTooltip='{{"General::activationInvoiceHint"|abpLocalization}}'></i>-->
+                  <a class='btn-text' (click)='copyActivationInvoice(copy.value)'><i class="icon fa-solid fa-link"></i><span>{{"General::copy"|abpLocalization}}</span></a>
                 </div>
               </div>
             </div>
@@ -54,9 +69,10 @@
             <div class='col-l2'>
               <label class="form-label">{{"General::expiryDate"|abpLocalization}}</label>
               <div class='custom-input-group2'>
-                <input  disabled class='form-control' type='text'>
+                <input  disabled class='form-control' type='text' [value]="subscriptionObj.expiryDate | date:'dd/MM/YYYY'" name='expiryDate'>
                 <div class='custom-input-group2-text'>
-                  <i class="icon fa-regular fa-circle-question" tooltipClass="custom-tooltip" placement="top" container="body"  ngbTooltip='{{"General::expiryDateHint"|abpLocalization}}'></i>
+                  <i class="icon fa-regular fa-circle-question"></i>
+<!--                  <i class="icon fa-regular fa-circle-question" tooltipClass="custom-tooltip" placement="top" container="body"  ngbTooltip='{{"General::expiryDateHint"|abpLocalization}}'></i>-->
                   <a class='btn-text' (click)='updateSubscriptionExpiryDate()'><i class="icon fa-solid fa-gear"></i><span>{{"General::update"|abpLocalization}}</span></a>
                 </div>
               </div>
@@ -66,15 +82,17 @@
             <div class='col-l2 mb-16'>
               <label class="form-label">{{"General::subscriptionPlan"|abpLocalization}}</label>
               <div class='control-icon'>
-                <input disabled class='form-control' type='text' >
-                <i class="icon fa-regular fa-circle-question" tooltipClass="custom-tooltip" placement="top" container="body"  ngbTooltip='{{"General::subscriptionPlanTooltip"|abpLocalization}}'></i>
+                <input disabled class='form-control' type='text' [(ngModel)]="subscriptionObj.planName" name='planName'>
+                <i class="icon fa-regular fa-circle-question"></i>
+<!--                <i class="icon fa-regular fa-circle-question" tooltipClass="custom-tooltip" placement="top" container="body"  ngbTooltip='{{"General::subscriptionPlanTooltip"|abpLocalization}}'></i>-->
               </div>
             </div>
             <div class='col-l2'>
               <label class="form-label">{{"General::subscriptionBillingCycle"|abpLocalization}}</label>
               <div class='control-icon'>
-                <input disabled class='form-control' type='text'>
-                <i class="icon fa-regular fa-circle-question" tooltipClass="custom-tooltip" placement="top" container="body"  ngbTooltip='{{"General::subscriptionBillingCycleTooltip"|abpLocalization}}'></i>
+                <input disabled class='form-control' type='text' [(ngModel)]="subscriptionObj.billingCycleName" name='billingCycleName'>
+                <i class="icon fa-regular fa-circle-question"></i>
+                <!--                <i class="icon fa-regular fa-circle-question" tooltipClass="custom-tooltip" placement="top" container="body"  ngbTooltip='{{"General::subscriptionBillingCycleTooltip"|abpLocalization}}'></i>-->
               </div>
               <span class='control-hint'>{{"General::subscriptionBillingCycleHint"|abpLocalization}}</span>
             </div>
@@ -82,15 +100,12 @@
 
           <div class='row py-16'>
             <div class='col-12'>
-              <button class="btn btn-light"><i class="fa-solid fa-rotate"></i><span>{{"General::changeSubscription"|abpLocalization}}</span></button>
+              <button class="btn btn-light" (click)='changeSubscription()'><i class="fa-solid fa-rotate"></i><span>{{"General::changeSubscription"|abpLocalization}}</span></button>
             </div>
           </div>
         </form>
       </div>
     </div>
-
-
-
   </div>
 </div>
 
