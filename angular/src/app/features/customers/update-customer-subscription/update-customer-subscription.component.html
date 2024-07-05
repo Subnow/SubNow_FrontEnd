@@ -1,0 +1,55 @@
+<div class="modal-header flex-column">
+  <div class='d-flex align-items-center justify-content-between w-100 mb-16'>
+    <div class='icon-header'>
+      <i class="icon fa-solid fa-rotate"></i>
+    </div>
+
+    <a class='modal-close' (click)="closeModal()">
+      <i class='fa fa-xmark'></i>
+    </a>
+  </div>
+  <div>
+    <h2 class='title'>
+      {{"General::changeSubscription"|abpLocalization}}
+    </h2>
+  </div>
+</div>
+<form class='form' [formGroup]='form'>
+  <div class='modal-body'>
+    <div class='modal-body-wrapper'>
+      <div class='row'>
+        <div class='col-12'>
+          <div class='border-bottom pb-16 mb-16'>
+            <label class='form-label'>{{"General::theNewPlan"|abpLocalization}}</label>
+            <ng-select [items]="planList"
+                       bindLabel="name"
+                       bindValue="planId"
+                       placeholder='{{"General::selectPlan"|abpLocalization}}'
+                       [clearable]="false"
+                       formControlName='newPlanId'
+                       id='planId'
+                       required
+                       (change)="onChange($event)"
+            >
+            </ng-select>
+          </div>
+        </div>
+        <div class='col-12'>
+            <label class='form-label'>{{"General::chooseTheBillingCycle"|abpLocalization}}</label>
+            <ng-select [items]="billingCycleList"
+                       bindLabel="billingCycleName"
+                       bindValue="id"
+                       placeholder='{{"General::chooseTheBillingCycle"|abpLocalization}}'
+                       [clearable]="false"
+                       formControlName='newBillingCyclePlanId'
+                       required
+            >
+            </ng-select>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class='modal-footer'>
+    <button class='btn btn-save' (click)='changeSubscription()'>{{"General::updateSubscription"|abpLocalization}}</button>
+  </div>
+</form>

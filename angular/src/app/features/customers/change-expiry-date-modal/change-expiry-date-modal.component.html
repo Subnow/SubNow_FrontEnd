@@ -1,0 +1,39 @@
+<div class="modal-header flex-column">
+  <div class='d-flex align-items-center justify-content-between w-100 mb-16'>
+    <div class='icon-header'>
+      <i class="icon fa-solid fa-rotate"></i>
+    </div>
+
+    <a class='modal-close' (click)="closeModal()">
+      <i class='fa fa-xmark'></i>
+    </a>
+  </div>
+  <div>
+      <h2 class='title'>
+        {{"General::updateSubscriptionExpiryDate"|abpLocalization}}
+      </h2>
+  </div>
+</div>
+<form class='form' [formGroup]='form'>
+  <div class='modal-body'>
+    <div class='modal-body-wrapper'>
+      <div class='row'>
+        <div class='col-12'>
+            <label class='form-label'>{{"General::newExpiryDate"|abpLocalization}}</label>
+            <div class='control-icon'>
+              <input type="text" class="form-control"  placeholder="dd/mm/yyyy" bsDatepicker formControlName='newExpiryDate' [bsConfig]="{ dateInputFormat: 'DD/MM/YYYY' }" />
+              <i class="icon fa-regular fa-circle-question" tooltipClass="custom-tooltip" placement="top" container="body"  ngbTooltip='{{"General::newExpiryDateTooltip"|abpLocalization}}'></i>
+            </div>
+          <div *ngIf="form.get('newExpiryDate')?.invalid && form.get('newExpiryDate')?.touched">
+              <span *ngIf="form.get('newExpiryDate')?.errors?.expiryDateInvalid" class='invalid' >
+                {{"General::expiryDateValid"|abpLocalization}}
+              </span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class='modal-footer'>
+    <button class='btn btn-save' (click)='updateExpiryDate()'>{{"General::updateExpiryDate"|abpLocalization}}</button>
+  </div>
+</form>
