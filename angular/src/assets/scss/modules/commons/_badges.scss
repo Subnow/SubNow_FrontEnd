@@ -16,8 +16,12 @@
       color:$danger;
     }
     &-default{
-      background: $default;
-      color: $main-text;
+      background: #E4E5E7;
+      color: #000;
+    }
+    &-trial{
+      background: #E1E7FF;
+      color: #425CC7;
     }
   }
 

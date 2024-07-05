@@ -64,7 +64,7 @@
       &.active{
         border-bottom: none !important;
         border-right: 1px solid  #D0D5DD;
-        background: #F9FAFB;
+        background: transparent;
         color: #1D2939;
         .icon{
           color: #1D2939;
@@ -88,7 +88,16 @@
   padding-top: 32px !important;
 }
 html[dir='rtl']{
-  .custom-nav-tabs .nav-link.active{
+  .custom-nav-tabs .nav-link.active,
+  .custom-nav-tabs .nav-link:last-child {
       border-right: 0 !important;
   }
+  .custom-nav-tabs .nav-link{
+      border-left: 1px solid #D0D5DD !important;
+
+  }
+  //.custom-nav-tabs .nav-link {
+  //  border-left: 1px solid #D0D5DD !important;
+  //  border-right:0;
+  //}
 }

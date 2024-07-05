@@ -3,6 +3,7 @@ import type { RenewalsPlan } from '../enums/renewals-plan.enum';
 import type { PlanStatusType } from '../enums/plan-status-type.enum';
 
 export interface BillingCyclePlanDto {
+  id?: string;
   planId: string;
   billingCycleId: string;
   price?: number;
@@ -53,6 +54,7 @@ export interface PlanDto {
 }
 
 export interface PlanNameDto {
+  planId?: string;
   name?: string;
 }
 

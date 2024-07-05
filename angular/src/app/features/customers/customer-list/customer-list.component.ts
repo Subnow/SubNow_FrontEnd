@@ -1,10 +1,9 @@
 import { Component, inject, OnInit } from '@angular/core';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { CustomerDto, CustomerService } from '@proxy/customers';
-import { AddEditCustomerComponent } from '../add-edit-customer/add-edit-customer.component';
 import { PlanService } from '@proxy/plans';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { CustomerStatus } from '@proxy/enums';
+import { CustomerModalComponent } from '../customer-modal/customer-modal.component';
 
 @Component({
   selector: 'app-customer-list',
@@ -74,10 +73,14 @@ getCustomerList(){
   }))
 }
 addEditCustomer(customer?:CustomerDto,index?:number,type?:string): void {
+
   if (type === 'edit'){
-    this.isEdit = true
+    this.isEdit = true;
+    console.log('edit' ,this.isEdit)
   }else {
     this.isEdit = false;
+    console.log('edit' ,this.isEdit)
+
   }
   const customerObj = {
     id:customer?.id,
@@ -102,9 +105,9 @@ addEditCustomer(customer?:CustomerDto,index?:number,type?:string): void {
     customerSource: customer?.customerSource
   }
 
-  const modal = this.modalService.open(AddEditCustomerComponent, { fullscreen: true, windowClass: 'custom-modal' });
-  (modal.componentInstance as AddEditCustomerComponent).customer = customerObj;
-  (modal.componentInstance as AddEditCustomerComponent).isEdit = this.isEdit;
+  const modal = this.modalService.open(CustomerModalComponent, { fullscreen: true, windowClass: 'custom-modal' });
+  (modal.componentInstance as CustomerModalComponent).customer = customerObj;
+  (modal.componentInstance as CustomerModalComponent).isEdit = this.isEdit;
 
   const reloadPlanList = modal.result.then((result =>{
     this.getCustomerList();
@@ -114,7 +117,6 @@ addEditCustomer(customer?:CustomerDto,index?:number,type?:string): void {
     if (updateCustomer){
       if (typeof index === 'number') {
         this.customerList?.splice(index, 1, updateCustomer);
-        this.isEdit = true;
       } else {
         this.customerList?.push(this.customerList as any);
       }

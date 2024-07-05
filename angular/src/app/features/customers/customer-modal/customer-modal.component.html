@@ -1,0 +1,66 @@
+<div class="modal-header">
+  <div class='container'>
+    <div class='modal-header-wrapper'>
+      <a class='modal-close' (click)="closeModal()">
+        <i class='fa fa-xmark'></i>
+      </a>
+      <h2 class='title'>
+        <span *ngIf='customer?.name'>{{customer?.name}}</span>
+        <span  *ngIf='!customer?.name'>{{"General::newCustomer"|abpLocalization}}</span>
+      </h2>
+      <button  class='btn btn-save' type="submit"  (click)="createEdit()" (formValid)="handleFormValidity($event)" [disabled]="!isChildFormValid">
+        <span>{{"General::save"|abpLocalization}}</span>
+      </button>
+    </div>
+  </div>
+</div>
+
+
+
+
+<div class='modal-body'>
+  <div class='container'>
+    <div class='modal-body-wrapper'>
+      <ul ngbNav #nav="ngbNav" class="custom-nav-tabs nav-tabs custom-width">
+        <li ngbNavItem>
+          <button ngbNavLink>
+            <i class="icon fa-regular fa-address-card"></i>
+            <span>
+                {{"General::info"|abpLocalization}}
+              </span>
+          </button>
+          <ng-template ngbNavContent>
+            <app-add-edit-customer [customer]='customer' [isEdit]='isEdit' (formValid)="handleFormValidity($event)"></app-add-edit-customer>
+          </ng-template>
+        </li>
+        <li ngbNavItem [disabled]='!isEdit'>
+          <button ngbNavLink>
+            <i class="fa-regular fa-file-lines icon"></i>
+            <span>
+                 {{"General::subscription"|abpLocalization}}
+              </span>
+          </button>
+          <ng-template ngbNavContent>
+            <app-customer-subscription [customer]='customer'></app-customer-subscription>
+          </ng-template>
+        </li>
+        <li ngbNavItem [disabled]="true">
+          <button ngbNavLink>
+            <i class="fa-solid fa-file-invoice icon"></i>
+            <span>{{"General::invoices"|abpLocalization}}</span>
+          </button>
+          <ng-template ngbNavContent>Second content</ng-template>
+        </li>
+        <li ngbNavItem [disabled]="true">
+          <button ngbNavLink>
+            <i class="fa-solid fa-chart-column icon"></i>
+            <span>{{"General::logs"|abpLocalization}} </span>
+          </button>
+          <ng-template ngbNavContent>Second content</ng-template>
+        </li>
+      </ul>
+      <div [ngbNavOutlet]="nav"></div>
+    </div>
+  </div>
+</div>
+
