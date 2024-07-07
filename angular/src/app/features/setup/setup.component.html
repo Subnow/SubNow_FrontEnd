@@ -1,0 +1,70 @@
+<section class='company-setup'>
+  <div class='section-header border-0 pb-0'>
+    <app-page-title-standalone title='{{"General::setup"|abpLocalization}}' ></app-page-title-standalone>
+    <div class='section-header-actions'>
+      <div  class="input-search">
+        <i class="icon fa-search fa-solid"></i>
+        <input  type="text" formcontrolname="searchTerm" class="form-control" placeholder='{{"General::search"|abpLocalization}}'>
+      </div>
+
+    </div>
+  </div>
+  <div class='section-body'>
+    <h2 class='section-body-header'>{{"General::general"|abpLocalization}}</h2>
+    <div class='setup row'>
+      <div class='col-lg-4 col-md-6'>
+        <a class='setup-box' (click)='updateCompanySetting()'>
+          <div class='icon company-color'>
+            <img src='assets/images/icons/building.svg' />
+          </div>
+          <div class='info'>
+            <span class='info-text'>{{"General::companySettings"|abpLocalization}}</span>
+            <span class='info-hint'>{{"General::companySettingsHint"|abpLocalization}}</span>
+          </div>
+
+        </a>
+
+      </div>
+      <div class='col-lg-4 col-md-6'>
+        <a class='setup-box'>
+          <div class='icon branding-color'>
+            <img src='assets/images/icons/color.svg' />
+          </div>
+          <div class='info'>
+            <span class='info-text'>{{"General::branding"|abpLocalization}}</span>
+            <span class='info-hint'>{{"General::brandingHint"|abpLocalization}}</span>
+          </div>
+
+        </a>
+
+      </div>
+      <div class='col-lg-4 col-md-6'>
+        <a class='setup-box'>
+          <div class='icon smc-color'>
+            <img src='assets/images/icons/message.svg' />
+          </div>
+          <div class='info'>
+            <span class='info-text'>{{"General::sms"|abpLocalization}}</span>
+            <span class='info-hint'>{{"General::smsHint"|abpLocalization}}</span>
+          </div>
+
+        </a>
+
+      </div>
+      <div class='col-lg-4 col-md-6'>
+        <a class='setup-box'>
+          <div class='icon payment-color'>
+            <img src='assets/images/icons/credit-card.svg' />
+          </div>
+          <div class='info'>
+            <span class='info-text'>{{"General::payments"|abpLocalization}}</span>
+            <span class='info-hint'>{{"General::paymentsHints"|abpLocalization}}</span>
+          </div>
+
+        </a>
+
+      </div>
+
+    </div>
+  </div>
+</section>

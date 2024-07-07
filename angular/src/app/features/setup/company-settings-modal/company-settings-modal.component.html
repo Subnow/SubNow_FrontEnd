@@ -1,0 +1,147 @@
+<div class="modal-header">
+  <div class='container'>
+    <div class='modal-header-wrapper'>
+      <a class='modal-close' (click)="closeModal()">
+        <i class='fa fa-xmark'></i>
+      </a>
+      <h2 class='title'>{{"General::company"|abpLocalization}}</h2>
+      <button  class='btn btn-save' type="submit"  (click)="editCompany()">
+        <span>{{"General::save"|abpLocalization}}</span>
+      </button>
+    </div>
+  </div>
+</div>
+<div class='modal-body'>
+  <div class='container'>
+    <div class='modal-body-wrapper'>
+        <form class='form section-form gap-20' [formGroup]='form'>
+        <!--Start companyName Sec-->
+        <div class='row g-0  pb-20 border-bottom'>
+          <div class='col-lg-3 col-md-12'>
+            <p class='form-name'>{{"General::companyName"|abpLocalization}}</p>
+            <p class='form-hint'>{{"General::companyNameHint"|abpLocalization}}</p>
+
+          </div>
+          <div class='col-lg-9 col-md-12'>
+            <div class='row'>
+              <div class='col-lg-8 col-md-12'>
+                  <label class="form-label">{{"General::companyName"|abpLocalization}}<sup>*</sup></label>
+                  <input class='form-control' type='text' formControlName='name' placeholder='{{"General::companyName"|abpLocalization}}'>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!--End companyName Sec-->
+
+        <!--Start describeCompany Sec-->
+        <div class='row g-0  pb-20 border-bottom'>
+          <div class='col-lg-3 col-md-12'>
+            <p class='form-name'>{{"General::description"|abpLocalization}}</p>
+            <p class='form-hint'>{{"General::descriptionCompanyHint"|abpLocalization}}</p>
+          </div>
+          <div class='col-lg-9 col-md-12'>
+            <div class='row'>
+              <div class='col-lg-8 col-md-12'>
+                <div class='pb-28'>
+                  <textarea #countDes rows='4' class='form-control' formControlName='description' placeholder='{{"General::describeCompany"|abpLocalization}}' maxlength='250'></textarea>
+                  <span class='control-hint'> {{250 - countDes.value.length}} {{"General::describeCompanyHint"|abpLocalization}}</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!--End describeCompany Sec-->
+
+
+        <!--Start Company Tax Informations Sec-->
+        <div class='row g-0  pb-20 border-bottom'>
+          <div class='col-lg-3 col-md-12'>
+            <p class='form-name'>{{"General::companyTaxInformations"|abpLocalization}}</p>
+          </div>
+          <div class='col-lg-9 col-md-12'>
+            <div class='row'>
+              <div class='col-lg-8 col-md-12 mb-16'>
+                <label class="form-label">{{"General::companyRegistrationNumber"|abpLocalization}}</label>
+                <div class='control-icon'>
+                  <input class='form-control' type='text' formControlName='companyRegistrationNo' placeholder='{{"General::companyRegistrationNumber"|abpLocalization}}' maxlength='20'>
+                  <i class="icon fa-regular fa-circle-question" tooltipClass="custom-tooltip" placement="top" container="body"  ngbTooltip='{{"General::companyRegistrationNumberTooltip"|abpLocalization}}'></i>
+                </div>
+              </div>
+              <div class='col-lg-8 col-md-12'>
+                <label class="form-label">{{"General::taxID"|abpLocalization}}</label>
+                <div class='control-icon'>
+                  <input class='form-control' type='text' formControlName='taxID' placeholder='{{"General::taxID"|abpLocalization}}' maxlength='15'>
+                  <i class="icon fa-regular fa-circle-question" tooltipClass="custom-tooltip" placement="top" container="body"  ngbTooltip='{{"General::taxIDTooltip"|abpLocalization}}'></i>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!--End Company Tax Informations Sec-->
+
+        <!--Start Address Sec-->
+        <div class='row g-0  pb-20 border-bottom'>
+          <div class='col-lg-3 col-md-12'>
+            <p class='form-name'>{{"General::address"|abpLocalization}}</p>
+          </div>
+          <div class='col-lg-9 col-md-12'>
+            <div class='row'>
+              <div class='col-lg-8 col-md-12 mb-16'>
+                <label class="form-label">{{"General::addressLine1"|abpLocalization}}</label>
+                <input type='text' class='form-control' formControlName='address1' placeholder='{{"General::streetName"|abpLocalization}}'>
+              </div>
+              <div class='col-lg-8 col-md-12 mb-16'>
+                <label class="form-label">{{"General::addressLine2"|abpLocalization}}</label>
+                <div class='control-icon'>
+                  <input type='text' class='form-control' formControlName='address2' placeholder='{{"General::buildingName"|abpLocalization}}'>
+                </div>
+              </div>
+              <div class='col-lg-8 col-md-12 mb-16'>
+                <label class="form-label">{{"General::postalCode"|abpLocalization}}</label>
+                <div class='control-icon'>
+                  <input type='text' class='form-control' formControlName='postalCode' placeholder='{{"General::postalCode"|abpLocalization}}' maxlength='7'>
+                </div>
+              </div>
+              <div class='col-lg-8 col-md-12 mb-16'>
+                <label class="form-label">{{"General::city"|abpLocalization}}</label>
+                <div class='control-icon'>
+                  <input type='text' class='form-control' formControlName='address2' placeholder='{{"General::state"|abpLocalization}}'>
+                </div>
+              </div>
+              <div class='col-lg-8 col-md-12 mb-16'>
+                <label class="form-label">{{"General::stateProvince"|abpLocalization}}</label>
+                <div class='control-icon'>
+                  <input type='text' class='form-control' formControlName='address2' placeholder='{{"General::state"|abpLocalization}}'>
+                </div>
+              </div>
+              <div class='col-lg-8 col-md-12 mb-16'>
+                  <label class="form-label">{{"General::country"|abpLocalization}}</label>
+                  <ng-select class='select-country' placeholder='{{"General::country"|abpLocalization}}' [items]="countryList" formControlName="countryId" bindLabel="name" bindValue="id"  placeholder='{{"General::country"|abpLocalization}}' [clearable]="false">
+                    <ng-template ng-label-tmp let-item="item">
+                      <div class='country'>
+                        <img [src]='item?.flagUrl' class='img-fluid'>
+                        <span class='name'>{{item?.name}}</span>
+                      </div>
+                    </ng-template>
+
+                    <ng-template ng-option-tmp let-item="item" let-index="index" let-search="searchTerm">
+                      <div class='country'>
+                        <img [src]='item?.flagUrl' class='img-fluid'>
+                        <span class='name'>{{item?.name}}</span>
+                      </div>
+                    </ng-template>
+                  </ng-select>
+              </div>
+
+            </div>
+          </div>
+        </div>
+        <!--End Address Sec-->
+
+
+
+
+      </form>
+    </div>
+  </div>
+</div>

@@ -347,13 +347,13 @@ input[type=number] {
 .input-search{
   position: relative;
   .form-control{
-    padding-left: 48px;
+    padding-left: 42px;
   }
   .icon{
     position: absolute;
-    font-size: 20px;
+    font-size: 18px;
     left: 14px;
-    top: 10px;
+    top: 12px;
   }
 }
 .form-control.disabled{
@@ -413,6 +413,18 @@ html[dir='rtl']{
   .custom-input-group2-text .btn-text {
     border: 1px solid #D0D5DD;
     border-radius: 8px 0 0 8px;
+  }
+
+  .input-search {
+    .form-control{
+      padding-left: 14px;
+      padding-right: 42px;
+    }
+    .icon{
+      right: 14px;
+      left: auto;
+    }
+
   }
 }
 .form-control:disabled{
