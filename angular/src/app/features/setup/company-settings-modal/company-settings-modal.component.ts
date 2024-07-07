@@ -94,7 +94,7 @@ export class CompanySettingsModalComponent implements OnInit{
       postalCode: this?.form.get('postalCode').value,
       stateOrProvince: this?.form.get('stateOrProvince').value,
       city: this?.form.get('city').value,
-      countryId: this?.form.get('countryId').value,
+      countryId: this?.form.get('countryId').value === null ? 'fbc691ae-a106-42d6-bb86-467bbde9b8a7' : this?.form.get('countryId').value,
     }
     this._companyService.update(updateCompanyObj as any).subscribe(()=>{
       this._toastr.success(this._localizationService.instant('General::companyEditSuccessfully'), '', {

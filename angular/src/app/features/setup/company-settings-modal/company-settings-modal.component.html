@@ -5,7 +5,7 @@
         <i class='fa fa-xmark'></i>
       </a>
       <h2 class='title'>{{"General::company"|abpLocalization}}</h2>
-      <button  class='btn btn-save' type="submit"  (click)="editCompany()">
+      <button  class='btn btn-save' type="submit"  (click)="editCompany()" [disabled]="!form.valid">
         <span>{{"General::save"|abpLocalization}}</span>
       </button>
     </div>
