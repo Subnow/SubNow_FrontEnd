@@ -64,7 +64,7 @@ import { NgxValidateCoreModule } from '@ngx-validate/core';
           email: 'General::InvalidEmail',
           pattern: 'General::InvalidPattern',
           max: 'General::ThisFieldMustBeLessOrEqual[{{ max }}]',
-          maxLength: 'General::ThisFieldMustBeAStringOrArrayTypeWithAMaximumLengthOf[{{ maxLength }}]',
+          maxlength: 'General::MaximumLengthExceeded[{{ maxLength }}].',
           invalidUrl: 'General::urlNotValid',
           startDateValid:'General::startDateValid Date must be less than or equal to Expiry Date.',
           expiryDateValid:'General::expiryDateValid Greater than or equal start date'
