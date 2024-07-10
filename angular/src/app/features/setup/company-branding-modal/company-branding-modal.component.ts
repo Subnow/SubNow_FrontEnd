@@ -108,14 +108,13 @@ export class CompanyBrandingModalComponent implements OnInit {
   }
 
   editCompanyBranding(): void {
-    debugger
     if (this.form.invalid) {
       return;
     }
 
     const updateCompanyBrandingObj = {
       companyId: this.companyBranding?.companyId,
-      companyLogo: this.form.get('companyLogo').value,
+      companyLogo: this.form.get('companyLogoBase64').value,
       backgroundColor: this.form.get('backgroundColor').value,
       buttonsColor: this.form.get('buttonsColor').value,
       xAccount: this.form.get('xAccount').value,
