@@ -6,18 +6,22 @@ import { SetupComponent } from './setup.component';
 import { PageTitleStandaloneComponent } from '../../standalone/page-title-standalone/page-title-standalone.component';
 import { SharedModule } from '../../shared/shared.module';
 import { CompanySettingsModalComponent } from './company-settings-modal/company-settings-modal.component';
+import { CompanyBrandingModalComponent } from './company-branding-modal/company-branding-modal.component';
+import { FileUploaderComponent } from '../../standalone/file-uploader/file-uploader.component';
 
 
 @NgModule({
   declarations: [
     SetupComponent,
-    CompanySettingsModalComponent
+    CompanySettingsModalComponent,
+    CompanyBrandingModalComponent
   ],
   imports: [
     CommonModule,
     SetupRoutingModule,
     PageTitleStandaloneComponent,
-    SharedModule
+    SharedModule,
+    FileUploaderComponent
   ]
 })
 export class SetupModule { }

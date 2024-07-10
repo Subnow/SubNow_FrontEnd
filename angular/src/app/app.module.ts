@@ -24,6 +24,7 @@ import { EnglishLocalizationExtend } from '../localizations/en/en';
 import { ArabicLocalizationExtend } from '../localizations/ar/ar';
 import { ToastrModule } from 'ngx-toastr';
 import { NgxValidateCoreModule } from '@ngx-validate/core';
+import { ColorPickerModule } from 'ngx-color-picker';
 
 @NgModule({
   imports: [
@@ -67,7 +68,8 @@ import { NgxValidateCoreModule } from '@ngx-validate/core';
           maxlength: 'General::MaximumLengthExceeded[{{ maxLength }}].',
           invalidUrl: 'General::urlNotValid',
           startDateValid:'General::startDateValid Date must be less than or equal to Expiry Date.',
-          expiryDateValid:'General::expiryDateValid Greater than or equal start date'
+          expiryDateValid:'General::expiryDateValid Greater than or equal start date',
+          invalidWhatsappNumber:"General::invalidWhatsappNumber"
         },
       },
     }),
@@ -82,7 +84,8 @@ import { NgxValidateCoreModule } from '@ngx-validate/core';
     ThemeLeptonXModule.forRoot(),
     SideMenuLayoutModule.forRoot(),
     AccountLayoutModule.forRoot(),
-    NgbModule
+    NgbModule,
+    ColorPickerModule
   ],
   declarations: [AppComponent],
   providers: [APP_ROUTE_PROVIDER,

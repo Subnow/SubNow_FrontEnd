@@ -13,3 +13,10 @@ export interface CurrencyDto extends EntityDto<string> {
   arabicName?: string;
   isDefault: boolean;
 }
+
+export interface EventTypeDto {
+  id?: string;
+  eventTypeCode?: string;
+  eventTypeName?: string;
+  status: boolean;
+}

@@ -8,6 +8,7 @@ import { finalize } from 'rxjs';
 import { BillingCycleService } from '@proxy/billing-cycles';
 import { LocalizationService } from '@abp/ng.core';
 import { RegularExpression } from '../../../shared/constants/regular-expressions';
+import { urlValidator } from '../../../shared/utils/customValidation';
 @Component({
   selector: 'app-add-edit-plan',
   templateUrl: './add-edit-plan.component.html',
@@ -81,7 +82,7 @@ export class AddEditPlanComponent  implements OnInit{
         renewals: [this.plan?.renewals],
         accountingCode: [this.plan?.accountingCode, ],
         planStatus: [this.plan?.planStatus],
-        redirectUrl: [this.plan?.redirectUrl,Validators.pattern(RegularExpression.url)],
+        redirectUrl: [this.plan?.redirectUrl,urlValidator()],
         billingCyclePlans:[this.plan?.billingCyclePlans]
       })
     }else{
@@ -96,7 +97,7 @@ export class AddEditPlanComponent  implements OnInit{
         renewals: [0, Validators.required],
         accountingCode: [this.plan?.accountingCode],
         planStatus: [0],
-        redirectUrl: [this.plan?.redirectUrl,Validators.pattern(RegularExpression.url)],
+        redirectUrl: [this.plan?.redirectUrl,urlValidator()],
         billingCyclePlans:[this.plan?.billingCyclePlans]
       })
 

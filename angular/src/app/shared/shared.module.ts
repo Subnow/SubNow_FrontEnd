@@ -13,6 +13,7 @@ import { NgSelectModule } from '@ng-select/ng-select';
 import { NgxIntlTelInputModule } from 'ngx-intl-tel-input';
 import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
 import { CustomDatePipe } from './pipes/date.pipe';
+import { ColorPickerModule } from 'ngx-color-picker';
 
 
 const moduleList = [
@@ -32,7 +33,8 @@ const moduleList = [
   NgbNavModule,
   NgbDatepickerModule,
   NgxIntlTelInputModule,
-  BsDatepickerModule
+  BsDatepickerModule,
+  ColorPickerModule
 ]
 
 const declarationList = [

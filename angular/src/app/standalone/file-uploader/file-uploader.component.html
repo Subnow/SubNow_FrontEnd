@@ -1,0 +1,12 @@
+<div class="file-uploader">
+  <div *ngIf="fileUrl" class="image-preview">
+    <img class='img-fluid' src='{{fileUrl}}' alt="Selected Image">
+  </div>
+  <div class='file-actions'>
+    <input type="file" #fileInput (change)="onFileSelected($event)" hidden>
+    <button type="button" (click)="fileInput.click()" class='btn update-btn'>{{"General::update"|abpLocalization}}</button>
+    <button type="button" *ngIf="fileUrl" (click)="removeFile()" class='btn btn-remove'>{{"General::remove"|abpLocalization}}</button>
+  </div>
+</div>
+<div class='file-hint'>SVG, PNG, JPG or GIF (max. 512x512px)</div>
+<div *ngIf="errorMessage" class="error-message invalid">{{ errorMessage }}</div>

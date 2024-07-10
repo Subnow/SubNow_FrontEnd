@@ -4,6 +4,7 @@ import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { CompanySettingsModalComponent } from './company-settings-modal/company-settings-modal.component';
 import { CompanyDto, CompanyService } from '@proxy/companies';
 import { CountryDto, CountryService } from '@proxy/look-ups';
+import { CompanyBrandingModalComponent } from './company-branding-modal/company-branding-modal.component';
 
 @Component({
   selector: 'app-setup',
@@ -29,9 +30,10 @@ export class SetupComponent implements OnInit{
   getCompanySetting():void{
     this._companyService.get().subscribe((res)=>{
       this.company = res;
-      console.log("this ===>" , this.company)
     })
-
   }
 
+  updateCompanyBranding(): void {
+    const modal = this.modalService.open(CompanyBrandingModalComponent, { fullscreen: true ,windowClass:"custom-modal"});
+  }
 }

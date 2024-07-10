@@ -6,4 +6,5 @@ import * as Enums from './enums';
 import * as LookUps from './look-ups';
 import * as Plans from './plans';
 import * as Subscriptions from './subscriptions';
-export { BillingCycles, Categories, Companies, Customers, Enums, LookUps, Plans, Subscriptions };
+import * as WebHooks from './web-hooks';
+export { BillingCycles, Categories, Companies, Customers, Enums, LookUps, Plans, Subscriptions, WebHooks };

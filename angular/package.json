@@ -41,6 +41,8 @@
     "ng-apexcharts": "^1.10.0",
     "ng-click-outside": "^9.0.1",
     "ngx-bootstrap": "^12.0.0",
+    "ngx-color": "^9.0.0",
+    "ngx-color-picker": "^17.0.0",
     "ngx-intl-tel-input": "^3.2.0",
     "ngx-intl-tel-input-gg": "^1.0.10",
     "ngx-toastr": "^19.0.0",
