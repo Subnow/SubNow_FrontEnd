@@ -107,6 +107,7 @@ export class CompanyBrandingModalComponent implements OnInit {
   }
 
   editCompanyBranding(): void {
+    debugger
     if (this.form.invalid) {
       return;
     }
@@ -146,4 +147,5 @@ export class CompanyBrandingModalComponent implements OnInit {
       fileInput.value = '';
     }
   }
+
 }

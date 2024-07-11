@@ -7,7 +7,6 @@ import { PageTitleStandaloneComponent } from '../../standalone/page-title-standa
 import { SharedModule } from '../../shared/shared.module';
 import { CompanySettingsModalComponent } from './company-settings-modal/company-settings-modal.component';
 import { CompanyBrandingModalComponent } from './company-branding-modal/company-branding-modal.component';
-import { FileUploaderComponent } from '../../standalone/file-uploader/file-uploader.component';
 
 
 @NgModule({
@@ -21,7 +20,6 @@ import { FileUploaderComponent } from '../../standalone/file-uploader/file-uploa
     SetupRoutingModule,
     PageTitleStandaloneComponent,
     SharedModule,
-    FileUploaderComponent
   ]
 })
 export class SetupModule { }
