@@ -132,11 +132,6 @@ export class CompanyBrandingModalComponent implements OnInit {
         })
         this.getCompanyBranding();
         this.closeModal();
-      },
-      error => {
-        this._toastr.error(this._localizationService.instant('General::companyEditFailed'), '', {
-          timeOut: 1000,
-        });
       }
     );
   }
