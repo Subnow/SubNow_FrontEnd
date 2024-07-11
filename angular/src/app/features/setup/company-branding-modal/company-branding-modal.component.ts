@@ -26,14 +26,14 @@ export class CompanyBrandingModalComponent implements OnInit {
     private _localizationService: LocalizationService,
     private _toastr: ToastrService,
     private _companyService: CompanyService,
-  ) { }
+  ) {
+    this.getCompanyBranding();
+  }
 
   ngOnInit() {
-    this.initForm();
     this.getCompanyBranding();
+    this.initForm();
     this.updateForm();
-
-
   }
 
   getCompanyBranding(): void {
@@ -68,6 +68,7 @@ export class CompanyBrandingModalComponent implements OnInit {
       xAccount: this.companyBranding?.xAccount,
       facebookAccount: this.companyBranding?.facebookAccount,
       instagramAccount: this.companyBranding?.instagramAccount,
+      linkedinAccount:this.companyBranding?.linkedinAccount,
       whatsappNumber: this.companyBranding?.whatsappNumber,
       supportLink: this.companyBranding?.supportLink,
       privacyPolicyUrl: this.companyBranding?.privacyPolicyUrl,
@@ -118,6 +119,7 @@ export class CompanyBrandingModalComponent implements OnInit {
       xAccount: this.form.get('xAccount').value,
       facebookAccount: this.form.get('facebookAccount').value,
       instagramAccount: this.form.get('instagramAccount').value,
+      linkedinAccount:this.form.get('linkedinAccount').value,
       whatsappNumber: this.form.get('whatsappNumber').value,
       supportLink: this.form.get('supportLink').value,
       privacyPolicyUrl: this.form.get('privacyPolicyUrl').value,
@@ -130,15 +132,15 @@ export class CompanyBrandingModalComponent implements OnInit {
         this._toastr.success(this._localizationService.instant('General::companyEditSuccessfully'), '', {
           timeOut: 1000,
         })
-        this.getCompanyBranding();
         this.closeModal();
+        this.getCompanyBranding();
       }
     );
   }
 
   removeFile(): void {
-    this.form.get('companyLogo').setValue('assets/images/icons/company-logo.png');
-    this.companyBranding.companyLogo = 'assets/images/icons/company-logo.png';
+    this.form.get('companyLogo').setValue(null);
+    this.companyBranding.companyLogo = null;
     const fileInput = document.querySelector('input[type="file"]') as HTMLInputElement;
     if (fileInput) {
       fileInput.value = '';
