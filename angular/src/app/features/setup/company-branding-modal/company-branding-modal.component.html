@@ -39,8 +39,6 @@
             <div *ngIf="errorMessage" class="error-message invalid">{{ errorMessage }}</div>
           </div>
         </div>
-        <!-- Hidden form control to store base64 string -->
-        <input type="hidden" formControlName="companyLogoBase64">
         <!--End Company logo Sec-->
 
         <!--End Company logo Sec-->
@@ -135,7 +133,7 @@
           </div>
           <div class='col-lg-6 col-md-12'>
             <div class='mb-16'>
-              <label class="form-label">{{"General::privacyPolicyURL"|abpLocalization}}<sup>*</sup></label>
+              <label class="form-label">{{"General::privacyPolicyURL"|abpLocalization}}</label>
               <div class='control-icon'>
                 <input class='form-control' placeholder='http://' type='text' formControlName='privacyPolicyUrl' id='privacyPolicyUrl'>
                 <i class="icon fa-regular fa-circle-question" tooltipClass="custom-tooltip" placement="top" container="body"  ngbTooltip='{{"General::privacyPolicyURLTooltip"|abpLocalization}}'></i>
@@ -143,7 +141,7 @@
             </div>
 
             <div class='mb-16'>
-              <label class="form-label">{{"General::termsServiceURL"|abpLocalization}}<sup>*</sup></label>
+              <label class="form-label">{{"General::termsServiceURL"|abpLocalization}}</label>
               <div class='control-icon'>
                 <input class='form-control'  placeholder='http://' type='text' formControlName='termsOfServiceUrl' id='termsOfServiceUrl'>
                 <i class="icon fa-regular fa-circle-question" tooltipClass="custom-tooltip" placement="top" container="body"  ngbTooltip='{{"General::termsServiceURLTooltip"|abpLocalization}}'></i>
@@ -160,39 +158,42 @@
             <p class='form-name'>{{"General::socialProfile"|abpLocalization}}</p>
           </div>
           <div class='col-lg-6 col-md-12'>
-            <div class='custom-input-group2 mb-16'>
-              <input class='form-control'  placeholder='{{"General::addLink"|abpLocalization}}' type='text' formControlName='xAccount'>
-              <div class='custom-input-group2-text'>
-                <span class='btn-text'><span>{{"General::X.com"|abpLocalization}}</span></span>
+              <div class='mb-16'>
+                <label class="form-label">{{"General::X.com"|abpLocalization}}</label>
+                <div class='control-icon'>
+                  <input class='form-control' placeholder='{{"General::addLink"|abpLocalization}}' type='text' formControlName='xAccount'>
+                  <i class="icon fa-regular fa-circle-question" tooltipClass="custom-tooltip" placement="top" container="body"  ngbTooltip='{{"General::X.com"|abpLocalization}}'></i>
+                </div>
+              </div>
+            <div class='mb-16'>
+              <label class="form-label">{{"General::facebook"|abpLocalization}}</label>
+              <div class='control-icon'>
+                <input class='form-control' placeholder='{{"General::addLink"|abpLocalization}}' type='text' formControlName='facebookAccount' id='facebookAccount'>
+                <i class="icon fa-regular fa-circle-question" tooltipClass="custom-tooltip" placement="top" container="body"  ngbTooltip='{{"General::facebook"|abpLocalization}}'></i>
               </div>
             </div>
 
-
-            <div class='custom-input-group2 mb-16'>
-              <input class='form-control'  placeholder='{{"General::addLink"|abpLocalization}}' type='text' formControlName='facebookAccount' id='facebookAccount'>
-              <div class='custom-input-group2-text'>
-                <span class='btn-text'><span>{{"General::facebook"|abpLocalization}}</span></span>
+            <div class='mb-16'>
+              <label class="form-label">{{"General::instagram"|abpLocalization}}</label>
+              <div class='control-icon'>
+                <input class='form-control' placeholder='{{"General::addLink"|abpLocalization}}' type='text' formControlName='instagramAccount' id='instagramAccount'>
+                <i class="icon fa-regular fa-circle-question" tooltipClass="custom-tooltip" placement="top" container="body"  ngbTooltip='{{"General::instagram"|abpLocalization}}'></i>
               </div>
             </div>
 
-            <div class='custom-input-group2 mb-16'>
-              <input class='form-control'  placeholder='{{"General::addLink"|abpLocalization}}' type='text' formControlName='instagramAccount' id='instagramAccount'>
-              <div class='custom-input-group2-text'>
-                <span class='btn-text'><span>{{"General::instagram"|abpLocalization}}</span></span>
+            <div class='mb-16'>
+              <label class="form-label">{{"General::linkedin"|abpLocalization}}</label>
+              <div class='control-icon'>
+                <input class='form-control' placeholder='{{"General::addLink"|abpLocalization}}' type='text' formControlName='linkedinAccount' id='linkedinAccount'>
+                <i class="icon fa-regular fa-circle-question" tooltipClass="custom-tooltip" placement="top" container="body"  ngbTooltip='{{"General::linkedin"|abpLocalization}}'></i>
               </div>
             </div>
 
-            <div class='custom-input-group2 mb-16'>
-              <input class='form-control'  placeholder='{{"General::addLink"|abpLocalization}}' type='text' formControlName='linkedinAccount' id='linkedinAccount'>
-              <div class='custom-input-group2-text'>
-                <span class='btn-text'><span>{{"General::linkedin"|abpLocalization}}</span></span>
-              </div>
-            </div>
-
-            <div class='custom-input-group2 mb-16'>
-              <input class='form-control'  placeholder='{{"General::addLink"|abpLocalization}}' type='text' formControlName='whatsappNumber' id='whatsappNumber'>
-              <div class='custom-input-group2-text'>
-                <span class='btn-text'><span>{{"General::whatsappNumber"|abpLocalization}}</span></span>
+            <div class='mb-16'>
+              <label class="form-label">{{"General::whatsappNumber"|abpLocalization}}</label>
+              <div class='control-icon'>
+                <input class='form-control' placeholder='{{"General::addLink"|abpLocalization}}' type='text' formControlName='whatsappNumber' id='whatsappNumber'>
+                <i class="icon fa-regular fa-circle-question" tooltipClass="custom-tooltip" placement="top" container="body"  ngbTooltip='{{"General::whatsappNumber"|abpLocalization}}'></i>
               </div>
             </div>
           </div>

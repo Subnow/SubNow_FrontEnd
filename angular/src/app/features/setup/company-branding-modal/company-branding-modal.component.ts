@@ -46,7 +46,6 @@ export class CompanyBrandingModalComponent implements OnInit {
   initForm() {
     this.form = this._fb.group({
       companyLogo: [''],
-      companyLogoBase64: [''],
       backgroundColor: [''],
       buttonsColor: [''],
       xAccount: ['', urlValidator()],
@@ -99,8 +98,7 @@ export class CompanyBrandingModalComponent implements OnInit {
       const reader = new FileReader();
       reader.onload = (e: any) => {
         const base64String = e.target.result.split(',')[1];
-        this.form.get('companyLogoBase64').setValue(base64String);
-        this.form.get('companyLogo').setValue(e.target.result);
+        this.form.get('companyLogo').setValue(base64String);
         this.companyBranding.companyLogo = e.target.result;
       };
       reader.readAsDataURL(file);
@@ -114,7 +112,7 @@ export class CompanyBrandingModalComponent implements OnInit {
 
     const updateCompanyBrandingObj = {
       companyId: this.companyBranding?.companyId,
-      companyLogo: this.form.get('companyLogoBase64').value,
+      companyLogo: this.form.get('companyLogo').value,
       backgroundColor: this.form.get('backgroundColor').value,
       buttonsColor: this.form.get('buttonsColor').value,
       xAccount: this.form.get('xAccount').value,
@@ -132,7 +130,8 @@ export class CompanyBrandingModalComponent implements OnInit {
         this._toastr.success(this._localizationService.instant('General::companyEditSuccessfully'), '', {
           timeOut: 1000,
         })
-        this.closeModal()
+        this.getCompanyBranding();
+        this.closeModal();
       },
       error => {
         this._toastr.error(this._localizationService.instant('General::companyEditFailed'), '', {

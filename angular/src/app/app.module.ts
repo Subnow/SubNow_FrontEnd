@@ -69,7 +69,8 @@ import { ColorPickerModule } from 'ngx-color-picker';
           invalidUrl: 'General::urlNotValid',
           startDateValid:'General::startDateValid Date must be less than or equal to Expiry Date.',
           expiryDateValid:'General::expiryDateValid Greater than or equal start date',
-          invalidWhatsappNumber:"General::invalidWhatsappNumber"
+          invalidWhatsappNumber:"General::invalidWhatsappNumber",
+          invalidFileDimensions:"test ttt"
         },
       },
     }),

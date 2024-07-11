@@ -61,5 +61,33 @@ export function expiryDateValidator(startDateControl: AbstractControl): Validato
   };
 }
 
+export function fileValidator(): ValidatorFn {
+  return (control: AbstractControl): ValidationErrors | null => {
+    const file = control.value;
+    if (file) {
+      // const validTypes = ['image/svg+xml', 'image/png', 'image/jpeg', 'image/gif'];
+      // if (!validTypes.includes(file.type)) {
+      //   return { invalidFileType: 'Invalid file type. Only SVG, PNG, JPG, or GIF are allowed.' };
+      // }
+
+      const img = new Image();
+      img.src = window.URL.createObjectURL(file);
+
+      return new Promise((resolve) => {
+        img.onload = () => {
+          window.URL.revokeObjectURL(img.src);
+
+          if (img.width > 512 || img.height > 512) {
+            resolve({ invalidFileDimensions: 'Image dimensions should not exceed 512x512px.' });
+          } else {
+            resolve(null);
+          }
+        };
+      });
+    }
+    return null;
+  };
+}
+
 
 
