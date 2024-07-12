@@ -204,5 +204,6 @@ export const General = {
   addWhatsappNumberHint:"Include International key number (example: +96650000000)",
   invalidWhatsappNumber:"Number should include international key number (example: +96650000000)",
   remove:"Remove",
-  http:"http://"
+  http:"http://",
+  imageErrorSizeDimensions:'image size should be 512x512px'
 };

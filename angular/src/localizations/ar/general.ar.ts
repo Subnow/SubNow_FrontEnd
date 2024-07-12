@@ -204,5 +204,6 @@ export const General = {
   addWhatsappNumberHint: "تضمين مفتاح الرقم الدولي (مثال: +96650000000)",
   invalidWhatsappNumber:"يجب أن يتضمن الرقم المفتاح الدولي (مثال: +96650000000)",
   remove: "إزالة",
-  http: "http://"
+  http: "http://",
+  imageErrorSizeDimensions:"حجم الصورة يجب أن يكون 512x512 بكسل."
 };

@@ -35,8 +35,9 @@
                 <button type="button"  (click)="removeFile()" class='btn btn-remove'>{{"General::remove"|abpLocalization}}</button>
               </div>
             </div>
+            <div *ngIf="imageErrorSizeDimensions" class="error-message invalid my-1">{{"General::imageErrorSizeDimensions"|abpLocalization}}</div>
+
             <div class='file-hint'>SVG, PNG, JPG or GIF (max. 512x512px)</div>
-            <div *ngIf="errorMessage" class="error-message invalid">{{ errorMessage }}</div>
           </div>
         </div>
         <!--End Company logo Sec-->

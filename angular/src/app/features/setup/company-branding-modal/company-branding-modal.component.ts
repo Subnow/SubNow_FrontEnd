@@ -17,7 +17,7 @@ export class CompanyBrandingModalComponent implements OnInit {
   companyBranding: CompanyBrandingDto;
   backgroundColor: string = '';
   buttonsColor: string = '';
-  errorMessage: any;
+  imageErrorSizeDimensions = false;
 
 
   constructor(
@@ -91,20 +91,34 @@ export class CompanyBrandingModalComponent implements OnInit {
     this.buttonsColor = color;
     this.form.get('buttonsColor').setValue(color);
   }
-
   onFileChange(event: any) {
     if (event.target.files.length > 0) {
       const file = event.target.files[0];
-      const reader = new FileReader();
-      reader.onload = (e: any) => {
-        const base64String = e.target.result.split(',')[1];
-        this.form.get('companyLogo').setValue(base64String);
-        this.companyBranding.companyLogo = e.target.result;
+      const img = new Image();
+      img.onload = () => {
+        const width = img.width;
+        const height = img.height;
+        if (width > 512 || height > 512) {
+          this.imageErrorSizeDimensions = true;
+          return;
+        }
+        const reader = new FileReader();
+        reader.onload = (e: any) => {
+          this.imageErrorSizeDimensions = false;
+          const base64String = e.target.result.split(',')[1];
+          this.form.get('companyLogo').setValue(base64String);
+          this.companyBranding.companyLogo = e.target.result;
+        };
+        reader.readAsDataURL(file);
       };
-      reader.readAsDataURL(file);
+      img.onerror = () => {
+        this._toastr.error(this._localizationService.instant('General::invalidImage'), '', {
+          timeOut: 2000,
+        });
+      };
+      img.src = URL.createObjectURL(file);
     }
   }
-
   editCompanyBranding(): void {
     debugger
     if (this.form.invalid) {
@@ -139,6 +153,7 @@ export class CompanyBrandingModalComponent implements OnInit {
   }
 
   removeFile(): void {
+    this.imageErrorSizeDimensions = false;
     this.form.get('companyLogo').setValue(null);
     this.companyBranding.companyLogo = null;
     const fileInput = document.querySelector('input[type="file"]') as HTMLInputElement;
