@@ -18,7 +18,6 @@ export class CompanyBrandingModalComponent implements OnInit {
   backgroundColor: string = '';
   buttonsColor: string = '';
   errorMessage: any;
-  defaultLogo: string = 'assets/images/icons/company-logo.png';
 
 
   constructor(
@@ -62,7 +61,7 @@ export class CompanyBrandingModalComponent implements OnInit {
 
   updateForm() {
     this.form.patchValue({
-      companyLogo: this.companyBranding?.companyLogo || this.defaultLogo,
+      companyLogo: this.companyBranding?.companyLogo,
       backgroundColor: this.companyBranding?.backgroundColor,
       buttonsColor: this.companyBranding?.buttonsColor,
       xAccount: this.companyBranding?.xAccount,
