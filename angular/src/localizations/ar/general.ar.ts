@@ -205,5 +205,8 @@ export const General = {
   invalidWhatsappNumber:"يجب أن يتضمن الرقم المفتاح الدولي (مثال: +96650000000)",
   remove: "إزالة",
   http: "http://",
-  imageErrorSizeDimensions:"حجم الصورة يجب أن يكون 512x512 بكسل."
+  imageErrorSizeDimensions:"حجم الصورة يجب أن يكون 512x512 بكسل.",
+  firstBillingCycleInvoice: "الفاتورة الاولي للدفع",
+  markAsPaid: " مدفوعة",
+  customerStartsImmediately: "يبدأ العميل فورًا"
 };

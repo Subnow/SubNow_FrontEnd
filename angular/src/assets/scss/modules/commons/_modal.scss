@@ -119,4 +119,26 @@
   background: #D1FADF;
   color: #039855;
 }
+  .isMark-paid{
+   .form-switch{
+     gap: 12px;
+     label{
+       display: flex;
+       flex-direction: column;
+       gap: 2px;
+       .label-text{
+         color: #344054;
+         font-size: 16px;
+         font-weight: 500;
+         line-height: 24px;
+       }
+       .label-hint{
+         color: #475467;
+         font-size: 16px;
+         font-weight: 400;
+         line-height: 24px;
+       }
+     }
+   }
+  }
 }

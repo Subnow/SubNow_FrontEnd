@@ -34,8 +34,8 @@
               <div class='form-group mb-0'>
                 <label class="form-label">{{"General::customerSince"|abpLocalization}}</label>
                 <div class='control-icon'>
-                  <input type="text" class="form-control"  placeholder="dd/mm/yyyy" bsDatepicker formControlName='customerSince' [bsConfig]="{ dateInputFormat: 'DD/MM/YYYY' }" />
-                  <i class='icon'><i class="fa-regular fa-calendar"></i></i>
+                  <input  #customerSince="bsDatepicker" type="text" class="form-control"  placeholder="dd/mm/yyyy" bsDatepicker formControlName='customerSince' [bsConfig]="{ dateInputFormat: 'DD/MM/YYYY' }" />
+                  <i class='icon'><i class="fa-regular fa-calendar" (click)="customerSince.toggle()" [attr.aria-expanded]="customerSince.isOpen"></i></i>
                 </div>
 
               </div>
