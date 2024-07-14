@@ -32,6 +32,8 @@ export class AddEditCategoriesModalComponent  implements OnInit{
     this.form.get('status').valueChanges.subscribe(toggleValue => {
       this.updateStatus = toggleValue;
     });
+    console.log('category ===>>' , this.category)
+
   }
 
   initForm(){

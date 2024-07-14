@@ -50,6 +50,8 @@ export interface PlanDto {
   planStatus: PlanStatusType;
   redirectUrl?: string;
   creationTime?: string;
+  showOnPaylink: boolean;
+  sort?: number;
   billingCyclePlans: BillingCyclePlanDto[];
 }
 

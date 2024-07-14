@@ -1,10 +1,10 @@
 
 export interface CreateUpdateWebHookDto {
   id?: string;
-  endPointName?: string;
-  endPointURL?: string;
+  endPointName: string;
+  endPointURL: string;
   endPointSecret?: string;
-  endPointStatusId?: string;
+  endPointStatus: boolean;
   companyId?: string;
   webHookEventTypes: WebHookEventTypeDto[];
 }
@@ -14,7 +14,7 @@ export interface WebHookDto {
   endPointName?: string;
   endPointURL?: string;
   endPointSecret?: string;
-  endPointStatusId?: string;
+  endPointStatus: boolean;
   companyId?: string;
   webHookEventType: WebHookEventTypeDto[];
 }

@@ -5,6 +5,7 @@ export interface CategoryDto {
   name?: string;
   description?: string;
   status: boolean;
+  plans: PlansCategoryDto[];
 }
 
 export interface CategoryListDto extends EntityDto<string> {
@@ -20,8 +21,16 @@ export interface CreateCategoryDto {
   status: boolean;
 }
 
+export interface PlansCategoryDto {
+  id?: string;
+  name?: string;
+  showOnPaylink: boolean;
+  sort?: number;
+}
+
 export interface UpdateCategoryDto {
   name: string;
   description?: string;
   status: boolean;
+  plans: PlansCategoryDto[];
 }

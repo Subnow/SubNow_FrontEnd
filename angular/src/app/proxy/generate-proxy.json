@@ -5811,6 +5811,18 @@
           "minimum": null,
           "maximum": null,
           "regex": null
+        },
+        {
+          "name": "Plans",
+          "jsonName": null,
+          "type": "[SubNow.Categories.PlansCategoryDto]",
+          "typeSimple": "[SubNow.Categories.PlansCategoryDto]",
+          "isRequired": false,
+          "minLength": null,
+          "maxLength": null,
+          "minimum": null,
+          "maximum": null,
+          "regex": null
         }
       ]
     },
@@ -5916,6 +5928,63 @@
         }
       ]
     },
+    "SubNow.Categories.PlansCategoryDto": {
+      "baseType": null,
+      "isEnum": false,
+      "enumNames": null,
+      "enumValues": null,
+      "genericArguments": null,
+      "properties": [
+        {
+          "name": "Id",
+          "jsonName": null,
+          "type": "System.Guid",
+          "typeSimple": "string",
+          "isRequired": false,
+          "minLength": null,
+          "maxLength": null,
+          "minimum": null,
+          "maximum": null,
+          "regex": null
+        },
+        {
+          "name": "Name",
+          "jsonName": null,
+          "type": "System.String",
+          "typeSimple": "string",
+          "isRequired": false,
+          "minLength": null,
+          "maxLength": null,
+          "minimum": null,
+          "maximum": null,
+          "regex": null
+        },
+        {
+          "name": "ShowOnPaylink",
+          "jsonName": null,
+          "type": "System.Boolean",
+          "typeSimple": "boolean",
+          "isRequired": false,
+          "minLength": null,
+          "maxLength": null,
+          "minimum": null,
+          "maximum": null,
+          "regex": null
+        },
+        {
+          "name": "Sort",
+          "jsonName": null,
+          "type": "System.Int32?",
+          "typeSimple": "number?",
+          "isRequired": false,
+          "minLength": null,
+          "maxLength": null,
+          "minimum": null,
+          "maximum": null,
+          "regex": null
+        }
+      ]
+    },
     "SubNow.Categories.UpdateCategoryDto": {
       "baseType": null,
       "isEnum": false,
@@ -5952,6 +6021,18 @@
           "jsonName": null,
           "type": "System.Boolean",
           "typeSimple": "boolean",
+          "isRequired": false,
+          "minLength": null,
+          "maxLength": null,
+          "minimum": null,
+          "maximum": null,
+          "regex": null
+        },
+        {
+          "name": "Plans",
+          "jsonName": null,
+          "type": "[SubNow.Categories.PlansCategoryDto]",
+          "typeSimple": "[SubNow.Categories.PlansCategoryDto]",
           "isRequired": false,
           "minLength": null,
           "maxLength": null,
@@ -8155,6 +8236,30 @@
           "regex": null
         },
         {
+          "name": "ShowOnPaylink",
+          "jsonName": null,
+          "type": "System.Boolean",
+          "typeSimple": "boolean",
+          "isRequired": false,
+          "minLength": null,
+          "maxLength": null,
+          "minimum": null,
+          "maximum": null,
+          "regex": null
+        },
+        {
+          "name": "Sort",
+          "jsonName": null,
+          "type": "System.Int32?",
+          "typeSimple": "number?",
+          "isRequired": false,
+          "minLength": null,
+          "maxLength": null,
+          "minimum": null,
+          "maximum": null,
+          "regex": null
+        },
+        {
           "name": "BillingCyclePlans",
           "jsonName": null,
           "type": "[SubNow.Plans.BillingCyclePlanDto]",
@@ -8313,8 +8418,8 @@
         {
           "name": "StartDate",
           "jsonName": null,
-          "type": "System.DateTime",
-          "typeSimple": "string",
+          "type": "System.DateTime?",
+          "typeSimple": "string?",
           "isRequired": false,
           "minLength": null,
           "maxLength": null,
@@ -8325,8 +8430,20 @@
         {
           "name": "ExpiryDate",
           "jsonName": null,
-          "type": "System.DateTime",
-          "typeSimple": "string",
+          "type": "System.DateTime?",
+          "typeSimple": "string?",
+          "isRequired": false,
+          "minLength": null,
+          "maxLength": null,
+          "minimum": null,
+          "maximum": null,
+          "regex": null
+        },
+        {
+          "name": "MarkAsPaid",
+          "jsonName": null,
+          "type": "System.Boolean",
+          "typeSimple": "boolean",
           "isRequired": false,
           "minLength": null,
           "maxLength": null,
@@ -8501,9 +8618,9 @@
           "jsonName": null,
           "type": "System.String",
           "typeSimple": "string",
-          "isRequired": false,
-          "minLength": null,
-          "maxLength": null,
+          "isRequired": true,
+          "minLength": 0,
+          "maxLength": 50,
           "minimum": null,
           "maximum": null,
           "regex": null
@@ -8513,9 +8630,9 @@
           "jsonName": null,
           "type": "System.String",
           "typeSimple": "string",
-          "isRequired": false,
-          "minLength": null,
-          "maxLength": null,
+          "isRequired": true,
+          "minLength": 0,
+          "maxLength": 250,
           "minimum": null,
           "maximum": null,
           "regex": null
@@ -8526,17 +8643,17 @@
           "type": "System.String",
           "typeSimple": "string",
           "isRequired": false,
-          "minLength": null,
-          "maxLength": null,
+          "minLength": 0,
+          "maxLength": 500,
           "minimum": null,
           "maximum": null,
           "regex": null
         },
         {
-          "name": "EndPointStatusId",
+          "name": "EndPointStatus",
           "jsonName": null,
-          "type": "System.String",
-          "typeSimple": "string",
+          "type": "System.Boolean",
+          "typeSimple": "boolean",
           "isRequired": false,
           "minLength": null,
           "maxLength": null,
@@ -8626,10 +8743,10 @@
           "regex": null
         },
         {
-          "name": "EndPointStatusId",
+          "name": "EndPointStatus",
           "jsonName": null,
-          "type": "System.String",
-          "typeSimple": "string",
+          "type": "System.Boolean",
+          "typeSimple": "boolean",
           "isRequired": false,
           "minLength": null,
           "maxLength": null,

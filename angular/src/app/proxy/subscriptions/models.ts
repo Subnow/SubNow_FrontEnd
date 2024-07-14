@@ -11,6 +11,7 @@ export interface CreateSubscriptionDto {
   billingCyclePlanId?: string;
   startDate?: string;
   expiryDate?: string;
+  markAsPaid: boolean;
 }
 
 export interface SubscriptionDto {
