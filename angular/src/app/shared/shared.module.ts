@@ -14,6 +14,7 @@ import { NgxIntlTelInputModule } from 'ngx-intl-tel-input';
 import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
 import { CustomDatePipe } from './pipes/date.pipe';
 import { ColorPickerModule } from 'ngx-color-picker';
+import { DragDropModule } from '@angular/cdk/drag-drop';
 
 
 const moduleList = [
@@ -34,7 +35,8 @@ const moduleList = [
   NgbDatepickerModule,
   NgxIntlTelInputModule,
   BsDatepickerModule,
-  ColorPickerModule
+  ColorPickerModule,
+  DragDropModule
 ]
 
 const declarationList = [

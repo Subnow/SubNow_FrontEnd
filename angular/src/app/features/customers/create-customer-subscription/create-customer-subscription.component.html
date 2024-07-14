@@ -50,8 +50,7 @@
                   <input class="form-check-input"
                          type="checkbox"
                          id="status"
-                         formControlName='markPaid'
-
+                         formControlName='markAsPaid'
                   >
                   <label class="form-check-label" for="status">
                     <span class='label-text'> {{"General::markAsPaid"|abpLocalization}} </span>
@@ -66,7 +65,7 @@
 
         </div>
 
-        <div class='col-12' *ngIf="form.get('markPaid').value">
+        <div class='col-12' *ngIf="form.get('markAsPaid').value">
           <div class='form-group'>
             <label class='form-label'>{{"General::startDate"|abpLocalization}}<sup>*</sup></label>
             <div class='control-icon'>
@@ -80,7 +79,7 @@
             </div>
           </div>
         </div>
-        <div class='col-12 ' *ngIf="form.get('markPaid').value">
+        <div class='col-12 ' *ngIf="form.get('markAsPaid').value">
           <div class='form-group mb-0'>
             <label class='form-label'>{{"General::expiryDay"|abpLocalization}}<sup>*</sup></label>
             <div class='control-icon'>

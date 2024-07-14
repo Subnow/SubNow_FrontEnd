@@ -20,7 +20,7 @@ export class AddEditPlanComponent  implements OnInit{
   form: FormGroup;
   activeModal = inject(NgbActiveModal);
   isLoading = false;
-  categoryList:CategoryDto[] = [];
+  categoryList = [];
   planBillingCycleList:BillingCyclePlanDto [] = [];
   isSelectedBillingCycle = false;
   constructor(

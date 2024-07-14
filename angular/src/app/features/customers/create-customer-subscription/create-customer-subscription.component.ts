@@ -50,7 +50,7 @@ export class CreateCustomerSubscriptionComponent implements OnInit{
     this.form = this._fb.group({
       planId: [this.subscription?.planId, Validators.required],
       billingCyclePlanId: [this.subscription?.billingCyclePlanId, Validators.required],
-      markPaid:[false],
+      markAsPaid:[false],
       startDate: [null],
       expiryDate: [null],
     })
