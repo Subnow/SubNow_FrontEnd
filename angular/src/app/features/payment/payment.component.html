@@ -4,7 +4,7 @@
       <div class='block-one'>
         <div class='block-one-header'>
           <div class='logo'>
-            <img [src]='companyBranding?.companyLogo' height='40' />
+            <img [src]='companyBranding?.companyLogo' height='40' alt='company logo'/>
           </div>
           <div class='info'>
             <p class='name'>Ahmad Salem</p>
@@ -24,7 +24,7 @@
             <li class='social-list-item'><a class='social-list-link'><i class="fa-brands fa-square-facebook"></i></a></li>
           </ul>
           <div class='d-flex align-items-end flex-wrap'>
-            <p class='powered-by'><span> {{"General::poweredBy"|abpLocalization}}</span> <img src='assets/images/logo/logo-payment.svg'></p>
+            <p class='powered-by'><span> {{"General::poweredBy"|abpLocalization}}</span> <img src='assets/images/logo/logo-payment.svg' alt='footer logo'></p>
             <div class='additional-links'>
               <a class='additional-link'>{{"General::support"|abpLocalization}}</a>
               <a class='additional-link'>{{"General::terms"|abpLocalization}}</a>
@@ -36,6 +36,31 @@
     </div>
     <div class="col-md-6 right-panel">
       <div class='block-two'>
+        <div class='payment-details'>
+            <div class='payment-details-info'>
+              <span class='text'>Starter Plan Monthly</span>
+              <span class='value'>68.70 <span>{{"General::SAR"|abpLocalization}}</span></span>
+            </div>
+            <div class='payment-details-info'>
+              <span class='text'>{{"General::subtotal"|abpLocalization}}</span>
+              <span class='value'>68.70 <span>{{"General::SAR"|abpLocalization}}</span></span>
+            </div>
+            <div class='payment-details-info'>
+              <span class='text'>{{"General::vat"|abpLocalization}}</span>
+              <span class='value'>10.30 <span>{{"General::SAR"|abpLocalization}}</span></span>
+            </div>
+            <div class='payment-details-info'>
+              <span class='text'>{{"General::total"|abpLocalization}}</span>
+              <span class='value'>79.00 <span>{{"General::SAR"|abpLocalization}}</span></span>
+            </div>
+            <div class='payment-details-info'>
+              <span class='text'>{{"General::totalDue"|abpLocalization}}</span>
+              <span class='value'>79.00 <span>{{"General::SAR"|abpLocalization}}</span></span>
+            </div>
+          <div class='payment-details-action'>
+            <button class='btn btn-dark w-100'>{{"General::pay"|abpLocalization}}</button>
+          </div>
+        </div>
 
       </div>
     </div>

@@ -2,7 +2,9 @@
   height: 100vh;
 }
 .left-panel {
-  padding: 48px 0 0 20%;
+  padding: 48px 0 0 10%;
+  display: flex;
+  justify-content: flex-start;
   .block-one{
     width: 380px;
     height: 624px;
@@ -60,7 +62,7 @@
     .social-list{
       display: flex;
       width: 250px;
-      padding: 4px 0px;
+      padding: 4px 0;
       justify-content: space-between;
       align-items: flex-start;
       margin-bottom: 20px;
@@ -78,7 +80,7 @@
     }
     .additional-links{
       display: inline-flex;
-      padding: 4px 0px 2px 17px;
+      padding: 4px 0 2px 17px;
       align-items: flex-start;
       gap: 12px;
       .additional-link{
@@ -90,24 +92,52 @@
     }
 
   }
+}
+.right-panel {
+  padding: 48px 10% 0 0;
+  display: flex;
+  justify-content: flex-end;
   .block-two{
     width: 380px;
     height: 624px;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+    .payment-details{
+      &-info{
+        display: flex;
+        flex-wrap: wrap;
+        padding: 6px 0;
+        justify-content: space-between;
+        align-items: flex-start;
+        align-self: stretch;
+        gap: 8px;
+        color: #545F75;
+        font-size: 15px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: 20px;
+        &:first-child{
+          padding: 12px 0;
+          border-bottom:1px solid rgba(60, 66, 87, 0.12);
+          color: #545F75;
+          font-weight: 500;
+        }
+        &:last-child{
+          padding: 12px 0;
+          color: #1F2532;
+          font-size: 18px;
+          font-weight: 600;
+        }
+      }
+      &-action{
+        .btn{
+          height: 46px;
+        }
+        margin-top: 20px;
+      }
+    }
   }
-
-}
-.right-panel {
-  padding: 48px 20% 0 0;
-}
-.plan-details {
-  background-color: white;
-  border-radius: 10px;
-  padding: 20px;
-  margin-top: 20px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 .btn-pay {
   background-color: #000;

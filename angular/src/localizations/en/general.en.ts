@@ -219,7 +219,7 @@ export const General = {
   privacy:"Privacy",
   subtotal:"Subtotal",
   vat:"VAT(15%)",
-  Total:"Total",
+  total:"Total",
   totalDue:"Total due",
   pay:"Pay",
 };
