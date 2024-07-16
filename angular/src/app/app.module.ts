@@ -70,7 +70,6 @@ import { ColorPickerModule } from 'ngx-color-picker';
           startDateValid:'General::startDateValid Date must be less than or equal to Expiry Date.',
           expiryDateValid:'General::expiryDateValid Greater than or equal start date',
           invalidWhatsappNumber:"General::invalidWhatsappNumber",
-          invalidFileDimensions:"test ttt"
         },
       },
     }),
@@ -95,3 +94,4 @@ import { ColorPickerModule } from 'ngx-color-picker';
   bootstrap: [AppComponent],
 })
 export class AppModule {}
+

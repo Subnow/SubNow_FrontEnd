@@ -208,5 +208,7 @@ export const General = {
   imageErrorSizeDimensions:"حجم الصورة يجب أن يكون 512x512 بكسل.",
   firstBillingCycleInvoice: "الفاتورة الاولي للدفع",
   markAsPaid: " مدفوعة",
-  customerStartsImmediately: "يبدأ العميل فورًا"
+  customerStartsImmediately: "يبدأ العميل فورًا",
+  plansVisibility:"رؤية الباقات",
+  plansVisibilityHint:"تخصيص ترتيب فرز الباقات، وما هي الباقات التي ينبغي أن تكون مرئية لعملائك في روابط الدفع الخاصة بهم."
 };

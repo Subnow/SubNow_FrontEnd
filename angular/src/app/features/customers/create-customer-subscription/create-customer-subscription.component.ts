@@ -40,8 +40,8 @@ export class CreateCustomerSubscriptionComponent implements OnInit{
     const startDateControl = this.form.get('startDate');
     const expiryDateControl = this.form.get('expiryDate');
     if (startDateControl && expiryDateControl) {
-      startDateControl.setValidators([Validators.required, startDateValidator(expiryDateControl)]);
-      expiryDateControl.setValidators([Validators.required, expiryDateValidator(startDateControl)]);
+      startDateControl.setValidators([startDateValidator(expiryDateControl)]);
+      expiryDateControl.setValidators([expiryDateValidator(startDateControl)]);
       startDateControl.updateValueAndValidity();
       expiryDateControl.updateValueAndValidity();
     }

@@ -14,81 +14,77 @@
 <div class="modal-body">
   <div class='container'>
     <div class='modal-body-wrapper'>
-      <div class='row'>
-        <div class='col-lg-3 col-md-4'>
-          <p class='form-name'>{{"General::general" | abpLocalization}}</p>
-        </div>
-        <div class='col-lg-9 col-md-8'>
-          <form class='form row' [formGroup]='form'>
-            <div class='col-lg-8 col-md-6'>
-              <div class='form-group'>
-                <label class="form-label">{{"General::categoryName" | abpLocalization}}</label>
-                <div class='control-icon'>
-                  <input class='form-control' formControlName='name' id='name' placeholder='{{"General::exB2CCustomers" | abpLocalization}}' type='text' required>
-                  <i class="icon fa-regular fa-circle-question" tooltipClass="custom-tooltip" placement="top" ngbTooltip="Tooltip on top"></i>
-                </div>
+      <form class='form' [formGroup]='form'>
+        <div class='row g-0'>
+          <div class='col-lg-3 col-md-12'>
+            <p class='form-name'>{{"General::general" | abpLocalization}}</p>
+          </div>
+          <div class='col-lg-6 col-md-12 border-bottom mb-0 mb-24 pb-16'>
+            <div class='form-group'>
+              <label class="form-label">{{"General::categoryName" | abpLocalization}}</label>
+              <div class='control-icon'>
+                <input class='form-control' formControlName='name' id='name' placeholder='{{"General::exB2CCustomers" | abpLocalization}}' type='text' required>
+<!--                <i class="icon fa-regular fa-circle-question" tooltipClass="custom-tooltip" placement="top" ngbTooltip="Tooltip on top"></i>-->
               </div>
             </div>
-            <div class='col-lg-8 col-md-6'>
-              <div class='form-group mb-0'>
-                <label class="form-label">{{"General::categoryDescription" | abpLocalization}}</label>
-                <textarea formControlName='description' id='description' rows='2' placeholder='{{"General::categoryDescriptionPlaceholder" | abpLocalization}}' class='form-control' required></textarea>
-              </div>
+            <div class='form-group mb-0'>
+              <label class="form-label">{{"General::categoryDescription" | abpLocalization}}</label>
+              <textarea formControlName='description' id='description' rows='2' placeholder='{{"General::categoryDescriptionPlaceholder" | abpLocalization}}' class='form-control' required></textarea>
             </div>
-          </form>
+          </div>
         </div>
-      </div>
+        <div class='row g-0' *ngIf='category?.plans?.length'>
+          <div class='col-lg-3 col-md-12'>
+            <p class='form-name'>{{"General::plansVisibility" | abpLocalization}}</p>
+            <p class='form-hint'>{{"General::plansVisibilityHint" | abpLocalization}}</p>
+          </div>
+          <div class='col-lg-6 col-md-12  border-bottom  mb-16 pb-16'>
+            <div class='table-responsive'>
+              <table class='rounded-table'>
+                <thead class='rounded-table-head'>
+                <tr class='rounded-table-head-row'>
+                  <th class='rounded-table-head-cell' width='64'>{{"General::order" | abpLocalization}}</th>
+                  <th class='rounded-table-head-cell'>{{"General::plan" | abpLocalization}}</th>
+                  <th class='rounded-table-head-cell' width='107'><a class='payLink'><span>{{"General::onPayLink" | abpLocalization}}</span><i class='icon fa-regular fa-circle-question'></i></a> </th>
+                </tr>
+                </thead>
+                <tbody cdkDropList (cdkDropListDropped)="drop($event)" class='rounded-table-body'>
+                <tr class='rounded-table-body-row' *ngFor='let plan of plansArray.controls; let i = index' cdkDrag>
+                  <td class='rounded-table-body-cell'>
+                    <a class="drag-icon fa-solid fa-bars" cdkDragHandle></a>
+                    <input type="hidden" [formControl]="plan.get('id')">
+                    <input type="hidden" [formControl]="plan.get('sort')">
+                  </td>
 
-      <div class='row'>
-        <div class='col-lg-3 col-md-4'>
-          <p class='form-name'>{{"General::plansVisibility" | abpLocalization}}</p>
-          <p class='form-hint'>{{"General::plansVisibilityHint" | abpLocalization}}</p>
-        </div>
-        <div class='col-lg-9 col-md-8'>
-          <form class='form row' [formGroup]='form'>
-            <div class='col-lg-8 col-md-6'>
-              <div class='table-responsive'>
-                <table class='rounded-table'>
-                  <thead class='rounded-table-head'>
-                  <tr class='rounded-table-head-row'>
-                    <th class='rounded-table-head-cell'>{{"General::order" | abpLocalization}}</th>
-                    <th class='rounded-table-head-cell'>{{"General::plan" | abpLocalization}}</th>
-                    <th class='rounded-table-head-cell'><span>{{"General::onPayLinke" | abpLocalization}}</span> <i class='fa-regular fa-circle-question'></i></th>
-                  </tr>
-                  </thead>
-                  <tbody cdkDropList (cdkDropListDropped)="drop($event)" class='rounded-table-body'>
-                  <tr class='rounded-table-body-row' *ngFor='let plan of plansArray.controls; let i = index' cdkDrag>
-                    <td class='rounded-table-body-cell'>
-                      <a class="fa-solid fa-bars" cdkDragHandle></a>
-                      <input type="hidden" [formControl]="plan.get('id')">
-                      <input type="hidden" [formControl]="plan.get('sort')">
-                    </td>
-                    <td class='rounded-table-body-cell'>
-                      <div class='bullingCycle-cell'>
-                        <span class='name'>{{plan.get('name').value}}</span>
-                        <span class='info'></span>
-                      </div>
-                    </td>
-                    <td class='rounded-table-body-cell'>
-                      <div class="form-check form-switch">
-                        <input class="form-check-input" type="checkbox" id="paylink-{{i}}" [checked]="plan.get('showOnPaylink').value" (change)="onShowOnPaylinkChange(i, $event)">
-                      </div>
-                    </td>
-                  </tr>
-                  </tbody>
-                </table>
-              </div>
+                  <td class='rounded-table-body-cell'>
+                    <div class='bullingCycle-cell'>
+                      <span class='name'>{{plan.get('name').value}}</span>
+                      <span class='info'>{{plan.get('code').value}}</span>
+                    </div>
+                  </td>
+                  <td class='rounded-table-body-cell'>
+                    <div class="form-check form-switch">
+                      <input class="custom-color form-check-input" type="checkbox" id="paylink-{{i}}" [checked]="plan.get('showOnPaylink').value" (change)="onShowOnPaylinkChange(i, $event)">
+                    </div>
+                  </td>
+                </tr>
+                </tbody>
+              </table>
             </div>
+          </div>
+        </div>
 
-            <div class='col-lg-8 col-md-6'>
-              <div class="form-check form-switch">
-                <input class="form-check-input" type="checkbox" id="status" formControlName='status'>
-                <label class="form-check-label" for="status">{{"General::categoryStatus" | abpLocalization}}</label>
-              </div>
+        <div class='row g-0'>
+          <div class='offset-lg-3 col-lg-8 col-md-12'>
+            <div class="form-check form-switch">
+              <input class="form-check-input" type="checkbox" id="status" formControlName='status'>
+              <label class="form-check-label" for="status">{{"General::categoryStatus" | abpLocalization}}</label>
             </div>
-          </form>
+          </div>
+
         </div>
-      </div>
+
+      </form>
     </div>
   </div>
 </div>

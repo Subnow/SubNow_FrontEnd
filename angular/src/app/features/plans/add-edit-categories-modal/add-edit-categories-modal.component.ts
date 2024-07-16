@@ -1,7 +1,7 @@
 import { Component, inject, Input, OnInit } from '@angular/core';
 import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 import { CategoryDto, CategoryService } from '@proxy/categories';
-import { FormBuilder, FormGroup, Validators, FormArray, FormControl } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators, FormArray } from '@angular/forms';
 import { finalize } from 'rxjs';
 import { ToastrService } from 'ngx-toastr';
 import { LocalizationService } from '@abp/ng.core';
@@ -49,7 +49,9 @@ export class AddEditCategoriesModalComponent implements OnInit {
 
   loadPlans() {
     const plansArray = this.form.get('plans') as FormArray;
-    this.category?.plans?.forEach(plan => {
+    // Sort the plans by the 'sort' property
+    const sortedPlans = this.category?.plans?.sort((a, b) => a.sort - b.sort);
+    sortedPlans?.forEach(plan => {
       plansArray.push(this.createPlanGroup(plan));
     });
   }
@@ -58,6 +60,7 @@ export class AddEditCategoriesModalComponent implements OnInit {
     return this._fb.group({
       id: [plan.id],
       name: [plan.name],
+      code:[plan.code],
       showOnPaylink: [plan.showOnPaylink],
       sort: [plan.sort]
     });
@@ -101,6 +104,7 @@ export class AddEditCategoriesModalComponent implements OnInit {
     this.plansArray.at(index).get('showOnPaylink').setValue(event.target.checked);
     this.form.markAsDirty();
   }
+
   drop(event: CdkDragDrop<FormGroup[]>) {
     moveItemInArray(this.plansArray.controls, event.previousIndex, event.currentIndex);
     this.plansArray.controls.forEach((control, index) => {
