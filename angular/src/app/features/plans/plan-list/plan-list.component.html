@@ -14,7 +14,7 @@
   </div>
   <div class='section-body'>
     <div class='section-row'>
-      <div class='row g-0' [class.sperator]='planByCategory?.plans.length > 0' *ngFor='let planByCategory of categoryPlanList;let i = index'>
+      <div class='row g-0' [class.d-none]='!planByCategory?.plans.length' [class.sperator]='planByCategory?.plans.length > 0' *ngFor='let planByCategory of categoryPlanList;let i = index'>
           <div class='col-lg-3 col-md-4'>
             <div class='category'>
               <div class='category-info'>
@@ -47,7 +47,6 @@
                         <span class='name'>{{plan?.name}}</span>
                         <span class='code'>{{plan?.code}}</span>
                       </div>
-
                     </div>
                   </td>
                   <td class='rounded-table-body-cell' [attr.data-label]="'General::status' | abpLocalization">
@@ -79,6 +78,6 @@
   </div>
 </section>
 
-<div *ngIf='!categoryPlanList.length'>
+<div *ngIf='categoryPlanList.length === 1'>
   <app-not-found-data-standalone></app-not-found-data-standalone>
 </div>

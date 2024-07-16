@@ -18,8 +18,12 @@ export class CompanyBrandingModalComponent implements OnInit {
   backgroundColor: string = '';
   buttonsColor: string = '';
   imageErrorSizeDimensions = false;
-
-
+  isLogoChanged = false;
+  file: File | null = null; // New property to hold the file object
+  fileType:string = '';
+  getFile(): File | null {
+    return this.file;
+  }
   constructor(
     public _fb: FormBuilder,
     private _localizationService: LocalizationService,
@@ -67,7 +71,7 @@ export class CompanyBrandingModalComponent implements OnInit {
       xAccount: this.companyBranding?.xAccount,
       facebookAccount: this.companyBranding?.facebookAccount,
       instagramAccount: this.companyBranding?.instagramAccount,
-      linkedinAccount:this.companyBranding?.linkedinAccount,
+      linkedinAccount: this.companyBranding?.linkedinAccount,
       whatsappNumber: this.companyBranding?.whatsappNumber,
       supportLink: this.companyBranding?.supportLink,
       privacyPolicyUrl: this.companyBranding?.privacyPolicyUrl,
@@ -91,6 +95,7 @@ export class CompanyBrandingModalComponent implements OnInit {
     this.buttonsColor = color;
     this.form.get('buttonsColor').setValue(color);
   }
+
   onFileChange(event: any) {
     if (event.target.files.length > 0) {
       const file = event.target.files[0];
@@ -108,6 +113,11 @@ export class CompanyBrandingModalComponent implements OnInit {
           const base64String = e.target.result.split(',')[1];
           this.form.get('companyLogo').setValue(base64String);
           this.companyBranding.companyLogo = e.target.result;
+          this.isLogoChanged = true;
+          this.file = file;
+          this.fileType = this.file?.type;
+          console.log('file type ===>' , this.fileType)
+
         };
         reader.readAsDataURL(file);
       };
@@ -119,27 +129,30 @@ export class CompanyBrandingModalComponent implements OnInit {
       img.src = URL.createObjectURL(file);
     }
   }
+
   editCompanyBranding(): void {
-    debugger
     if (this.form.invalid) {
       return;
     }
-
     const updateCompanyBrandingObj = {
       companyId: this.companyBranding?.companyId,
       companyLogo: this.form.get('companyLogo').value,
+      logoType:this.fileType,
       backgroundColor: this.form.get('backgroundColor').value,
       buttonsColor: this.form.get('buttonsColor').value,
       xAccount: this.form.get('xAccount').value,
       facebookAccount: this.form.get('facebookAccount').value,
       instagramAccount: this.form.get('instagramAccount').value,
-      linkedinAccount:this.form.get('linkedinAccount').value,
+      linkedinAccount: this.form.get('linkedinAccount').value,
       whatsappNumber: this.form.get('whatsappNumber').value,
       supportLink: this.form.get('supportLink').value,
       privacyPolicyUrl: this.form.get('privacyPolicyUrl').value,
       termsOfServiceUrl: this.form.get('termsOfServiceUrl').value,
       subdomain: this.form.get('subdomain').value,
     };
+    if (!this.isLogoChanged) {
+      updateCompanyBrandingObj.companyLogo = null;
+    }
 
     this._companyService.updateBranding(updateCompanyBrandingObj as UpdateCompanyBrandingDto).subscribe(
       () => {
@@ -156,10 +169,11 @@ export class CompanyBrandingModalComponent implements OnInit {
     this.imageErrorSizeDimensions = false;
     this.form.get('companyLogo').setValue(null);
     this.companyBranding.companyLogo = null;
+    this.isLogoChanged = true;
+    this.file = null; // Reset the file object
     const fileInput = document.querySelector('input[type="file"]') as HTMLInputElement;
     if (fileInput) {
       fileInput.value = '';
     }
   }
-
 }

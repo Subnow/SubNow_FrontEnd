@@ -6,6 +6,8 @@ import { HeaderComponent } from './components/header/header.component';
 import { SideMenuComponent } from './components/side-menu/side-menu.component';
 import { MainLayoutComponent } from './components/layout/main-layout/main-layout.component';
 import { LanguageComponent } from './components/language/language.component';
+import { PaymentLayoutComponent } from './components/layout/payment-layout/payment-layout.component';
+import { BaseLayoutComponent } from './components/layout/base-layout/base-layout.component';
 
 
 const componentList =[
@@ -13,7 +15,9 @@ const componentList =[
   FooterComponent,
   SideMenuComponent,
   MainLayoutComponent,
-  LanguageComponent
+  LanguageComponent,
+  PaymentLayoutComponent,
+  BaseLayoutComponent
 ]
 
 const moduleList = [
@@ -26,7 +30,6 @@ const moduleList = [
 @NgModule({
   declarations: [
     ...componentList,
-
   ],
   imports: [
     ...moduleList

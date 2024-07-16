@@ -40,8 +40,8 @@ export class CreateCustomerSubscriptionComponent implements OnInit{
     const startDateControl = this.form.get('startDate');
     const expiryDateControl = this.form.get('expiryDate');
     if (startDateControl && expiryDateControl) {
-      startDateControl.setValidators([Validators.required, startDateValidator(expiryDateControl)]);
-      expiryDateControl.setValidators([Validators.required, expiryDateValidator(startDateControl)]);
+      startDateControl.setValidators([startDateValidator(expiryDateControl)]);
+      expiryDateControl.setValidators([expiryDateValidator(startDateControl)]);
       startDateControl.updateValueAndValidity();
       expiryDateControl.updateValueAndValidity();
     }
@@ -50,8 +50,9 @@ export class CreateCustomerSubscriptionComponent implements OnInit{
     this.form = this._fb.group({
       planId: [this.subscription?.planId, Validators.required],
       billingCyclePlanId: [this.subscription?.billingCyclePlanId, Validators.required],
-      startDate: [null, [Validators.required]],
-      expiryDate: [null, Validators.required],
+      markAsPaid:[false],
+      startDate: [null],
+      expiryDate: [null],
     })
     }
   getPlan(){

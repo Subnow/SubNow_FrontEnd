@@ -27,6 +27,7 @@ export class PlanListComponent implements OnInit{
   getCategoryPlanList(){
     this._planService.getAllPlansForCompany().subscribe((res=>{
       this.categoryPlanList = res?.items;
+      console.log('this.categoryPlanList length ==>' , this.categoryPlanList?.length)
     }))
   }
 
@@ -36,7 +37,8 @@ export class PlanListComponent implements OnInit{
       id:category?.categoryId,
       name:category?.categoryName,
       description:category?.categoryDescription,
-      status:category?.status
+      status:category?.status,
+      plans:category?.plans
     } as CategoryDto;
 
     (modal.componentInstance as AddEditCategoriesModalComponent).category = categoryObj;

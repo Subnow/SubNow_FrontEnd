@@ -205,5 +205,22 @@ export const General = {
   invalidWhatsappNumber:"Number should include international key number (example: +96650000000)",
   remove:"Remove",
   http:"http://",
-  imageErrorSizeDimensions:'image size should be 512x512px'
+  imageErrorSizeDimensions:'image size should be 512x512px',
+  firstBillingCycleInvoice:"First Billing Cycle Invoice",
+  markAsPaid:"Mark as Paid",
+  customerStartsImmediately:"Customer Starts Immediately",
+  order:"Order",
+  onPayLink:"On Paylink",
+  plansVisibility:"Plans Visibility",
+  plansVisibilityHint:"Customize Plans Sorting order, And which plans should be visible to your customers in their Paylinks.",
+  billingCycle:"Billing Cycle",
+  poweredBy:"Powered by",
+  terms:"Terms",
+  privacy:"Privacy",
+  subtotal:"Subtotal",
+  vat:"VAT(15%)",
+  total:"Total",
+  totalDue:"Total due",
+  pay:"Pay",
+  deactivated:"Deactivated"
 };

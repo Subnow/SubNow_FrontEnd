@@ -9,7 +9,7 @@
 <form class='form' [formGroup]='form'>
 <div class='modal-body'>
   <div class='modal-body-wrapper'>
-      <div class='row'>
+      <div class='row g-0 mb-16 border-bottom'>
         <div class='col-12'>
           <div class='form-group'>
             <label class='form-label'>{{"General::selectPlan"|abpLocalization}}<sup>*</sup></label>
@@ -41,14 +41,36 @@
           </div>
         </div>
       </div>
-      <div class='row'>
-        <div class='col-12'>
+      <div class='row g-0'>
+        <div>
+          <div class='col-12'>
+            <div class='isMark-paid mb-16'>
+               <label class='form-label'>{{"General::firstBillingCycleInvoice"|abpLocalization}}</label>
+                <div class="form-check form-switch form-divider mt-16 pt-16">
+                  <input class="form-check-input"
+                         type="checkbox"
+                         id="status"
+                         formControlName='markAsPaid'
+                  >
+                  <label class="form-check-label" for="status">
+                    <span class='label-text'> {{"General::markAsPaid"|abpLocalization}} </span>
+                    <span class='label-hint'> {{"General::customerStartsImmediately"|abpLocalization}}  </span>
+
+
+                  </label>
+                </div>
+            </div>
+
+          </div>
+
+        </div>
+
+        <div class='col-12' *ngIf="form.get('markAsPaid').value">
           <div class='form-group'>
             <label class='form-label'>{{"General::startDate"|abpLocalization}}<sup>*</sup></label>
             <div class='control-icon'>
-              <input type="text" class="form-control"  placeholder="dd/mm/yyyy" bsDatepicker formControlName='startDate' [bsConfig]="{ dateInputFormat: 'DD/MM/YYYY' }" />
-              <i class="icon fa-regular fa-calendar"></i>
-<!--              <i class="icon fa-regular fa-circle-question" tooltipClass="custom-tooltip" placement="top" container="body"  ngbTooltip='{{"General::planNameHint"|abpLocalization}}'></i>-->
+              <input #startDate="bsDatepicker" type="text" class="form-control"  placeholder="dd/mm/yyyy" bsDatepicker formControlName='startDate' [bsConfig]="{ dateInputFormat: 'DD/MM/YYYY' }" />
+              <i class="icon fa-regular fa-calendar" (click)="startDate.toggle()" [attr.aria-expanded]="startDate.isOpen"></i>
             </div>
             <div *ngIf="form.get('startDate')?.invalid && form.get('startDate')?.touched">
               <span *ngIf="form.get('startDate')?.errors?.startDateInvalid" class='invalid'>
@@ -57,13 +79,12 @@
             </div>
           </div>
         </div>
-        <div class='col-12'>
+        <div class='col-12 ' *ngIf="form.get('markAsPaid').value">
           <div class='form-group mb-0'>
             <label class='form-label'>{{"General::expiryDay"|abpLocalization}}<sup>*</sup></label>
             <div class='control-icon'>
-              <input type="text" class="form-control"  placeholder="dd/mm/yyyy" bsDatepicker formControlName='expiryDate' [bsConfig]="{ dateInputFormat: 'DD/MM/YYYY' }" />
-              <i class="icon fa-regular fa-calendar"></i>
-<!--              <i class="icon fa-regular fa-circle-question" tooltipClass="custom-tooltip" placement="top" container="body"  ngbTooltip='{{"General::planNameHint"|abpLocalization}}'></i>-->
+              <input #expiryDay="bsDatepicker" type="text" class="form-control"  placeholder="dd/mm/yyyy" bsDatepicker formControlName='expiryDate' [bsConfig]="{ dateInputFormat: 'DD/MM/YYYY' }" />
+              <i class="icon fa-regular fa-calendar" (click)="expiryDay.toggle()" [attr.aria-expanded]="expiryDay.isOpen"></i>
             </div>
             <div *ngIf="form.get('expiryDate')?.invalid && form.get('expiryDate')?.touched">
               <span *ngIf="form.get('expiryDate')?.errors?.expiryDateInvalid" class='invalid' >

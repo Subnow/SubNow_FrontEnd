@@ -138,6 +138,13 @@
   {
     background-color: #ffffff !important;
     border: 1px solid #D0D5DD;
+    cursor: pointer;
+    &.custom-color{
+      &:checked{
+        background-color: #07A79E !important;
+        border-color: #07A79E !important;
+      }
+    }
     &:checked{
       background-color: #7F56D9 !important;
       border-color: #7F56D9 !important;
@@ -154,6 +161,7 @@
     font-size: 14px;
     font-weight: 500;
     line-height: 20px;
+    cursor: pointer;
   }
 
   .input-group{

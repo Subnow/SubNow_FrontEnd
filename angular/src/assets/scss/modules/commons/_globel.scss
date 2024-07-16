@@ -36,6 +36,7 @@ a{
     flex-wrap: wrap;
     .section-header-actions{
       display: flex;
+      flex-wrap: wrap;
       align-items: center;
       gap: 12px;
     }
@@ -118,6 +119,9 @@ color: $success;
 .pb-16{
   padding-bottom: 16px !important;
 }
+.mb-24{
+  margin-bottom: 24px !important;
+}
 .my-32{
   margin-top: 32px !important;
   margin-bottom: 32px !important;
@@ -164,6 +168,18 @@ color: $success;
   }
 
 }
+.cdk-drag-preview {
+  transition: transform 0.2s ease-in-out;
+}
+
+.cdk-drag-animating {
+  transition: transform 0.2s ease-in-out;
+}
+
+.cdk-drop-list-dragging .cdk-drag {
+  transition: transform 0.2s ease-in-out;
+}
+
 html[dir='rtl']{
   .wrapper{
     padding: 32px 312px 48px 32px;

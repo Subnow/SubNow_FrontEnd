@@ -1,4 +1,11 @@
 
+export interface ApiKeyDto {
+  id?: string;
+  keyName?: string;
+  key?: string;
+  companyId?: string;
+}
+
 export interface CompanyBrandingDto {
   companyId?: string;
   companyLogo?: string;
@@ -33,9 +40,20 @@ export interface CompanyDto {
   subDomain?: string;
 }
 
+export interface CreateApiKeyDto {
+  keyName: string;
+  companyId: string;
+}
+
+export interface UpdateApiKeyDto {
+  id: string;
+  keyName: string;
+}
+
 export interface UpdateCompanyBrandingDto {
   companyId?: string;
   companyLogo?: string;
+  logoType?: string;
   backgroundColor?: string;
   buttonsColor?: string;
   xAccount?: string;
