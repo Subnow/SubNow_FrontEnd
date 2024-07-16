@@ -168,6 +168,18 @@ color: $success;
   }
 
 }
+.cdk-drag-preview {
+  transition: transform 0.2s ease-in-out;
+}
+
+.cdk-drag-animating {
+  transition: transform 0.2s ease-in-out;
+}
+
+.cdk-drop-list-dragging .cdk-drag {
+  transition: transform 0.2s ease-in-out;
+}
+
 html[dir='rtl']{
   .wrapper{
     padding: 32px 312px 48px 32px;

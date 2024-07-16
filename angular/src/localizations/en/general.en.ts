@@ -222,4 +222,5 @@ export const General = {
   total:"Total",
   totalDue:"Total due",
   pay:"Pay",
+  deactivated:"Deactivated"
 };

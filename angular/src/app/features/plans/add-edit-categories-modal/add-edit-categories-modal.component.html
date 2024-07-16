@@ -24,7 +24,6 @@
               <label class="form-label">{{"General::categoryName" | abpLocalization}}</label>
               <div class='control-icon'>
                 <input class='form-control' formControlName='name' id='name' placeholder='{{"General::exB2CCustomers" | abpLocalization}}' type='text' required>
-<!--                <i class="icon fa-regular fa-circle-question" tooltipClass="custom-tooltip" placement="top" ngbTooltip="Tooltip on top"></i>-->
               </div>
             </div>
             <div class='form-group mb-0'>
@@ -55,11 +54,10 @@
                     <input type="hidden" [formControl]="plan.get('id')">
                     <input type="hidden" [formControl]="plan.get('sort')">
                   </td>
-
                   <td class='rounded-table-body-cell'>
-                    <div class='bullingCycle-cell'>
+                    <div class='bullingCycle-cell' [class.deactivated] = 'plan.get("planStatus").value === 1 || plan.get("planStatus").value === 2'>
                       <span class='name'>{{plan.get('name').value}}</span>
-                      <span class='info'>{{plan.get('code').value}}</span>
+                      <span class='info'>{{plan.get('code').value}} <span class='badge badge-deactivate' *ngIf='plan.get("planStatus").value === 1 || plan.get("planStatus").value === 2 '>{{"General::deactivated" | abpLocalization}}</span></span>
                     </div>
                   </td>
                   <td class='rounded-table-body-cell'>

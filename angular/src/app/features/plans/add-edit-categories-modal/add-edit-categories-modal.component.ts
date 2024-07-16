@@ -62,6 +62,7 @@ export class AddEditCategoriesModalComponent implements OnInit {
       id: [plan.id],
       name: [plan.name],
       code:[plan.code],
+      planStatus:[plan.planStatus],
       showOnPaylink: [plan.showOnPaylink],
       sort: [plan.sort]
     });

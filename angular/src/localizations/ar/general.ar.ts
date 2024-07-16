@@ -210,5 +210,6 @@ export const General = {
   markAsPaid: " مدفوعة",
   customerStartsImmediately: "يبدأ العميل فورًا",
   plansVisibility:"رؤية الباقات",
-  plansVisibilityHint:"تخصيص ترتيب فرز الباقات، وما هي الباقات التي ينبغي أن تكون مرئية لعملائك في روابط الدفع الخاصة بهم."
+  plansVisibilityHint:"تخصيص ترتيب فرز الباقات، وما هي الباقات التي ينبغي أن تكون مرئية لعملائك في روابط الدفع الخاصة بهم.",
+  deactivated:"غير مفعل"
 };

@@ -36,21 +36,19 @@ export class AddEditPlanComponent  implements OnInit{
       this.initForm();
       this.getCategoryList();
       this.getBillingCycles();
+      console.log('plan===>' , this.plan)
     }
 
     getBillingCycles(){
     if (this?.isEdit === true){
       this._planService.getBillingCyclePlan(this.plan?.id).subscribe(res=>{
         this.planBillingCycleList = res;
-        console.log('this.planBillingCycleList edit',this.planBillingCycleList)
       })
       this.isSelectedBillingCycle = true;
     }
     else {
       this._planService.getBillingCyclePlan('00000000-0000-0000-0000-000000000000').subscribe(res=>{
         this.planBillingCycleList = res;
-        console.log('this.planBillingCycleList ',this.planBillingCycleList)
-
       })
     }
     }
