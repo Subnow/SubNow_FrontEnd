@@ -11,7 +11,7 @@
             <label class="form-label">{{"General::customerName"|abpLocalization}}<sup>*</sup></label>
             <div class='control-icon'>
               <input class='form-control' formControlName='name' id='name' placeholder='Mike Johnson' type='text' required>
-              <i class="icon fa-regular fa-circle-question" tooltipClass="custom-tooltip" placement="top" container="body"  ngbTooltip='{{"General::customerName"|abpLocalization}}'></i>
+              <i class="icon fa-regular fa-circle-question" tooltipClass="custom-tooltip" placement="top" container="body" ngbTooltip='{{"General::customerName"|abpLocalization}}'></i>
             </div>
           </div>
         </div>
@@ -35,7 +35,8 @@
                 <label class="form-label">{{"General::customerSince"|abpLocalization}}</label>
                 <div class='control-icon'>
                   <input  #customerSince="bsDatepicker" type="text" class="form-control"  placeholder="dd/mm/yyyy" bsDatepicker formControlName='customerSince' [bsConfig]="{ dateInputFormat: 'DD/MM/YYYY' }" />
-                  <i class='icon'><i class="fa-regular fa-calendar" (click)="customerSince.toggle()" [attr.aria-expanded]="customerSince.isOpen"></i></i>
+                  <i *ngIf='!isEdit' class="fa-regular fa-calendar icon" (click)="customerSince.toggle()" [attr.aria-expanded]="customerSince.isOpen"></i>
+                  <i *ngIf='isEdit' class="fa-regular fa-calendar icon" [attr.aria-expanded]="customerSince.isOpen"></i>
                 </div>
 
               </div>
