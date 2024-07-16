@@ -32,6 +32,7 @@ export class AddEditCategoriesModalComponent implements OnInit {
       this.updateStatus = toggleValue;
     });
     this.loadPlans();
+    console.log('category' , this.category.plans)
   }
 
   get plansArray(): FormArray {

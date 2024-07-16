@@ -1,4 +1,5 @@
 import type { EntityDto } from '@abp/ng.core';
+import type { PlanStatusType } from '../enums/plan-status-type.enum';
 
 export interface CategoryDto {
   id?: string;
@@ -24,7 +25,9 @@ export interface CreateCategoryDto {
 export interface PlansCategoryDto {
   id?: string;
   name?: string;
+  code?: string;
   showOnPaylink: boolean;
+  planStatus: PlanStatusType;
   sort?: number;
 }
 

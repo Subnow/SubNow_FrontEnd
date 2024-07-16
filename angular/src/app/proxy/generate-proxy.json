@@ -1253,6 +1253,186 @@
             }
           }
         },
+        "SubNow.Companies.ApiKeyAppService": {
+          "controllerName": "ApiKey",
+          "controllerGroupName": "ApiKey",
+          "isRemoteService": true,
+          "isIntegrationService": false,
+          "apiVersion": null,
+          "type": "SubNow.Companies.ApiKeyAppService",
+          "interfaces": [
+            {
+              "type": "SubNow.Companies.IApiKeyAppService",
+              "name": "IApiKeyAppService",
+              "methods": [
+                {
+                  "name": "CreateAsync",
+                  "parametersOnMethod": [
+                    {
+                      "name": "input",
+                      "typeAsString": "SubNow.Companies.CreateApiKeyDto, SubNow.Application.Contracts",
+                      "type": "SubNow.Companies.CreateApiKeyDto",
+                      "typeSimple": "SubNow.Companies.CreateApiKeyDto",
+                      "isOptional": false,
+                      "defaultValue": null
+                    }
+                  ],
+                  "returnValue": {
+                    "type": "SubNow.Companies.ApiKeyDto",
+                    "typeSimple": "SubNow.Companies.ApiKeyDto"
+                  }
+                },
+                {
+                  "name": "GetApiKeysForCompanyAsync",
+                  "parametersOnMethod": [
+                    {
+                      "name": "companyId",
+                      "typeAsString": "System.Guid, System.Private.CoreLib",
+                      "type": "System.Guid",
+                      "typeSimple": "string",
+                      "isOptional": false,
+                      "defaultValue": null
+                    }
+                  ],
+                  "returnValue": {
+                    "type": "System.Collections.Generic.List<SubNow.Companies.ApiKeyDto>",
+                    "typeSimple": "[SubNow.Companies.ApiKeyDto]"
+                  }
+                },
+                {
+                  "name": "UpdateAsync",
+                  "parametersOnMethod": [
+                    {
+                      "name": "input",
+                      "typeAsString": "SubNow.Companies.UpdateApiKeyDto, SubNow.Application.Contracts",
+                      "type": "SubNow.Companies.UpdateApiKeyDto",
+                      "typeSimple": "SubNow.Companies.UpdateApiKeyDto",
+                      "isOptional": false,
+                      "defaultValue": null
+                    }
+                  ],
+                  "returnValue": {
+                    "type": "SubNow.Companies.ApiKeyDto",
+                    "typeSimple": "SubNow.Companies.ApiKeyDto"
+                  }
+                }
+              ]
+            }
+          ],
+          "actions": {
+            "CreateAsyncByInput": {
+              "uniqueName": "CreateAsyncByInput",
+              "name": "CreateAsync",
+              "httpMethod": "POST",
+              "url": "api/app/api-key",
+              "supportedVersions": [],
+              "parametersOnMethod": [
+                {
+                  "name": "input",
+                  "typeAsString": "SubNow.Companies.CreateApiKeyDto, SubNow.Application.Contracts",
+                  "type": "SubNow.Companies.CreateApiKeyDto",
+                  "typeSimple": "SubNow.Companies.CreateApiKeyDto",
+                  "isOptional": false,
+                  "defaultValue": null
+                }
+              ],
+              "parameters": [
+                {
+                  "nameOnMethod": "input",
+                  "name": "input",
+                  "jsonName": null,
+                  "type": "SubNow.Companies.CreateApiKeyDto",
+                  "typeSimple": "SubNow.Companies.CreateApiKeyDto",
+                  "isOptional": false,
+                  "defaultValue": null,
+                  "constraintTypes": null,
+                  "bindingSourceId": "Body",
+                  "descriptorName": ""
+                }
+              ],
+              "returnValue": {
+                "type": "SubNow.Companies.ApiKeyDto",
+                "typeSimple": "SubNow.Companies.ApiKeyDto"
+              },
+              "allowAnonymous": false,
+              "implementFrom": "SubNow.Companies.IApiKeyAppService"
+            },
+            "UpdateAsyncByInput": {
+              "uniqueName": "UpdateAsyncByInput",
+              "name": "UpdateAsync",
+              "httpMethod": "PUT",
+              "url": "api/app/api-key",
+              "supportedVersions": [],
+              "parametersOnMethod": [
+                {
+                  "name": "input",
+                  "typeAsString": "SubNow.Companies.UpdateApiKeyDto, SubNow.Application.Contracts",
+                  "type": "SubNow.Companies.UpdateApiKeyDto",
+                  "typeSimple": "SubNow.Companies.UpdateApiKeyDto",
+                  "isOptional": false,
+                  "defaultValue": null
+                }
+              ],
+              "parameters": [
+                {
+                  "nameOnMethod": "input",
+                  "name": "input",
+                  "jsonName": null,
+                  "type": "SubNow.Companies.UpdateApiKeyDto",
+                  "typeSimple": "SubNow.Companies.UpdateApiKeyDto",
+                  "isOptional": false,
+                  "defaultValue": null,
+                  "constraintTypes": null,
+                  "bindingSourceId": "Body",
+                  "descriptorName": ""
+                }
+              ],
+              "returnValue": {
+                "type": "SubNow.Companies.ApiKeyDto",
+                "typeSimple": "SubNow.Companies.ApiKeyDto"
+              },
+              "allowAnonymous": false,
+              "implementFrom": "SubNow.Companies.IApiKeyAppService"
+            },
+            "GetApiKeysForCompanyAsyncByCompanyId": {
+              "uniqueName": "GetApiKeysForCompanyAsyncByCompanyId",
+              "name": "GetApiKeysForCompanyAsync",
+              "httpMethod": "GET",
+              "url": "api/app/api-key/api-keys-for-company/{companyId}",
+              "supportedVersions": [],
+              "parametersOnMethod": [
+                {
+                  "name": "companyId",
+                  "typeAsString": "System.Guid, System.Private.CoreLib",
+                  "type": "System.Guid",
+                  "typeSimple": "string",
+                  "isOptional": false,
+                  "defaultValue": null
+                }
+              ],
+              "parameters": [
+                {
+                  "nameOnMethod": "companyId",
+                  "name": "companyId",
+                  "jsonName": null,
+                  "type": "System.Guid",
+                  "typeSimple": "string",
+                  "isOptional": false,
+                  "defaultValue": null,
+                  "constraintTypes": [],
+                  "bindingSourceId": "Path",
+                  "descriptorName": ""
+                }
+              ],
+              "returnValue": {
+                "type": "System.Collections.Generic.List<SubNow.Companies.ApiKeyDto>",
+                "typeSimple": "[SubNow.Companies.ApiKeyDto]"
+              },
+              "allowAnonymous": false,
+              "implementFrom": "SubNow.Companies.IApiKeyAppService"
+            }
+          }
+        },
         "SubNow.Companies.CompanyAppService": {
           "controllerName": "Company",
           "controllerGroupName": "Company",
@@ -2928,6 +3108,78 @@
               },
               "allowAnonymous": null,
               "implementFrom": "SubNow.Subscriptions.ISubscriptionAppService"
+            }
+          }
+        },
+        "SubNow.Token.CheckoutAppService": {
+          "controllerName": "Checkout",
+          "controllerGroupName": "Checkout",
+          "isRemoteService": true,
+          "isIntegrationService": false,
+          "apiVersion": null,
+          "type": "SubNow.Token.CheckoutAppService",
+          "interfaces": [
+            {
+              "type": "SubNow.CheckoutTokens.ICheckoutAppService",
+              "name": "ICheckoutAppService",
+              "methods": [
+                {
+                  "name": "CreateCheckoutTokenAsync",
+                  "parametersOnMethod": [
+                    {
+                      "name": "input",
+                      "typeAsString": "SubNow.CheckoutTokens.CreateCheckoutTokenDto, SubNow.Application.Contracts",
+                      "type": "SubNow.CheckoutTokens.CreateCheckoutTokenDto",
+                      "typeSimple": "SubNow.CheckoutTokens.CreateCheckoutTokenDto",
+                      "isOptional": false,
+                      "defaultValue": null
+                    }
+                  ],
+                  "returnValue": {
+                    "type": "SubNow.CheckoutTokens.ApiResponse<SubNow.CheckoutTokens.CheckoutTokenDto>",
+                    "typeSimple": "SubNow.CheckoutTokens.ApiResponse<SubNow.CheckoutTokens.CheckoutTokenDto>"
+                  }
+                }
+              ]
+            }
+          ],
+          "actions": {
+            "CreateCheckoutTokenAsyncByInput": {
+              "uniqueName": "CreateCheckoutTokenAsyncByInput",
+              "name": "CreateCheckoutTokenAsync",
+              "httpMethod": "POST",
+              "url": "api/app/checkout/checkout-token",
+              "supportedVersions": [],
+              "parametersOnMethod": [
+                {
+                  "name": "input",
+                  "typeAsString": "SubNow.CheckoutTokens.CreateCheckoutTokenDto, SubNow.Application.Contracts",
+                  "type": "SubNow.CheckoutTokens.CreateCheckoutTokenDto",
+                  "typeSimple": "SubNow.CheckoutTokens.CreateCheckoutTokenDto",
+                  "isOptional": false,
+                  "defaultValue": null
+                }
+              ],
+              "parameters": [
+                {
+                  "nameOnMethod": "input",
+                  "name": "input",
+                  "jsonName": null,
+                  "type": "SubNow.CheckoutTokens.CreateCheckoutTokenDto",
+                  "typeSimple": "SubNow.CheckoutTokens.CreateCheckoutTokenDto",
+                  "isOptional": false,
+                  "defaultValue": null,
+                  "constraintTypes": null,
+                  "bindingSourceId": "Body",
+                  "descriptorName": ""
+                }
+              ],
+              "returnValue": {
+                "type": "SubNow.CheckoutTokens.ApiResponse<SubNow.CheckoutTokens.CheckoutTokenDto>",
+                "typeSimple": "SubNow.CheckoutTokens.ApiResponse<SubNow.CheckoutTokens.CheckoutTokenDto>"
+              },
+              "allowAnonymous": null,
+              "implementFrom": "SubNow.CheckoutTokens.ICheckoutAppService"
             }
           }
         },
@@ -5960,10 +6212,34 @@
           "regex": null
         },
         {
+          "name": "Code",
+          "jsonName": null,
+          "type": "System.String",
+          "typeSimple": "string",
+          "isRequired": false,
+          "minLength": null,
+          "maxLength": null,
+          "minimum": null,
+          "maximum": null,
+          "regex": null
+        },
+        {
           "name": "ShowOnPaylink",
           "jsonName": null,
           "type": "System.Boolean",
           "typeSimple": "boolean",
+          "isRequired": false,
+          "minLength": null,
+          "maxLength": null,
+          "minimum": null,
+          "maximum": null,
+          "regex": null
+        },
+        {
+          "name": "PlanStatus",
+          "jsonName": null,
+          "type": "SubNow.Enums.PlanStatusType",
+          "typeSimple": "SubNow.Enums.PlanStatusType",
           "isRequired": false,
           "minLength": null,
           "maxLength": null,
@@ -6033,6 +6309,392 @@
           "jsonName": null,
           "type": "[SubNow.Categories.PlansCategoryDto]",
           "typeSimple": "[SubNow.Categories.PlansCategoryDto]",
+          "isRequired": false,
+          "minLength": null,
+          "maxLength": null,
+          "minimum": null,
+          "maximum": null,
+          "regex": null
+        }
+      ]
+    },
+    "SubNow.CheckoutTokens.AddressDto": {
+      "baseType": null,
+      "isEnum": false,
+      "enumNames": null,
+      "enumValues": null,
+      "genericArguments": null,
+      "properties": [
+        {
+          "name": "CountryCode",
+          "jsonName": null,
+          "type": "System.String",
+          "typeSimple": "string",
+          "isRequired": false,
+          "minLength": null,
+          "maxLength": null,
+          "minimum": null,
+          "maximum": null,
+          "regex": null
+        },
+        {
+          "name": "City",
+          "jsonName": null,
+          "type": "System.String",
+          "typeSimple": "string",
+          "isRequired": false,
+          "minLength": null,
+          "maxLength": null,
+          "minimum": null,
+          "maximum": null,
+          "regex": null
+        },
+        {
+          "name": "Address",
+          "jsonName": null,
+          "type": "System.String",
+          "typeSimple": "string",
+          "isRequired": false,
+          "minLength": 0,
+          "maxLength": 255,
+          "minimum": null,
+          "maximum": null,
+          "regex": null
+        }
+      ]
+    },
+    "SubNow.CheckoutTokens.ApiError": {
+      "baseType": null,
+      "isEnum": false,
+      "enumNames": null,
+      "enumValues": null,
+      "genericArguments": null,
+      "properties": [
+        {
+          "name": "Code",
+          "jsonName": null,
+          "type": "System.String",
+          "typeSimple": "string",
+          "isRequired": false,
+          "minLength": null,
+          "maxLength": null,
+          "minimum": null,
+          "maximum": null,
+          "regex": null
+        },
+        {
+          "name": "MessageAr",
+          "jsonName": null,
+          "type": "System.String",
+          "typeSimple": "string",
+          "isRequired": false,
+          "minLength": null,
+          "maxLength": null,
+          "minimum": null,
+          "maximum": null,
+          "regex": null
+        },
+        {
+          "name": "MessageEn",
+          "jsonName": null,
+          "type": "System.String",
+          "typeSimple": "string",
+          "isRequired": false,
+          "minLength": null,
+          "maxLength": null,
+          "minimum": null,
+          "maximum": null,
+          "regex": null
+        }
+      ]
+    },
+    "SubNow.CheckoutTokens.ApiResponse<T0>": {
+      "baseType": null,
+      "isEnum": false,
+      "enumNames": null,
+      "enumValues": null,
+      "genericArguments": [
+        "T"
+      ],
+      "properties": [
+        {
+          "name": "Data",
+          "jsonName": null,
+          "type": "T",
+          "typeSimple": "T",
+          "isRequired": false,
+          "minLength": null,
+          "maxLength": null,
+          "minimum": null,
+          "maximum": null,
+          "regex": null
+        },
+        {
+          "name": "Error",
+          "jsonName": null,
+          "type": "SubNow.CheckoutTokens.ApiError",
+          "typeSimple": "SubNow.CheckoutTokens.ApiError",
+          "isRequired": false,
+          "minLength": null,
+          "maxLength": null,
+          "minimum": null,
+          "maximum": null,
+          "regex": null
+        }
+      ]
+    },
+    "SubNow.CheckoutTokens.CheckoutTokenDto": {
+      "baseType": null,
+      "isEnum": false,
+      "enumNames": null,
+      "enumValues": null,
+      "genericArguments": null,
+      "properties": [
+        {
+          "name": "CheckoutToken",
+          "jsonName": null,
+          "type": "System.String",
+          "typeSimple": "string",
+          "isRequired": false,
+          "minLength": null,
+          "maxLength": null,
+          "minimum": null,
+          "maximum": null,
+          "regex": null
+        },
+        {
+          "name": "PaymentURL",
+          "jsonName": null,
+          "type": "System.String",
+          "typeSimple": "string",
+          "isRequired": false,
+          "minLength": null,
+          "maxLength": null,
+          "minimum": null,
+          "maximum": null,
+          "regex": null
+        },
+        {
+          "name": "TokenValidityInMinutes",
+          "jsonName": null,
+          "type": "System.Int32",
+          "typeSimple": "number",
+          "isRequired": false,
+          "minLength": null,
+          "maxLength": null,
+          "minimum": null,
+          "maximum": null,
+          "regex": null
+        }
+      ]
+    },
+    "SubNow.CheckoutTokens.CreateCheckoutTokenDto": {
+      "baseType": null,
+      "isEnum": false,
+      "enumNames": null,
+      "enumValues": null,
+      "genericArguments": null,
+      "properties": [
+        {
+          "name": "Customer",
+          "jsonName": null,
+          "type": "SubNow.CheckoutTokens.CustomerCheckoutDto",
+          "typeSimple": "SubNow.CheckoutTokens.CustomerCheckoutDto",
+          "isRequired": false,
+          "minLength": null,
+          "maxLength": null,
+          "minimum": null,
+          "maximum": null,
+          "regex": null
+        },
+        {
+          "name": "Plan",
+          "jsonName": null,
+          "type": "SubNow.CheckoutTokens.PlanCheckoutDto",
+          "typeSimple": "SubNow.CheckoutTokens.PlanCheckoutDto",
+          "isRequired": false,
+          "minLength": null,
+          "maxLength": null,
+          "minimum": null,
+          "maximum": null,
+          "regex": null
+        }
+      ]
+    },
+    "SubNow.CheckoutTokens.CustomerCheckoutDto": {
+      "baseType": null,
+      "isEnum": false,
+      "enumNames": null,
+      "enumValues": null,
+      "genericArguments": null,
+      "properties": [
+        {
+          "name": "CustomerKey",
+          "jsonName": null,
+          "type": "System.String",
+          "typeSimple": "string",
+          "isRequired": true,
+          "minLength": null,
+          "maxLength": null,
+          "minimum": null,
+          "maximum": null,
+          "regex": null
+        },
+        {
+          "name": "Name",
+          "jsonName": null,
+          "type": "System.String",
+          "typeSimple": "string",
+          "isRequired": false,
+          "minLength": null,
+          "maxLength": null,
+          "minimum": null,
+          "maximum": null,
+          "regex": null
+        },
+        {
+          "name": "Email",
+          "jsonName": null,
+          "type": "System.String",
+          "typeSimple": "string",
+          "isRequired": false,
+          "minLength": null,
+          "maxLength": null,
+          "minimum": null,
+          "maximum": null,
+          "regex": null
+        },
+        {
+          "name": "Phone",
+          "jsonName": null,
+          "type": "System.String",
+          "typeSimple": "string",
+          "isRequired": false,
+          "minLength": null,
+          "maxLength": null,
+          "minimum": null,
+          "maximum": null,
+          "regex": null
+        },
+        {
+          "name": "Lang",
+          "jsonName": null,
+          "type": "System.String",
+          "typeSimple": "string",
+          "isRequired": false,
+          "minLength": null,
+          "maxLength": null,
+          "minimum": null,
+          "maximum": null,
+          "regex": null
+        },
+        {
+          "name": "Address",
+          "jsonName": null,
+          "type": "SubNow.CheckoutTokens.AddressDto",
+          "typeSimple": "SubNow.CheckoutTokens.AddressDto",
+          "isRequired": false,
+          "minLength": null,
+          "maxLength": null,
+          "minimum": null,
+          "maximum": null,
+          "regex": null
+        }
+      ]
+    },
+    "SubNow.CheckoutTokens.PlanCheckoutDto": {
+      "baseType": null,
+      "isEnum": false,
+      "enumNames": null,
+      "enumValues": null,
+      "genericArguments": null,
+      "properties": [
+        {
+          "name": "PlanCode",
+          "jsonName": null,
+          "type": "System.String",
+          "typeSimple": "string",
+          "isRequired": true,
+          "minLength": null,
+          "maxLength": null,
+          "minimum": null,
+          "maximum": null,
+          "regex": null
+        },
+        {
+          "name": "PlanBillingCycleId",
+          "jsonName": null,
+          "type": "System.Guid?",
+          "typeSimple": "string?",
+          "isRequired": false,
+          "minLength": null,
+          "maxLength": null,
+          "minimum": null,
+          "maximum": null,
+          "regex": null
+        },
+        {
+          "name": "Action",
+          "jsonName": null,
+          "type": "System.String",
+          "typeSimple": "string",
+          "isRequired": true,
+          "minLength": null,
+          "maxLength": null,
+          "minimum": null,
+          "maximum": null,
+          "regex": null
+        }
+      ]
+    },
+    "SubNow.Companies.ApiKeyDto": {
+      "baseType": null,
+      "isEnum": false,
+      "enumNames": null,
+      "enumValues": null,
+      "genericArguments": null,
+      "properties": [
+        {
+          "name": "Id",
+          "jsonName": null,
+          "type": "System.Guid",
+          "typeSimple": "string",
+          "isRequired": false,
+          "minLength": null,
+          "maxLength": null,
+          "minimum": null,
+          "maximum": null,
+          "regex": null
+        },
+        {
+          "name": "KeyName",
+          "jsonName": null,
+          "type": "System.String",
+          "typeSimple": "string",
+          "isRequired": false,
+          "minLength": null,
+          "maxLength": null,
+          "minimum": null,
+          "maximum": null,
+          "regex": null
+        },
+        {
+          "name": "Key",
+          "jsonName": null,
+          "type": "System.String",
+          "typeSimple": "string",
+          "isRequired": false,
+          "minLength": null,
+          "maxLength": null,
+          "minimum": null,
+          "maximum": null,
+          "regex": null
+        },
+        {
+          "name": "CompanyId",
+          "jsonName": null,
+          "type": "System.Guid",
+          "typeSimple": "string",
           "isRequired": false,
           "minLength": null,
           "maxLength": null,
@@ -6396,6 +7058,72 @@
         }
       ]
     },
+    "SubNow.Companies.CreateApiKeyDto": {
+      "baseType": null,
+      "isEnum": false,
+      "enumNames": null,
+      "enumValues": null,
+      "genericArguments": null,
+      "properties": [
+        {
+          "name": "KeyName",
+          "jsonName": null,
+          "type": "System.String",
+          "typeSimple": "string",
+          "isRequired": true,
+          "minLength": 0,
+          "maxLength": 50,
+          "minimum": null,
+          "maximum": null,
+          "regex": null
+        },
+        {
+          "name": "CompanyId",
+          "jsonName": null,
+          "type": "System.Guid",
+          "typeSimple": "string",
+          "isRequired": true,
+          "minLength": null,
+          "maxLength": null,
+          "minimum": null,
+          "maximum": null,
+          "regex": null
+        }
+      ]
+    },
+    "SubNow.Companies.UpdateApiKeyDto": {
+      "baseType": null,
+      "isEnum": false,
+      "enumNames": null,
+      "enumValues": null,
+      "genericArguments": null,
+      "properties": [
+        {
+          "name": "id",
+          "jsonName": null,
+          "type": "System.Guid",
+          "typeSimple": "string",
+          "isRequired": true,
+          "minLength": null,
+          "maxLength": null,
+          "minimum": null,
+          "maximum": null,
+          "regex": null
+        },
+        {
+          "name": "KeyName",
+          "jsonName": null,
+          "type": "System.String",
+          "typeSimple": "string",
+          "isRequired": true,
+          "minLength": 0,
+          "maxLength": 50,
+          "minimum": null,
+          "maximum": null,
+          "regex": null
+        }
+      ]
+    },
     "SubNow.Companies.UpdateCompanyBrandingDto": {
       "baseType": null,
       "isEnum": false,
@@ -6417,6 +7145,18 @@
         },
         {
           "name": "CompanyLogo",
+          "jsonName": null,
+          "type": "System.String",
+          "typeSimple": "string",
+          "isRequired": false,
+          "minLength": null,
+          "maxLength": null,
+          "minimum": null,
+          "maximum": null,
+          "regex": null
+        },
+        {
+          "name": "LogoType",
           "jsonName": null,
           "type": "System.String",
           "typeSimple": "string",
