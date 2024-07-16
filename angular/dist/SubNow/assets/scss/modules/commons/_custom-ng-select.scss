@@ -1,0 +1,175 @@
+//.ng-select.ng-select-single{
+//  height: 40px;
+//  .ng-select-container{
+//    height: 40px;
+//    box-shadow: 0px 1px 2px 0px rgba(16, 24, 40, 0.05);
+//    color: #667085;
+//    font-size: 14px;
+//    font-weight: 400;
+//    line-height: 24px;
+//    transition: all ease-in-out 0.3s;
+//    padding: 12px 14px;
+//    background: $light-color;
+//    border-radius: 8px;
+//    border: 1px solid #D0D5DD;
+//    min-height: 40px;
+//    align-items: center;
+//    .ng-value-container{
+//      padding: 0;
+//      .ng-placeholder{
+//        color: #667085;
+//        font-size: 14px;
+//        font-weight: 400;
+//        line-height: 24px;
+//        position: relative;
+//        top: 4px;
+//      }
+//      .ng-input{
+//        padding-left: 14px;
+//        padding-right: 40px;
+//        top: 3px;
+//
+//      }
+//      .ng-value{
+//        color: #667085;
+//        font-size: 14px;
+//        font-weight: 400;
+//        line-height: 24px;
+//        position: relative;
+//        top: 4px;
+//      }
+//    }
+//  }
+
+.ng-select.ng-select-single .ng-select-container{
+  height: 40px;
+  padding: 0;
+}
+.ng-select .ng-select-container{
+  border-radius: 8px;
+  border: 1px solid #D0D5DD;
+  background: $light-color;
+  box-shadow: 0px 1px 2px 0px rgba(16, 24, 40, 0.05);
+  color: #667085;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 24px;
+  transition: all ease-in-out 0.3s;
+  padding: 12px 14px;
+}
+.ng-dropdown-panel.ng-select-bottom {
+  margin: 3px 0;
+  border: 1px solid #D0D5DD;
+  border-radius: 0 0 8px 8px;
+  overflow: hidden;
+  box-shadow: 0px 1px 2px 0px rgba(16, 24, 40, 0.05);
+}
+
+
+.ng-dropdown-panel.ng-select-top {
+  bottom: 100%;
+  border-top-right-radius: 8px;
+  border-top-left-radius: 8px;
+  margin-bottom: 3px;
+  border: 1px solid #D0D5DD;
+
+}
+.ng-dropdown-panel .ng-dropdown-panel-items .ng-option.ng-option-marked {
+  background-color: rgba(53, 93, 255, 0.10);
+  color: #667085;
+}
+.ng-select.ng-select-single .ng-select-container .ng-value-container .ng-input{
+  padding-left:14px;
+  padding-right: 40px;
+  top: -1px;
+}
+.ng-select .ng-select-container .ng-value-container{
+  padding: 0 14px;
+}
+.ng-select .ng-select-focused:not(.ng-select-opened) > .ng-select-container {
+  box-shadow: none;
+}
+.ng-select.ng-select-opened>.ng-select-container {
+  background: #fff;
+  border-color: #D0D5DD;
+}
+.ng-select .ng-arrow-wrapper {
+  width: 20px !important;
+  height: 20px !important;
+  padding: 0 !important;
+}
+.ng-select .ng-arrow-wrapper .ng-arrow {
+  border: none;
+  width: 20px;
+  height: 20px;
+  cursor: pointer;
+  position: absolute !important;
+  right: 25px;
+  font-size: 14px;
+  &:before {
+    content: "\f107";
+    font-family: "Font Awesome 6 free";
+    color: #B8B6C7;
+    position: absolute;
+    font-size: 14px;
+    font-weight: 900;
+  }
+}
+
+.ng-select-opened .ng-arrow-wrapper .ng-arrow {
+  &:before {
+    content: '\f106';
+    //top: -18px
+  }
+
+}
+
+.ng-select.ng-select-disabled>.ng-select-container {
+  background-color: #f5f5f7;
+  opacity: 1;
+}
+.ng-dropdown-panel .ng-dropdown-panel-items .ng-option{
+  color:#344054;
+}
+
+.ng-select.ng-select-focused:not(.ng-select-opened)>.ng-select-container {
+  border-color: #155EEF;
+  box-shadow: unset;
+}
+.ng-dropdown-panel .ng-dropdown-panel-items .ng-option.ng-option-selected, .ng-dropdown-panel .ng-dropdown-panel-items .ng-option.ng-option-selected.ng-option-marked{
+  color: $success;
+  background-color: unset;
+}
+.ng-select.ng-select-single .ng-select-container .ng-value-container .ng-input,
+.ng-select .ng-select-container .ng-value-container .ng-input>input{
+  height: 100%;
+}
+.select-dot{
+  .ng-select-container{
+    .name{
+      color: #101828;
+    }
+  }
+  .info{
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .dot{
+    font-size: 10px;
+  }
+}
+.ng-select .ng-select-container .ng-value-container{
+  .ng-value-label{
+    color: #101828;
+  }
+  .ng-placeholder{
+    color: #667085;
+  }
+}
+html[dir='rtl']{
+  .ng-select .ng-arrow-wrapper .ng-arrow {
+    left: 25px;
+    right: auto;
+  }
+}
