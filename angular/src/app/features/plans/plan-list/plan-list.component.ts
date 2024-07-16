@@ -27,6 +27,7 @@ export class PlanListComponent implements OnInit{
   getCategoryPlanList(){
     this._planService.getAllPlansForCompany().subscribe((res=>{
       this.categoryPlanList = res?.items;
+      console.log('this.categoryPlanList length ==>' , this.categoryPlanList?.length)
     }))
   }
 
