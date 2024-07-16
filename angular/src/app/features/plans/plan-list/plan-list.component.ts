@@ -18,7 +18,6 @@ export class PlanListComponent implements OnInit{
   planStatus = mapEnumToOptions(PlanStatusType);
   isEdit:boolean = false;
   constructor(private _planService:PlanService) {
-    this.getCategoryPlanList()
   }
   ngOnInit(): void {
     this.getCategoryPlanList()
