@@ -1,7 +1,7 @@
 
 <div class="payment-wrapper large-media">
   <div class="row g-0 h-100vh">
-    <div class="col-md-6 left-panel" [style.background-color]="paymentInfo?.companyBranding?.backgroundColor">
+    <div class="col-md-6 left-panel" [style.background-color]="paymentInfo?.companyBranding?.backgroundColor || '#d2daf6'">
       <div class='block-one'>
         <div class='block-one-header'>
           <div class='logo'>
@@ -21,11 +21,11 @@
         </div>
         <div class='block-one-footer'>
           <div class='payment-lang'>
-            <a *ngIf="currentLang$ === 'en'" class="btn-lang" (click)="onChangeLang('ar')" data-qcauto="language_btn">
+            <a *ngIf="currentLang$ === 'en'" class="btn-lang" (click)="onChangeLang('ar')">
               <i class="fa-solid fa-arrow-left"></i>
               <span>العربية</span>
             </a>
-            <a *ngIf="currentLang$ === 'ar'" class="btn-lang" (click)="onChangeLang('en')" data-qcauto="language_btn">
+            <a *ngIf="currentLang$ === 'ar'" class="btn-lang" (click)="onChangeLang('en')">
               <i class="fa-solid fa-arrow-left"></i>
               <span>English</span>
             </a>
@@ -85,12 +85,12 @@
 
 <div class="payment-wrapper small-media">
   <div class="row g-0 h-100vh">
-    <div class="col-12 left-panel" [style.background-color]="paymentInfo?.companyBranding?.backgroundColor">
+    <div class="col-12 left-panel" [style.background-color]="paymentInfo?.companyBranding?.backgroundColor || '#d2daf6'">
       <div class='block-one'>
         <div class='block-one-header'>
           <div class='logo'>
             <div class='image'>
-              <img class='img-fluid' [src]='paymentInfo?.companyBranding?.companyLogo' height='40' alt='company logo'/>
+              <img class='img-fluid' [src]='paymentInfo?.companyBranding?.companyLogo'  alt='company logo'/>
             </div>
             <span class='company-name'>{{paymentInfo?.companyBranding?.companyName}}</span>
           </div>
@@ -137,27 +137,26 @@
     </div>
 
 
-    <div class="col-12 left-panel bottom" [style.background-color]="paymentInfo?.companyBranding?.backgroundColor">
+    <div class="col-12 left-panel bottom" [style.background-color]="paymentInfo?.companyBranding?.backgroundColor || '#d2daf6'">
       <div class='block-one'>
         <div class='block-one-header'>
           <div class='payment-lang'>
-            <a *ngIf="currentLang$ === 'en'" class="btn-lang" (click)="onChangeLang('ar')" data-qcauto="language_btn">
+            <a *ngIf="currentLang$ === 'en'" class="btn-lang" (click)="onChangeLang('ar')">
               <i class="fa-solid fa-arrow-left"></i>
               <span>العربية</span>
             </a>
-            <a *ngIf="currentLang$ === 'ar'" class="btn-lang" (click)="onChangeLang('en')" data-qcauto="language_btn">
+            <a *ngIf="currentLang$ === 'ar'" class="btn-lang" (click)="onChangeLang('en')">
               <i class="fa-solid fa-arrow-left"></i>
               <span>English</span>
             </a>
           </div>
           <div class='logo'>
             <div class='image'>
-              <img class='img-fluid' [src]='paymentInfo?.companyBranding?.companyLogo' height='40' alt='company logo'/>
+              <img class='img-fluid' [src]='paymentInfo?.companyBranding?.companyLogo' alt='company logo'/>
             </div>
           </div>
         </div>
         <div class='block-one-footer'>
-
           <ul class='social-list'>
             <li class='social-list-item'><a class='social-list-link'><i class="fa-brands fa-x-twitter"></i></a></li>
             <li class='social-list-item'><a class='social-list-link'><i class="fa-brands fa-instagram"></i></a></li>
