@@ -8,6 +8,7 @@ export interface ApiKeyDto {
 
 export interface CompanyBrandingDto {
   companyId?: string;
+  companyName?: string;
   companyLogo?: string;
   subdomain?: string;
   backgroundColor?: string;

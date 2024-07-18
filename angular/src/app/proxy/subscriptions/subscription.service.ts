@@ -1,4 +1,4 @@
-import type { ChangeSubscriptionDto, CreateSubscriptionDto, SubscriptionDto } from './models';
+import type { ActivateSubscriptionDto, ChangeSubscriptionDto, CreateSubscriptionDto, SubscriptionDto } from './models';
 import { RestService, Rest } from '@abp/ng.core';
 import { Injectable } from '@angular/core';
 
@@ -7,6 +7,15 @@ import { Injectable } from '@angular/core';
 })
 export class SubscriptionService {
   apiName = 'Default';
+  
+
+  activateSubscription = (ActivateSubscription: ActivateSubscriptionDto, config?: Partial<Rest.Config>) =>
+    this.restService.request<any, void>({
+      method: 'POST',
+      url: '/api/app/subscription/activate-subscription',
+      body: ActivateSubscription,
+    },
+    { apiName: this.apiName,...config });
   
 
   changeSubscription = (changeSubscription: ChangeSubscriptionDto, config?: Partial<Rest.Config>) =>

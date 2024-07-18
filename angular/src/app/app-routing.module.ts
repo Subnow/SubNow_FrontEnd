@@ -58,10 +58,9 @@ const routes: Routes = [
     loadChildren: () => import('./features/support/support.module').then(m => m.SupportModule)
   },
   {
-    path: 'payment',
+    path: 'payment/:id',
     component:PaymentLayoutComponent,
-    loadChildren: () => import('./features/payment/payment.module').then(m => m.PaymentModule) ,
-    canActivate: [authGuard]
+    loadChildren: () => import('./features/payment/payment.module').then(m => m.PaymentModule)
   },
 ];
 

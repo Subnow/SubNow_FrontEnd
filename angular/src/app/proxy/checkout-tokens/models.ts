@@ -1,3 +1,4 @@
+import type { CompanyBrandingDto } from '../companies/models';
 
 export interface AddressDto {
   countryCode?: string;
@@ -14,6 +15,15 @@ export interface ApiError {
 export interface ApiResponse<T> {
   data: T;
   error: ApiError;
+}
+
+export interface CheckoutDetailsDto {
+  companyBranding: CompanyBrandingDto;
+  customerName?: string;
+  preferredLanguage?: string;
+  planName?: string;
+  billingCycle?: string;
+  invoiceDetails: InvoiceDetailsDto;
 }
 
 export interface CheckoutTokenDto {
@@ -34,6 +44,14 @@ export interface CustomerCheckoutDto {
   phone?: string;
   lang?: string;
   address: AddressDto;
+}
+
+export interface InvoiceDetailsDto {
+  planCost: number;
+  subtotal: number;
+  vat: number;
+  total: number;
+  totalDue: number;
 }
 
 export interface PlanCheckoutDto {

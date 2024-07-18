@@ -211,5 +211,14 @@ export const General = {
   customerStartsImmediately: "يبدأ العميل فورًا",
   plansVisibility:"رؤية الباقات",
   plansVisibilityHint:"تخصيص ترتيب فرز الباقات، وما هي الباقات التي ينبغي أن تكون مرئية لعملائك في روابط الدفع الخاصة بهم.",
+  billingCycle: "دورة الفوترة",
+  poweredBy: "مشغل بواسطة",
+  terms: "الشروط",
+  privacy: "الخصوصية",
+  subtotal: "الإجمالي الفرعي",
+  vat: "ضريبة القيمة المضافة (15%)",
+  total: "المجموع",
+  totalDue: "الإجمالي المستحق",
+  pay: "الدفع",
   deactivated:"غير مفعل"
 };

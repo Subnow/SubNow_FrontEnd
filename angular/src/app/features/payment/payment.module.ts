@@ -8,12 +8,12 @@ import { SharedModule } from '../../shared/shared.module';
 
 @NgModule({
   declarations: [
-    PaymentComponent
+    PaymentComponent,
   ],
   imports: [
     CommonModule,
     PaymentRoutingModule,
-    SharedModule
+    SharedModule,
   ]
 })
 export class PaymentModule { }

@@ -1,4 +1,9 @@
 
+export interface ActivateSubscriptionDto {
+  token?: string;
+  subscriptionId?: string;
+}
+
 export interface ChangeSubscriptionDto {
   subscriptionId?: string;
   newPlanId?: string;

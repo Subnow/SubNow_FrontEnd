@@ -29,7 +29,10 @@ const moduleList = [
 
 @NgModule({
   declarations: [
-    ...componentList,
+    ...componentList
+  ],
+  exports: [
+    LanguageComponent
   ],
   imports: [
     ...moduleList

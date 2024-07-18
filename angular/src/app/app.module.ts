@@ -85,7 +85,7 @@ import { ColorPickerModule } from 'ngx-color-picker';
     SideMenuLayoutModule.forRoot(),
     AccountLayoutModule.forRoot(),
     NgbModule,
-    ColorPickerModule
+    ColorPickerModule,
   ],
   declarations: [AppComponent],
   providers: [APP_ROUTE_PROVIDER,
