@@ -291,7 +291,7 @@ input[type="radio"]:checked ~ label{
 }
 
 
-input[type="checkbox"] {
+.custom-checkbox{
   -webkit-appearance: none;
   cursor: pointer;
   width: 20px;
@@ -306,17 +306,17 @@ input[type="checkbox"] {
   justify-content: center;
 }
 
-input[type="checkbox"]:checked::before {
+.custom-checkbox:checked::before {
   content: "\f00c";
   font-family: "Font Awesome 6 Free";
   font-weight: 900;
   color: #5673D9;
 }
 
-input[type="checkbox"]:checked {
+.custom-checkbox:checked {
   border-color: #5673D9;
 }
-input[type="checkbox"]:checked ~ label{
+.custom-checkbox:checked ~ label{
   border-color: #5673D9;
 
 }

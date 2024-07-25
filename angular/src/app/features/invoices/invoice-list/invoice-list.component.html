@@ -39,7 +39,7 @@
             <ng-select class='select-dot' [items]="statusList"  bindLabel="name" bindValue="name"  placeholder='{{"General::plan"|abpLocalization}}' [clearable]="false">
               <ng-template ng-label-tmp let-item="item">
                 <div class='info'>
-                  <span class='dot text-primary'><i class="fa-solid fa-circle"></i></span>
+                  <span class='dot' [ngClass]="getClassBasedOnStatus(item?.name)"><i class="fa-solid fa-circle"></i></span>
                   <span class='name'>{{item?.name}}</span>
                 </div>
               </ng-template>
@@ -50,7 +50,7 @@
             <ng-select class='select-dot' [items]="eventList"  bindLabel="name" bindValue="name"  placeholder='{{"General::plan"|abpLocalization}}' [clearable]="false">
               <ng-template ng-label-tmp let-item="item">
                 <div class='info'>
-                  <span class='dot text-primary'><i class="fa-solid fa-circle"></i></span>
+                  <span class='dot' [ngClass]="getClassBasedOnEvent(item?.name)"><i class="fa-solid fa-circle"></i></span>
                   <span class='name'>{{item?.name}}</span>
                 </div>
               </ng-template>
@@ -71,7 +71,7 @@
           <tr class='rounded-table-head-row'>
             <th width='147' class='rounded-table-head-cell'>
               <div class='sort-cell'>
-                  <input type='checkbox' class='custom-checkbox'>
+<!--                  <input type='checkbox' class='custom-checkbox'>-->
                   <span>{{"General::invoice"|abpLocalization}}</span>
                   <a (click)='sortData("invoice")' class="sort fa-solid fa-arrow-down" *ngIf='!isSortInvoice'></a>
                   <a (click)='notSort("invoice")' class="sort fa-solid fa-arrow-up" *ngIf='isSortInvoice'></a>
@@ -93,13 +93,16 @@
           </tr>
           </thead>
           <tbody class='rounded-table-body'>
-          <tr class='rounded-table-body-row' *ngFor='let customer of invoiceList; let i = index'>
+          <tr class='rounded-table-body-row' *ngFor='let invoice of invoiceList; let i = index'>
+            <td class='rounded-table-body-cell' [attr.data-label]="'General::subscriptionExpiry' | abpLocalization">
+              {{invoice?.invoice}}
+            </td>
             <td class='rounded-table-body-cell' [attr.data-label]="'General::customer' | abpLocalization">
               <div class='cell-name'>
-                <div class='avatar'>name</div>
+                <div class='avatar'>{{invoice?.customer?.substring(0, 2)}}</div>
                 <div class='info'>
-                  <span class='name'>name</span>
-                  <span class='code'>name</span>
+                  <span class='name'>{{invoice?.customer}}</span>
+                  <span class='code'>{{invoice?.customerKey}}</span>
                 </div>
 
               </div>
@@ -107,26 +110,45 @@
             <td class='rounded-table-body-cell' [attr.data-label]="'General::plan' | abpLocalization">
               <div class='cell-name'>
                 <div class='info'>
-                  <span class='name'>name</span>
-                  <span class='code'>name</span>
+                  <span class='mb-1 badge-transparent badge-transparent-success' *ngIf='invoice?.eventType === "Renew"'>{{'General::renew' | abpLocalization}}</span>
+                  <span class='mb-1 badge-transparent badge-transparent-primary' *ngIf='invoice?.eventType === "Change"'>{{'General::change' | abpLocalization}}</span>
+                  <span class='mb-1 badge-transparent badge-transparent-success' *ngIf='invoice?.eventType === "Addon"'>{{'General::addon' | abpLocalization}}</span>
+                  <span class='code'>{{invoice?.plan}}</span>
+                </div>
+
+              </div>
+            </td>
+            <td class='rounded-table-body-cell' [attr.data-label]="'General::plan' | abpLocalization">
+              <div class='cell-name'>
+                <div class='info'>
+                  <span class='name'>{{invoice?.totalDue}}</span>
+                  <span class='code'>{{'General::SAR' | abpLocalization}}</span>
                 </div>
 
               </div>
             </td>
             <td class='rounded-table-body-cell' [attr.data-label]="'General::dateJoined' | abpLocalization">
-              name
+              <span class='badge badge-success' *ngIf='invoice?.status === "Paid"'>{{'General::paid' | abpLocalization}}</span>
+              <span class='badge badge-danger' *ngIf='invoice?.status === "Cancelled"'>{{'General::cancelled' | abpLocalization}}</span>
+              <span class='badge badge-warning' *ngIf='invoice?.status === "Unpaid"'>{{'General::unpaid' | abpLocalization}}</span>
+              <span class='badge badge-default' *ngIf='invoice?.status === "Expired"'>{{'General::expired' | abpLocalization}}</span>
             </td>
             <td class='rounded-table-body-cell' [attr.data-label]="'General::subscriptionExpiry' | abpLocalization">
-              name
+              {{invoice?.createdBy}}
+            </td>
+            <td class='rounded-table-body-cell' [attr.data-label]="'General::subscriptionExpiry' | abpLocalization">
+              {{invoice?.invoiceExpiry | date: 'MMM dd, yyyy'}}
             </td>
             <td class='rounded-table-body-cell cell-action'>
-              <a (click)='editInvoice()'><i class="fa-solid fa-pen"></i></a>
+              <a (click)='editInvoice()'><i class="text-gray fa-solid fa-ellipsis-vertical"></i></a>
             </td>
           </tr>
           </tbody>
         </table>
       </div>
     </div>
+  </div>
+  <div class='section-pagination'>
 
   </div>
 </section>

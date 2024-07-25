@@ -11,7 +11,7 @@ import { PageTitleStandaloneComponent } from '../../standalone/page-title-standa
 @NgModule({
   declarations: [
     InvoicesComponent,
-    InvoiceListComponent
+    InvoiceListComponent,
   ],
   imports: [
     CommonModule,

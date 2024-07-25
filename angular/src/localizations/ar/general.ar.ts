@@ -220,5 +220,11 @@ export const General = {
   total: "المجموع",
   totalDue: "الإجمالي المستحق",
   pay: "الدفع",
-  deactivated:"غير مفعل"
+  deactivated:"غير مفعل",
+  paid: "مدفوع",
+  unPaid: "غير مدفوع",
+  successfulPayment: " تم الدفع بنجاح",
+  failedPayment: " لم يتم الدفع بنجاح",
+  updateAmount:"تعديل المدفوع",
+  event:"Event"
 };

@@ -126,12 +126,23 @@ a{
   color: $save-btn !important;
 }
 .text-success{
-color: $success;
+color: $success !important;
 }
 
 .text-danger{
-  color: $danger;
-
+  color: $danger !important;
+}
+.text-warning{
+  color: #B93815 !important;
+}
+.text-default{
+  color:#000 !important ;
+}
+.text-info{
+  color: #026AA2 !important;
+}
+.text-gray{
+  color: #98A2B3 !important;
 }
 .mt-16{
   margin-top: 16px !important;

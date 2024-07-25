@@ -6,6 +6,7 @@
   font-size: 12px;
   font-weight: 500;
   line-height: 18px;
+  height: 22px;
   &.badge{
     &-success{
       background-color: $success-opacity;
@@ -27,6 +28,28 @@
       background: #F2F4F7;
       color: #344054;
     }
+    &-warning{
+    background: rgba(255, 244, 237, 1);
+    color: #B93815;
+    }
+
   }
 
+}
+.badge-transparent{
+  border:1px solid;
+  display: flex;
+  padding: 2px 8px;
+  align-items: center;
+  border-radius: 16px;
+  height: 22px;
+
+  &-success{
+    color: #027A48;
+    border-color:#027A48;
+  }
+  &-primary{
+    color: #026AA2;
+    border-color:#026AA2;
+  }
 }

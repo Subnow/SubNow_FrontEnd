@@ -222,5 +222,11 @@ export const General = {
   total:"Total",
   totalDue:"Total due",
   pay:"Pay",
-  deactivated:"Deactivated"
+  deactivated:"Deactivated",
+  paid:"Paid",
+  unPaid:"Un paid",
+  successfulPayment:"Successful Payment",
+  failedPayment:"Failed Payment",
+  updateAmount:"Update Amount",
+  event:"Event"
 };
