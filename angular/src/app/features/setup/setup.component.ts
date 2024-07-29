@@ -1,9 +1,7 @@
 import { Component, inject, OnInit } from '@angular/core';
-import { UpdateCustomerSubscriptionComponent } from '../customers/update-customer-subscription/update-customer-subscription.component';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { CompanySettingsModalComponent } from './company-settings-modal/company-settings-modal.component';
 import { CompanyDto, CompanyService } from '@proxy/companies';
-import { CountryDto, CountryService } from '@proxy/look-ups';
 import { CompanyBrandingModalComponent } from './company-branding-modal/company-branding-modal.component';
 
 @Component({

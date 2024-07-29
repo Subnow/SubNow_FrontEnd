@@ -1,5 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, inject, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { ViewInvoiceDetailsComponent } from '../view-invoice-details/view-invoice-details.component';
 
 @Component({
   selector: 'app-invoice-list',
@@ -7,6 +9,8 @@ import { FormBuilder, FormGroup } from '@angular/forms';
   styleUrl: './invoice-list.component.scss'
 })
 export class InvoiceListComponent implements OnInit{
+  private modalService = inject(NgbModal);
+
   form: FormGroup;
   invoiceList:any;
   isSortInvoice:boolean = false;
@@ -14,7 +18,10 @@ export class InvoiceListComponent implements OnInit{
   customerList:[] = [];
   statusList: any;
   eventList:any;
-
+  page = 1;
+  pageSize = 6;
+  pagedInvoiceList = [];
+  totalPages: number;
 
   constructor(
     public _fb: FormBuilder
@@ -240,7 +247,7 @@ export class InvoiceListComponent implements OnInit{
   }
 
   ngOnInit(): void {
-    // this.updatePagedInvoiceList();
+    this.updatePagedInvoiceList();
   }
   onChangeFilter($event: Event): void {
 
@@ -283,4 +290,17 @@ export class InvoiceListComponent implements OnInit{
     }
   }
 
+  updatePagedInvoiceList() {
+    this.pagedInvoiceList = this.invoiceList.slice(
+      (this.page - 1) * this.pageSize,
+      (this.page - 1) * this.pageSize + this.pageSize
+    );
+  }
+
+  onPageChange() {
+    this.updatePagedInvoiceList();
+  }
+  viewInvoiceDetails() : void {
+    const modal = this.modalService.open(ViewInvoiceDetailsComponent, { fullscreen: true ,windowClass:"custom-modal-right"});
+  }
 }

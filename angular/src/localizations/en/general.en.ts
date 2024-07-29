@@ -228,5 +228,34 @@ export const General = {
   successfulPayment:"Successful Payment",
   failedPayment:"Failed Payment",
   updateAmount:"Update Amount",
-  event:"Event"
+  event:"Event",
+  searchForInvoice:"Search for Invoice",
+  downloadPDF:"Download PDF",
+  downloadCSV:"Download CSV",
+  downloadQuotePDF:"Download Quote PDF",
+  invoiceLink:"Invoice Link",
+  downloadInvoicePDF:"Download Invoice PDF",
+  downloadRefundInvoicePDF:"Download Refund Invoice PDF",
+  invoiceStatus:"Invoice Status",
+  eventType:"Event type",
+  totalPaid:"Total Paid",
+  invoiceCreated:"Invoice Created",
+  createdBy:"Created by",
+  paymentDate:"Payment Date",
+  paymentProcessor:"Payment Processor",
+  paymentType:"Payment Type",
+  paymentMethod:"Payment Method",
+  paymentReference:"Payment Reference",
+  totalRefunded:"Total Refunded",
+  refunded:"Refunded",
+  renew:"Renew",
+  change:"Change",
+  addon:"Addon",
+  unpaid:"Unpaid",
+  more:"More"
+
+
+
+
+
 };

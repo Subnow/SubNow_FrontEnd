@@ -102,7 +102,7 @@ a{
   font-weight: 600;
   line-height: 20px;
   display: flex;
-  padding: 10px 16px;
+  padding: 10px 18px;
   justify-content: center;
   align-items: center;
   gap: 8px;
@@ -117,9 +117,15 @@ a{
   border: 1px solid $primary-opacity;
 }
 .btn-light{
+  color: #344054;
   border: 1px solid $gray;
   background: $light-color;
   box-shadow: 0 1px 2px 0 rgba(16, 24, 40, 0.05);
+  &:hover{
+    color:  $light-color;
+    background-color: #344054;
+    border-color: #344054;
+  }
 }
 
 .text-primary{
@@ -217,7 +223,14 @@ color: $success !important;
   transition: transform 0.2s ease-in-out;
 }
 
-
+.bg{
+  &-success{
+    background-color: #ECFDF3 !important;
+  }
+  &-danger{
+    background-color: #FDECEC !important;
+  }
+}
 html[dir='rtl']{
   &.loader {
     &:before {
@@ -233,3 +246,4 @@ html[dir='rtl']{
   }
 
 }
+

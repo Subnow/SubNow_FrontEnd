@@ -93,7 +93,7 @@
           </tr>
           </thead>
           <tbody class='rounded-table-body'>
-          <tr class='rounded-table-body-row' *ngFor='let invoice of invoiceList; let i = index'>
+          <tr class='rounded-table-body-row' *ngFor='let invoice of pagedInvoiceList; let i = index'>
             <td class='rounded-table-body-cell' [attr.data-label]="'General::subscriptionExpiry' | abpLocalization">
               {{invoice?.invoice}}
             </td>
@@ -140,7 +140,7 @@
               {{invoice?.invoiceExpiry | date: 'MMM dd, yyyy'}}
             </td>
             <td class='rounded-table-body-cell cell-action'>
-              <a (click)='editInvoice()'><i class="text-gray fa-solid fa-ellipsis-vertical"></i></a>
+              <a (click)='viewInvoiceDetails()'><i class="text-gray fa-solid fa-ellipsis-vertical"></i></a>
             </td>
           </tr>
           </tbody>
@@ -149,6 +149,16 @@
     </div>
   </div>
   <div class='section-pagination'>
-
+    <ngb-pagination
+      [collectionSize]="invoiceList.length"
+      [(page)]="page"
+      [pageSize]="pageSize"
+      [maxSize]="5"
+      [rotate]="true"
+      [ellipses]="false"
+      [boundaryLinks]="true"
+      (pageChange)="onPageChange()"
+      class='custom-pagination'
+    ></ngb-pagination>
   </div>
 </section>

@@ -32,6 +32,10 @@
     background: rgba(255, 244, 237, 1);
     color: #B93815;
     }
+    &-dark{
+      background: #1E1E1E;
+      color: #ffffff;
+    }
 
   }
 
@@ -43,6 +47,8 @@
   align-items: center;
   border-radius: 16px;
   height: 22px;
+  font-weight: 500;
+  font-size: 14px;
 
   &-success{
     color: #027A48;

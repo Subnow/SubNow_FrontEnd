@@ -1,0 +1,148 @@
+<div class='invoice'>
+  <div class='invoice-header'>
+    <div class='mb-16 pb-16 border-bottom'>
+      <div class='invoice-header-info'>
+        <h2 class='invoice-title'>
+          Invoice #3066
+        </h2>
+        <p class='invoice-num' (click)='copyActivationInvoice(invoiceNum.innerText)'><span #invoiceNum>INV-3066</span><a class="copy fa-regular fa-copy"></a></p>
+      </div>
+      <div>
+        <button class='w-100 btn btn-pay'><i class="fa-solid fa-paperclip"></i><span>{{'General::payLink' | abpLocalization}}</span></button>
+      </div>
+      <div class='invoice-header-actions'>
+        <div class='block-one'>
+          <button class='btn btn-light'>
+            <i class="fa-solid fa-paperclip"></i>
+            <span>{{"General::invoiceLink"|abpLocalization}}</span>
+          </button>
+          <button class='btn btn-light'>
+            <i class="fa-solid fa-download"></i>
+            <span>{{"General::downloadInvoicePDF"|abpLocalization}}</span>
+          </button>
+        </div>
+        <div>
+          <button class='btn btn-light w-100'>
+            <i class="fa-solid fa-download"></i>
+            <span>{{"General::downloadRefundInvoicePDF"|abpLocalization}}</span>
+          </button>
+        </div>
+
+      </div>
+    </div>
+    <div class='customer-info'>
+      <div class='customer-info-details'>
+        <label class='info-label'>{{'General::customer' | abpLocalization}}</label>
+        <p class='info-value'><span>Mike Johnson</span> <a class='info-link'>{{'General::more' | abpLocalization}}</a></p>
+      </div>
+      <div class='customer-info-details'>
+        <label class='info-label'>{{'General::customerKey' | abpLocalization}}</label>
+        <p class='info-value'>MikeJohnsongmail.com</p>
+      </div>
+
+    </div>
+    <div class='invoice-actions'>
+      <button class='btn btn-light'>
+        <i class="fa-solid fa-download"></i>
+        <span>{{"General::downloadQuotePDF"|abpLocalization}}</span>
+      </button>
+      <button class='btn btn-light'>
+        <span>{{"General::markAsPaid"|abpLocalization}}</span>
+        <i class="fa-solid fa-angle-down"></i>
+      </button>
+    </div>
+  </div>
+  <div class='invoice-body'>
+    <div class='invoice-row'>
+     <label class='invoice-row-label'>{{'General::invoiceStatus' | abpLocalization}}</label>
+      <p class='invoice-row-data'>
+        <span class='invoice-status invoice-status-success'><i class='fa-solid fa-circle icon'></i> <span>{{'General::paid' | abpLocalization}}</span></span>
+<!--        <span class="invoice-status invoice-status-default"><i class='fa-solid fa-circle icon'></i> <span>{{'General::refunded' | abpLocalization}}</span></span>-->
+<!--        <span class="invoice-status invoice-status-danger"><i class='fa-solid fa-circle icon'></i> <span>{{'General::cancelled' | abpLocalization}}</span></span>-->
+<!--        <span class="invoice-status invoice-status-default"><i class='fa-solid fa-circle icon'></i> <span>{{'General::Expired' | abpLocalization}}</span></span>-->
+      <img class='card-type img-fluid' src='assets/images/Bitmap.png' />
+      </p>
+    </div>
+    <div class='invoice-row'>
+      <label class='invoice-row-label'>{{'General::eventType' | abpLocalization}}</label>
+      <p class='invoice-row-data'>
+        <span class='badge-transparent badge-transparent-success'>{{'General::renew' | abpLocalization}}</span>
+        <span class='badge-transparent badge-transparent-primary'>{{'General::change' | abpLocalization}}</span>
+        <span class='badge-transparent badge-transparent-success'>{{'General::addon' | abpLocalization}}</span>
+      </p>
+    </div>
+
+    <div class='invoice-row'>
+      <label class='invoice-row-label'>{{'General::plan' | abpLocalization}}</label>
+      <p class='invoice-row-data'>
+       <span>Starter</span> <span class='badge badge-default'>B2B</span>
+      </p>
+    </div>
+    <div class='invoice-row'>
+      <label class='invoice-row-label'>{{'General::billingCycle' | abpLocalization}}</label>
+      <p class='invoice-row-data'>
+        Monthly
+      </p>
+    </div>
+    <div class='invoice-row bg-success'>
+      <label class='invoice-row-label'>{{'General::totalPaid' | abpLocalization}}</label>
+      <p class='invoice-row-data'>
+        <span>100.00</span> <span class='badge badge-dark'>SAR</span>
+      </p>
+    </div>
+    <div class='invoice-row bg-danger'>
+      <label class='invoice-row-label'>{{'General::totalRefunded' | abpLocalization}}</label>
+      <p class='invoice-row-data'>
+        <span>100.00</span> <span class='badge badge-dark'>SAR</span>
+      </p>
+    </div>
+    <div class='invoice-row'>
+      <label class='invoice-row-label'>{{'General::invoiceCreated' | abpLocalization}}</label>
+      <p class='invoice-row-data'>
+        12/12/2022 - 04-15PM
+      </p>
+    </div>
+    <div class='invoice-row'>
+      <label class='invoice-row-label'>{{'General::createdBy' | abpLocalization}}</label>
+      <p class='invoice-row-data'>
+        System
+      </p>
+    </div>
+    <div class='invoice-row'>
+      <label class='invoice-row-label'>{{'General::paymentDate' | abpLocalization}}</label>
+      <p class='invoice-row-data'>
+        12/12/2022 - 04-15PM
+      </p>
+    </div>
+    <div class='invoice-row'>
+      <label class='invoice-row-label'>{{'General::paymentProcessor' | abpLocalization}}</label>
+      <p class='invoice-row-data'>
+        Moyasar
+      </p>
+    </div>
+
+    <div class='invoice-row'>
+      <label class='invoice-row-label'>{{'General::paymentType' | abpLocalization}}</label>
+      <p class='invoice-row-data'>
+        Paylink
+      </p>
+    </div>
+    <div class='invoice-row'>
+      <label class='invoice-row-label'>{{'General::paymentMethod' | abpLocalization}}</label>
+      <p class='invoice-row-data invoice-method'>
+        <i class="fa-solid fa-credit-card icon"></i> <span>Credit Card</span>
+      </p>
+    </div>
+
+    <div class='invoice-row flex-column align-items-start'>
+      <label class='invoice-row-label'>{{'General::paymentReference' | abpLocalization}}</label>
+      <p class='invoice-row-data payment-reference'>
+        <a class="fa-regular fa-copy icon" (click)='copyActivationInvoice(paymentReference.innerText)' ></a>
+        <span #paymentReference>awieufhoq8374rlajkwndf89374gf</span>
+      </p>
+    </div>
+
+
+
+  </div>
+</div>
