@@ -2,6 +2,9 @@ import { Component, inject, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { ViewInvoiceDetailsComponent } from '../view-invoice-details/view-invoice-details.component';
+import { InvoiceDto, InvoiceFilterDto, PaymentService } from '@proxy/payments';
+import { CustomerDto } from '@proxy/customers';
+import { AddEditCategoriesModalComponent } from '../../plans/add-edit-categories-modal/add-edit-categories-modal.component';
 
 @Component({
   selector: 'app-invoice-list',
@@ -12,216 +15,41 @@ export class InvoiceListComponent implements OnInit{
   private modalService = inject(NgbModal);
 
   form: FormGroup;
-  invoiceList:any;
+  invoiceList: InvoiceDto[] = [];
+  pagedInvoiceList: InvoiceDto[] = [];
   isSortInvoice:boolean = false;
   isSortCustomer:boolean = false;
   customerList:[] = [];
   statusList: any;
   eventList:any;
-  page = 1;
-  pageSize = 6;
-  pagedInvoiceList = [];
   totalPages: number;
 
+  page = 1;
+  pageSize = 6;
+  totalInvoices: number;
+
   constructor(
-    public _fb: FormBuilder
+    public _fb: FormBuilder,
+    private invoiceServices:PaymentService
   ) {
-    this.invoiceList = [
-      {
-        id: 1,
-        invoice: "INV-3066",
-        customer: "CustomerName",
-        customerKey: "Customerkey",
-        eventType: "Renew",
-        plan: "Starter_Plan",
-        totalDue: "29.00",
-        status: "Paid",
-        createdBy: "System",
-        invoiceExpiry: "Feb 22, 2025"
-      },
-      {
-        id: 2,
-        invoice: "INV-3065",
-        customer: "Capsule",
-        customerKey: "Customerkey",
-        eventType: "Change",
-        plan: "Premium_Plan",
-        totalDue: "29.00 ",
-        status: "Cancelled",
-        createdBy: "Mohammed Salem",
-        invoiceExpiry: "Feb 22, 2022"
-      },
-      {
-        id: 3,
-        invoice: "INV-3064",
-        customer: "Command+R",
-        customerKey: "Customerkey",
-        eventType: "Renew",
-        plan: "Starter_Plan",
-        totalDue: "29.00 ",
-        status: "Unpaid",
-        createdBy: "System",
-        invoiceExpiry: "Feb 22, 2025"
-      },
-      {
-        id: 4,
-        invoice: "INV-3063",
-        customer: "Ahmad",
-        email: "Ahmad@gmail.com",
-        customerKey: "Customerkey",
-        eventType: "Renew",
-        plan: "Starter_Plan",
-        totalDue: "29.00 ",
-        status: "Paid",
-        createdBy: "System",
-        invoiceExpiry: "Feb 22, 2025"
-      },
-      {
-        id: 5,
-        invoice: "INV-3062",
-        customer: "Layers",
-        email: "getlayers.io",
-        customerKey: "Customerkey",
-        eventType: "Change",
-        plan: "Starter_Plan",
-        totalDue: "29.00 ",
-        status: "Expired",
-        createdBy: "Paylink",
-        invoiceExpiry: "Feb 22, 2022"
-      },
-      {
-        id: 6,
-        invoice: "INV-3061",
-        customer: "Quotient",
-        email: "quotient.co",
-        customerKey: "Customerkey",
-        eventType: "Addon",
-        plan: "Starter_Plan",
-        totalDue: "29.00 ",
-        status: "Expired",
-        createdBy: "System",
-        invoiceExpiry: "Feb 22, 2025"
-      },
-      {
-        id: 7,
-        invoice: "INV-3060",
-        customer: "Sisyphus",
-        email: "sisyphus.co",
-        customerKey: "Customerkey",
-        eventType: "Renew",
-        plan: "Starter_Plan",
-        totalDue: "29.00 ",
-        status: "Cancelled",
-        createdBy: "System",
-        invoiceExpiry: "Feb 22, 2025"
-      },
-      {
-        id: 8,
-        invoice: "INV-3065",
-        customer: "Capsule",
-        customerKey: "Customerkey",
-        eventType: "Change",
-        plan: "Premium_Plan",
-        totalDue: "29.00 ",
-        status: "Cancelled",
-        createdBy: "Mohammed Salem",
-        invoiceExpiry: "Feb 22, 2022"
-      },
-      {
-        id: 9,
-        invoice: "INV-3066",
-        customer: "CustomerName",
-        customerKey: "Customerkey",
-        eventType: "Renew",
-        plan: "Starter_Plan",
-        totalDue: "29.00",
-        status: "Paid",
-        createdBy: "System",
-        invoiceExpiry: "Feb 22, 2025"
-      },
-      {
-        id: 10,
-        invoice: "INV-3064",
-        customer: "Command+R",
-        customerKey: "Customerkey",
-        eventType: "Renew",
-        plan: "Starter_Plan",
-        totalDue: "29.00 ",
-        status: "Unpaid",
-        createdBy: "System",
-        invoiceExpiry: "Feb 22, 2025"
-      },
-      {
-        id: 11,
-        invoice: "INV-3063",
-        customer: "Ahmad",
-        email: "Ahmad@gmail.com",
-        customerKey: "Customerkey",
-        eventType: "Renew",
-        plan: "Starter_Plan",
-        totalDue: "29.00 ",
-        status: "Paid",
-        createdBy: "System",
-        invoiceExpiry: "Feb 22, 2025"
-      },
-      {
-        id: 12,
-        invoice: "INV-3062",
-        customer: "Layers",
-        email: "getlayers.io",
-        customerKey: "Customerkey",
-        eventType: "Change",
-        plan: "Starter_Plan",
-        totalDue: "29.00 ",
-        status: "Expired",
-        createdBy: "Paylink",
-        invoiceExpiry: "Feb 22, 2022"
-      },
-      {
-        id: 13,
-        invoice: "INV-3061",
-        customer: "Quotient",
-        email: "quotient.co",
-        customerKey: "Customerkey",
-        eventType: "Addon",
-        plan: "Starter_Plan",
-        totalDue: "29.00 ",
-        status: "Expired",
-        createdBy: "System",
-        invoiceExpiry: "Feb 22, 2025"
-      },
-      {
-        id: 14,
-        invoice: "INV-3060",
-        customer: "Sisyphus",
-        email: "sisyphus.co",
-        customerKey: "Customerkey",
-        eventType: "Renew",
-        plan: "Starter_Plan",
-        totalDue: "29.00 ",
-        status: "Cancelled",
-        createdBy: "System",
-        invoiceExpiry: "Feb 22, 2025"
-      },
-    ];
     this.statusList = [
       {
-        value:1,
+        value:"All",
         name:"All"
       },
       {
-        value:2,
+        value:"PAID",
         name:"Paid",
       },
       {
-        value:3,
+        value:"CANCELLED",
         name:"Cancelled",
       },
       {
-        value:4,
+        value:"UNPAID",
         name:"Unpaid",
       },{
-        value:5,
+        value:"EXPIRED",
         name:"Expired"
       }
 
@@ -247,7 +75,8 @@ export class InvoiceListComponent implements OnInit{
   }
 
   ngOnInit(): void {
-    this.updatePagedInvoiceList();
+    // this.updatePagedInvoiceList();
+    this.getInvoiceList();
   }
   onChangeFilter($event: Event): void {
 
@@ -290,17 +119,31 @@ export class InvoiceListComponent implements OnInit{
     }
   }
 
-  updatePagedInvoiceList() {
+  getInvoiceList(): void {
+    const skipCount = this.pageSize * (this.page - 1);
+    this.invoiceServices.getInvoices({ skipCount, maxResultCount: this.pageSize }).subscribe((res) => {
+      this.invoiceList = res.items;
+      this.totalInvoices = res.totalCount; // Assuming API returns total count of items
+      console.log('total ==>' , this.totalInvoices)
+      this.updatePagedInvoiceList();
+    });
+  }
+
+  updatePagedInvoiceList(): void {
     this.pagedInvoiceList = this.invoiceList.slice(
       (this.page - 1) * this.pageSize,
       (this.page - 1) * this.pageSize + this.pageSize
     );
   }
 
-  onPageChange() {
-    this.updatePagedInvoiceList();
+  onPageChange(page: number): void {
+    this.page = page;
+    this.getInvoiceList();
   }
-  viewInvoiceDetails() : void {
-    const modal = this.modalService.open(ViewInvoiceDetailsComponent, { fullscreen: true ,windowClass:"custom-modal-right"});
+  viewInvoiceDetails(id:string) : void {
+    const modal = this.modalService.open(ViewInvoiceDetailsComponent, { fullscreen: true, windowClass: 'custom-modal-right' });
+    (modal.componentInstance as ViewInvoiceDetailsComponent).id = id;
+
   }
 }
+

@@ -250,5 +250,8 @@ export const General = {
   change: "تغيير",
   addon: "إضافة",
   unpaid: "غير مدفوع",
-  more: "المزيد"
+  more: "المزيد",
+  new:"جديد",
+  invoice:"الفاتورة",
+  invoiceExpiry:"انتهاء الفاتورة"
 };

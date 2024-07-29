@@ -252,10 +252,8 @@ export const General = {
   change:"Change",
   addon:"Addon",
   unpaid:"Unpaid",
-  more:"More"
-
-
-
-
-
+  more:"More",
+  new:"New",
+  invoice:"Invoice",
+  invoiceExpiry:"Invoice Expiry"
 };

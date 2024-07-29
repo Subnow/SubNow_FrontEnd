@@ -56,6 +56,6 @@ export interface InvoiceDetailsDto {
 
 export interface PlanCheckoutDto {
   planCode: string;
-  planBillingCycleId?: string;
+  planBillingCycleId: string;
   action: string;
 }

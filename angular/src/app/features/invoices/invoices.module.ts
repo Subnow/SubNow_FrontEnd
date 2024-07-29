@@ -7,6 +7,7 @@ import { InvoiceListComponent } from './invoice-list/invoice-list.component';
 import { SharedModule } from '../../shared/shared.module';
 import { PageTitleStandaloneComponent } from '../../standalone/page-title-standalone/page-title-standalone.component';
 import { ViewInvoiceDetailsComponent } from './view-invoice-details/view-invoice-details.component';
+import { NotFoundDataStandaloneComponent } from '../../standalone/not-found-data-standalone/not-found-data-standalone.component';
 
 
 @NgModule({
@@ -19,7 +20,8 @@ import { ViewInvoiceDetailsComponent } from './view-invoice-details/view-invoice
     CommonModule,
     InvoicesRoutingModule,
     SharedModule,
-    PageTitleStandaloneComponent
+    PageTitleStandaloneComponent,
+    NotFoundDataStandaloneComponent
   ]
 })
 export class InvoicesModule { }

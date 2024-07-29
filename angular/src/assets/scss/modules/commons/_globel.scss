@@ -126,6 +126,14 @@ a{
     background-color: #344054;
     border-color: #344054;
   }
+  &:disabled,&.disabled{
+    opacity: 0.5;
+    background-color: $light-color;
+    color: #344054;
+    border-color:$gray;
+
+
+  }
 }
 
 .text-primary{

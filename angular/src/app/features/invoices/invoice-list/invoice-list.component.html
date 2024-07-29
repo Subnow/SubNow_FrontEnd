@@ -2,11 +2,11 @@
   <div class='section-header border-0 pb-0'>
     <app-page-title-standalone title='{{"General::invoices"|abpLocalization}}' ></app-page-title-standalone>
     <div class='section-header-actions'>
-      <button class='btn btn-light'>
+      <button class='btn btn-light disabled'>
         <i class="fa-regular fa-circle-down"></i>
         <span>{{"General::downloadPDF"|abpLocalization}}</span>
       </button>
-      <button class='btn btn-light'>
+      <button class='btn btn-light disabled'>
         <i class="fa-regular fa-circle-down"></i>
         <span>{{"General::downloadCSV"|abpLocalization}}</span>
       </button>
@@ -25,7 +25,7 @@
           </div>
           <div class='col-lg-4 col-md-6'>
             <label class='form-label'>{{"General::customer"|abpLocalization}}</label>
-            <ng-select class='select-dot' [items]="customerList"  bindLabel="name" bindValue="name"  placeholder='{{"General::plan"|abpLocalization}}' [clearable]="false">
+            <ng-select class='select-dot' [items]="customerList"  bindLabel="name" bindValue="name"  placeholder='{{"General::customer"|abpLocalization}}' [clearable]="false">
               <ng-template ng-label-tmp let-item="item">
                 <div class='info'>
                   <span class='dot text-primary'><i class="fa-solid fa-circle"></i></span>
@@ -36,7 +36,7 @@
           </div>
           <div class='col-lg-2 col-md-6'>
             <label class='form-label'>{{"General::status"|abpLocalization}}</label>
-            <ng-select class='select-dot' [items]="statusList"  bindLabel="name" bindValue="name"  placeholder='{{"General::plan"|abpLocalization}}' [clearable]="false">
+            <ng-select class='select-dot' [items]="statusList"  bindLabel="name" bindValue="name"  placeholder='{{"General::status"|abpLocalization}}' [clearable]="false">
               <ng-template ng-label-tmp let-item="item">
                 <div class='info'>
                   <span class='dot' [ngClass]="getClassBasedOnStatus(item?.name)"><i class="fa-solid fa-circle"></i></span>
@@ -47,7 +47,7 @@
           </div>
           <div class='col-lg-2 col-md-6'>
             <label class='form-label'>{{"General::event"|abpLocalization}}</label>
-            <ng-select class='select-dot' [items]="eventList"  bindLabel="name" bindValue="name"  placeholder='{{"General::plan"|abpLocalization}}' [clearable]="false">
+            <ng-select class='select-dot' [items]="eventList"  bindLabel="name" bindValue="name"  placeholder='{{"General::event"|abpLocalization}}' [clearable]="false">
               <ng-template ng-label-tmp let-item="item">
                 <div class='info'>
                   <span class='dot' [ngClass]="getClassBasedOnEvent(item?.name)"><i class="fa-solid fa-circle"></i></span>
@@ -88,59 +88,59 @@
             <th width='120' class='rounded-table-head-cell'>{{"General::totalDue"|abpLocalization}}</th>
             <th width='111' class='rounded-table-head-cell'> {{"General::status"|abpLocalization}}</th>
             <th width='154' class='rounded-table-head-cell'>{{"General::createdBy"|abpLocalization}}</th>
-            <th width='124' class='rounded-table-head-cell'>{{"General::invloceExpiry"|abpLocalization}}</th>
+            <th width='124' class='rounded-table-head-cell'>{{"General::invoiceExpiry"|abpLocalization}}</th>
             <th width='86' class='rounded-table-head-cell'></th>
           </tr>
           </thead>
           <tbody class='rounded-table-body'>
-          <tr class='rounded-table-body-row' *ngFor='let invoice of pagedInvoiceList; let i = index'>
-            <td class='rounded-table-body-cell' [attr.data-label]="'General::subscriptionExpiry' | abpLocalization">
-              {{invoice?.invoice}}
+          <tr class='rounded-table-body-row' *ngFor='let invoice of invoiceList; let i = index'>
+            <td class='rounded-table-body-cell' [attr.data-label]="'General::invoice' | abpLocalization">
+              INV-{{invoice?.id.slice(-4)}}
             </td>
             <td class='rounded-table-body-cell' [attr.data-label]="'General::customer' | abpLocalization">
               <div class='cell-name'>
-                <div class='avatar'>{{invoice?.customer?.substring(0, 2)}}</div>
+                <div class='avatar'>{{invoice?.customerName?.substring(0, 2)}}</div>
                 <div class='info'>
-                  <span class='name'>{{invoice?.customer}}</span>
-                  <span class='code'>{{invoice?.customerKey}}</span>
+                  <span class='name'>{{invoice?.customerName}}</span>
+                  <span class='code'>{{invoice?.customerkey}}</span>
                 </div>
 
               </div>
             </td>
-            <td class='rounded-table-body-cell' [attr.data-label]="'General::plan' | abpLocalization">
+            <td class='rounded-table-body-cell' [attr.data-label]="'General::eventType' | abpLocalization">
               <div class='cell-name'>
                 <div class='info'>
-                  <span class='mb-1 badge-transparent badge-transparent-success' *ngIf='invoice?.eventType === "Renew"'>{{'General::renew' | abpLocalization}}</span>
-                  <span class='mb-1 badge-transparent badge-transparent-primary' *ngIf='invoice?.eventType === "Change"'>{{'General::change' | abpLocalization}}</span>
-                  <span class='mb-1 badge-transparent badge-transparent-success' *ngIf='invoice?.eventType === "Addon"'>{{'General::addon' | abpLocalization}}</span>
-                  <span class='code'>{{invoice?.plan}}</span>
+                  <span class='badge-transparent badge-transparent-success' *ngIf='invoice?.eventType === "New"'>{{'General::new' | abpLocalization}}</span>
+                  <span class='badge-transparent badge-transparent-success' *ngIf='invoice?.eventType === "Renew"'>{{'General::renew' | abpLocalization}}</span>
+                  <span class='badge-transparent badge-transparent-primary' *ngIf='invoice?.eventType === "Change"'>{{'General::change' | abpLocalization}}</span>
+                  <span class='badge-transparent badge-transparent-success' *ngIf='invoice?.eventType === "Addon"'>{{'General::addon' | abpLocalization}}</span>
                 </div>
 
               </div>
             </td>
-            <td class='rounded-table-body-cell' [attr.data-label]="'General::plan' | abpLocalization">
+            <td class='rounded-table-body-cell' [attr.data-label]="'General::totalDue' | abpLocalization">
               <div class='cell-name'>
                 <div class='info'>
-                  <span class='name'>{{invoice?.totalDue}}</span>
+                  <span class='name'>{{invoice?.amount}}</span>
                   <span class='code'>{{'General::SAR' | abpLocalization}}</span>
                 </div>
 
               </div>
             </td>
-            <td class='rounded-table-body-cell' [attr.data-label]="'General::dateJoined' | abpLocalization">
-              <span class='badge badge-success' *ngIf='invoice?.status === "Paid"'>{{'General::paid' | abpLocalization}}</span>
-              <span class='badge badge-danger' *ngIf='invoice?.status === "Cancelled"'>{{'General::cancelled' | abpLocalization}}</span>
-              <span class='badge badge-warning' *ngIf='invoice?.status === "Unpaid"'>{{'General::unpaid' | abpLocalization}}</span>
-              <span class='badge badge-default' *ngIf='invoice?.status === "Expired"'>{{'General::expired' | abpLocalization}}</span>
+            <td class='rounded-table-body-cell' [attr.data-label]="'General::status' | abpLocalization">
+              <span class='badge badge-success' *ngIf='invoice?.invoiceStatusId === "PAID"'>{{'General::paid' | abpLocalization}}</span>
+              <span class='badge badge-danger' *ngIf='invoice?.invoiceStatusId === "CANCELLED"'>{{'General::cancelled' | abpLocalization}}</span>
+              <span class='badge badge-warning' *ngIf='invoice?.invoiceStatusId === "UNPAID"'>{{'General::unpaid' | abpLocalization}}</span>
+              <span class='badge badge-default' *ngIf='invoice?.invoiceStatusId === "EXPIRED"'>{{'General::expired' | abpLocalization}}</span>
             </td>
-            <td class='rounded-table-body-cell' [attr.data-label]="'General::subscriptionExpiry' | abpLocalization">
+            <td class='rounded-table-body-cell' [attr.data-label]="'General::createdBy' | abpLocalization">
               {{invoice?.createdBy}}
             </td>
-            <td class='rounded-table-body-cell' [attr.data-label]="'General::subscriptionExpiry' | abpLocalization">
-              {{invoice?.invoiceExpiry | date: 'MMM dd, yyyy'}}
+            <td class='rounded-table-body-cell' [attr.data-label]="'General::invoiceExpiry' | abpLocalization">
+              {{invoice?.expiryDate | date: 'MMM dd, yyyy'}}
             </td>
             <td class='rounded-table-body-cell cell-action'>
-              <a (click)='viewInvoiceDetails()'><i class="text-gray fa-solid fa-ellipsis-vertical"></i></a>
+              <a (click)='viewInvoiceDetails(invoice?.id)'><i class="text-gray fa-solid fa-ellipsis-vertical"></i></a>
             </td>
           </tr>
           </tbody>
@@ -148,16 +148,16 @@
       </div>
     </div>
   </div>
-  <div class='section-pagination'>
+  <div class='section-pagination' *ngIf='totalInvoices > 6'>
     <ngb-pagination
-      [collectionSize]="invoiceList.length"
+      [collectionSize]="totalInvoices"
       [(page)]="page"
       [pageSize]="pageSize"
-      [maxSize]="5"
+      [maxSize]="6"
       [rotate]="true"
       [ellipses]="false"
       [boundaryLinks]="true"
-      (pageChange)="onPageChange()"
+      (pageChange)="onPageChange($event)"
       class='custom-pagination'
     ></ngb-pagination>
   </div>
