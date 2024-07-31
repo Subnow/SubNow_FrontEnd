@@ -95,7 +95,7 @@
           <tbody class='rounded-table-body'>
           <tr class='rounded-table-body-row' *ngFor='let invoice of invoiceList; let i = index'>
             <td class='rounded-table-body-cell' [attr.data-label]="'General::invoice' | abpLocalization">
-              INV-{{invoice?.invoiceNumber}}
+              {{invoice?.invoiceNumber}}
             </td>
             <td class='rounded-table-body-cell' [attr.data-label]="'General::customer' | abpLocalization">
               <div class='cell-name'>
@@ -110,10 +110,13 @@
             <td class='rounded-table-body-cell' [attr.data-label]="'General::eventType' | abpLocalization">
               <div class='cell-name'>
                 <div class='info'>
-                  <span class='badge-transparent badge-transparent-success' *ngIf='invoice?.eventType === "New"'>{{'General::new' | abpLocalization}}</span>
-                  <span class='badge-transparent badge-transparent-success' *ngIf='invoice?.eventType === "Renew"'>{{'General::renew' | abpLocalization}}</span>
-                  <span class='badge-transparent badge-transparent-primary' *ngIf='invoice?.eventType === "Change"'>{{'General::change' | abpLocalization}}</span>
-                  <span class='badge-transparent badge-transparent-success' *ngIf='invoice?.eventType === "Addon"'>{{'General::addon' | abpLocalization}}</span>
+                  <span class='badge-transparent badge-transparent-success' *ngIf='invoice?.eventType === "NEW"'>{{'General::new' | abpLocalization}}</span>
+                  <span class='badge-transparent badge-transparent-success' *ngIf='invoice?.eventType === "RENEW"'>{{'General::renew' | abpLocalization}}</span>
+                  <span class='badge-transparent badge-transparent-primary' *ngIf='invoice?.eventType === "CHANGE"'>{{'General::change' | abpLocalization}}</span>
+                  <span class='badge-transparent badge-transparent-success' *ngIf='invoice?.eventType === "ADDON"'>{{'General::addon' | abpLocalization}}</span>
+                  <span class='badge-transparent badge-transparent-danger' *ngIf='invoice?.eventType === "CANCEL"'>{{'General::cancel' | abpLocalization}}</span>
+                  <span class='badge-transparent badge-transparent-danger' *ngIf='invoice?.eventType === "DOWNGRADE"'>{{'General::downgrade' | abpLocalization}}</span>
+                  <span class='badge-transparent badge-transparent-success' *ngIf='invoice?.eventType === "UPGRADE"'>{{'General::upgrade' | abpLocalization}}</span>
                 </div>
 
               </div>

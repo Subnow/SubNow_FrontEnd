@@ -6,6 +6,8 @@ import { LanguagesAndStylesService } from '../../custom-core/services/language-s
 import { SessionStateService } from '@abp/ng.core';
 import { finalize } from 'rxjs';
 import { SharedModule } from '../../shared/shared.module';
+import { SubscriptionService } from '@proxy/subscriptions';
+import { TokenizationDto } from '@proxy/payments';
 
 @Component({
   selector: 'app-payment-standalone',
@@ -26,7 +28,8 @@ export class PaymentStandaloneComponent implements OnInit {
     private _checkoutService:CheckoutService,
     private readonly _languagesAndStylesService: LanguagesAndStylesService,
     private sessionStateService: SessionStateService,
-    private router: Router
+    private router: Router,
+    private _subscriptionService:SubscriptionService
   ) {
   }
   ngOnInit(): void {
@@ -118,36 +121,12 @@ export class PaymentStandaloneComponent implements OnInit {
       },
     })
   }
-  // initMoyasarApplePay(){
-  //   Moyasar.init({
-  //     element: '.mysr-form-apple',
-  //     amount: this.totalDue * 100,
-  //     currency: 'SAR',
-  //     description: 'Plan Payment',
-  //     publishable_api_key: 'pk_test_AQpxBV31a29qhkhUYFYUFjhwllaDVrxSq5ydVNui',
-  //     callback_url: `http://localhost:4200/invoice-status/${this.paymentToken}`,
-  //     methods: ['applepay'],
-  //     language:this.sessionStateService.getLanguage(),
-  //     apple_pay: {
-  //       country: 'SA',
-  //       label: 'Awesome Cookie Store',
-  //       validate_merchant_url: 'https://api.moyasar.com/v1/applepay/initiate',
-  //     },
-  //     on_completed: (payment) => {
-  //       return new Promise<void>((resolve, reject) => {
-  //         try {
-  //           // Convert the payment object to a string
-  //           const paymentObj = JSON.stringify(payment) as any;
-  //           // Save the stringified payment object in local storage
-  //           localStorage.setItem('payment', paymentObj);
-  //           console.log(paymentObj);
-  //           resolve(); // Resolve the promise
-  //         } catch (error) {
-  //           console.error('Error saving payment:', error);
-  //           reject(error); // Reject the promise with the error
-  //         }
-  //       });
-  //     },
-  //   });
-  // }
+  activeSubscription(): void {
+    this._subscriptionService.activateSubscription({
+      token: this.paymentToken,
+      paymentReference:''
+    } as any).subscribe((res)=>{
+      console.log('res' , res)
+    })
+  }
 }
