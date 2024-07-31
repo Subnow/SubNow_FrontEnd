@@ -8,6 +8,7 @@ export interface GetInvoiceDto {
   invoiceStatusId?: string;
   customerName?: string;
   customerKey?: string;
+  customerId?: string;
   planName?: string;
   billingCycleName?: string;
   planCategoryName?: string;
@@ -21,6 +22,7 @@ export interface GetInvoiceDto {
 
 export interface InvoiceDto {
   id?: string;
+  invoiceNumber?: string;
   amount: number;
   createdBy?: string;
   expiryDate?: string;
@@ -37,6 +39,27 @@ export interface InvoiceFilterDto extends PagedAndSortedResultRequestDto {
   customerKey?: string;
   status?: string;
   eventType?: string;
+}
+
+export interface PaidInvoiceDetailsDto {
+  companyLogo?: string;
+  backgroundColor?: string;
+  buttonsColor?: string;
+  xAccount?: string;
+  facebookUrl?: string;
+  instagramUrl?: string;
+  linkedinUrl?: string;
+  whatsappNumber?: string;
+  supportLink?: string;
+  privacyPolicyUrl?: string;
+  termsOfServiceUrl?: string;
+  planName?: string;
+  billingCycle?: string;
+  planCost?: number;
+  subTotal: number;
+  vat: number;
+  total: number;
+  totalDue: number;
 }
 
 export interface Source {
