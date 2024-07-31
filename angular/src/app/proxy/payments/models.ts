@@ -18,7 +18,7 @@ export interface GetInvoiceDto {
   paymentMethodId?: string;
   paymentCompanyId?: string;
   createdBy?: string;
-  invoiceNum?:string;
+  invoiceNumber?:string;
   eventType?:string;
   totalRefunded?:string,
   cancelledDate?:string,

@@ -29,6 +29,8 @@ export class InvoiceListComponent implements OnInit {
   page = 1;
   pageSize = 6;
   totalInvoices: number;
+  sorting = ''; // Variable to store sorting criteria
+
 
   constructor(
     public _fb: FormBuilder,
@@ -83,13 +85,27 @@ export class InvoiceListComponent implements OnInit {
     this.page = 1; // Reset to the first page whenever filters change
     this.getInvoiceList();
   }
-
   sortData(type: string): void {
-    // Implementation here
+    if (type === 'invoiceNumber') {
+      this.sorting = this.isSortInvoice ? 'invoiceNumber' : 'invoiceNumber';
+      this.isSortInvoice = !this.isSortInvoice;
+      this.isSortCustomer = false;
+    } else if (type === 'customerName') {
+      this.sorting = this.isSortCustomer ? 'customerName' : 'customerName';
+      this.isSortCustomer = !this.isSortCustomer;
+      this.isSortInvoice = false;
+    }
+    this.getInvoiceList();
   }
 
   notSort(type: string): void {
-    // Implementation here
+    this.sorting = '';
+    if (type === 'invoiceNumber') {
+      this.isSortInvoice = false;
+    } else if (type === 'customerName') {
+      this.isSortCustomer = false;
+    }
+    this.getInvoiceList();
   }
 
   getClassBasedOnStatus(id: string): string {
@@ -144,6 +160,7 @@ export class InvoiceListComponent implements OnInit {
       customerName: customerName !== 'All' ? customerName : null,
       status: status !== 'All' ? status : null,
       eventType: eventType !== 'All' ? eventType : null,
+      sorting: this.sorting // Pass the sorting criteria to the API
 
     }).subscribe((res) => {
       this.invoiceList = res.items;

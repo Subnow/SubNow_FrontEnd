@@ -10,9 +10,9 @@
     <div class='mb-16 pb-16 border-bottom'>
       <div class='invoice-header-info'>
         <h2 class='invoice-title'>
-          {{'General::invoice' | abpLocalization}} #{{invoiceDetails?.invoiceNum}}
+          {{'General::invoice' | abpLocalization}} #{{invoiceDetails?.invoiceNumber}}
         </h2>
-        <p class='invoice-num' (click)='copyActivationInvoice(invoiceNum.innerText)'><span #invoiceNum dir='ltr'>INV-{{invoiceDetails?.invoiceNum}}</span><a class="copy fa-regular fa-copy"></a></p>
+        <p class='invoice-num' (click)='copyActivationInvoice(invoiceNum.innerText)'><span #invoiceNum dir='ltr'>INV-{{invoiceDetails?.invoiceNumber}}</span><a class="copy fa-regular fa-copy"></a></p>
       </div>
       <div *ngIf='invoiceDetails?.invoiceStatusId === "UNPAID"'>
         <button class='w-100 btn btn-pay disabled'><i class="fa-solid fa-paperclip"></i><span>{{'General::payLink' | abpLocalization}}</span></button>

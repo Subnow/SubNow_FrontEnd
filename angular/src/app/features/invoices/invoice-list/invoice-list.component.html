@@ -73,15 +73,15 @@
               <div class='sort-cell'>
 <!--                  <input type='checkbox' class='custom-checkbox'>-->
                   <span>{{"General::invoice"|abpLocalization}}</span>
-                  <a (click)='sortData("invoice")' class="sort fa-solid fa-arrow-down" *ngIf='!isSortInvoice'></a>
-                  <a (click)='notSort("invoice")' class="sort fa-solid fa-arrow-up" *ngIf='isSortInvoice'></a>
+                <a (click)='sortData("invoiceNumber")' class="sort fa-solid fa-arrow-down" *ngIf='!isSortInvoice'></a>
+                <a (click)='notSort("invoiceNumber")' class="sort fa-solid fa-arrow-up" *ngIf='isSortInvoice'></a>
               </div>
             </th>
             <th width='231' class='rounded-table-head-cell'>
               <div class='sort-cell'>
                 <span>{{"General::customer"|abpLocalization}}</span>
-                <a (click)='sortData("invoice")' class="sort fa-solid fa-arrow-down" *ngIf='!isSortCustomer'></a>
-                <a (click)='notSort("invoice")' class="sort fa-solid fa-arrow-up" *ngIf='isSortCustomer'></a>
+                <a (click)='sortData("customerName")' class="sort fa-solid fa-arrow-down" *ngIf='!isSortCustomer'></a>
+                <a (click)='notSort("customerName")' class="sort fa-solid fa-arrow-up" *ngIf='isSortCustomer'></a>
               </div>
             </th>
             <th width='141' class='rounded-table-head-cell'>{{"General::eventType"|abpLocalization}}</th>
