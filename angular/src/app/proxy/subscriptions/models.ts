@@ -1,7 +1,10 @@
+import type { TokenizationDto } from '../payments/models';
 
 export interface ActivateSubscriptionDto {
   token?: string;
   subscriptionId?: string;
+  paymentReference?: string;
+  customerTokenization: TokenizationDto;
 }
 
 export interface ChangeSubscriptionDto {

@@ -1,42 +1,62 @@
 import { Component, OnInit } from '@angular/core';
-import { CompanyBrandingDto, CompanyService } from '@proxy/companies';
 import { ActivatedRoute } from '@angular/router';
+import { SharedModule } from '../../shared/shared.module';
 import { CheckoutService } from '@proxy/token';
-import { CheckoutDetailsDto } from '@proxy/checkout-tokens';
-import { LocalizationService, SessionStateService } from '@abp/ng.core';
-import { finalize } from 'rxjs';
 import { LanguagesAndStylesService } from '../../custom-core/services/language-styles.service';
+import { SessionStateService } from '@abp/ng.core';
+import { CheckoutDetailsDto } from '@proxy/checkout-tokens';
+import { finalize } from 'rxjs';
 
 @Component({
-  selector: 'app-payment',
-  templateUrl: './payment.component.html',
-  styleUrl: './payment.component.scss'
+  selector: 'app-invoice-status-standalone',
+  standalone: true,
+  imports: [SharedModule],
+  templateUrl: './invoice-status-standalone.component.html',
+  styleUrl: './invoice-status-standalone.component.scss'
 })
-export class PaymentComponent implements OnInit{
-  companyBranding:CompanyBrandingDto = {};
+export class InvoiceStatusStandaloneComponent implements OnInit {
   paymentToken: string;
+  token: string;
+  id: string;
+  status: string;
+  amount: number;
+  message: string;
   paymentInfo:CheckoutDetailsDto;
   currentLang$ = this._languagesAndStylesService.getCurrentLanguage();
   constructor(
-    private _companyBranding:CompanyService,
     private route: ActivatedRoute,
     private _checkoutService:CheckoutService,
     private readonly _languagesAndStylesService: LanguagesAndStylesService,
     private sessionStateService: SessionStateService,
-  ) {
-
+    ) {
   }
-
   ngOnInit(): void {
     this.getToken();
     this.getPaymentInfo();
-    this.setPreferredLanguage(); // Call this method after paymentInfo is set
+    this.setPreferredLanguage();
+    // Retrieve the token from the route parameters
+    this.token = this.route.snapshot.paramMap.get('token');
 
+    // Retrieve query parameters
+    this.route.queryParams.subscribe(params => {
+      this.id = params['id'];
+      this.status = params['status'];
+      this.amount = +params['amount']; // Convert amount to number
+      this.message = params['message'];
+    });
+
+    // For debugging purposes, you can log the values
+    console.log('Token:', this.token);
+    console.log('ID:', this.id);
+    console.log('Status:', this.status);
+    console.log('Amount:', this.amount);
+    console.log('Message:', this.message);
   }
+
   getToken():void{
     this.route.paramMap.subscribe(params => {
-      this.paymentToken = params.get('id');
-      console.log(this.paymentToken);
+      this.paymentToken = params.get('token');
+      console.log('token ====>' , this.paymentToken)
     });
   }
   getPaymentInfo(): void {
@@ -64,4 +84,3 @@ export class PaymentComponent implements OnInit{
     this.sessionStateService.setLanguage(lang);
   }
 }
-

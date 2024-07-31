@@ -3,6 +3,8 @@ import { RouterModule, Routes } from '@angular/router';
 import { authGuard } from '@abp/ng.core';
 import { PaymentLayoutComponent } from './custom-core/components/layout/payment-layout/payment-layout.component';
 import { MainLayoutComponent } from './custom-core/components/layout/main-layout/main-layout.component';
+import { InvoiceStatusStandaloneComponent } from './standalone/invoice-status-standalone/invoice-status-standalone.component';
+import { PaymentStandaloneComponent } from './standalone/payment-standalone/payment-standalone.component';
 
 const routes: Routes = [
   {
@@ -58,9 +60,12 @@ const routes: Routes = [
     loadChildren: () => import('./features/support/support.module').then(m => m.SupportModule)
   },
   {
-    path: 'payment/:id',
-    component:PaymentLayoutComponent,
-    loadChildren: () => import('./features/payment/payment.module').then(m => m.PaymentModule)
+    path: 'invoice-status/:token',
+    component:InvoiceStatusStandaloneComponent,
+  },
+  {
+    path: 'payment/:token',
+    component:PaymentStandaloneComponent,
   },
 ];
 

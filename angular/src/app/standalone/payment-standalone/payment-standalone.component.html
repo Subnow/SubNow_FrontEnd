@@ -1,10 +1,10 @@
-
-<div class="payment-wrapper large-media">
-  <div class="row g-0 h-100vh">
-    <div class="col-md-6 left-panel" [style.background-color]="paymentInfo?.companyBranding?.backgroundColor">
-      <div class='block-one'>
-        <div class='block-one-header'>
-          <div class='logo'>
+<section class='payment'>
+<div class='container-fluid p-0'>
+  <div class='row g-0 h-100vh'>
+    <div class='col-lg-6 left-panel' [style.background-color]="paymentInfo?.companyBranding?.backgroundColor || '#d2daf6'">
+      <div class='left-panel-block'>
+        <div class='panel-block-header'>
+          <div class='payment-logo'>
             <div class='image'>
               <img [src]='paymentInfo?.companyBranding?.companyLogo' height='40' alt='company logo'/>
             </div>
@@ -19,13 +19,79 @@
             <p class='plan-details-info'><label class='d-inline-block'> {{"General::billingCycle"|abpLocalization}}:</label> <span class='bold'>{{paymentInfo?.billingCycle}}</span></p>
           </div>
         </div>
-        <div class='block-one-footer'>
+        <div class='panel-block-footer large-media'>
           <div class='payment-lang'>
-            <a *ngIf="currentLang$ === 'en'" class="btn-lang" (click)="onChangeLang('ar')" data-qcauto="language_btn">
+            <a *ngIf="currentLang$ === 'en'" class="btn-lang" (click)="onChangeLang('ar')">
               <i class="fa-solid fa-arrow-left"></i>
               <span>العربية</span>
             </a>
-            <a *ngIf="currentLang$ === 'ar'" class="btn-lang" (click)="onChangeLang('en')" data-qcauto="language_btn">
+            <a *ngIf="currentLang$ === 'ar'" class="btn-lang" (click)="onChangeLang('en')">
+              <i class="fa-solid fa-arrow-left"></i>
+              <span>English</span>
+            </a>
+          </div>
+
+          <ul class='social-list'>
+            <li class='social-list-item'><a class='social-list-link'><i class="fa-brands fa-x-twitter"></i></a></li>
+            <li class='social-list-item'><a class='social-list-link'><i class="fa-brands fa-instagram"></i></a></li>
+            <li class='social-list-item'><a class='social-list-link'><i class="fa-brands fa-linkedin"></i></a></li>
+            <li class='social-list-item'><a class='social-list-link'><i class="fa-brands fa-whatsapp"></i></a></li>
+            <li class='social-list-item'><a class='social-list-link'><i class="fa-brands fa-square-facebook"></i></a></li>
+          </ul>
+          <div class='d-flex align-items-end flex-wrap'>
+            <p class='powered-by'><span> {{"General::poweredBy"|abpLocalization}}</span> <img src='assets/images/logo/logo-payment.svg' alt='footer logo'></p>
+            <div class='additional-links'>
+              <a class='additional-link'>{{"General::support"|abpLocalization}}</a>
+              <a class='additional-link'>{{"General::terms"|abpLocalization}}</a>
+              <a class='additional-link'>{{"General::privacy"|abpLocalization}}</a>
+            </div>
+          </div>
+        </div>
+        </div>
+    </div>
+    <div class='col-lg-6 right-panel'>
+        <div class='right-panel-block'>
+          <div class='payment-details'>
+            <div class='payment-details-info'>
+              <span class='text'>
+                 {{paymentInfo?.planName}} &#64; {{paymentInfo?.billingCycle}}
+              </span>
+              <span class='value'>{{paymentInfo?.invoiceDetails?.planCost}} <span>{{"General::SAR"|abpLocalization}}</span></span>
+            </div>
+            <div class='payment-details-info'>
+              <span class='text'>{{"General::subtotal"|abpLocalization}}</span>
+              <span class='value'>{{paymentInfo?.invoiceDetails?.subtotal}} <span>{{"General::SAR"|abpLocalization}}</span></span>
+            </div>
+            <div class='payment-details-info'>
+              <span class='text'>{{"General::vat"|abpLocalization}}</span>
+              <span class='value'>{{paymentInfo?.invoiceDetails?.vat}} <span>{{"General::SAR"|abpLocalization}}</span></span>
+            </div>
+            <div class='payment-details-info'>
+              <span class='text'>{{"General::total"|abpLocalization}}</span>
+              <span class='value'>{{paymentInfo?.invoiceDetails?.total}} <span>{{"General::SAR"|abpLocalization}}</span></span>
+            </div>
+            <div class='payment-details-info'>
+              <span class='text'>{{"General::totalDue"|abpLocalization}}</span>
+              <span class='value'>{{paymentInfo?.invoiceDetails?.totalDue}} <span>{{"General::SAR"|abpLocalization}}</span></span>
+            </div>
+            <div class='payment-details-action mt-3'>
+              <button class='btn btn-dark w-100' (click)='activeSubscription()'>{{"General::pay"|abpLocalization}}</button>
+            </div>
+          </div>
+          <div class='mt-3'>
+            <form>
+              <div class="mysr-form"></div>
+            </form>
+          </div>
+        </div>
+      <div class='left-panel-block small-media'>
+        <div class='panel-block-footer' [style.background-color]="paymentInfo?.companyBranding?.backgroundColor || '#d2daf6'">
+          <div class='payment-lang'>
+            <a *ngIf="currentLang$ === 'en'" class="btn-lang" (click)="onChangeLang('ar')">
+              <i class="fa-solid fa-arrow-left"></i>
+              <span>العربية</span>
+            </a>
+            <a *ngIf="currentLang$ === 'ar'" class="btn-lang" (click)="onChangeLang('en')">
               <i class="fa-solid fa-arrow-left"></i>
               <span>English</span>
             </a>
@@ -49,135 +115,8 @@
         </div>
       </div>
     </div>
-    <div class="col-md-6 right-panel">
-      <div class='block-two'>
-        <div class='payment-details'>
-            <div class='payment-details-info'>
-              <span class='text'>
-                 {{paymentInfo?.planName}} &#64; {{paymentInfo?.billingCycle}}
-              </span>
-              <span class='value'>{{paymentInfo?.invoiceDetails?.planCost}} <span>{{"General::SAR"|abpLocalization}}</span></span>
-            </div>
-            <div class='payment-details-info'>
-              <span class='text'>{{"General::subtotal"|abpLocalization}}</span>
-              <span class='value'>{{paymentInfo?.invoiceDetails?.subtotal}} <span>{{"General::SAR"|abpLocalization}}</span></span>
-            </div>
-            <div class='payment-details-info'>
-              <span class='text'>{{"General::vat"|abpLocalization}}</span>
-              <span class='value'>{{paymentInfo?.invoiceDetails?.vat}} <span>{{"General::SAR"|abpLocalization}}</span></span>
-            </div>
-            <div class='payment-details-info'>
-              <span class='text'>{{"General::total"|abpLocalization}}</span>
-              <span class='value'>{{paymentInfo?.invoiceDetails?.total}} <span>{{"General::SAR"|abpLocalization}}</span></span>
-            </div>
-            <div class='payment-details-info'>
-              <span class='text'>{{"General::totalDue"|abpLocalization}}</span>
-              <span class='value'>{{paymentInfo?.invoiceDetails?.totalDue}} <span>{{"General::SAR"|abpLocalization}}</span></span>
-            </div>
-          <div class='payment-details-action'>
-            <button class='btn btn-dark w-100'>{{"General::pay"|abpLocalization}}</button>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-
-<div class="payment-wrapper small-media">
-  <div class="row g-0 h-100vh">
-    <div class="col-12 left-panel" [style.background-color]="paymentInfo?.companyBranding?.backgroundColor">
-      <div class='block-one'>
-        <div class='block-one-header'>
-          <div class='logo'>
-            <div class='image'>
-              <img class='img-fluid' [src]='paymentInfo?.companyBranding?.companyLogo' height='40' alt='company logo'/>
-            </div>
-            <span class='company-name'>{{paymentInfo?.companyBranding?.companyName}}</span>
-          </div>
-          <div class='info'>
-            <p class='name'>{{paymentInfo?.customerName}}</p>
-          </div>
-          <div class="plan-details">
-            <h5 class='plan-details-name'>{{paymentInfo?.planName}}</h5>
-            <p class='plan-details-info'><label class='d-inline-block'> {{"General::billingCycle"|abpLocalization}}:</label> <span class='bold'>{{paymentInfo?.billingCycle}}</span></p>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="col-12 right-panel">
-      <div class='block-two'>
-        <div class='payment-details'>
-          <div class='payment-details-info'>
-              <span class='text'>
-                 {{paymentInfo?.planName}} &#64; {{paymentInfo?.billingCycle}}
-              </span>
-            <span class='value'>{{paymentInfo?.invoiceDetails?.planCost}} <span>{{"General::SAR"|abpLocalization}}</span></span>
-          </div>
-          <div class='payment-details-info'>
-            <span class='text'>{{"General::subtotal"|abpLocalization}}</span>
-            <span class='value'>{{paymentInfo?.invoiceDetails?.subtotal}} <span>{{"General::SAR"|abpLocalization}}</span></span>
-          </div>
-          <div class='payment-details-info'>
-            <span class='text'>{{"General::vat"|abpLocalization}}</span>
-            <span class='value'>{{paymentInfo?.invoiceDetails?.vat}} <span>{{"General::SAR"|abpLocalization}}</span></span>
-          </div>
-          <div class='payment-details-info'>
-            <span class='text'>{{"General::total"|abpLocalization}}</span>
-            <span class='value'>{{paymentInfo?.invoiceDetails?.total}} <span>{{"General::SAR"|abpLocalization}}</span></span>
-          </div>
-          <div class='payment-details-info'>
-            <span class='text'>{{"General::totalDue"|abpLocalization}}</span>
-            <span class='value'>{{paymentInfo?.invoiceDetails?.totalDue}} <span>{{"General::SAR"|abpLocalization}}</span></span>
-          </div>
-          <div class='payment-details-action'>
-            <button class='btn btn-dark w-100'>{{"General::pay"|abpLocalization}}</button>
-          </div>
-        </div>
-      </div>
-    </div>
-
-
-    <div class="col-12 left-panel bottom" [style.background-color]="paymentInfo?.companyBranding?.backgroundColor">
-      <div class='block-one'>
-        <div class='block-one-header'>
-          <div class='payment-lang'>
-            <a *ngIf="currentLang$ === 'en'" class="btn-lang" (click)="onChangeLang('ar')" data-qcauto="language_btn">
-              <i class="fa-solid fa-arrow-left"></i>
-              <span>العربية</span>
-            </a>
-            <a *ngIf="currentLang$ === 'ar'" class="btn-lang" (click)="onChangeLang('en')" data-qcauto="language_btn">
-              <i class="fa-solid fa-arrow-left"></i>
-              <span>English</span>
-            </a>
-          </div>
-          <div class='logo'>
-            <div class='image'>
-              <img class='img-fluid' [src]='paymentInfo?.companyBranding?.companyLogo' height='40' alt='company logo'/>
-            </div>
-          </div>
-        </div>
-        <div class='block-one-footer'>
-
-          <ul class='social-list'>
-            <li class='social-list-item'><a class='social-list-link'><i class="fa-brands fa-x-twitter"></i></a></li>
-            <li class='social-list-item'><a class='social-list-link'><i class="fa-brands fa-instagram"></i></a></li>
-            <li class='social-list-item'><a class='social-list-link'><i class="fa-brands fa-linkedin"></i></a></li>
-            <li class='social-list-item'><a class='social-list-link'><i class="fa-brands fa-whatsapp"></i></a></li>
-            <li class='social-list-item'><a class='social-list-link'><i class="fa-brands fa-square-facebook"></i></a></li>
-          </ul>
-          <div class='d-flex align-items-end flex-wrap'>
-            <div class='additional-links'>
-              <a class='additional-link'>{{"General::support"|abpLocalization}}</a>
-              <a class='additional-link'>{{"General::terms"|abpLocalization}}</a>
-              <a class='additional-link'>{{"General::privacy"|abpLocalization}}</a>
-            </div>
-          </div>
-        </div>
-
-      </div>
-
-
-    </div>
 
   </div>
+
 </div>
+</section>

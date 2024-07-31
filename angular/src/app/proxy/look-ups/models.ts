@@ -20,3 +20,8 @@ export interface EventTypeDto {
   eventTypeName?: string;
   status: boolean;
 }
+
+export interface SubscriptionActivityTypeDto {
+  id?: string;
+  name?: string;
+}

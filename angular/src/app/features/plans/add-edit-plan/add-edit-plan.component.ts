@@ -36,7 +36,6 @@ export class AddEditPlanComponent  implements OnInit{
       this.initForm();
       this.getCategoryList();
       this.getBillingCycles();
-      console.log('plan===>' , this.plan)
     }
 
     getBillingCycles(){

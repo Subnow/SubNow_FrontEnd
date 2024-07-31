@@ -1,4 +1,4 @@
-import type { CreateCustomerDto, CustomerDto, GetCustomersFilterDto, UpdateCustomerDto } from './models';
+import type { CreateCustomerDto, CustomerDto, CustomerNameKeyDto, GetCustomersFilterDto, UpdateCustomerDto } from './models';
 import { RestService, Rest } from '@abp/ng.core';
 import type { PagedAndSortedResultRequestDto, PagedResultDto } from '@abp/ng.core';
 import { Injectable } from '@angular/core';
@@ -31,6 +31,14 @@ export class CustomerService {
     this.restService.request<any, CustomerDto>({
       method: 'GET',
       url: `/api/app/customer/${id}`,
+    },
+    { apiName: this.apiName,...config });
+  
+
+  getCompanyCustomers = (config?: Partial<Rest.Config>) =>
+    this.restService.request<any, CustomerNameKeyDto[]>({
+      method: 'GET',
+      url: '/api/app/customer/company-customers',
     },
     { apiName: this.apiName,...config });
   

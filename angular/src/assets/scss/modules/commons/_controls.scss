@@ -289,6 +289,39 @@ input[type="radio"]:checked ~ label{
   border-color: #5673D9;
 
 }
+
+
+.custom-checkbox{
+  -webkit-appearance: none;
+  cursor: pointer;
+  width: 20px;
+  height: 20px;
+  border-radius: 6px;
+  border: 1px solid  #D0D5DD;
+  background: #ffffff;
+  margin-right: 8px;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.custom-checkbox:checked::before {
+  content: "\f00c";
+  font-family: "Font Awesome 6 Free";
+  font-weight: 900;
+  color: #5673D9;
+}
+
+.custom-checkbox:checked {
+  border-color: #5673D9;
+}
+.custom-checkbox:checked ~ label{
+  border-color: #5673D9;
+
+}
+
+
 input:-webkit-autofill,
 input:-webkit-autofill:hover,
 input:-webkit-autofill:focus,
@@ -592,5 +625,4 @@ html[dir='rtl']{
     border-right: 0;
   }
 }
-
 

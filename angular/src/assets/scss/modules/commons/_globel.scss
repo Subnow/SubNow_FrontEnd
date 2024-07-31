@@ -21,7 +21,7 @@ body {
       background: url("/assets/images/icons/spinning-dots.svg");
       position: absolute;
       top: calc(50% - 100px);
-      left: 50%;
+      left: calc(50% - 50px);
       z-index: 99999;
       width: 100px;
       height: 100px;
@@ -102,7 +102,7 @@ a{
   font-weight: 600;
   line-height: 20px;
   display: flex;
-  padding: 10px 16px;
+  padding: 10px 18px;
   justify-content: center;
   align-items: center;
   gap: 8px;
@@ -117,21 +117,46 @@ a{
   border: 1px solid $primary-opacity;
 }
 .btn-light{
+  color: #344054;
   border: 1px solid $gray;
   background: $light-color;
   box-shadow: 0 1px 2px 0 rgba(16, 24, 40, 0.05);
+  &:hover{
+    color:  $light-color;
+    background-color: #344054;
+    border-color: #344054;
+  }
+  &:disabled,&.disabled{
+    opacity: 0.5;
+    background-color: $light-color;
+    color: #344054;
+    border-color:$gray;
+
+
+  }
 }
 
 .text-primary{
   color: $save-btn !important;
 }
 .text-success{
-color: $success;
+color: $success !important;
 }
 
 .text-danger{
-  color: $danger;
-
+  color: $danger !important;
+}
+.text-warning{
+  color: #B93815 !important;
+}
+.text-default{
+  color:#000 !important ;
+}
+.text-info{
+  color: #026AA2 !important;
+}
+.text-gray{
+  color: #98A2B3 !important;
 }
 .mt-16{
   margin-top: 16px !important;
@@ -206,8 +231,21 @@ color: $success;
   transition: transform 0.2s ease-in-out;
 }
 
-
+.bg{
+  &-success{
+    background-color: #ECFDF3 !important;
+  }
+  &-danger{
+    background-color: #FDECEC !important;
+  }
+}
 html[dir='rtl']{
+  &.loader {
+    &:before {
+      left: auto;
+      right: calc(50% - 50px);
+    }
+  }
   .wrapper{
     padding: 32px 312px 48px 32px;
     @media (max-width: 992px) {
@@ -216,3 +254,4 @@ html[dir='rtl']{
   }
 
 }
+

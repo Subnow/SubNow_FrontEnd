@@ -12,5 +12,32 @@ body {
 @import "modules/plans/plans";
 @import "modules/customers/customers";
 @import "modules/setup/setup";
+@import "modules/payment/moyaser";
 @import "modules/payment/payment";
 
+html[dir='rtl']{
+  .custom-modal-left .modal-dialog {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: auto !important;
+    height: 100% !important;
+    margin: 0;
+    transition: transform 0.3s ease-out, opacity 0.3s ease-out;
+    transform: translateX(-100%);
+    opacity: 0;
+  }
+
+  .custom-modal-left.modal.show .modal-dialog {
+    transform: translateX(0) !important;
+    opacity: 1 !important;
+  }
+  .custom-modal-left .modal-content {
+    height: 100%;
+    overflow-y: auto;
+  }
+  .custom-modal-left.modal.modal.fade .modal-dialog {
+    transform: translateX(-100%);
+    transition: transform 0.3s ease-out;
+  }
+}
