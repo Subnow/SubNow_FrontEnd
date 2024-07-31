@@ -124,9 +124,21 @@ export class PaymentStandaloneComponent implements OnInit {
   activeSubscription(): void {
     this._subscriptionService.activateSubscription({
       token: this.paymentToken,
-      paymentReference:''
-    } as any).subscribe((res)=>{
-      console.log('res' , res)
-    })
+      paymentReference: ''
+    } as any).subscribe({
+      next: (res) => {
+        console.log('res', res);
+        // Navigate to the success page
+        this.router.navigate([`/invoice-status/${this.paymentToken}`], {
+          queryParams: { status: 'paid' }
+        });
+      },
+      error: (err) => {
+        console.log('err', err);
+        // Navigate to the error page
+        this.router.navigate([`/invoice-status/${this.paymentToken}`], {
+          queryParams: { status: 'failed' }
+        });      }
+    });
   }
 }
