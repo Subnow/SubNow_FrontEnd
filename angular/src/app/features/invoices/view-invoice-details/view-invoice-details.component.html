@@ -1,28 +1,35 @@
 <div class='invoice'>
+  <div class='close-invoice-details'>
+    <a class='modal-close' (click)="closeModal()">
+      <i class='fa fa-xmark'></i>
+    </a>
+  </div>
+
+
   <div class='invoice-header'>
     <div class='mb-16 pb-16 border-bottom'>
       <div class='invoice-header-info'>
         <h2 class='invoice-title'>
-          Invoice {{invoiceDetails?.invoiceId.slice(-4)}}
+          {{'General::invoice' | abpLocalization}} #{{invoiceDetails?.invoiceNum}}
         </h2>
-        <p class='invoice-num' (click)='copyActivationInvoice(invoiceNum.innerText)'><span #invoiceNum>INV-{{invoiceDetails?.invoiceId.slice(-4)}}</span><a class="copy fa-regular fa-copy"></a></p>
+        <p class='invoice-num' (click)='copyActivationInvoice(invoiceNum.innerText)'><span #invoiceNum dir='ltr'>INV-{{invoiceDetails?.invoiceNum}}</span><a class="copy fa-regular fa-copy"></a></p>
       </div>
       <div *ngIf='invoiceDetails?.invoiceStatusId === "UNPAID"'>
-        <button class='w-100 btn btn-pay'><i class="fa-solid fa-paperclip"></i><span>{{'General::payLink' | abpLocalization}}</span></button>
+        <button class='w-100 btn btn-pay disabled'><i class="fa-solid fa-paperclip"></i><span>{{'General::payLink' | abpLocalization}}</span></button>
       </div>
       <div class='invoice-header-actions'>
-        <div class='block-one'>
-          <button class='btn btn-light'>
+        <div class='block-one' *ngIf='invoiceDetails?.invoiceStatusId !== "UNPAID"'>
+          <button class='btn btn-light disabled'>
             <i class="fa-solid fa-paperclip"></i>
             <span>{{"General::invoiceLink"|abpLocalization}}</span>
           </button>
-          <button class='btn btn-light'>
+          <button class='btn btn-light disabled'>
             <i class="fa-solid fa-download"></i>
             <span>{{"General::downloadInvoicePDF"|abpLocalization}}</span>
           </button>
         </div>
         <div>
-          <button class='btn btn-light w-100'>
+          <button class='btn btn-light w-100 disabled' *ngIf='invoiceDetails?.invoiceStatusId === "REFUNDED"'>
             <i class="fa-solid fa-download"></i>
             <span>{{"General::downloadRefundInvoicePDF"|abpLocalization}}</span>
           </button>
@@ -33,20 +40,20 @@
     <div class='customer-info'>
       <div class='customer-info-details'>
         <label class='info-label'>{{'General::customer' | abpLocalization}}</label>
-        <p class='info-value'><span>Mike Johnson</span> <a class='info-link'>{{'General::more' | abpLocalization}}</a></p>
+        <p class='info-value'><span>{{invoiceDetails?.customerName}}</span> <a class='info-link' (click)='openCustomerDetails(invoiceDetails?.customerId)'>{{'General::more' | abpLocalization}}</a></p>
       </div>
-      <div class='customer-info-details'>
+      <div class='customer-info-details pb-0'>
         <label class='info-label'>{{'General::customerKey' | abpLocalization}}</label>
-        <p class='info-value'>MikeJohnsongmail.com</p>
+        <p class='info-value'>{{invoiceDetails?.customerKey}}</p>
       </div>
 
     </div>
     <div class='invoice-actions' *ngIf='invoiceDetails?.invoiceStatusId === "UNPAID"'>
-      <button class='btn btn-light'>
+      <button class='btn btn-light disabled'>
         <i class="fa-solid fa-download"></i>
         <span>{{"General::downloadQuotePDF"|abpLocalization}}</span>
       </button>
-      <button class='btn btn-light'>
+      <button class='btn btn-light disabled'>
         <span>{{"General::markAsPaid"|abpLocalization}}</span>
         <i class="fa-solid fa-angle-down"></i>
       </button>
@@ -56,89 +63,120 @@
     <div class='invoice-row'>
      <label class='invoice-row-label'>{{'General::invoiceStatus' | abpLocalization}}</label>
       <p class='invoice-row-data'>
-        <span class='invoice-status invoice-status-success'><i class='fa-solid fa-circle icon'></i> <span>{{'General::paid' | abpLocalization}}</span></span>
-<!--        <span class="invoice-status invoice-status-default"><i class='fa-solid fa-circle icon'></i> <span>{{'General::refunded' | abpLocalization}}</span></span>-->
-<!--        <span class="invoice-status invoice-status-danger"><i class='fa-solid fa-circle icon'></i> <span>{{'General::cancelled' | abpLocalization}}</span></span>-->
-<!--        <span class="invoice-status invoice-status-default"><i class='fa-solid fa-circle icon'></i> <span>{{'General::Expired' | abpLocalization}}</span></span>-->
-      <img class='card-type img-fluid' src='assets/images/Bitmap.png' />
+        <span class='invoice-status invoice-status-success' *ngIf='invoiceDetails?.invoiceStatusId === "PAID"'><i class='fa-solid fa-circle icon'></i> <span>{{'General::paid' | abpLocalization}}</span></span>
+        <span class="invoice-status invoice-status-danger" *ngIf='invoiceDetails?.invoiceStatusId === "UNPAID"'><i class='fa-solid fa-circle icon'></i> <span>{{'General::unpaid' | abpLocalization}}</span></span>
+        <span class="invoice-status invoice-status-default" *ngIf='invoiceDetails?.invoiceStatusId === "REFUNDED"'><i class='fa-solid fa-circle icon'></i> <span>{{'General::refunded' | abpLocalization}}</span></span>
+        <span class="invoice-status invoice-status-default" *ngIf='invoiceDetails?.invoiceStatusId === "CANCELLED"'><i class='fa-solid fa-circle icon'></i> <span>{{'General::cancelled' | abpLocalization}}</span></span>
+        <span class="invoice-status invoice-status-default" *ngIf='invoiceDetails?.invoiceStatusId === "EXPIRED"'><i class='fa-solid fa-circle icon'></i> <span>{{'General::Expired' | abpLocalization}}</span></span>
+        <img class='card-type img-fluid' src='assets/images/Bitmap.png' *ngIf='invoiceDetails?.invoiceStatusId === "PAID" || invoiceDetails?.invoiceStatusId === "REFUNDED"' />
+      </p>
+    </div>
+
+    <div class='invoice-row' *ngIf='invoiceDetails?.invoiceStatusId === "CANCELLED"'>
+      <label class='invoice-row-label'>{{'General::cancelledDate' | abpLocalization}}</label>
+      <p class='invoice-row-data'>
+        {{invoiceDetails?.cancelledDate}}
+      </p>
+    </div>
+
+    <div class='invoice-row' *ngIf='invoiceDetails?.invoiceStatusId === "CANCELLED"'>
+      <label class='invoice-row-label'>{{'General::cancelledBy' | abpLocalization}}</label>
+      <p class='invoice-row-data'>
+        {{invoiceDetails?.cancelledBy}}
       </p>
     </div>
     <div class='invoice-row'>
       <label class='invoice-row-label'>{{'General::eventType' | abpLocalization}}</label>
       <p class='invoice-row-data'>
-        <span class='badge-transparent badge-transparent-success'>{{'General::renew' | abpLocalization}}</span>
-        <span class='badge-transparent badge-transparent-primary'>{{'General::change' | abpLocalization}}</span>
-        <span class='badge-transparent badge-transparent-success'>{{'General::addon' | abpLocalization}}</span>
+        <span class='badge-transparent badge-transparent-success' *ngIf='invoiceDetails?.eventType === "RENEW"'>{{'General::renew' | abpLocalization}}</span>
+        <span class='badge-transparent badge-transparent-primary' *ngIf='invoiceDetails?.eventType === "CHANGE"'>{{'General::change' | abpLocalization}}</span>
+        <span class='badge-transparent badge-transparent-success' *ngIf='invoiceDetails?.eventType === "ADDON"'>{{'General::addon' | abpLocalization}}</span>
+        <span class='badge-transparent badge-transparent-success' *ngIf='invoiceDetails?.eventType === "NEW"'>{{'General::new' | abpLocalization}}</span>
+        <span class='badge-transparent badge-transparent-danger' *ngIf='invoiceDetails?.eventType === "CANCEL"'>{{'General::cancel' | abpLocalization}}</span>
+        <span class='badge-transparent badge-transparent-danger' *ngIf='invoiceDetails?.eventType === "DOWNGRADE"'>{{'General::downgrade' | abpLocalization}}</span>
+        <span class='badge-transparent badge-transparent-success' *ngIf='invoiceDetails?.eventType === "UPGRADE"'>{{'General::upgrade' | abpLocalization}}</span>
       </p>
     </div>
 
     <div class='invoice-row'>
       <label class='invoice-row-label'>{{'General::plan' | abpLocalization}}</label>
       <p class='invoice-row-data'>
-       <span>Starter</span> <span class='badge badge-default'>B2B</span>
+       <span>{{invoiceDetails?.planName}}</span> <span class='badge badge-default'>{{invoiceDetails?.planCategoryName}}</span>
       </p>
     </div>
     <div class='invoice-row'>
       <label class='invoice-row-label'>{{'General::billingCycle' | abpLocalization}}</label>
       <p class='invoice-row-data'>
-        Monthly
+        {{invoiceDetails?.billingCycleName}}
       </p>
     </div>
-    <div class='invoice-row bg-success'>
-      <label class='invoice-row-label'>{{'General::totalPaid' | abpLocalization}}</label>
+    <div class='invoice-row bg-success bg-total'>
+      <label class='invoice-row-label' *ngIf='invoiceDetails?.invoiceStatusId === "PAID"'>
+        {{'General::totalPaid' | abpLocalization}}
+      </label>
+      <label class='invoice-row-label bg-total' *ngIf='invoiceDetails?.invoiceStatusId !== "PAID"'>
+        {{'General::totalDue' | abpLocalization}}
+      </label>
       <p class='invoice-row-data'>
-        <span>100.00</span> <span class='badge badge-dark'>SAR</span>
+        <span>{{invoiceDetails?.totalDue}}</span> <span class='badge badge-dark'>{{'General::SAR' | abpLocalization}}</span>
       </p>
     </div>
-    <div class='invoice-row bg-danger'>
+    <div class='invoice-row bg-danger' *ngIf='invoiceDetails?.invoiceStatusId === "REFUNDED"'>
       <label class='invoice-row-label'>{{'General::totalRefunded' | abpLocalization}}</label>
       <p class='invoice-row-data'>
-        <span>100.00</span> <span class='badge badge-dark'>SAR</span>
+        <span>{{invoiceDetails?.totalRefunded}}</span> <span class='badge badge-dark'>{{'General::SAR' | abpLocalization}}</span>
       </p>
     </div>
-    <div class='invoice-row'>
+    <div class='invoice-row' >
       <label class='invoice-row-label'>{{'General::invoiceCreated' | abpLocalization}}</label>
       <p class='invoice-row-data'>
-        12/12/2022 - 04-15PM
+        {{ invoiceDetails?.createdDate | date:'dd/MM/yyyy' }}
       </p>
     </div>
-    <div class='invoice-row'>
+    <div class='invoice-row' *ngIf='invoiceDetails?.invoiceStatusId === "UNPAID"'>
+      <label class='invoice-row-label'>{{'General::invoiceExpiryDate' | abpLocalization}}</label>
+      <p class='invoice-row-data'>
+        {{ invoiceDetails?.expiryDate | date:'dd/MM/yyyy' }}
+      </p>
+    </div>
+    <div class='invoice-row border-bottom'>
       <label class='invoice-row-label'>{{'General::createdBy' | abpLocalization}}</label>
       <p class='invoice-row-data'>
-        System
+        {{invoiceDetails?.createdBy}}
       </p>
     </div>
-    <div class='invoice-row'>
+    <div class='invoice-row' *ngIf='invoiceDetails?.invoiceStatusId === "REFUNDED" || invoiceDetails?.invoiceStatusId === "PAID"'>
       <label class='invoice-row-label'>{{'General::paymentDate' | abpLocalization}}</label>
       <p class='invoice-row-data'>
-        12/12/2022 - 04-15PM
+        {{invoiceDetails?.paymentDate}}
       </p>
     </div>
-    <div class='invoice-row'>
+    <div class='invoice-row' *ngIf='invoiceDetails?.invoiceStatusId === "REFUNDED" || invoiceDetails?.invoiceStatusId === "PAID"'>
       <label class='invoice-row-label'>{{'General::paymentProcessor' | abpLocalization}}</label>
       <p class='invoice-row-data'>
-        Moyasar
+        {{invoiceDetails?.paymentProcessor}}
       </p>
     </div>
 
-    <div class='invoice-row'>
+    <div class='invoice-row' *ngIf='invoiceDetails?.invoiceStatusId === "REFUNDED" || invoiceDetails?.invoiceStatusId === "PAID"'>
       <label class='invoice-row-label'>{{'General::paymentType' | abpLocalization}}</label>
       <p class='invoice-row-data'>
-        Paylink
+        <span *ngIf='invoiceDetails?.paymentTypeId === "PAYLINK"'>Paylink</span>
       </p>
     </div>
-    <div class='invoice-row'>
+    <div class='invoice-row' *ngIf='invoiceDetails?.invoiceStatusId === "REFUNDED" || invoiceDetails?.invoiceStatusId === "PAID"'>
       <label class='invoice-row-label'>{{'General::paymentMethod' | abpLocalization}}</label>
       <p class='invoice-row-data invoice-method'>
-        <i class="fa-solid fa-credit-card icon"></i> <span>Credit Card</span>
+        <i class="fa-solid fa-credit-card icon"></i>
+        <span class='font-weight-400' *ngIf='invoiceDetails?.paymentMethodId === "CREDITCARD"'>Credit Card</span>
       </p>
     </div>
 
-    <div class='invoice-row flex-column align-items-start'>
+    <div class='invoice-row flex-column align-items-start' *ngIf='invoiceDetails?.invoiceStatusId === "REFUNDED" || invoiceDetails?.invoiceStatusId === "PAID"'>
       <label class='invoice-row-label'>{{'General::paymentReference' | abpLocalization}}</label>
       <p class='invoice-row-data payment-reference'>
         <a class="fa-regular fa-copy icon" (click)='copyActivationInvoice(paymentReference.innerText)' ></a>
-        <span #paymentReference>awieufhoq8374rlajkwndf89374gf</span>
+        <span #paymentReference>{{invoiceDetails?.paymentReference}}</span>
       </p>
     </div>
 

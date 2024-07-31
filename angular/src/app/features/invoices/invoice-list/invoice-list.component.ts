@@ -3,14 +3,10 @@ import { FormBuilder, FormGroup } from '@angular/forms';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { ViewInvoiceDetailsComponent } from '../view-invoice-details/view-invoice-details.component';
 import { InvoiceDto, PaymentService } from '@proxy/payments';
-import { CustomerDto, CustomerService } from '@proxy/customers';
+import { CustomerService } from '@proxy/customers';
 import { SubscriptionActivityTypeService } from '@proxy/look-ups';
 import { LocalizationService } from '@abp/ng.core';
 
-interface Status {
-  id: string;
-  name: string;
-}
 
 @Component({
   selector: 'app-invoice-list',
@@ -44,7 +40,7 @@ export class InvoiceListComponent implements OnInit {
     this.statusList = [
       {
         id: 'All',
-        name: this.localizationService.instant('General::all'),
+        name: this.localizationService.instant('General::All'),
       },
       {
         id: 'PAID',
@@ -86,10 +82,6 @@ export class InvoiceListComponent implements OnInit {
   onChangeFilter(): void {
     this.page = 1; // Reset to the first page whenever filters change
     this.getInvoiceList();
-  }
-
-  editInvoice(): void {
-    // Implementation here
   }
 
   sortData(type: string): void {
@@ -170,6 +162,7 @@ export class InvoiceListComponent implements OnInit {
         };
       });
       this.eventList.unshift({
+        id:"All",
         name: this.localizationService.instant('General::All')
       });
     });
@@ -180,7 +173,8 @@ export class InvoiceListComponent implements OnInit {
       this.customerList = res;
       this.customerList.unshift(
         {
-          name:'All'
+          id:"All",
+          name:this.localizationService.instant('General::All')
         }
       )
     });

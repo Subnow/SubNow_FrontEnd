@@ -22,6 +22,9 @@ export class AddEditCustomerComponent implements OnInit,AfterViewInit {
   @Input() customer?: CustomerDto;
   @Input() isEdit?: boolean;
   @Output() formValid = new EventEmitter<boolean>();
+  @Input() isMoreDetails:boolean;
+  @Input() customerId:string;
+  customerName:string;
 
   type?:string = 'customer';
   form?: FormGroup;
@@ -68,6 +71,33 @@ export class AddEditCustomerComponent implements OnInit,AfterViewInit {
     ]
     this.getOnlyCountries();
     this.getCountryList();
+    if (this.isMoreDetails){
+      this._customerService.get(this.customerId).subscribe((res=>{
+        this.customerName = res?.name;
+        this.form = this._fb.group({
+          name: [{value:res?.name, disabled: true}],
+          customerKey: [{value:res?.customerKey, disabled: true}],
+          email:[{value:res?.email, disabled: true}],
+          phone:[{value:phoneWithoutCode(res?.phone), disabled: true}],
+          description: [{value:res?.description, disabled: true}],
+          customerStatus: [{value:res?.customerStatus, disabled: true}],
+          photo: [{value:res?.photo, disabled: true}],
+          customerSince: [{value:new Date(res?.customerSince), disabled: true}],
+          joinedSubnow: [{value:new Date(res?.joinedSubnow), disabled: true}],
+          preferredLanguage: [{value:res?.preferredLanguage, disabled: true}],
+          vatid: [{value:res?.vatid, disabled: true}],
+          companyRegistryNumber: [{value:res?.companyRegistryNumber, disabled: true}],
+          address: [{value:res?.address, disabled: true}],
+          isBusiness: [{value:res?.isBusiness, disabled: true}],
+          city: [{value:res?.city, disabled: true}],
+          stateProvince: [{value:res?.stateProvince, disabled: true}],
+          countryId: [{value:res?.countryId, disabled: true}],
+          tags: [{value:res?.tags, disabled: true}],
+          customerSource: [{value:res?.customerSource, disabled: true}]
+        })
+      }))
+    }
+
 
     this.form.statusChanges.subscribe(() => {
       this.formValid.emit(this.form.valid);

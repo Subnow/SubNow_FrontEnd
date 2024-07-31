@@ -18,6 +18,12 @@ export interface GetInvoiceDto {
   paymentMethodId?: string;
   paymentCompanyId?: string;
   createdBy?: string;
+  invoiceNum?:string;
+  eventType?:string;
+  totalRefunded?:string,
+  cancelledDate?:string,
+  cancelledBy?:string,
+  paymentDate?:string
 }
 
 export interface InvoiceDto {

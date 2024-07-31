@@ -238,7 +238,7 @@ export const General = {
   eventType: "نوع الحدث",
   totalPaid: "إجمالي المدفوع",
   invoiceCreated: "تم إنشاء الفاتورة",
-  createdBy: "أنشأها",
+  createdBy: "تم الانشاء بواسطة",
   paymentDate: "تاريخ الدفع",
   paymentProcessor: "معالج الدفع",
   paymentType: "نوع الدفع",
@@ -265,5 +265,8 @@ export const General = {
   DOWNGRADE: "تخفيض",
   NEW: "جديد",
   RENEW: "تجديد",
-  UPGRADE: "ترقية"
+  UPGRADE: "ترقية",
+  invoiceExpiryDate:"تاريخ آنتهاد الفاتورة",
+  cancelledDate: "تاريخ الإلغاء",
+  cancelledBy: "تم الإلغاء بواسطة"
 };

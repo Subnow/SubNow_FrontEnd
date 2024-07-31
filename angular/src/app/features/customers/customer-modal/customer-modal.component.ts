@@ -13,6 +13,7 @@ export class CustomerModalComponent implements OnInit{
   @Input() customer?: CustomerDto;
   @Input() isEdit?: boolean;
   @Output() formValid?:boolean;
+
   isChildFormValid: boolean;
   @ViewChild(AddEditCustomerComponent) addEditCustomerComponentChild: AddEditCustomerComponent;
   constructor(private cd: ChangeDetectorRef) {

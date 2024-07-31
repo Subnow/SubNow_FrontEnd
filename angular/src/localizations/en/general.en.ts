@@ -266,6 +266,9 @@ export const General = {
   DOWNGRADE:"Downgrade",
   NEW:"New",
   RENEW:"Renew",
-  UPGRADE:"Upgrade"
+  UPGRADE:"Upgrade",
+  invoiceExpiryDate:"Invoice Expiry Date",
+  cancelledDate:"Cancelled Date",
+  cancelledBy:"Cancelled By"
 
 };
