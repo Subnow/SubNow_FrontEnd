@@ -3,8 +3,11 @@ import { FormBuilder, FormGroup } from '@angular/forms';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { ViewInvoiceDetailsComponent } from '../view-invoice-details/view-invoice-details.component';
 import { InvoiceDto, InvoiceFilterDto, PaymentService } from '@proxy/payments';
-import { CustomerDto } from '@proxy/customers';
+import { CustomerDto, CustomerService } from '@proxy/customers';
 import { AddEditCategoriesModalComponent } from '../../plans/add-edit-categories-modal/add-edit-categories-modal.component';
+import { SubscriptionService } from '@proxy/subscriptions';
+import { SubscriptionActivityTypeService } from '@proxy/look-ups';
+import { LocalizationService } from '@abp/ng.core';
 
 @Component({
   selector: 'app-invoice-list',
@@ -19,7 +22,7 @@ export class InvoiceListComponent implements OnInit{
   pagedInvoiceList: InvoiceDto[] = [];
   isSortInvoice:boolean = false;
   isSortCustomer:boolean = false;
-  customerList:[] = [];
+  customerList:any;
   statusList: any;
   eventList:any;
   totalPages: number;
@@ -30,53 +33,50 @@ export class InvoiceListComponent implements OnInit{
 
   constructor(
     public _fb: FormBuilder,
-    private invoiceServices:PaymentService
+    private _invoiceServices:PaymentService,
+    private _subscriptionServiceActivity:SubscriptionActivityTypeService,
+    private localizationService: LocalizationService,
+    private _customerService:CustomerService
   ) {
     this.statusList = [
       {
-        value:"All",
-        name:"All"
+        id:'All',
+        name:this.localizationService.instant('General::all'),
       },
       {
-        value:"PAID",
-        name:"Paid",
+        id:'PAID',
+        name:this.localizationService.instant('General::paid'),
       },
       {
-        value:"CANCELLED",
-        name:"Cancelled",
+        id:"CANCELLED",
+        name:this.localizationService.instant('General::cancelled'),
       },
       {
-        value:"UNPAID",
-        name:"Unpaid",
-      },{
-        value:"EXPIRED",
-        name:"Expired"
+        id:"UNPAID",
+        name:this.localizationService.instant('General::unpaid'),
+      },
+      {
+        id:"EXPIRED",
+        name:this.localizationService.instant('General::expired'),
       }
 
     ];
-    this.eventList = [
-      {
-        value:1,
-        name:"All",
-      },
-      {
-        value:2,
-        name:"Renew",
-      },
-      {
-        value:3,
-        name:"Change",
-      },
-      {
-        value:4,
-        name:"Addon",
-      }
-    ]
   }
 
   ngOnInit(): void {
-    // this.updatePagedInvoiceList();
+    this.getEventType();
     this.getInvoiceList();
+    this.getCustomerList();
+    this.initForm()
+  }
+
+  initForm(){
+    this.form = this._fb.group({
+      searchTerm: [''],
+      customerName: ['All'],
+      invoiceStatus: ['All'],
+      eventType:['All']
+    })
   }
   onChangeFilter($event: Event): void {
 
@@ -92,27 +92,33 @@ export class InvoiceListComponent implements OnInit{
   notSort(type:string): void {
 
   }
-  getClassBasedOnStatus(name: string): string {
-    switch (name) {
-      case 'Paid':
+  getClassBasedOnStatus(id: string): string {
+    switch (id) {
+      case 'PAID':
         return 'text-success';
-      case 'Cancelled':
+      case 'CANCELLED':
         return 'text-danger';
-      case 'Unpaid':
+      case 'UNPAID':
         return 'text-warning';
-      case 'Expired':
+      case 'EXPIRED':
         return 'text-default';
       default:
         return 'text-primary';
     }
   }
-  getClassBasedOnEvent(name: string): string {
-    switch (name) {
-      case 'Renew':
+  getClassBasedOnEvent(id:string) {
+    switch (id) {
+      case 'RENEW':
         return 'text-success';
-      case 'Change':
+      case 'CHANGE':
         return 'text-info';
-      case 'Addon':
+      case 'ADDON':
+        return 'text-success';
+      case 'CANCEL':
+        return 'text-danger';
+      case 'DOWNGRADE':
+        return 'text-danger';
+      case 'UPGRADE':
         return 'text-success';
       default:
         return 'text-primary';
@@ -121,12 +127,22 @@ export class InvoiceListComponent implements OnInit{
 
   getInvoiceList(): void {
     const skipCount = this.pageSize * (this.page - 1);
-    this.invoiceServices.getInvoices({ skipCount, maxResultCount: this.pageSize }).subscribe((res) => {
+    this._invoiceServices.getInvoices({ skipCount, maxResultCount: this.pageSize }).subscribe((res) => {
       this.invoiceList = res.items;
       this.totalInvoices = res.totalCount; // Assuming API returns total count of items
       console.log('total ==>' , this.totalInvoices)
       this.updatePagedInvoiceList();
     });
+  }
+  getEventType():void{
+    this._subscriptionServiceActivity.getAll().subscribe((res)=>{
+      this.eventList = res;
+    })
+  }
+  getCustomerList():void{
+    this._customerService.getCompanyCustomers().subscribe((res)=>{
+      this.customerList = res
+    })
   }
 
   updatePagedInvoiceList(): void {

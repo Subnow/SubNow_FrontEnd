@@ -250,10 +250,14 @@ export const General = {
   refunded:"Refunded",
   renew:"Renew",
   change:"Change",
-  addon:"Addon",
   unpaid:"Unpaid",
   more:"More",
   new:"New",
   invoice:"Invoice",
-  invoiceExpiry:"Invoice Expiry"
+  invoiceExpiry:"Invoice Expiry",
+  cancel:"Cancel",
+  downgrade:"Downgrade",
+  upgrade:"Upgrade",
+  addon:"Addon",
+  all:"All"
 };

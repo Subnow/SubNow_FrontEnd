@@ -48,6 +48,12 @@ export interface CustomerDto {
   customerSource: number;
 }
 
+export interface CustomerNameKeyDto {
+  id?: string;
+  customerKey?: string;
+  name?: string;
+}
+
 export interface GetCustomersFilterDto {
   status?: CustomerStatus;
   plan?: string;

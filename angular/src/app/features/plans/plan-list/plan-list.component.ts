@@ -26,7 +26,6 @@ export class PlanListComponent implements OnInit{
   getCategoryPlanList(){
     this._planService.getAllPlansForCompany().subscribe((res=>{
       this.categoryPlanList = res?.items;
-      console.log('this.categoryPlanList length ==>' , this.categoryPlanList?.length)
     }))
   }
 
@@ -47,7 +46,6 @@ export class PlanListComponent implements OnInit{
     const closeSubscription = modal.closed.subscribe((updateCategory:UpdateCategoryDto)=>{
       if (updateCategory){
         if (typeof index === 'number') {
-          console.log('edit');
           this.categoryList?.splice(index, 1, updateCategory);
         } else {
           this.categoryList?.push(updateCategory);

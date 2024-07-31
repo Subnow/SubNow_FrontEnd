@@ -253,5 +253,9 @@ export const General = {
   more: "المزيد",
   new:"جديد",
   invoice:"الفاتورة",
-  invoiceExpiry:"انتهاء الفاتورة"
+  invoiceExpiry:"انتهاء الفاتورة",
+  cancel: "إلغاء",
+  downgrade: "تخفيض",
+  upgrade: "ترقية",
+  all:"كل"
 };

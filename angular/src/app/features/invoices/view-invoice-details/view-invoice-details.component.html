@@ -3,11 +3,11 @@
     <div class='mb-16 pb-16 border-bottom'>
       <div class='invoice-header-info'>
         <h2 class='invoice-title'>
-          Invoice #3066
+          Invoice {{invoiceDetails?.invoiceId.slice(-4)}}
         </h2>
-        <p class='invoice-num' (click)='copyActivationInvoice(invoiceNum.innerText)'><span #invoiceNum>INV-3066</span><a class="copy fa-regular fa-copy"></a></p>
+        <p class='invoice-num' (click)='copyActivationInvoice(invoiceNum.innerText)'><span #invoiceNum>INV-{{invoiceDetails?.invoiceId.slice(-4)}}</span><a class="copy fa-regular fa-copy"></a></p>
       </div>
-      <div>
+      <div *ngIf='invoiceDetails?.invoiceStatusId === "UNPAID"'>
         <button class='w-100 btn btn-pay'><i class="fa-solid fa-paperclip"></i><span>{{'General::payLink' | abpLocalization}}</span></button>
       </div>
       <div class='invoice-header-actions'>
@@ -41,7 +41,7 @@
       </div>
 
     </div>
-    <div class='invoice-actions'>
+    <div class='invoice-actions' *ngIf='invoiceDetails?.invoiceStatusId === "UNPAID"'>
       <button class='btn btn-light'>
         <i class="fa-solid fa-download"></i>
         <span>{{"General::downloadQuotePDF"|abpLocalization}}</span>
