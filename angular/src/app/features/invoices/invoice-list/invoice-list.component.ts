@@ -2,29 +2,32 @@ import { Component, inject, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { ViewInvoiceDetailsComponent } from '../view-invoice-details/view-invoice-details.component';
-import { InvoiceDto, InvoiceFilterDto, PaymentService } from '@proxy/payments';
+import { InvoiceDto, PaymentService } from '@proxy/payments';
 import { CustomerDto, CustomerService } from '@proxy/customers';
-import { AddEditCategoriesModalComponent } from '../../plans/add-edit-categories-modal/add-edit-categories-modal.component';
-import { SubscriptionService } from '@proxy/subscriptions';
 import { SubscriptionActivityTypeService } from '@proxy/look-ups';
 import { LocalizationService } from '@abp/ng.core';
+
+interface Status {
+  id: string;
+  name: string;
+}
 
 @Component({
   selector: 'app-invoice-list',
   templateUrl: './invoice-list.component.html',
-  styleUrl: './invoice-list.component.scss'
+  styleUrls: ['./invoice-list.component.scss']
 })
-export class InvoiceListComponent implements OnInit{
+export class InvoiceListComponent implements OnInit {
   private modalService = inject(NgbModal);
 
   form: FormGroup;
   invoiceList: InvoiceDto[] = [];
   pagedInvoiceList: InvoiceDto[] = [];
-  isSortInvoice:boolean = false;
-  isSortCustomer:boolean = false;
-  customerList:any;
-  statusList: any;
-  eventList:any;
+  isSortInvoice = false;
+  isSortCustomer = false;
+  customerList: any;
+  statusList: any[];
+  eventList: any[];
   totalPages: number;
 
   page = 1;
@@ -33,65 +36,70 @@ export class InvoiceListComponent implements OnInit{
 
   constructor(
     public _fb: FormBuilder,
-    private _invoiceServices:PaymentService,
-    private _subscriptionServiceActivity:SubscriptionActivityTypeService,
+    private _invoiceServices: PaymentService,
+    private _subscriptionServiceActivity: SubscriptionActivityTypeService,
     private localizationService: LocalizationService,
-    private _customerService:CustomerService
+    private _customerService: CustomerService
   ) {
     this.statusList = [
       {
-        id:'All',
-        name:this.localizationService.instant('General::all'),
+        id: 'All',
+        name: this.localizationService.instant('General::all'),
       },
       {
-        id:'PAID',
-        name:this.localizationService.instant('General::paid'),
+        id: 'PAID',
+        name: this.localizationService.instant('General::paid'),
       },
       {
-        id:"CANCELLED",
-        name:this.localizationService.instant('General::cancelled'),
+        id: "CANCELLED",
+        name: this.localizationService.instant('General::cancelled'),
       },
       {
-        id:"UNPAID",
-        name:this.localizationService.instant('General::unpaid'),
+        id: "UNPAID",
+        name: this.localizationService.instant('General::unpaid'),
       },
       {
-        id:"EXPIRED",
-        name:this.localizationService.instant('General::expired'),
+        id: "EXPIRED",
+        name: this.localizationService.instant('General::expired'),
       }
-
     ];
   }
 
   ngOnInit(): void {
+    this.initForm();
     this.getEventType();
     this.getInvoiceList();
     this.getCustomerList();
-    this.initForm()
+    this.form.valueChanges.subscribe(() => this.onChangeFilter());
+
   }
 
-  initForm(){
+  initForm(): void {
     this.form = this._fb.group({
-      searchTerm: [''],
-      customerName: ['All'],
-      invoiceStatus: ['All'],
-      eventType:['All']
-    })
-  }
-  onChangeFilter($event: Event): void {
-
+      id: [''],
+      customerName: [null],
+      status: [null],
+      eventType: [null]
+    });
   }
 
+  onChangeFilter(): void {
+    this.page = 1; // Reset to the first page whenever filters change
+    this.getInvoiceList();
+  }
 
   editInvoice(): void {
-
+    // Implementation here
   }
-  sortData(type:string): void {
 
+  sortData(type: string): void {
+    // Implementation here
   }
-  notSort(type:string): void {
 
+  notSort(type: string): void {
+    // Implementation here
   }
+
   getClassBasedOnStatus(id: string): string {
     switch (id) {
       case 'PAID':
@@ -106,7 +114,8 @@ export class InvoiceListComponent implements OnInit{
         return 'text-primary';
     }
   }
-  getClassBasedOnEvent(id:string) {
+
+  getClassBasedOnEvent(id: string): string {
     switch (id) {
       case 'RENEW':
         return 'text-success';
@@ -127,22 +136,54 @@ export class InvoiceListComponent implements OnInit{
 
   getInvoiceList(): void {
     const skipCount = this.pageSize * (this.page - 1);
-    this._invoiceServices.getInvoices({ skipCount, maxResultCount: this.pageSize }).subscribe((res) => {
+    const { id, customerName, status, eventType } = this.form.value;
+
+    // const filter = {
+    //   id: this.form.get('id').value,
+    //   customerName: this.form.get('customerName').value === 'All' ? null : this.form.get('customerName').value,
+    //     customerName !== 'All' ? customerName : null,
+    //   status: this.form.get('status').value,
+    //   eventType: this.form.get('eventType').value
+    // }
+
+    this._invoiceServices.getInvoices({ skipCount,
+      maxResultCount: this.pageSize,
+      id: id || '',
+      customerName: customerName !== 'All' ? customerName : null,
+      status: status !== 'All' ? status : null,
+      eventType: eventType !== 'All' ? eventType : null,
+
+    }).subscribe((res) => {
       this.invoiceList = res.items;
       this.totalInvoices = res.totalCount; // Assuming API returns total count of items
-      console.log('total ==>' , this.totalInvoices)
+      console.log('total ==>', this.totalInvoices);
       this.updatePagedInvoiceList();
     });
   }
-  getEventType():void{
-    this._subscriptionServiceActivity.getAll().subscribe((res)=>{
-      this.eventList = res;
-    })
+
+  getEventType(): void {
+    this._subscriptionServiceActivity.getAll().subscribe((res) => {
+      this.eventList = res.map(event => {
+        return {
+          ...event,
+          name: this.localizationService.instant(`General::${event.name}`)
+        };
+      });
+      this.eventList.unshift({
+        name: this.localizationService.instant('General::All')
+      });
+    });
   }
-  getCustomerList():void{
-    this._customerService.getCompanyCustomers().subscribe((res)=>{
-      this.customerList = res
-    })
+
+  getCustomerList(): void {
+    this._customerService.getCompanyCustomers().subscribe((res) => {
+      this.customerList = res;
+      this.customerList.unshift(
+        {
+          name:'All'
+        }
+      )
+    });
   }
 
   updatePagedInvoiceList(): void {
@@ -156,10 +197,9 @@ export class InvoiceListComponent implements OnInit{
     this.page = page;
     this.getInvoiceList();
   }
-  viewInvoiceDetails(id:string) : void {
+
+  viewInvoiceDetails(id: string): void {
     const modal = this.modalService.open(ViewInvoiceDetailsComponent, { fullscreen: true, windowClass: 'custom-modal-right' });
     (modal.componentInstance as ViewInvoiceDetailsComponent).id = id;
-
   }
 }
-

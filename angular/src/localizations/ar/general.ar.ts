@@ -257,5 +257,13 @@ export const General = {
   cancel: "إلغاء",
   downgrade: "تخفيض",
   upgrade: "ترقية",
-  all:"كل"
+  all:"كل",
+  All: "الكل",
+  ADDON: "إضافة",
+  CANCEL: "إلغاء",
+  CHANGE: "تغيير",
+  DOWNGRADE: "تخفيض",
+  NEW: "جديد",
+  RENEW: "تجديد",
+  UPGRADE: "ترقية"
 };

@@ -259,5 +259,13 @@ export const General = {
   downgrade:"Downgrade",
   upgrade:"Upgrade",
   addon:"Addon",
-  all:"All"
+  All:"All",
+  ADDON:"Addon",
+  CANCEL:"Cancel",
+  CHANGE:"Change",
+  DOWNGRADE:"Downgrade",
+  NEW:"New",
+  RENEW:"Renew",
+  UPGRADE:"Upgrade"
+
 };

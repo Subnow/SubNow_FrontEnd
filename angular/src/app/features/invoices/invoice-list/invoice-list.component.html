@@ -20,12 +20,12 @@
             <label class='form-label'>{{"General::searchForInvoice"|abpLocalization}}</label>
             <div class='input-search'>
               <i class='icon fa-search fa-solid'></i>
-              <input (input)='onChangeFilter($event)' class='form-control' type='text' placeholder='{{"General::search"|abpLocalization}}' formControlName='searchTerm' >
+              <input  class='form-control' type='text' placeholder='{{"General::search"|abpLocalization}}' formControlName='id' >
             </div>
           </div>
           <div class='col-lg-4 col-md-6'>
             <label class='form-label'>{{"General::customer"|abpLocalization}}</label>
-            <ng-select class='select-dot' [items]="customerList"  bindLabel="name" bindValue="name"  placeholder='{{"General::customer"|abpLocalization}}' [clearable]="false" formControlName='customerName'>
+            <ng-select appendTo="body" class='select-dot' [items]="customerList"  bindLabel="name" bindValue="name"  placeholder='{{"General::customer"|abpLocalization}}' [clearable]="false" formControlName='customerName'>
               <ng-template ng-label-tmp let-item="item">
                 <div class='info'>
                   <span class='dot text-primary'><i class="fa-solid fa-circle"></i></span>
@@ -36,7 +36,7 @@
           </div>
           <div class='col-lg-2 col-md-6'>
             <label class='form-label'>{{"General::status"|abpLocalization}}</label>
-            <ng-select class='select-dot' [items]="statusList"  bindLabel="name" bindValue="id"  placeholder='{{"General::status"|abpLocalization}}' [clearable]="false" formControlName='invoiceStatus'>
+            <ng-select appendTo="body" class='select-dot' [items]="statusList"  bindLabel="name" bindValue="id"  placeholder='{{"General::status"|abpLocalization}}' [clearable]="false" formControlName='status'>
               <ng-template ng-label-tmp let-item="item">
                 <div class='info'>
                   <span class='dot' [ngClass]="getClassBasedOnStatus(item?.id)"><i class="fa-solid fa-circle"></i></span>
@@ -47,17 +47,11 @@
           </div>
           <div class='col-lg-2 col-md-6'>
             <label class='form-label'>{{"General::event"|abpLocalization}}</label>
-            <ng-select class='select-dot' [items]="eventList"  bindLabel="name" bindValue="id"  placeholder='{{"General::event"|abpLocalization}}' [clearable]="false" formControlName='eventType'>
+            <ng-select appendTo="body" class='select-dot' [items]="eventList"  bindLabel="name" bindValue="id"  placeholder='{{"General::event"|abpLocalization}}' [clearable]="false" formControlName='eventType'>
               <ng-template ng-label-tmp let-item="item">
                 <div class='info'>
                   <span class='dot' [ngClass]="getClassBasedOnEvent(item?.id)"><i class="fa-solid fa-circle"></i></span>
-                  <span class='name' *ngIf="item?.id === 'ADDON'">{{"General::addon"|abpLocalization}}</span>
-                  <span class='name' *ngIf="item?.id === 'CANCEL'">{{"General::cancel"|abpLocalization}}</span>
-                  <span class='name' *ngIf="item?.id === 'CHANGE'">{{"General::change"|abpLocalization}}</span>
-                  <span class='name' *ngIf="item?.id === 'DOWNGRADE'">{{"General::downgrade"|abpLocalization}}</span>
-                  <span class='name' *ngIf="item?.id === 'NEW'">{{"General::new"|abpLocalization}}</span>
-                  <span class='name' *ngIf="item?.id === 'RENEW'">{{"General::renew"|abpLocalization}}</span>
-                  <span class='name' *ngIf="item?.id === 'UPGRADE'">{{"General::upgrade"|abpLocalization}}</span>
+                  <span class='name'>{{item.name | abpLocalization}}</span>
                 </div>
               </ng-template>
             </ng-select>
