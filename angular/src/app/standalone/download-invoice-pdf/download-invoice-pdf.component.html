@@ -1,0 +1,160 @@
+<a (click)='downloadPDF()'>DownloadPdf</a>
+<div class="invoice-container" id='invoice'>
+  <div class="invoice-header">
+    <div class='block-one'>
+      <div class="company-info">
+        <div class='company-img'>
+          <img src='assets/images/pdf-logo.png' alt=''>
+        </div>
+        <h1 class='company-title'>Marn</h1>
+        <div class='company-created'>
+          <p>Date Created: June 1-30 2020</p>
+          <p>TAX ID: 0938456546</p>
+          <p>Company ID: 45743567567</p>
+          <p>Invoice #: 234556</p>
+        </div>
+
+      </div>
+    </div>
+    <div class='block-two'>
+      <div class="invoice-title">
+        <h2>Unpaid Invoice</h2>
+        <h2>فاتورة غير مدفوعة</h2>
+      </div>
+      <div class="company-address">
+        <p>  King Salman Neighborhood، 6391 King Abdulaziz
+          ، طريق الملك عبدالعزيز, Riyadh</p>
+
+        <p>12432</p>
+        <p>Riyadh, Saudi Arabia</p>
+      </div>
+
+    </div>
+
+  </div>
+
+  <div class="customer-info">
+    <div class='customer-info-header'>
+      <h3>Customer Informations:</h3>
+      <h3>:معلومات العميل</h3>
+    </div>
+    <div class="customer-details">
+      <div class='block-one'>
+        <p>Customer: <strong>Burger King</strong></p>
+        <p>CustomerKey: <strong>BurgerKinggmail.com</strong></p>
+        <p>Business CR ID: <strong>38756345456</strong></p>
+        <p>Business Tax ID:: <strong>2345456476</strong></p>
+      </div>
+      <div class='block-two'>
+        <p>Address:</p>
+        <p class='w-240'> <strong>King Salman Neighborhood، 6391 King Abdulaziz ، طريق الملك عبدالعزيز, Riyadh 12432</strong></p>
+        <p><strong>getCity, getCountry</strong></p>
+      </div>
+    </div>
+  </div>
+
+  <div class="invoice-items">
+    <table class='table'>
+      <thead>
+      <tr>
+        <th>
+          <span class='d-block'>
+            المنتجات
+          </span>
+
+          <span class='d-block'>
+            Items
+          </span>
+        </th>
+        <th>
+         <span class='d-block'>
+            السعر
+          </span>
+
+          <span class='d-block'>
+            Rate (Monthly)
+          </span>
+        </th>
+        <th>
+         <span class='d-block'>
+            الكمية
+          </span>
+
+          <span class='d-block'>
+            Quantity
+          </span>
+        </th>
+        <th>
+         <span class='d-block'>
+            المجموع
+          </span>
+
+          <span class='d-block'>
+            Subtotal
+          </span>
+        </th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr>
+        <td colspan="4" class='pt-2'>
+          <strong>
+            Starter Plan
+            الباقة الأساسية
+          </strong>
+        </td>
+      </tr>
+      <tr>
+        <td>Monthly 30d</td>
+        <td>40 SAR</td>
+        <td>1</td>
+        <td>40 SAR</td>
+      </tr>
+      <tr>
+        <td colspan="4" class='pt-3'><strong>Add ons الإضافات</strong></td>
+      </tr>
+      <tr>
+        <td>Accounting Feature نظام المحاسبة</td>
+        <td>300 SAR</td>
+        <td>1</td>
+        <td>300 SAR</td>
+      </tr>
+      <tr>
+        <td>Users مستخدمين</td>
+        <td>30 SAR</td>
+        <td>3</td>
+        <td>90 SAR</td>
+      </tr>
+      <tr>
+        <td>Locations الفروع</td>
+        <td>100 SAR</td>
+        <td>7</td>
+        <td>700 SAR</td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="invoice-summary">
+    <div class='invoice-summary-status'>
+      <div class='status-block danger'>
+        <span>
+          فاتورة غير مدفوعة
+        </span>
+        <span>
+          Unpaid Invoice
+        </span>
+      </div>
+      <div class='invoice-expiry danger'>
+        <p>تنتهي الفاتورة بتاريخ 23/03/2024</p>
+        <p>Expiry date: 23/03/2024</p>
+
+      </div>
+
+    </div>
+<!--    <p>Subtotal: 68.70 SAR</p>-->
+<!--    <p>VAT (15%): 10.30 SAR</p>-->
+<!--    <p>Total including VAT: 79.00 SAR</p>-->
+<!--    <h3>Total Due: 79.00 SAR</h3>-->
+  </div>
+</div>

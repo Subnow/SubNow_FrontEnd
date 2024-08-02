@@ -23,7 +23,7 @@
             <i class="fa-solid fa-paperclip"></i>
             <span>{{"General::invoiceLink"|abpLocalization}}</span>
           </button>
-          <button class='btn btn-light disabled'>
+          <button class='btn btn-light' (click)='downloadPDF()'>
             <i class="fa-solid fa-download"></i>
             <span>{{"General::downloadInvoicePDF"|abpLocalization}}</span>
           </button>
@@ -171,7 +171,6 @@
         <span class='font-weight-400' *ngIf='invoiceDetails?.paymentMethodId === "CREDITCARD"'>Credit Card</span>
       </p>
     </div>
-
     <div class='invoice-row flex-column align-items-start' *ngIf='invoiceDetails?.invoiceStatusId === "REFUNDED" || invoiceDetails?.invoiceStatusId === "PAID"'>
       <label class='invoice-row-label'>{{'General::paymentReference' | abpLocalization}}</label>
       <p class='invoice-row-data payment-reference'>
@@ -179,8 +178,7 @@
         <span #paymentReference>{{invoiceDetails?.paymentReference}}</span>
       </p>
     </div>
-
-
-
   </div>
 </div>
+
+
