@@ -18,12 +18,12 @@ export interface GetInvoiceDto {
   paymentMethodId?: string;
   paymentCompanyId?: string;
   createdBy?: string;
-  invoiceNumber?:string;
-  eventType?:string;
-  totalRefunded?:string,
-  cancelledDate?:string,
-  cancelledBy?:string,
-  paymentDate?:string
+  invoiceNumber?: string;
+  eventType?: string;
+  totalRefunded?: string;
+  cancelledDate?: string;
+  cancelledBy?: string;
+  paymentDate?: string;
 }
 
 export interface InvoiceDto {
@@ -47,6 +47,39 @@ export interface InvoiceFilterDto extends PagedAndSortedResultRequestDto {
   eventType?: string;
 }
 
+export interface InvoicePdfDto {
+  invoiceId?: string;
+  invoiceDate?: string;
+  expiryDate?: string;
+  createdDate?: string;
+  status?: string;
+  createdBy?: string;
+  totalDue: number;
+  customerName?: string;
+  customerKey?: string;
+  address?: string;
+  crid?: string;
+  taxID?: string;
+  contactDetails?: string;
+  products: ProductDto[];
+  paidAmount: number;
+  totalWithVAT: number;
+  vat: number;
+  paymentMethod?: string;
+  paymentType?: string;
+  paymentProcessor?: string;
+  paymentDetails?: string;
+  paymentReference?: string;
+  paymentCompany?: string;
+  paymentDateTime?: string;
+  companyName?: string;
+  companyLogo?: string;
+  companyAddress?: string;
+  companyContactInfo?: string;
+  companyTaxID?: string;
+  title?: string;
+}
+
 export interface PaidInvoiceDetailsDto {
   companyLogo?: string;
   backgroundColor?: string;
@@ -66,6 +99,17 @@ export interface PaidInvoiceDetailsDto {
   vat: number;
   total: number;
   totalDue: number;
+}
+
+export interface ProductDto {
+  name?: string;
+  planName?: string;
+  planCategoryName?: string;
+  price: number;
+  quantity: number;
+  subtotal: number;
+  vat: number;
+  totalWithVAT: number;
 }
 
 export interface Source {
