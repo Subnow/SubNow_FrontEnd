@@ -5,6 +5,7 @@ import { PaymentLayoutComponent } from './custom-core/components/layout/payment-
 import { MainLayoutComponent } from './custom-core/components/layout/main-layout/main-layout.component';
 import { InvoiceStatusStandaloneComponent } from './standalone/invoice-status-standalone/invoice-status-standalone.component';
 import { PaymentStandaloneComponent } from './standalone/payment-standalone/payment-standalone.component';
+import { DownloadInvoicePdfComponent } from './standalone/download-invoice-pdf/download-invoice-pdf.component';
 
 const routes: Routes = [
   {
@@ -67,6 +68,10 @@ const routes: Routes = [
     path: 'payment/:token',
     component:PaymentStandaloneComponent,
   },
+  {
+    path:'download-invoice/:id',
+    component:DownloadInvoicePdfComponent
+  }
 ];
 
 @NgModule({

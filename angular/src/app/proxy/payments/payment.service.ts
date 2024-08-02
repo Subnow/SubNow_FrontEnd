@@ -1,4 +1,4 @@
-import type { GetInvoiceDto, InvoiceDto, InvoiceFilterDto, PaidInvoiceDetailsDto } from './models';
+import type { GetInvoiceDto, InvoiceDto, InvoiceFilterDto, InvoicePdfDto, PaidInvoiceDetailsDto } from './models';
 import { RestService, Rest } from '@abp/ng.core';
 import type { PagedResultDto } from '@abp/ng.core';
 import { Injectable } from '@angular/core';
@@ -14,6 +14,14 @@ export class PaymentService {
     this.restService.request<any, GetInvoiceDto>({
       method: 'GET',
       url: `/api/app/payment/${id}/invoice-by-id`,
+    },
+    { apiName: this.apiName,...config });
+  
+
+  getInvoiceDetails = (invoiceId: string, config?: Partial<Rest.Config>) =>
+    this.restService.request<any, InvoicePdfDto>({
+      method: 'GET',
+      url: `/api/app/payment/invoice-details/${invoiceId}`,
     },
     { apiName: this.apiName,...config });
   

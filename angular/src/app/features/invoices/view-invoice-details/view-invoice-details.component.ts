@@ -1,10 +1,7 @@
 import { Component, inject, Input, OnInit } from '@angular/core';
 import { NgbActiveModal, NgbModal } from '@ng-bootstrap/ng-bootstrap';
-import { CompanyBrandingModalComponent } from '../../setup/company-branding-modal/company-branding-modal.component';
 import { Clipboard } from '@angular/cdk/clipboard';
-import { PlanDto } from '@proxy/plans';
 import { GetInvoiceDto, PaymentService } from '@proxy/payments';
-import { CustomerModalComponent } from '../../customers/customer-modal/customer-modal.component';
 import { AddEditCustomerComponent } from '../../customers/add-edit-customer/add-edit-customer.component';
 
 @Component({
@@ -17,6 +14,7 @@ export class ViewInvoiceDetailsComponent implements OnInit{
   activeModal = inject(NgbActiveModal);
   @Input() id?: string;
   invoiceDetails:GetInvoiceDto = {};
+  isDownload = false;
   constructor(
     private clipboard: Clipboard,
     private invoiceServices:PaymentService
@@ -44,5 +42,10 @@ export class ViewInvoiceDetailsComponent implements OnInit{
   }
   closeModal() {
     this.activeModal.close();
+  }
+
+
+  downloadPDF() {
+
   }
 }
