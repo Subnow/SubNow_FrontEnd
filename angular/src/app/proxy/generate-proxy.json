@@ -2433,10 +2433,10 @@
               "parameters": [
                 {
                   "nameOnMethod": "input",
-                  "name": "Id",
+                  "name": "InvoiceNumber",
                   "jsonName": null,
-                  "type": "System.Guid?",
-                  "typeSimple": "string?",
+                  "type": "System.String",
+                  "typeSimple": "string",
                   "isOptional": false,
                   "defaultValue": null,
                   "constraintTypes": null,
@@ -7101,7 +7101,7 @@
           "jsonName": null,
           "type": "System.String",
           "typeSimple": "string",
-          "isRequired": false,
+          "isRequired": true,
           "minLength": null,
           "maxLength": null,
           "minimum": null,
@@ -8305,8 +8305,8 @@
         {
           "name": "CountryId",
           "jsonName": null,
-          "type": "System.Guid",
-          "typeSimple": "string",
+          "type": "System.Guid?",
+          "typeSimple": "string?",
           "isRequired": false,
           "minLength": null,
           "maxLength": null,
@@ -9497,6 +9497,63 @@
         }
       ]
     },
+    "SubNow.Payments.InvoiceAddOns": {
+      "baseType": null,
+      "isEnum": false,
+      "enumNames": null,
+      "enumValues": null,
+      "genericArguments": null,
+      "properties": [
+        {
+          "name": "Name",
+          "jsonName": null,
+          "type": "System.String",
+          "typeSimple": "string",
+          "isRequired": false,
+          "minLength": null,
+          "maxLength": null,
+          "minimum": null,
+          "maximum": null,
+          "regex": null
+        },
+        {
+          "name": "Price",
+          "jsonName": null,
+          "type": "System.Decimal",
+          "typeSimple": "number",
+          "isRequired": false,
+          "minLength": null,
+          "maxLength": null,
+          "minimum": null,
+          "maximum": null,
+          "regex": null
+        },
+        {
+          "name": "Quantity",
+          "jsonName": null,
+          "type": "System.Int32",
+          "typeSimple": "number",
+          "isRequired": false,
+          "minLength": null,
+          "maxLength": null,
+          "minimum": null,
+          "maximum": null,
+          "regex": null
+        },
+        {
+          "name": "Total",
+          "jsonName": null,
+          "type": "System.Decimal",
+          "typeSimple": "number",
+          "isRequired": false,
+          "minLength": null,
+          "maxLength": null,
+          "minimum": null,
+          "maximum": null,
+          "regex": null
+        }
+      ]
+    },
     "SubNow.Payments.InvoiceDto": {
       "baseType": null,
       "isEnum": false,
@@ -9634,10 +9691,10 @@
       "genericArguments": null,
       "properties": [
         {
-          "name": "Id",
+          "name": "InvoiceNumber",
           "jsonName": null,
-          "type": "System.Guid?",
-          "typeSimple": "string?",
+          "type": "System.String",
+          "typeSimple": "string",
           "isRequired": false,
           "minLength": null,
           "maxLength": null,
@@ -9799,7 +9856,67 @@
           "regex": null
         },
         {
-          "name": "Address",
+          "name": "CustomerAddress",
+          "jsonName": null,
+          "type": "System.String",
+          "typeSimple": "string",
+          "isRequired": false,
+          "minLength": null,
+          "maxLength": null,
+          "minimum": null,
+          "maximum": null,
+          "regex": null
+        },
+        {
+          "name": "CustomerCity",
+          "jsonName": null,
+          "type": "System.String",
+          "typeSimple": "string",
+          "isRequired": false,
+          "minLength": null,
+          "maxLength": null,
+          "minimum": null,
+          "maximum": null,
+          "regex": null
+        },
+        {
+          "name": "customerPostalCode",
+          "jsonName": null,
+          "type": "System.String",
+          "typeSimple": "string",
+          "isRequired": false,
+          "minLength": null,
+          "maxLength": null,
+          "minimum": null,
+          "maximum": null,
+          "regex": null
+        },
+        {
+          "name": "CustomerStateOrProvince",
+          "jsonName": null,
+          "type": "System.String",
+          "typeSimple": "string",
+          "isRequired": false,
+          "minLength": null,
+          "maxLength": null,
+          "minimum": null,
+          "maximum": null,
+          "regex": null
+        },
+        {
+          "name": "CustomerCountry",
+          "jsonName": null,
+          "type": "System.String",
+          "typeSimple": "string",
+          "isRequired": false,
+          "minLength": null,
+          "maxLength": null,
+          "minimum": null,
+          "maximum": null,
+          "regex": null
+        },
+        {
+          "name": "IsBusiness",
           "jsonName": null,
           "type": "System.String",
           "typeSimple": "string",
@@ -9859,6 +9976,18 @@
           "regex": null
         },
         {
+          "name": "InvoiceAddOns",
+          "jsonName": null,
+          "type": "[SubNow.Payments.InvoiceAddOns]",
+          "typeSimple": "[SubNow.Payments.InvoiceAddOns]",
+          "isRequired": false,
+          "minLength": null,
+          "maxLength": null,
+          "minimum": null,
+          "maximum": null,
+          "regex": null
+        },
+        {
           "name": "PaidAmount",
           "jsonName": null,
           "type": "System.Decimal",
@@ -9884,6 +10013,42 @@
         },
         {
           "name": "VAT",
+          "jsonName": null,
+          "type": "System.Decimal",
+          "typeSimple": "number",
+          "isRequired": false,
+          "minLength": null,
+          "maxLength": null,
+          "minimum": null,
+          "maximum": null,
+          "regex": null
+        },
+        {
+          "name": "VatAmount",
+          "jsonName": null,
+          "type": "System.Decimal",
+          "typeSimple": "number",
+          "isRequired": false,
+          "minLength": null,
+          "maxLength": null,
+          "minimum": null,
+          "maximum": null,
+          "regex": null
+        },
+        {
+          "name": "SubTotal",
+          "jsonName": null,
+          "type": "System.Decimal",
+          "typeSimple": "number",
+          "isRequired": false,
+          "minLength": null,
+          "maxLength": null,
+          "minimum": null,
+          "maximum": null,
+          "regex": null
+        },
+        {
+          "name": "SubTotalWithVat",
           "jsonName": null,
           "type": "System.Decimal",
           "typeSimple": "number",
@@ -10015,6 +10180,54 @@
           "regex": null
         },
         {
+          "name": "CompanyCity",
+          "jsonName": null,
+          "type": "System.String",
+          "typeSimple": "string",
+          "isRequired": false,
+          "minLength": null,
+          "maxLength": null,
+          "minimum": null,
+          "maximum": null,
+          "regex": null
+        },
+        {
+          "name": "CompanyStateOrProvince",
+          "jsonName": null,
+          "type": "System.String",
+          "typeSimple": "string",
+          "isRequired": false,
+          "minLength": null,
+          "maxLength": null,
+          "minimum": null,
+          "maximum": null,
+          "regex": null
+        },
+        {
+          "name": "CompanyCountry",
+          "jsonName": null,
+          "type": "System.String",
+          "typeSimple": "string",
+          "isRequired": false,
+          "minLength": null,
+          "maxLength": null,
+          "minimum": null,
+          "maximum": null,
+          "regex": null
+        },
+        {
+          "name": "CompanyId",
+          "jsonName": null,
+          "type": "System.Guid",
+          "typeSimple": "string",
+          "isRequired": false,
+          "minLength": null,
+          "maxLength": null,
+          "minimum": null,
+          "maximum": null,
+          "regex": null
+        },
+        {
           "name": "CompanyContactInfo",
           "jsonName": null,
           "type": "System.String",
@@ -10028,6 +10241,30 @@
         },
         {
           "name": "CompanyTaxID",
+          "jsonName": null,
+          "type": "System.String",
+          "typeSimple": "string",
+          "isRequired": false,
+          "minLength": null,
+          "maxLength": null,
+          "minimum": null,
+          "maximum": null,
+          "regex": null
+        },
+        {
+          "name": "CompanyPostalCode",
+          "jsonName": null,
+          "type": "System.String",
+          "typeSimple": "string",
+          "isRequired": false,
+          "minLength": null,
+          "maxLength": null,
+          "minimum": null,
+          "maximum": null,
+          "regex": null
+        },
+        {
+          "name": "InvoiceNumber",
           "jsonName": null,
           "type": "System.String",
           "typeSimple": "string",
@@ -10285,31 +10522,7 @@
       "genericArguments": null,
       "properties": [
         {
-          "name": "Name",
-          "jsonName": null,
-          "type": "System.String",
-          "typeSimple": "string",
-          "isRequired": false,
-          "minLength": null,
-          "maxLength": null,
-          "minimum": null,
-          "maximum": null,
-          "regex": null
-        },
-        {
           "name": "PlanName",
-          "jsonName": null,
-          "type": "System.String",
-          "typeSimple": "string",
-          "isRequired": false,
-          "minLength": null,
-          "maxLength": null,
-          "minimum": null,
-          "maximum": null,
-          "regex": null
-        },
-        {
-          "name": "PlanCategoryName",
           "jsonName": null,
           "type": "System.String",
           "typeSimple": "string",
@@ -10345,31 +10558,7 @@
           "regex": null
         },
         {
-          "name": "Subtotal",
-          "jsonName": null,
-          "type": "System.Decimal",
-          "typeSimple": "number",
-          "isRequired": false,
-          "minLength": null,
-          "maxLength": null,
-          "minimum": null,
-          "maximum": null,
-          "regex": null
-        },
-        {
-          "name": "VAT",
-          "jsonName": null,
-          "type": "System.Decimal",
-          "typeSimple": "number",
-          "isRequired": false,
-          "minLength": null,
-          "maxLength": null,
-          "minimum": null,
-          "maximum": null,
-          "regex": null
-        },
-        {
-          "name": "TotalWithVAT",
+          "name": "Total",
           "jsonName": null,
           "type": "System.Decimal",
           "typeSimple": "number",
@@ -11619,8 +11808,8 @@
         {
           "name": "StartDate",
           "jsonName": null,
-          "type": "System.DateTime",
-          "typeSimple": "string",
+          "type": "System.DateTime?",
+          "typeSimple": "string?",
           "isRequired": false,
           "minLength": null,
           "maxLength": null,
@@ -11631,8 +11820,8 @@
         {
           "name": "ExpiryDate",
           "jsonName": null,
-          "type": "System.DateTime",
-          "typeSimple": "string",
+          "type": "System.DateTime?",
+          "typeSimple": "string?",
           "isRequired": false,
           "minLength": null,
           "maxLength": null,

@@ -146,7 +146,7 @@
                       </td>
                       <td class='rounded-table-body-cell' width='155' [attr.data-label]="'General::Price' | abpLocalization">
                         <div class='control-icon'>
-                          <input [ngModelOptions]="{standalone: true}"  type='number' class='form-control' placeholder='{{"General::Price"|abpLocalization}}'  [(ngModel)]="bullingCycle.price" value=''  id='price-{{bullingCycle?.id}}'>
+                          <input [ngModelOptions]="{standalone: true}"  type='number' class='form-control' placeholder='{{"General::Price"|abpLocalization}}'  [(ngModel)]="bullingCycle.price" value=''  id='price-{{bullingCycle?.id}}' [disabled]='!bullingCycle?.active'>
                           <span class='icon'>{{"General::SAR"|abpLocalization}}</span>
                         </div>
                       </td>

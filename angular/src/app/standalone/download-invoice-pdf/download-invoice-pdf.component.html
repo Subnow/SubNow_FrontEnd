@@ -21,7 +21,6 @@
       </div>
       <div class="company-address">
         <p>{{invoicePdfDetails?.companyAddress}}</p>
-
         <p>{{invoicePdfDetails?.companyPostalCode}}</p>
         <p>{{invoicePdfDetails?.companyCity}}, {{invoicePdfDetails?.companyCountry}}</p>
       </div>
@@ -39,12 +38,12 @@
       <div class='block-one'>
         <p>Customer: <strong>{{invoicePdfDetails?.customerName}}</strong></p>
         <p>CustomerKey: <strong>{{invoicePdfDetails?.customerKey}}</strong></p>
-        <p>Business CR ID: <strong>{{invoicePdfDetails?.crid}}</strong></p>
-        <p>Business Tax ID:: <strong>{{invoicePdfDetails?.taxID}}</strong></p>
+        <p *ngIf='invoicePdfDetails?.isBusiness'>Business CR ID: <strong>{{invoicePdfDetails?.crid}}</strong></p>
+        <p *ngIf='invoicePdfDetails?.isBusiness'>Business Tax ID:: <strong>{{invoicePdfDetails?.taxID}}</strong></p>
       </div>
-      <div class='block-two' *ngIf='invoicePdfDetails?.address'>
+      <div class='block-two' *ngIf='invoicePdfDetails?.customerAddress'>
         <p>Address:</p>
-        <p class='w-240'> <strong>{{invoicePdfDetails?.address}}, {{invoicePdfDetails?.customerCity}} {{invoicePdfDetails?.companyPostalCode}}</strong></p>
+        <p class='w-240'> <strong>{{invoicePdfDetails?.customerAddress}}, {{invoicePdfDetails?.customerStateOrProvince}} {{invoicePdfDetails?.customerPostalCode}}</strong></p>
         <p><strong>{{invoicePdfDetails?.customerCity}}, {{invoicePdfDetails?.companyCountry}}</strong></p>
       </div>
     </div>
@@ -100,32 +99,21 @@
           </strong>
         </td>
       </tr>
-      <tr>
-        <td>Monthly 30d</td>
-        <td>40 SAR</td>
-        <td>1</td>
-        <td>40 SAR</td>
+
+      <tr *ngFor="let product of invoicePdfDetails?.products">
+        <td>{{product.planName}}</td>
+        <td>{{product.price}} SAR</td>
+        <td>{{product.quantity}}</td>
+        <td>{{product.total}} SAR</td>
       </tr>
       <tr>
         <td colspan="4" class='pt-3'><strong>Add ons الإضافات</strong></td>
       </tr>
-      <tr>
-        <td>Accounting Feature نظام المحاسبة</td>
-        <td>300 SAR</td>
-        <td>1</td>
-        <td>300 SAR</td>
-      </tr>
-      <tr>
-        <td>Users مستخدمين</td>
-        <td>30 SAR</td>
-        <td>3</td>
-        <td>90 SAR</td>
-      </tr>
-      <tr>
-        <td>Locations الفروع</td>
-        <td>100 SAR</td>
-        <td>7</td>
-        <td>700 SAR</td>
+      <tr *ngFor="let addOn of invoicePdfDetails?.invoiceAddOns">
+        <td>{{addOn.name}}</td>
+        <td>{{addOn.price}} SAR</td>
+        <td>{{addOn.quantity}}</td>
+        <td>{{addOn.total}} SAR</td>
       </tr>
       </tbody>
     </table>

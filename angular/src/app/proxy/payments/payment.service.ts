@@ -30,7 +30,7 @@ export class PaymentService {
     this.restService.request<any, PagedResultDto<InvoiceDto>>({
       method: 'GET',
       url: '/api/app/payment/invoices',
-      params: { id: input.id, customerName: input.customerName, customerKey: input.customerKey, status: input.status, eventType: input.eventType, sorting: input.sorting, skipCount: input.skipCount, maxResultCount: input.maxResultCount },
+      params: { invoiceNumber: input.invoiceNumber, customerName: input.customerName, customerKey: input.customerKey, status: input.status, eventType: input.eventType, sorting: input.sorting, skipCount: input.skipCount, maxResultCount: input.maxResultCount },
     },
     { apiName: this.apiName,...config });
   

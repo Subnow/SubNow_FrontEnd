@@ -39,7 +39,7 @@ export interface CreateCheckoutTokenDto {
 
 export interface CustomerCheckoutDto {
   customerKey: string;
-  name?: string;
+  name: string;
   email?: string;
   phone?: string;
   lang?: string;
