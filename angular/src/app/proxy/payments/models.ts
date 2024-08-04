@@ -27,6 +27,13 @@ export interface GetInvoiceDto {
   paymentDate?: string;
 }
 
+export interface InvoiceAddOns {
+  name?: string;
+  price: number;
+  quantity: number;
+  total: number;
+}
+
 export interface InvoiceDto {
   id?: string;
   invoiceNumber?: string;
@@ -41,7 +48,7 @@ export interface InvoiceDto {
 }
 
 export interface InvoiceFilterDto extends PagedAndSortedResultRequestDto {
-  id?: string;
+  invoiceNumber?: string;
   customerName?: string;
   customerKey?: string;
   status?: string;
@@ -57,14 +64,23 @@ export interface InvoicePdfDto {
   totalDue: number;
   customerName?: string;
   customerKey?: string;
-  address?: string;
+  customerAddress?: string;
+  customerCity?: string;
+  customerPostalCode?: string;
+  customerStateOrProvince?: string;
+  customerCountry?: string;
+  isBusiness?: string;
   crid?: string;
   taxID?: string;
   contactDetails?: string;
   products: ProductDto[];
+  invoiceAddOns: InvoiceAddOns[];
   paidAmount: number;
   totalWithVAT: number;
   vat: number;
+  vatAmount: number;
+  subTotal: number;
+  subTotalWithVat: number;
   paymentMethod?: string;
   paymentType?: string;
   paymentProcessor?: string;
@@ -75,20 +91,15 @@ export interface InvoicePdfDto {
   companyName?: string;
   companyLogo?: string;
   companyAddress?: string;
+  companyCity?: string;
+  companyStateOrProvince?: string;
+  companyCountry?: string;
+  companyId?: string;
   companyContactInfo?: string;
   companyTaxID?: string;
+  companyPostalCode?: string;
+  invoiceNumber?: string;
   title?: string;
-  isBusiness:boolean;
-  companyId:string;
-  invoiceNumber:string;
-  companyPostalCode:string;
-  companyCity:string;
-  companyCountry:string;
-  customerCity:string;
-  customerPostalCode:string;
-  subTotal:string;
-  subTotalWithVat:string;
-
 }
 
 export interface PaidInvoiceDetailsDto {
@@ -113,14 +124,10 @@ export interface PaidInvoiceDetailsDto {
 }
 
 export interface ProductDto {
-  name?: string;
   planName?: string;
-  planCategoryName?: string;
   price: number;
   quantity: number;
-  subtotal: number;
-  vat: number;
-  totalWithVAT: number;
+  total: number;
 }
 
 export interface Source {

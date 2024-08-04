@@ -74,7 +74,7 @@ export class InvoiceListComponent implements OnInit {
 
   initForm(): void {
     this.form = this._fb.group({
-      id: [''],
+      invoiceNumber: [''],
       customerName: [null],
       status: [null],
       eventType: [null]
@@ -144,12 +144,12 @@ export class InvoiceListComponent implements OnInit {
 
   getInvoiceList(): void {
     const skipCount = this.pageSize * (this.page - 1);
-    const { id, customerName, status, eventType } = this.form.value;
+    const { invoiceNumber, customerName, status, eventType } = this.form.value;
 
     this._invoiceServices.getInvoices({ skipCount,
       maxResultCount: this.pageSize,
-      id: id || '',
-      customerName: customerName !== 'All' ? customerName : null,
+      invoiceNumber: invoiceNumber || '',
+      customerName: (customerName !== 'All' && customerName !== 'الكل') ? customerName : null,
       status: status !== 'All' ? status : null,
       eventType: eventType !== 'All' ? eventType : null,
       sorting: this.sorting // Pass the sorting criteria to the API
