@@ -80,6 +80,7 @@ export class CreateCustomerSubscriptionComponent implements OnInit{
       customerId: this?.customer.id,
       planId: this.form.get('planId').value,
       billingCyclePlanId: this.form.get('billingCyclePlanId').value,
+      markAsPaid:this.form.get('markAsPaid').value,
       startDate: this.form.get('startDate').value,
       expiryDate: this.form.get('expiryDate').value
     } as CreateSubscriptionDto;

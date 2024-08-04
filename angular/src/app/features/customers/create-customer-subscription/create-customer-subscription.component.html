@@ -69,7 +69,7 @@
           <div class='form-group'>
             <label class='form-label'>{{"General::startDate"|abpLocalization}}<sup>*</sup></label>
             <div class='control-icon'>
-              <input #startDate="bsDatepicker" type="text" class="form-control"  placeholder="dd/mm/yyyy" bsDatepicker formControlName='startDate' [bsConfig]="{ dateInputFormat: 'DD/MM/YYYY' }" />
+              <input #startDate="bsDatepicker" type="text" class="form-control"  placeholder="dd/mm/yyyy" bsDatepicker formControlName='startDate' [bsConfig]="{ dateInputFormat: 'DD/MM/YYYY' , showWeekNumbers: false }" />
               <i class="icon fa-regular fa-calendar" (click)="startDate.toggle()" [attr.aria-expanded]="startDate.isOpen"></i>
             </div>
             <div *ngIf="form.get('startDate')?.invalid && form.get('startDate')?.touched">
@@ -83,7 +83,7 @@
           <div class='form-group mb-0'>
             <label class='form-label'>{{"General::expiryDay"|abpLocalization}}<sup>*</sup></label>
             <div class='control-icon'>
-              <input #expiryDay="bsDatepicker" type="text" class="form-control"  placeholder="dd/mm/yyyy" bsDatepicker formControlName='expiryDate' [bsConfig]="{ dateInputFormat: 'DD/MM/YYYY' }" />
+              <input #expiryDay="bsDatepicker" type="text" class="form-control"  placeholder="dd/mm/yyyy" bsDatepicker formControlName='expiryDate' [bsConfig]="{ dateInputFormat: 'DD/MM/YYYY' , showWeekNumbers: false}" />
               <i class="icon fa-regular fa-calendar" (click)="expiryDay.toggle()" [attr.aria-expanded]="expiryDay.isOpen"></i>
             </div>
             <div *ngIf="form.get('expiryDate')?.invalid && form.get('expiryDate')?.touched">

@@ -58,19 +58,26 @@ const routes: Routes = [
   {
     path: 'support',
     component:MainLayoutComponent,
-    loadChildren: () => import('./features/support/support.module').then(m => m.SupportModule)
+    loadChildren: () => import('./features/support/support.module').then(m => m.SupportModule),
+    canActivate: [authGuard]
+
   },
   {
     path: 'invoice-status/:token',
     component:InvoiceStatusStandaloneComponent,
+    canActivate: [authGuard]
+
   },
   {
     path: 'payment/:token',
     component:PaymentStandaloneComponent,
+    canActivate: [authGuard]
   },
   {
     path:'download-invoice/:id',
-    component:DownloadInvoicePdfComponent
+    component:DownloadInvoicePdfComponent,
+    canActivate: [authGuard]
+
   }
 ];
 

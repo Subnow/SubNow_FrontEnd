@@ -2394,7 +2394,7 @@
                   }
                 },
                 {
-                  "name": "GetInvoiceDetailsAsync",
+                  "name": "GetInvoicePDFDetailsAsync",
                   "parametersOnMethod": [
                     {
                       "name": "invoiceId",
@@ -2609,11 +2609,11 @@
               "allowAnonymous": null,
               "implementFrom": "SubNow.Payments.IPaymentAppService"
             },
-            "GetInvoiceDetailsAsyncByInvoiceId": {
-              "uniqueName": "GetInvoiceDetailsAsyncByInvoiceId",
-              "name": "GetInvoiceDetailsAsync",
+            "GetInvoicePDFDetailsAsyncByInvoiceId": {
+              "uniqueName": "GetInvoicePDFDetailsAsyncByInvoiceId",
+              "name": "GetInvoicePDFDetailsAsync",
               "httpMethod": "GET",
-              "url": "api/app/payment/invoice-details/{invoiceId}",
+              "url": "api/app/payment/invoice-pDFDetails/{invoiceId}",
               "supportedVersions": [],
               "parametersOnMethod": [
                 {
@@ -9424,6 +9424,18 @@
           "regex": null
         },
         {
+          "name": "PayLink",
+          "jsonName": null,
+          "type": "System.String",
+          "typeSimple": "string",
+          "isRequired": false,
+          "minLength": null,
+          "maxLength": null,
+          "minimum": null,
+          "maximum": null,
+          "regex": null
+        },
+        {
           "name": "EventType",
           "jsonName": null,
           "type": "System.String",
@@ -9703,18 +9715,6 @@
           "regex": null
         },
         {
-          "name": "InvoiceDate",
-          "jsonName": null,
-          "type": "System.DateTime",
-          "typeSimple": "string",
-          "isRequired": false,
-          "minLength": null,
-          "maxLength": null,
-          "minimum": null,
-          "maximum": null,
-          "regex": null
-        },
-        {
           "name": "ExpiryDate",
           "jsonName": null,
           "type": "System.DateTime?",
@@ -9813,7 +9813,7 @@
         {
           "name": "CRID",
           "jsonName": null,
-          "type": "System.Guid",
+          "type": "System.String",
           "typeSimple": "string",
           "isRequired": false,
           "minLength": null,

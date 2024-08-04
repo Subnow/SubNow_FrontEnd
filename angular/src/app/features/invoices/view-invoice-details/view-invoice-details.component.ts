@@ -3,6 +3,7 @@ import { NgbActiveModal, NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { Clipboard } from '@angular/cdk/clipboard';
 import { GetInvoiceDto, PaymentService } from '@proxy/payments';
 import { AddEditCustomerComponent } from '../../customers/add-edit-customer/add-edit-customer.component';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-view-invoice-details',
@@ -17,7 +18,8 @@ export class ViewInvoiceDetailsComponent implements OnInit{
   isDownload = false;
   constructor(
     private clipboard: Clipboard,
-    private invoiceServices:PaymentService
+    private _invoiceServices:PaymentService,
+    private _router:Router
   )
   {
   }
@@ -26,7 +28,7 @@ export class ViewInvoiceDetailsComponent implements OnInit{
   }
 
   getInvoiceDetails() :void{
-    this.invoiceServices.getInvoiceById(this.id).subscribe((res=>{
+    this._invoiceServices.getInvoiceById(this.id).subscribe((res=>{
       this.invoiceDetails = res;
     }))
   }
@@ -45,7 +47,8 @@ export class ViewInvoiceDetailsComponent implements OnInit{
   }
 
 
-  downloadPDF() {
-
+  downloadPDF(id:string) {
+    this.closeModal();
+    this._router.navigate(["/download-invoice",id])
   }
 }

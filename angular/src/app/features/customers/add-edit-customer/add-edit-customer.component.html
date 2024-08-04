@@ -48,7 +48,7 @@
                 <div class='form-group mb-0'>
                   <label class="form-label">{{"General::customerSince"|abpLocalization}}</label>
                   <div class='control-icon'>
-                    <input  #customerSince="bsDatepicker" type="text" class="form-control"  placeholder="dd/mm/yyyy" bsDatepicker formControlName='customerSince' [bsConfig]="{ dateInputFormat: 'DD/MM/YYYY' }" />
+                    <input  #customerSince="bsDatepicker" type="text" class="form-control"  placeholder="dd/mm/yyyy" bsDatepicker formControlName='customerSince' [bsConfig]="{ dateInputFormat: 'DD/MM/YYYY', showWeekNumbers: false }" />
                     <i *ngIf='!isEdit' class="fa-regular fa-calendar icon" (click)="customerSince.toggle()" [attr.aria-expanded]="customerSince.isOpen"></i>
                     <i *ngIf='isEdit' class="fa-regular fa-calendar icon" [attr.aria-expanded]="customerSince.isOpen"></i>
                   </div>

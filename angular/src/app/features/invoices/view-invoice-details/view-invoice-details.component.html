@@ -15,7 +15,7 @@
         <p class='invoice-num' (click)='copyActivationInvoice(invoiceNum.innerText)'><span #invoiceNum dir='ltr'>{{invoiceDetails?.invoiceNumber}}</span><a class="copy fa-regular fa-copy"></a></p>
       </div>
       <div *ngIf='invoiceDetails?.invoiceStatusId === "UNPAID"'>
-        <button class='w-100 btn btn-pay disabled'><i class="fa-solid fa-paperclip"></i><span>{{'General::payLink' | abpLocalization}}</span></button>
+        <a class='w-100 btn btn-pay' href='{{invoiceDetails?.payLink}}'><i class="fa-solid fa-paperclip"></i><span>{{'General::payLink' | abpLocalization}}</span></a>
       </div>
       <div class='invoice-header-actions'>
         <div class='block-one' *ngIf='invoiceDetails?.invoiceStatusId !== "UNPAID"'>
@@ -23,7 +23,7 @@
             <i class="fa-solid fa-paperclip"></i>
             <span>{{"General::invoiceLink"|abpLocalization}}</span>
           </button>
-          <button class='btn btn-light' (click)='downloadPDF()'>
+          <button class='btn btn-light' (click)='downloadPDF(invoiceDetails?.invoiceId)'>
             <i class="fa-solid fa-download"></i>
             <span>{{"General::downloadInvoicePDF"|abpLocalization}}</span>
           </button>

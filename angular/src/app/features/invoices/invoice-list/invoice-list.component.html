@@ -25,7 +25,7 @@
           </div>
           <div class='col-lg-4 col-md-6'>
             <label class='form-label'>{{"General::customer"|abpLocalization}}</label>
-            <ng-select appendTo="body" class='select-dot' [items]="customerList"  bindLabel="name" bindValue="name"  placeholder='{{"General::customer"|abpLocalization}}' [clearable]="false" formControlName='customerName'>
+            <ng-select appendTo="body" class='select-dot' [items]="customerList"  bindLabel="name" bindValue="id"  placeholder='{{"General::customer"|abpLocalization}}' [clearable]="false" formControlName='customerName'>
               <ng-template ng-label-tmp let-item="item">
                 <div class='info'>
                   <span class='dot text-primary'><i class="fa-solid fa-circle"></i></span>

@@ -19,6 +19,7 @@ export interface GetInvoiceDto {
   paymentCompanyId?: string;
   createdBy?: string;
   invoiceNumber?: string;
+  payLink?: string;
   eventType?: string;
   totalRefunded?: string;
   cancelledDate?: string;
@@ -49,7 +50,6 @@ export interface InvoiceFilterDto extends PagedAndSortedResultRequestDto {
 
 export interface InvoicePdfDto {
   invoiceId?: string;
-  invoiceDate?: string;
   expiryDate?: string;
   createdDate?: string;
   status?: string;
@@ -78,6 +78,17 @@ export interface InvoicePdfDto {
   companyContactInfo?: string;
   companyTaxID?: string;
   title?: string;
+  isBusiness:boolean;
+  companyId:string;
+  invoiceNumber:string;
+  companyPostalCode:string;
+  companyCity:string;
+  companyCountry:string;
+  customerCity:string;
+  customerPostalCode:string;
+  subTotal:string;
+  subTotalWithVat:string;
+
 }
 
 export interface PaidInvoiceDetailsDto {

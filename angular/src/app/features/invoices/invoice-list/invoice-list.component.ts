@@ -146,14 +146,6 @@ export class InvoiceListComponent implements OnInit {
     const skipCount = this.pageSize * (this.page - 1);
     const { id, customerName, status, eventType } = this.form.value;
 
-    // const filter = {
-    //   id: this.form.get('id').value,
-    //   customerName: this.form.get('customerName').value === 'All' ? null : this.form.get('customerName').value,
-    //     customerName !== 'All' ? customerName : null,
-    //   status: this.form.get('status').value,
-    //   eventType: this.form.get('eventType').value
-    // }
-
     this._invoiceServices.getInvoices({ skipCount,
       maxResultCount: this.pageSize,
       id: id || '',
@@ -165,7 +157,6 @@ export class InvoiceListComponent implements OnInit {
     }).subscribe((res) => {
       this.invoiceList = res.items;
       this.totalInvoices = res.totalCount; // Assuming API returns total count of items
-      console.log('total ==>', this.totalInvoices);
       this.updatePagedInvoiceList();
     });
   }
