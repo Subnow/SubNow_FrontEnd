@@ -64,7 +64,6 @@ export class CompanySettingsModalComponent implements OnInit{
     this._companyService.get().subscribe((res)=>{
       this.company = res;
       this.updateForm();
-      console.log("this ===>" , this.company)
     })
 
   }

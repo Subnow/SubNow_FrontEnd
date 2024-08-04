@@ -18,10 +18,10 @@ export class PaymentService {
     { apiName: this.apiName,...config });
   
 
-  getInvoiceDetails = (invoiceId: string, config?: Partial<Rest.Config>) =>
+  getInvoicePDFDetails = (invoiceId: string, config?: Partial<Rest.Config>) =>
     this.restService.request<any, InvoicePdfDto>({
       method: 'GET',
-      url: `/api/app/payment/invoice-details/${invoiceId}`,
+      url: `/api/app/payment/invoice-pDFDetails/${invoiceId}`,
     },
     { apiName: this.apiName,...config });
   

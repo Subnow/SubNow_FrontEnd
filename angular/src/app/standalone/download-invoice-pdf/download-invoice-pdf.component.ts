@@ -1,15 +1,49 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import jsPDF from 'jspdf';
 import html2canvas from 'html2canvas';
+import { ActivatedRoute } from '@angular/router';
+import { InvoicePdfDto, PaymentService } from '@proxy/payments';
+import { finalize } from 'rxjs';
+import { CommonModule } from '@angular/common';
 @Component({
   selector: 'app-download-invoice-pdf',
   standalone: true,
-  imports: [],
+  imports: [CommonModule],
   templateUrl: './download-invoice-pdf.component.html',
   styleUrl: './download-invoice-pdf.component.scss'
 })
-export class DownloadInvoicePdfComponent {
+export class DownloadInvoicePdfComponent implements OnInit{
+  invoiceId:string = '';
+  invoicePdfDetails:InvoicePdfDto;
+  constructor(
+    private _activatedRoute: ActivatedRoute,
+    private _invoicePdf : PaymentService
+  ) {
 
+  }
+
+  ngOnInit(): void {
+    this.invoiceId = this._activatedRoute.snapshot.paramMap.get('id');
+    this.getInvoicePdfInfo();
+  }
+
+  getInvoicePdfInfo():void{
+    document.body.classList.add('loader');
+    this._invoicePdf.getInvoicePDFDetails(this.invoiceId)
+      .pipe(
+        finalize(() => document.body.classList.remove('loader'))
+      )
+      .subscribe(
+        (res) => {
+          this.invoicePdfDetails = res;
+          setTimeout(() => {
+            this.downloadPDF();
+          }, 1000); // Adjust the delay as needed
+         // this.downloadPDF(); // Call downloadPDF method here
+        }
+      );
+
+  }
   downloadPDF() {
     const element = document.getElementById('invoice') as HTMLElement;
     html2canvas(element).then(canvas => {
@@ -20,4 +54,6 @@ export class DownloadInvoicePdfComponent {
       pdf.save('invoice.pdf');
     });
   }
+
+
 }

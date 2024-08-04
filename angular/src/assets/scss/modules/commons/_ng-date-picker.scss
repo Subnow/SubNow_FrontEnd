@@ -61,3 +61,6 @@ html[dir='rtl'] .ngb-dp-arrow {
 .theme-green .bs-datepicker-body table td[class*=select-] span:after {
   background-color: $primary;
 }
+.bs-datepicker .bs-datepicker-body table tbody .is-other-month {
+  visibility: hidden;
+}

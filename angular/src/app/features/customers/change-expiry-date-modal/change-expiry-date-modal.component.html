@@ -21,7 +21,7 @@
         <div class='col-12'>
             <label class='form-label'>{{"General::newExpiryDate"|abpLocalization}}</label>
             <div class='control-icon'>
-              <input type="text" class="form-control"  placeholder="dd/mm/yyyy" bsDatepicker formControlName='newExpiryDate' [bsConfig]="{ dateInputFormat: 'DD/MM/YYYY' }" />
+              <input type="text" class="form-control"  placeholder="dd/mm/yyyy" bsDatepicker formControlName='newExpiryDate' [bsConfig]="{ dateInputFormat: 'DD/MM/YYYY', showWeekNumbers: false }" />
               <i class="icon fa-regular fa-circle-question" tooltipClass="custom-tooltip" placement="top" container="body"  ngbTooltip='{{"General::newExpiryDateTooltip"|abpLocalization}}'></i>
             </div>
           <div *ngIf="form.get('newExpiryDate')?.invalid && form.get('newExpiryDate')?.touched">

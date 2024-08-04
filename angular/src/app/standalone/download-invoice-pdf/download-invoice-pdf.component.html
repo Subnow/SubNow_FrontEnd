@@ -1,32 +1,29 @@
-<a (click)='downloadPDF()'>DownloadPdf</a>
 <div class="invoice-container" id='invoice'>
   <div class="invoice-header">
     <div class='block-one'>
       <div class="company-info">
         <div class='company-img'>
-          <img src='assets/images/pdf-logo.png' alt=''>
+          <img [src]='invoicePdfDetails?.companyLogo' alt=''>
         </div>
-        <h1 class='company-title'>Marn</h1>
+        <h1 class='company-title'>{{invoicePdfDetails?.companyName}}</h1>
         <div class='company-created'>
-          <p>Date Created: June 1-30 2020</p>
-          <p>TAX ID: 0938456546</p>
-          <p>Company ID: 45743567567</p>
-          <p>Invoice #: 234556</p>
+          <p>Date Created: {{ invoicePdfDetails?.createdDate | date: 'MMMM' }} {{invoicePdfDetails?.createdDate | date: 'm dd, yyyy'}}</p>
+          <p>TAX ID: {{invoicePdfDetails?.companyTaxID}}</p>
+          <p>Company ID: {{invoicePdfDetails?.companyId}}</p>
+          <p>Invoice #: {{invoicePdfDetails?.invoiceNumber}}</p>
         </div>
 
       </div>
     </div>
     <div class='block-two'>
       <div class="invoice-title">
-        <h2>Unpaid Invoice</h2>
-        <h2>فاتورة غير مدفوعة</h2>
+        <h2>{{invoicePdfDetails?.title}}</h2>
       </div>
       <div class="company-address">
-        <p>  King Salman Neighborhood، 6391 King Abdulaziz
-          ، طريق الملك عبدالعزيز, Riyadh</p>
+        <p>{{invoicePdfDetails?.companyAddress}}</p>
 
-        <p>12432</p>
-        <p>Riyadh, Saudi Arabia</p>
+        <p>{{invoicePdfDetails?.companyPostalCode}}</p>
+        <p>{{invoicePdfDetails?.companyCity}}, {{invoicePdfDetails?.companyCountry}}</p>
       </div>
 
     </div>
@@ -40,15 +37,15 @@
     </div>
     <div class="customer-details">
       <div class='block-one'>
-        <p>Customer: <strong>Burger King</strong></p>
-        <p>CustomerKey: <strong>BurgerKinggmail.com</strong></p>
-        <p>Business CR ID: <strong>38756345456</strong></p>
-        <p>Business Tax ID:: <strong>2345456476</strong></p>
+        <p>Customer: <strong>{{invoicePdfDetails?.customerName}}</strong></p>
+        <p>CustomerKey: <strong>{{invoicePdfDetails?.customerKey}}</strong></p>
+        <p>Business CR ID: <strong>{{invoicePdfDetails?.crid}}</strong></p>
+        <p>Business Tax ID:: <strong>{{invoicePdfDetails?.taxID}}</strong></p>
       </div>
-      <div class='block-two'>
+      <div class='block-two' *ngIf='invoicePdfDetails?.address'>
         <p>Address:</p>
-        <p class='w-240'> <strong>King Salman Neighborhood، 6391 King Abdulaziz ، طريق الملك عبدالعزيز, Riyadh 12432</strong></p>
-        <p><strong>getCity, getCountry</strong></p>
+        <p class='w-240'> <strong>{{invoicePdfDetails?.address}}, {{invoicePdfDetails?.customerCity}} {{invoicePdfDetails?.companyPostalCode}}</strong></p>
+        <p><strong>{{invoicePdfDetails?.customerCity}}, {{invoicePdfDetails?.companyCountry}}</strong></p>
       </div>
     </div>
   </div>
@@ -61,7 +58,6 @@
           <span class='d-block'>
             المنتجات
           </span>
-
           <span class='d-block'>
             Items
           </span>
@@ -136,7 +132,7 @@
   </div>
 
   <div class="invoice-summary">
-    <div class='invoice-summary-status'>
+    <div class='invoice-summary-status' *ngIf='invoicePdfDetails?.status !== "PAID"'>
       <div class='status-block danger'>
         <span>
           فاتورة غير مدفوعة
@@ -146,15 +142,84 @@
         </span>
       </div>
       <div class='invoice-expiry danger'>
-        <p>تنتهي الفاتورة بتاريخ 23/03/2024</p>
-        <p>Expiry date: 23/03/2024</p>
+        <p>تنتهي الفاتورة بتاريخ  {{invoicePdfDetails?.expiryDate | date: 'dd/ MM/YYYY'}}</p>
+        <p>Expiry date: {{invoicePdfDetails?.expiryDate | date: 'dd/MM/YYYY'}}</p>
+      </div>
+    </div>
+
+    <div class='invoice-summary-status invoice-paid' *ngIf='invoicePdfDetails?.status === "PAID"'>
+      <div class='invoice-summary-details-row bg-success'>
+        <p class='align-items-end d-flex flex-column'>
+          <strong class='d-block mb-1'>{{invoicePdfDetails?.totalDue}} SAR</strong>
+          <ng-container *ngIf='invoicePdfDetails?.paymentCompany === "MADA"'>
+            <img width='30' height='10' src='assets/images/Bitmap.png'>
+          </ng-container>
+        </p>
+        <strong class='details-label'>
+          :المبلغ المدفوع
+          <span class='d-block'>
+         Paid Amount
+       </span>
+        </strong>
+      </div>
+      <div class='payment-info'>
+        <div class="details">
+          <p class='payment-method'>
+            <i class="fa-solid fa-credit-card icon"></i>
+
+            <span *ngIf='invoicePdfDetails?.paymentMethod === "CREDITCARD"'>Credit Card </span>
+            -
+            <span *ngIf='invoicePdfDetails?.paymentType === "PAYLINK"'>Paylink</span>
+          </p>
+          <p>{{invoicePdfDetails?.paymentReference}}</p>
+          <p>{{ invoicePdfDetails?.paymentDateTime | date: 'MM/dd/yyyy' }} - {{ invoicePdfDetails?.paymentDateTime | date: 'hh-mm a' }}</p>
+        </div>
+        <div class="pay-info">
+          <p>معلومات الدفع</p>
+          <p>Payment info</p>
+        </div>
 
       </div>
 
     </div>
-<!--    <p>Subtotal: 68.70 SAR</p>-->
-<!--    <p>VAT (15%): 10.30 SAR</p>-->
-<!--    <p>Total including VAT: 79.00 SAR</p>-->
-<!--    <h3>Total Due: 79.00 SAR</h3>-->
+    <div class='invoice-summary-details'>
+      <div class='invoice-summary-details-row'>
+        <span>{{invoicePdfDetails?.subTotal}} SAR</span>
+        <label class='details-label'>
+          <span class='d-block'>:المجموع الفرعي </span>
+          <span class='d-block'> Subtotal </span>
+        </label>
+      </div>
+      <div class='invoice-summary-details-row'>
+        <span>{{invoicePdfDetails?.subTotalWithVat}} SAR</span>
+        <label class='details-label'>
+          :الضريبة ({{invoicePdfDetails?.vat}} ٪)
+          <span class='d-block'>
+         VAT ({{invoicePdfDetails?.vat}}%)
+       </span>
+        </label>
+      </div>
+      <div class='invoice-summary-details-row'>
+        <span>{{invoicePdfDetails?.totalWithVAT}} SAR</span>
+        <label class='details-label'>
+          :المجموع مع الضريبة
+          <span class='d-block'>
+         Total includng VAT
+       </span>
+        </label>
+      </div>
+
+      <div class='invoice-summary-details-row bg-primary'>
+        <strong class='details-value'><span class='d-block'>{{invoicePdfDetails?.totalDue}}</span><span class='d-block'>SAR</span></strong>
+        <strong class='details-label'>
+          :المبلغ المستحق
+          <span class='d-block'>
+         Total Due
+       </span>
+        </strong>
+      </div>
+
+    </div>
   </div>
+
 </div>
