@@ -51,7 +51,7 @@ export class DownloadInvoicePdfComponent implements OnInit{
       const pdf = new jsPDF('p', 'mm', 'a4');
       const imgHeight = canvas.height * 208 / canvas.width;
       pdf.addImage(imgData, 'PNG', 0, 0, 208, imgHeight);
-      pdf.save('invoice.pdf');
+      pdf.save(this.invoicePdfDetails?.invoiceNumber);
     });
   }
 
