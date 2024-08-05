@@ -20,12 +20,12 @@
               <label class='form-label'>{{"General::searchForOrder"|abpLocalization}}</label>
               <div class='input-search'>
                 <i class='icon fa-search fa-solid'></i>
-                <input (input)='onChangeFilter($event)' class='form-control' type='text' placeholder='{{"General::search"|abpLocalization}}' formControlName='searchTerm'>
+                <input  class='form-control' type='text' placeholder='{{"General::search"|abpLocalization}}' formControlName='searchTerm'>
             </div>
           </div>
           <div class='col-lg-2 col-md-6'>
               <label class='form-label'>{{"General::plan"|abpLocalization}}</label>
-              <ng-select class='select-dot' formControlName='plan' [items]="planList"  bindLabel="name" bindValue="name"  placeholder='{{"General::plan"|abpLocalization}}' [clearable]="false">
+              <ng-select appendTo="body" class='select-dot' formControlName='plan' [items]="planList"  bindLabel="name" bindValue="name"  placeholder='{{"General::plan"|abpLocalization}}' [clearable]="false">
                 <ng-template ng-label-tmp let-item="item">
                   <div class='info'>
                     <span class='dot text-primary'><i class="fa-solid fa-circle"></i></span>
@@ -50,8 +50,8 @@
             <th width='386' class='rounded-table-head-cell'>
               <div class='sort-cell'>
                 <span>{{"General::customer"|abpLocalization}}</span>
-                <a (click)='sortData()' class="sort fa-solid fa-arrow-down" *ngIf='!isSort'></a>
-                <a (click)='unSortdata()' class="sort fa-solid fa-arrow-up" *ngIf='isSort'></a>
+                <a (click)='sortData("name")' class="sort fa-solid fa-arrow-down" *ngIf='!isSort'></a>
+                <a (click)='notSort("name")' class="sort fa-solid fa-arrow-up" *ngIf='isSort'></a>
 
               </div>
               </th>
@@ -110,6 +110,19 @@
       </div>
     </div>
 
+  </div>
+  <div class='section-pagination' *ngIf='totalCustomer > 6'>
+    <ngb-pagination
+      [collectionSize]="totalCustomer"
+      [(page)]="page"
+      [pageSize]="pageSize"
+      [maxSize]="6"
+      [rotate]="true"
+      [ellipses]="false"
+      [boundaryLinks]="true"
+      (pageChange)="onPageChange($event)"
+      class='custom-pagination'
+    ></ngb-pagination>
   </div>
 </section>
 

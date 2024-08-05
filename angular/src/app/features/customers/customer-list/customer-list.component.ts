@@ -4,6 +4,7 @@ import { CustomerDto, CustomerService } from '@proxy/customers';
 import { PlanService } from '@proxy/plans';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { CustomerModalComponent } from '../customer-modal/customer-modal.component';
+import { InvoiceDto } from '@proxy/payments';
 
 @Component({
   selector: 'app-customer-list',
@@ -19,6 +20,11 @@ export class CustomerListComponent implements OnInit{
   statusList = [];
   form: FormGroup;
   isSort:boolean = false;
+  pagedCustomerList: CustomerDto[] = [];
+
+  page = 1;
+  pageSize = 6;
+  sorting = '';
 
   constructor(
     private _customerService:CustomerService,
@@ -30,7 +36,9 @@ export class CustomerListComponent implements OnInit{
   ngOnInit(): void {
     this.getCustomerList();
     this.getPlanName();
-    this.initForm()
+    this.initForm();
+    this.form.valueChanges.subscribe(() => this.onChangeFilter());
+
   }
 initForm(){
   this.form = this._fb.group({
@@ -39,23 +47,24 @@ initForm(){
     searchTerm: ['']
   })
 }
-  onChangeFilter($event){
-    this._customerService.getFilteredCustomers(this?.form.value).subscribe((res=>{
-      this.customerList = res;
-    }))
-  }
-  sortData(){
-    this._customerService.getList({sorting: 'name',maxResultCount: 1000}).subscribe((res=>{
-      this.customerList = res?.items;
+
+  sortData(type: string): void {
+    if (type === 'name') {
+      this.sorting = this.isSort ? 'name' : 'name';
       this.isSort = true;
-    }))
+    }
+    this.getCustomerList();
   }
-  unSortdata(): void {
-    this._customerService.getList({maxResultCount: 1000}).subscribe((res=>{
-      this.customerList = res?.items;
+
+  notSort(type: string): void {
+    this.sorting = '';
+    if (type === 'name') {
       this.isSort = false;
-    }))
+    }
+    this.getCustomerList();
   }
+
+
 getPlanName(){
   this._planServices.getPlanName().subscribe((res=>{
     this.planList = res;
@@ -67,9 +76,18 @@ getPlanName(){
   }))
 }
 getCustomerList(){
-  this._customerService.getList({maxResultCount: 1000}).subscribe((res=>{
+  const skipCount = this.pageSize * (this.page - 1);
+
+  this._customerService.getList({
+    skipCount,
+    maxResultCount: this.pageSize,
+    sorting: this.sorting
+    }
+  ).subscribe((res=>{
     this.customerList = res?.items;
-    this.totalCustomer = res?.totalCount
+    this.totalCustomer = res?.totalCount;
+    this.updatePagedCustomerList();
+
   }))
 }
 addEditCustomer(customer?:CustomerDto,index?:number,type?:string): void {
@@ -125,5 +143,19 @@ addEditCustomer(customer?:CustomerDto,index?:number,type?:string): void {
   closeSubscription.unsubscribe();
 }
 
-
+  onPageChange(page: number): void {
+    this.page = page;
+    this.getCustomerList();
+  }
+  updatePagedCustomerList(): void {
+    this.pagedCustomerList = this.customerList.slice(
+      (this.page - 1) * this.pageSize,
+      (this.page - 1) * this.pageSize + this.pageSize
+    );
+  }
+  onChangeFilter(): void {
+    this.page = 1;
+    this._customerService.getFilteredCustomers(this.form.value).subscribe((res)=>{
+      this.customerList = res;
+    })  }
 }

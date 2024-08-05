@@ -89,11 +89,10 @@
             <th width='111' class='rounded-table-head-cell'> {{"General::status"|abpLocalization}}</th>
             <th width='154' class='rounded-table-head-cell'>{{"General::createdBy"|abpLocalization}}</th>
             <th width='124' class='rounded-table-head-cell'>{{"General::invoiceExpiry"|abpLocalization}}</th>
-            <th width='86' class='rounded-table-head-cell'></th>
           </tr>
           </thead>
           <tbody class='rounded-table-body'>
-          <tr class='rounded-table-body-row' *ngFor='let invoice of invoiceList; let i = index'>
+          <tr class='rounded-table-body-row pointer' *ngFor='let invoice of invoiceList; let i = index' (click)='viewInvoiceDetails(invoice?.id)'>
             <td class='rounded-table-body-cell' [attr.data-label]="'General::invoice' | abpLocalization">
               {{invoice?.invoiceNumber}}
             </td>
@@ -141,9 +140,6 @@
             </td>
             <td class='rounded-table-body-cell' [attr.data-label]="'General::invoiceExpiry' | abpLocalization">
               {{invoice?.expiryDate | date: 'MMM dd, yyyy'}}
-            </td>
-            <td class='rounded-table-body-cell cell-action'>
-              <a (click)='viewInvoiceDetails(invoice?.id)'><i class="text-gray fa-solid fa-ellipsis-vertical"></i></a>
             </td>
           </tr>
           </tbody>

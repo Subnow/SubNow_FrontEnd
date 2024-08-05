@@ -19,20 +19,20 @@
       </div>
       <div class='invoice-header-actions'>
         <div class='block-one' *ngIf='invoiceDetails?.invoiceStatusId !== "UNPAID"'>
-          <button class='btn btn-light disabled'>
+          <a class='btn btn-light disabled'>
             <i class="fa-solid fa-paperclip"></i>
             <span>{{"General::invoiceLink"|abpLocalization}}</span>
-          </button>
-          <button class='btn btn-light' (click)='downloadPDF(invoiceDetails?.invoiceId)'>
+          </a>
+          <a class='btn btn-light' (click)='downloadPDF(invoiceDetails?.invoiceId)'>
             <i class="fa-solid fa-download"></i>
             <span>{{"General::downloadInvoicePDF"|abpLocalization}}</span>
-          </button>
+          </a>
         </div>
         <div>
-          <button class='btn btn-light w-100 disabled' *ngIf='invoiceDetails?.invoiceStatusId === "REFUNDED"'>
+          <a class='btn btn-light w-100 disabled' *ngIf='invoiceDetails?.invoiceStatusId === "REFUNDED"'>
             <i class="fa-solid fa-download"></i>
             <span>{{"General::downloadRefundInvoicePDF"|abpLocalization}}</span>
-          </button>
+          </a>
         </div>
 
       </div>
@@ -49,14 +49,14 @@
 
     </div>
     <div class='invoice-actions' *ngIf='invoiceDetails?.invoiceStatusId === "UNPAID"'>
-      <button class='btn btn-light disabled'>
+      <a class='btn btn-light' (click)='downloadPDF(invoiceDetails?.invoiceId)'>
         <i class="fa-solid fa-download"></i>
         <span>{{"General::downloadQuotePDF"|abpLocalization}}</span>
-      </button>
-      <button class='btn btn-light disabled'>
+      </a>
+      <a class='btn btn-light disabled'>
         <span>{{"General::markAsPaid"|abpLocalization}}</span>
         <i class="fa-solid fa-angle-down"></i>
-      </button>
+      </a>
     </div>
   </div>
   <div class='invoice-body'>

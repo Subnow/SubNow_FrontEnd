@@ -65,19 +65,15 @@ const routes: Routes = [
   {
     path: 'invoice-status/:token',
     component:InvoiceStatusStandaloneComponent,
-    canActivate: [authGuard]
 
   },
   {
     path: 'payment/:token',
     component:PaymentStandaloneComponent,
-    canActivate: [authGuard]
   },
   {
     path:'download-invoice/:id',
     component:DownloadInvoicePdfComponent,
-    canActivate: [authGuard]
-
   }
 ];
 

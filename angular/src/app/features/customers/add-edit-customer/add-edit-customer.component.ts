@@ -135,7 +135,7 @@ export class AddEditCustomerComponent implements OnInit,AfterViewInit {
         name: [this.customer?.name, Validators.required],
         customerKey: [{ value: this.customer?.customerKey, disabled: true }, Validators.required],
         email: [this.customer?.email],
-        phone: [phoneWithoutCode(this.customer?.phone)],
+        phone: [this.customer?.phone ? phoneWithoutCode(this.customer.phone) : this.customer?.phone],
         description: [this.customer?.description, Validators.maxLength(250)],
         customerStatus: [this.customer?.customerStatus],
         photo: [this.customer?.photo],
