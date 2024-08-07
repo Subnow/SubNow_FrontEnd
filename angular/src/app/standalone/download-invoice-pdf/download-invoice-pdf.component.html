@@ -44,7 +44,7 @@
       <div class='block-two' *ngIf='invoicePdfDetails?.customerAddress'>
         <p>Address:</p>
         <p class='w-240'> <strong>{{invoicePdfDetails?.customerAddress}}, {{invoicePdfDetails?.customerStateOrProvince}} {{invoicePdfDetails?.customerPostalCode}}</strong></p>
-        <p><strong>{{invoicePdfDetails?.customerCity}}, {{invoicePdfDetails?.companyCountry}}</strong></p>
+        <p><strong>{{invoicePdfDetails?.customerCity}}, {{invoicePdfDetails?.customerCountry}}</strong></p>
       </div>
     </div>
   </div>
@@ -138,7 +138,7 @@
     <div class='invoice-summary-status invoice-paid' *ngIf='invoicePdfDetails?.status === "PAID"'>
       <div class='invoice-summary-details-row bg-success'>
         <p class='align-items-end d-flex flex-column'>
-          <strong class='d-block mb-1'>{{invoicePdfDetails?.totalDue}} SAR</strong>
+          <strong class='d-block mb-1'>{{invoicePdfDetails?.paidAmount}} SAR</strong>
           <ng-container *ngIf='invoicePdfDetails?.paymentCompany === "MADA"'>
             <img width='30' height='10' src='assets/images/Bitmap.png'>
           </ng-container>
@@ -202,8 +202,8 @@
         <strong class='details-label'>
           :المبلغ المستحق
           <span class='d-block'>
-         Total Due
-       </span>
+             Total Due
+          </span>
         </strong>
       </div>
 
