@@ -269,6 +269,28 @@ export const General = {
   UPGRADE:"Upgrade",
   invoiceExpiryDate:"Invoice Expiry Date",
   cancelledDate:"Cancelled Date",
-  cancelledBy:"Cancelled By"
+  cancelledBy:"Cancelled By",
+  fullMonths:"12 months",
+  fullDays:"30 days",
+  week:"7 days",
+  hours:"24 hours",
+  selectRange:"Select Range",
+  totalSales:"Total Sales",
+  activeSubscriptions:"Active Subscriptions",
+  recurringRevenue:"Recurring Revenue",
+  apply:"Apply",
+  today:"Today",
+  yesterday:"Yesterday",
+  thisWeek:"This week",
+  lastWeek:"Last week",
+  thisMonth:"This Month",
+  lastMonth:"Last month",
+  thisYear:"This Year",
+  lastYear:"Last year",
+  allTime:"All time"
+
+
+
+
 
 };

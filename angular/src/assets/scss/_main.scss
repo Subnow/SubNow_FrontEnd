@@ -14,6 +14,7 @@ body {
 @import "modules/setup/setup";
 @import "modules/payment/moyaser";
 @import "modules/payment/payment";
+@import "modules/dashboard/dashboard";
 
 html[dir='rtl']{
   .custom-modal-left .modal-dialog {

@@ -1,0 +1,49 @@
+<section class='dashboard'>
+  <div class='section-header border-0 pb-0'>
+    <app-page-title-standalone title='{{"General::dashboard"|abpLocalization}}' ></app-page-title-standalone>
+    <div class='section-header-actions'>
+      <div class="btn-group" role="group" aria-label="Basic outlined example">
+          <button (click)="selectFilter('fullMonths')" type="button" class="btn btn-light" [ngClass]="{'active': isActiveFilter('fullMonths')}">{{"General::fullMonths"|abpLocalization}}</button>
+          <button (click)="selectFilter('fullMonthDays')" type="button" class="btn btn-light" [ngClass]="{'active': isActiveFilter('fullMonthDays')}">{{"General::fullDays"|abpLocalization}}</button>
+          <button (click)="selectFilter('fullWeekDays')" type="button" class="btn btn-light" [ngClass]="{'active': isActiveFilter('fullWeekDays')}">{{"General::week"|abpLocalization}}</button>
+          <button (click)="selectFilter('dayHours')" type="button" class="btn btn-light" [ngClass]="{'active': isActiveFilter('dayHours')}">{{"General::hours"|abpLocalization}}</button>
+        </div>
+      <div class='custom-range'>
+        <button class='btn btn-light' (click)='openCalender()'>
+          <i class="fa-regular fa-calendar"></i>
+          <span>{{"General::selectRange" | abpLocalization}}</span>
+        </button>
+        <div *ngIf='isOpenCalender'>
+          <div class='custom-range-calender'>
+            <div class='block-one'>
+              <ul class='custom-range-list'>
+                <li class='custom-range-item'><a class='custom-range-link' (click)="selectRange('today')" [ngClass]="{'active': isActive('today')}">{{"General::today" | abpLocalization}}</a></li>
+                <li class='custom-range-item'><a class='custom-range-link' (click)="selectRange('yesterday')" [ngClass]="{'active': isActive('yesterday')}">{{"General::yesterday" | abpLocalization}}</a></li>
+                <li class='custom-range-item'><a class='custom-range-link' (click)="selectRange('thisWeek')" [ngClass]="{'active': isActive('thisWeek')}">{{"General::thisWeek" | abpLocalization}}</a></li>
+                <li class='custom-range-item'><a class='custom-range-link' (click)="selectRange('lastWeek')" [ngClass]="{'active': isActive('lastWeek')}">{{"General::lastWeek" | abpLocalization}}</a></li>
+                <li class='custom-range-item'><a class='custom-range-link' (click)="selectRange('thisMonth')" [ngClass]="{'active': isActive('thisMonth')}">{{"General::thisMonth" | abpLocalization}}</a></li>
+                <li class='custom-range-item'><a class='custom-range-link' (click)="selectRange('lastMonth')" [ngClass]="{'active': isActive('lastMonth')}">{{"General::lastMonth" | abpLocalization}}</a></li>
+                <li class='custom-range-item'><a class='custom-range-link' (click)="selectRange('thisYear')" [ngClass]="{'active': isActive('thisYear')}">{{"General::thisYear" | abpLocalization}}</a></li>
+                <li class='custom-range-item'><a class='custom-range-link' (click)="selectRange('lastYear')" [ngClass]="{'active': isActive('lastYear')}">{{"General::lastYear" | abpLocalization}}</a></li>
+                <li class='custom-range-item'><a class='custom-range-link' (click)="selectRange('allTime')" [ngClass]="{'active': isActive('allTime')}">{{"General::allTime" | abpLocalization}}</a></li>
+              </ul>
+            </div>
+            <div class='block-two'>
+              <bs-daterangepicker-inline [(bsValue)]="selectValue" [bsConfig]="bsConfig" (bsValueChange)="onValueChange($event)"></bs-daterangepicker-inline>
+              <div class='custom-range-info'>
+                <div class='custom-range-values'>
+                  <p class='from-value'>{{ selectValue[0] | date: 'MMM d, y' }}</p> <span> – </span>
+                  <p class='to-value'>{{ selectValue[1] | date: 'MMM d, y' }}</p>
+                </div>
+                <div class='custom-range-actions'>
+                  <button class='btn btn-light' (click)='isOpenCalender = false'>{{"General::cancel" | abpLocalization}}</button>
+                  <button class='btn btn-dark' (click)='onApply()'>{{"General::apply" | abpLocalization}}</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
